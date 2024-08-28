@@ -1,11 +1,7 @@
-import ResetPassword from "./authentication/auth-pages/reset-password/ResetPassword";
+import ResetPasswordRequest from "./authentication/auth-pages/reset-password-request/ResetPasswordRequest";
 
 function App() {
-  return (
-    <>
-      <ResetPassword />
-    </>
-  );
+  return <ResetPasswordRequest />;
 }
 
 export default App;
