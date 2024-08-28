@@ -1,9 +1,9 @@
-import AdminLogin from "./authentication/auth-pages/admin-login/AdminLogin";
+import ChangeAdminPassword from "./authentication/auth-pages/change-admin-password/ChangeAdminPassword";
 
 function App() {
   return (
     <>
-      <AdminLogin />
+      <ChangeAdminPassword />
     </>
   );
 }
