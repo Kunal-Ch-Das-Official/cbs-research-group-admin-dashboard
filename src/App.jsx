@@ -1,9 +1,9 @@
-import ChangeAdminPassword from "./authentication/auth-pages/change-admin-password/ChangeAdminPassword";
+import ResetPassword from "./authentication/auth-pages/reset-password/ResetPassword";
 
 function App() {
   return (
     <>
-      <ChangeAdminPassword />
+      <ResetPassword />
     </>
   );
 }
