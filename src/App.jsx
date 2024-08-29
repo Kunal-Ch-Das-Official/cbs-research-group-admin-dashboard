@@ -1,7 +1,12 @@
-import ResetPasswordRequest from "./authentication/auth-pages/reset-password-request/ResetPasswordRequest";
+import Sidebar from "./components/reuseable/sidebar-menu/sidebar/Sidebar";
+import ToggleMenu from "./components/reuseable/sidebar-menu/toggle-menu/ToggleMenu";
 
 function App() {
-  return <ResetPasswordRequest />;
+  return (
+    <>
+      <Sidebar />
+    </>
+  );
 }
 
 export default App;
