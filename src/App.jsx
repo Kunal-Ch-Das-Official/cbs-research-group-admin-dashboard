@@ -10,6 +10,7 @@ import { AuthProvider } from "./authentication/auth-context/AuthContext";
 import PrivateRoute from "./private/PrivateRoute";
 import AdminPanel from "./AdminPanel";
 import ForgotPassword from "./pages/forgot-password/ForgotPassword";
+import ResetForgottenPassword from "./pages/reset-forgotten-password/ResetForgottenPassword";
 
 function App() {
   return (
@@ -19,10 +20,10 @@ function App() {
           <Route path="/" element={<SignIn />} />
           <Route path="*" element={<SignIn />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
-          {/* <Route
-              path="/reset-password"
-              element={<ResetForgottenPassword />}
-            /> */}
+          <Route
+            path="/reset-password/:id/:token"
+            element={<ResetForgottenPassword />}
+          />
           <Route
             path="/admin-panel"
             element={

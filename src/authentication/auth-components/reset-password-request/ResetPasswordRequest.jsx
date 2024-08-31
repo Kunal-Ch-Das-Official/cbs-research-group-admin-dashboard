@@ -31,7 +31,7 @@ const ResetPasswordRequest = () => {
       setEmailValidationError(false);
       try {
         await axios
-          .post(envConfig.passwordResetLink, { adminUserEmail: adminEmail })
+          .post(envConfig.passwordResetLinkSend, { adminUserEmail: adminEmail })
           .then((res) => {
             setResponseMessage({
               heading: res.data.message,
