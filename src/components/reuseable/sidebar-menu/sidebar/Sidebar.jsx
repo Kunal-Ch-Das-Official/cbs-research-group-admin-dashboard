@@ -3,7 +3,6 @@
 // Date: 30/08/2024
 import { useCallback, useRef, useEffect, useState } from "react";
 import FullMenu from "../full-menu/FullMenu";
-import HalfMenu from "../half-menu/HalfMenu";
 import ToggleMenu from "../toggle-menu/ToggleMenu";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -14,10 +13,9 @@ const Sidebar = () => {
   const { logout } = useAuth();
   const sidebarRef = useRef(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [screenWidth, setScreenWidth] = useState();
   const [wantToLogout, setWantToLogout] = useState(false);
-
+  // const [isSticky, setIsSticky] = useState(false);
   const handleConfirmLogout = () => setWantToLogout(true);
   const handleLogout = () => {
     if (localStorage.getItem("auth-token")) {
@@ -51,7 +49,7 @@ const Sidebar = () => {
 
   // Add event listener when the sidebar is open
   useEffect(() => {
-    if (isMenuOpen || isSidebarOpen) {
+    if (isMenuOpen === false) {
       document.addEventListener("mousedown", handleClickOutside);
     } else {
       document.removeEventListener("mousedown", handleClickOutside);
@@ -61,30 +59,39 @@ const Sidebar = () => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [isMenuOpen, isSidebarOpen]);
-
-  const opemHalfMenu = useCallback(() => {
-    setIsMenuOpen(false);
-    setIsSidebarOpen(false);
-  }, []);
+  }, [isMenuOpen]);
 
   const openFullMenu = useCallback(() => {
-    setIsSidebarOpen(true);
+    setIsMenuOpen(false);
   }, []);
   const closeSidebar = useCallback(() => {
-    setIsSidebarOpen(false);
+    setIsMenuOpen(true);
   }, []);
 
   const handleClickOutside = (event) => {
     if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
       if (screenWidth > 767) {
-        isSidebarOpen === true && setIsSidebarOpen(false);
+        isMenuOpen === false && setIsMenuOpen(true);
       } else {
         setIsMenuOpen(true);
-        setIsSidebarOpen(false);
       }
     }
   };
+
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     if (window.scrollY > 120) {
+  //       setIsSticky(true);
+  //     } else {
+  //       setIsSticky(false);
+  //     }
+  //   };
+
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => {
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []);
   return (
     <>
       {wantToLogout === true && (
@@ -100,16 +107,11 @@ const Sidebar = () => {
       )}
       <main ref={sidebarRef}>
         {isMenuOpen === true ? (
-          <ToggleMenu openMenu={opemHalfMenu} />
-        ) : (
-          <HalfMenu
-            openFullMenu={openFullMenu}
-            closeFullmenu={() => setIsMenuOpen(true)}
-            logoutHandler={handleConfirmLogout}
+          <ToggleMenu
+            openMenu={openFullMenu}
+            // isVisable={isSticky === true ? "inline-flex" : "hidden"}
           />
-        )}
-
-        {isSidebarOpen === true && (
+        ) : (
           <FullMenu
             closeFullMenu={closeSidebar}
             logoutHandler={handleConfirmLogout}

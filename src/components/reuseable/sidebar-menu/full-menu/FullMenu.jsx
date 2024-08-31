@@ -21,6 +21,7 @@ import { IoCloseCircleOutline } from "react-icons/io5";
 import { IoIosArrowUp } from "react-icons/io";
 import { useState } from "react";
 import GetCurrentAdmin from "../../../single-use/get-current-loggedin-admin/GetCurrentAdmin";
+import { Link } from "react-router-dom";
 const FullMenu = ({ closeFullMenu, logoutHandler }) => {
   const [adminOperationDropdown, setAdminOperationDropdown] = useState(false);
   const [adminRequestDropdown, setAdminRequestDropdown] = useState(false);
@@ -97,14 +98,14 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
         {/* DASHBOARD  */}
         <ul className="space-y-3 mt-2" id="dashboard">
           <li>
-            <a
-              href="#"
+            <Link
+              to={"/admin-panel"}
               className="text-gray-700 hover:text-black text-sm flex items-center
                hover:bg-white rounded px-4 py-3 transition-all"
             >
               <MdDashboard className="text-xl text-gray-700 mr-5" />
               <span>Dashboard</span>
-            </a>
+            </Link>
           </li>
         </ul>
         <hr className="my-2 border-gray-900" />
@@ -129,15 +130,15 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
                 adminOperationDropdown === true ? "block" : "hidden"
               }`}
             >
-              <a
+              <Link
+                to={"/admin-panel/register"}
                 id="register_admin"
-                href="#"
                 className="text-gray-700 hover:text-black text-sm 
                 flex justify-center items-center hover:bg-white  
                 px-4 py-3 transition-all border-b-[1px] border-gray-400 hover:font-bold"
               >
                 Admin Registration
-              </a>
+              </Link>
               <a
                 id="password_change"
                 href="#"

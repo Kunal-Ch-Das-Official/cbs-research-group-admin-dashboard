@@ -4,10 +4,10 @@ import Sidebar from "./components/reuseable/sidebar-menu/sidebar/Sidebar";
 
 const AdminPanel = () => {
   return (
-    <main>
+    <>
       <Sidebar />
       <Outlet />
-    </main>
+    </>
   );
 };
 
