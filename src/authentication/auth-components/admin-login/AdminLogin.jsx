@@ -33,7 +33,7 @@ const AdminLogin = () => {
   useEffect(() => {
     const isAuth = localStorage.getItem("auth-token");
     if (isAuth) {
-      navigate("/dashboard");
+      navigate("/admin-panel");
       login();
     }
   }, []);
@@ -99,7 +99,7 @@ const AdminLogin = () => {
   const closeModelHandler = () => {
     setCloseModel(false);
     if (token) {
-      navigate("/dashboard");
+      navigate("/admin-panel");
     }
   };
   return (
@@ -152,7 +152,7 @@ const AdminLogin = () => {
                 {/* PASSWORD FIELDS  */}
                 <div id="password">
                   <label
-                    htmlFor="password"
+                    htmlFor="adminUserPassword"
                     className="block mb-2 text-sm font-medium text-gray-900"
                   >
                     Admin password

@@ -1,14 +1,15 @@
 /* 
 Project: CBS Research Group Admin Dashboard
-Content: Application routing setup
+Content: Common alert model style
 Date: 29/08/2024 
 */
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import SignIn from "./pages/sign-in/SignIn";
-import AdminPanel from "./pages/admin-panel/AdminPanel";
+
 import Dashboard from "./pages/dashboard/Dashboard";
 import { AuthProvider } from "./authentication/auth-context/AuthContext";
 import PrivateRoute from "./private/PrivateRoute";
+import AdminPanel from "./AdminPanel";
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
           <Route path="/" element={<SignIn />} />
           <Route path="*" element={<SignIn />} />
           <Route
-            path="/dashboard"
+            path="/admin-panel"
             element={
               <PrivateRoute>
                 <AdminPanel />

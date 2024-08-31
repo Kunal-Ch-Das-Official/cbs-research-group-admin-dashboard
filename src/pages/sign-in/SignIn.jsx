@@ -1,12 +1,8 @@
 import React from "react";
-import AdminLogin from "../../authentication/auth-pages/admin-login/AdminLogin";
+import AdminLogin from "../../authentication/auth-components/admin-login/AdminLogin";
 
 const SignIn = () => {
-  return (
-    <>
-      <AdminLogin />
-    </>
-  );
+  return <AdminLogin />;
 };
 
 export default SignIn;

@@ -8,16 +8,23 @@ import ToggleMenu from "../toggle-menu/ToggleMenu";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useAuth } from "../../../../authentication/auth-context/AuthContext";
-
+import ConfirmModel from "../../../../utils/confirm-model/ConfirmModel";
+import { FiLogOut } from "react-icons/fi";
 const Sidebar = () => {
   const { logout } = useAuth();
   const sidebarRef = useRef(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [screenWidth, setScreenWidth] = useState();
+  const [wantToLogout, setWantToLogout] = useState(false);
+
+  const handleConfirmLogout = () => setWantToLogout(true);
   const handleLogout = () => {
     if (localStorage.getItem("auth-token")) {
       localStorage.removeItem("auth-token");
+    }
+    if (localStorage.getItem("admin-token")) {
+      localStorage.removeItem("admin-token");
     }
     logout();
   };
@@ -79,21 +86,37 @@ const Sidebar = () => {
     }
   };
   return (
-    <main ref={sidebarRef}>
-      {isMenuOpen === true ? (
-        <ToggleMenu openMenu={opemHalfMenu} />
-      ) : (
-        <HalfMenu
-          openFullMenu={openFullMenu}
-          closeFullmenu={() => setIsMenuOpen(true)}
-          logoutHandler={handleLogout}
+    <>
+      {wantToLogout === true && (
+        <ConfirmModel
+          showOrHide={wantToLogout === true ? "flex" : "hidden"}
+          confirmHandler={handleLogout}
+          cancelHandler={() => setWantToLogout(false)}
+          statusIcon={<FiLogOut className="text-4xl text-red-500 font-bold" />}
+          confirmHandlerColor={"bg-red-500"}
+          cancelHandlerColor={"bg-white"}
+          alertHead={"Logout Confirmation!"}
         />
       )}
+      <main ref={sidebarRef}>
+        {isMenuOpen === true ? (
+          <ToggleMenu openMenu={opemHalfMenu} />
+        ) : (
+          <HalfMenu
+            openFullMenu={openFullMenu}
+            closeFullmenu={() => setIsMenuOpen(true)}
+            logoutHandler={handleConfirmLogout}
+          />
+        )}
 
-      {isSidebarOpen === true && (
-        <FullMenu closeFullMenu={closeSidebar} logoutHandler={handleLogout} />
-      )}
-    </main>
+        {isSidebarOpen === true && (
+          <FullMenu
+            closeFullMenu={closeSidebar}
+            logoutHandler={handleConfirmLogout}
+          />
+        )}
+      </main>
+    </>
   );
 };
 

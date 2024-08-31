@@ -1,0 +1,9 @@
+/* 
+Project: CBS Research Group Admin Dashboard
+Content: Common confirm model style
+Date: 31/08/2024 
+*/
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+}
