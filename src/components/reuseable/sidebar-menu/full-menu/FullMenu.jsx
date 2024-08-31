@@ -20,6 +20,7 @@ import { RiLogoutBoxLine } from "react-icons/ri";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import { IoIosArrowUp } from "react-icons/io";
 import { useState } from "react";
+import GetCurrentAdmin from "../../../single-use/get-current-loggedin-admin/GetCurrentAdmin";
 const FullMenu = ({ closeFullMenu, logoutHandler }) => {
   const [adminOperationDropdown, setAdminOperationDropdown] = useState(false);
   const [adminRequestDropdown, setAdminRequestDropdown] = useState(false);
@@ -89,15 +90,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
         </div>
 
         {/* LOGGED IN ADMIN SECTION  */}
-        <div className="flex flex-wrap flex-col justify-center items-center cursor-pointer">
-          <div className="bg-gray-300 w-12 h-12 rounded-full flex items-center justify-center font-bold text-gray-900 text-xl">
-            <span>S</span>
-          </div>
-          <div className="text-center mt-4">
-            <p className="text-base text-black">John Doe</p>
-            <p className="text-xs text-gray-900 mt-0.5">johndoe23@gmail.com</p>
-          </div>
-        </div>
+        <GetCurrentAdmin />
 
         <hr className="mt-4 border-gray-900" />
 

@@ -9,6 +9,7 @@ const environment = {
   passwordResetLinkSend: import.meta.env.VITE_APP_PASSWORD_RESET_LINK_SEND_URL,
   resetPassword: import.meta.env.VITE_APP_PASSWORD_RESET_URL,
   becomeAdminRequestUrl: import.meta.env.VITE_APP_BECOME_ADMIN_REQUEST_URL,
+  getCurrentLoggedInAdmin: import.meta.env.VITE_APP_GET_CURRENT_LOGGED_IN_ADMIN,
 };
 
 const envConfig = Object.freeze(environment);
