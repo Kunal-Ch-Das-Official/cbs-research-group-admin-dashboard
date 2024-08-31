@@ -1,12 +1,32 @@
-// Project: CBS Research Group Admin Dashboard
-// Content: Reset forgotten password of the admin user
-// Date: 30/08/2024
-import { useState } from "react";
+/* 
+Project: CBS Research Group Admin Dashboard
+Content: Password reset component
+Date: 29/08/2024 
+*/
+import { useRef, useState } from "react";
 import { IoEyeSharp } from "react-icons/io5";
+import envConfig from "../../../../envConfig";
+import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
+import LoadingSpinner from "../../../utils/common-loading-spinner/LoadingSpinner";
+import CustomModel from "../../../utils/custom-models/CustomModel";
+import { FcCancel } from "react-icons/fc";
+import { MdDownloadDone } from "react-icons/md";
 const ResetPassword = () => {
-  const [newPassword, setNewpassword] = useState("");
+  const navigate = useNavigate();
+  const resetFormRef = useRef();
+  const { id, token } = useParams();
+  const [newPassword, setNewPassword] = useState("");
   const [newConfirmPassword, setNewConfirmPassword] = useState("");
   const [passwordValidationError, setPasswordValidationError] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [customAlert, setCustomAlert] = useState(false);
+  const [operationSuccess, setOperationSuccess] = useState(false);
+  const [loginResponse, setLoginResponse] = useState({
+    message: null,
+    statusIcon: null,
+    buttonColor: null,
+  });
   // Password show and hide handler
   const showHidePassword = (id) => {
     const getPassword = document.getElementById("adminUserPassword");
@@ -14,104 +34,156 @@ const ResetPassword = () => {
       "adminUserPassword_confirmation"
     );
     if (id === 1) {
-      getPassword.type === "password"
-        ? (getPassword.type = "text")
-        : (getPassword.type = "password");
+      getPassword.type = getPassword.type === "password" ? "text" : "password";
     }
     if (id === 2) {
-      getConfirmPassword.type === "password"
-        ? (getConfirmPassword.type = "text")
-        : (getConfirmPassword.type = "password");
+      getConfirmPassword.type =
+        getConfirmPassword.type === "password" ? "text" : "password";
     }
   };
 
   const handleSubmit = async (e) => {
+    setLoading(true);
     e.preventDefault();
+    // Check if passwords match
     if (newPassword !== newConfirmPassword) {
       setPasswordValidationError(true);
+      setLoading(false);
+      return; // Exit the function early if passwords do not match
     } else {
       setPasswordValidationError(false);
     }
+
+    try {
+      await axios
+        .post(`${envConfig.resetPassword}/${id}/${token}`, {
+          adminUserPassword: newPassword,
+          adminUserPassword_confirmation: newConfirmPassword,
+        })
+        .then((res) => {
+          if (res.status == 200) {
+            setOperationSuccess(true);
+          } else {
+            setOperationSuccess(false);
+          }
+          setLoginResponse({
+            message: res.data.details,
+            statusIcon: (
+              <MdDownloadDone className="text-4xl font-bold text-green-600" />
+            ),
+            buttonColor: "bg-green-600",
+          });
+          setLoading(false);
+          setCustomAlert(true);
+        });
+    } catch (error) {
+      setLoginResponse({
+        message: error.message,
+        statusIcon: <FcCancel className="text-4xl font-bold text-red-600" />,
+        buttonColor: "bg-red-600",
+      });
+      setLoading(false);
+      setCustomAlert(true);
+    }
+    resetFormRef.current.reset();
   };
+  const closeModelHandler = () => {
+    setCustomAlert(false);
+    operationSuccess === true ? navigate("/sign-in") : navigate(null);
+  };
+
   return (
-    <section className="bg-gray-50">
-      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-        <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0">
-          <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-            <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
-              Reset forgotten password
-            </h1>
-            <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
-              {/* PASSWORD FIELDS  */}
-              <div id="password">
-                <label
-                  htmlFor="adminUserPassword"
-                  className="block mb-2 text-sm font-medium text-gray-900"
-                >
-                  Password
-                </label>
-
-                <div className="relative flex items-center">
-                  <input
-                    type="password"
-                    name="adminUserPassword"
-                    id="adminUserPassword"
-                    placeholder="••••••••"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                    required
-                    onChange={(e) => setNewpassword(e.target.value)}
-                  />
-                  <IoEyeSharp
-                    className="text-xl text-gray-600 absolute right-2 cursor-pointer"
-                    onClick={() => showHidePassword(1)}
-                  />
-                </div>
-              </div>
-              {/* CONFIRM PASSWORD FIELDS  */}
-              <div id="confirmPassword">
-                <label
-                  htmlFor="adminUserPassword_confirmation"
-                  className="block mb-2 text-sm font-medium text-gray-900"
-                >
-                  Confirm password
-                </label>
-
-                <div className="relative flex items-center">
-                  <input
-                    type="password"
-                    name="adminUserPassword_confirmation"
-                    id="adminUserPassword_confirmation"
-                    placeholder="••••••••"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                    required
-                    onChange={(e) => setNewConfirmPassword(e.target.value)}
-                  />
-                  <IoEyeSharp
-                    className="text-xl text-gray-600 absolute right-2 cursor-pointer"
-                    onClick={() => showHidePassword(2)}
-                  />
-                </div>
-                {passwordValidationError === true ? (
-                  <p className="ml-2 text-red-500 font-sm text-xs my-0 py-0">
-                    Password and confirm password are not same
-                  </p>
-                ) : (
-                  <p></p>
-                )}
-              </div>
-
-              {/* SUBMIT BUTTON  */}
-              <button
-                type="submit"
-                className="w-full text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+    <>
+      {loading === true && <LoadingSpinner />}
+      {
+        <CustomModel
+          buttonText={"Got it"}
+          showOrHide={customAlert === true ? "flex" : "hidden"}
+          closeButton={closeModelHandler}
+          statusIcon={loginResponse.statusIcon}
+          alertHead={loginResponse.message}
+          buttonColor={loginResponse.buttonColor}
+        />
+      }
+      <section className="bg-gray-50">
+        <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+          <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0">
+            <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+              <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
+                Reset forgotten password
+              </h1>
+              <form
+                className="space-y-4 md:space-y-6"
+                onSubmit={handleSubmit}
+                ref={resetFormRef}
               >
-                Change password
-              </button>
-            </form>
+                {/* PASSWORD FIELDS */}
+                <div id="password">
+                  <label
+                    htmlFor="adminUserPassword"
+                    className="block mb-2 text-sm font-medium text-gray-900"
+                  >
+                    Password
+                  </label>
+                  <div className="relative flex items-center">
+                    <input
+                      type="password"
+                      name="adminUserPassword"
+                      id="adminUserPassword"
+                      placeholder="••••••••"
+                      className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                      required
+                      onChange={(e) => setNewPassword(e.target.value)}
+                    />
+                    <IoEyeSharp
+                      className="text-xl text-gray-600 absolute right-2 cursor-pointer"
+                      onClick={() => showHidePassword(1)}
+                    />
+                  </div>
+                </div>
+                {/* CONFIRM PASSWORD FIELDS */}
+                <div id="confirmPassword">
+                  <label
+                    htmlFor="adminUserPassword_confirmation"
+                    className="block mb-2 text-sm font-medium text-gray-900"
+                  >
+                    Confirm password
+                  </label>
+                  <div className="relative flex items-center">
+                    <input
+                      type="password"
+                      name="adminUserPassword_confirmation"
+                      id="adminUserPassword_confirmation"
+                      placeholder="••••••••"
+                      className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                      required
+                      onChange={(e) => setNewConfirmPassword(e.target.value)}
+                    />
+                    <IoEyeSharp
+                      className="text-xl text-gray-600 absolute right-2 cursor-pointer"
+                      onClick={() => showHidePassword(2)}
+                    />
+                  </div>
+                  {passwordValidationError && (
+                    <p className="ml-2 text-red-500 font-sm text-xs my-0 py-0">
+                      Password and confirm password are not the same
+                    </p>
+                  )}
+                </div>
+
+                {/* SUBMIT BUTTON */}
+                <button
+                  type="submit"
+                  className="w-full text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                >
+                  Change password
+                </button>
+              </form>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 

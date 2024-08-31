@@ -11,14 +11,15 @@ import PrivateRoute from "./private/PrivateRoute";
 import AdminPanel from "./AdminPanel";
 import ForgotPassword from "./pages/forgot-password/ForgotPassword";
 import ResetForgottenPassword from "./pages/reset-forgotten-password/ResetForgottenPassword";
+import Index from ".";
 
 function App() {
   return (
     <AuthProvider>
       <Router>
         <Routes>
-          <Route path="/" element={<SignIn />} />
-          <Route path="*" element={<SignIn />} />
+          <Route path="/" element={<Index />} />
+          <Route path="/sign-in" element={<SignIn />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route
             path="/reset-password/:id/:token"

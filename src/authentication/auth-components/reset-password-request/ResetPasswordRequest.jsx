@@ -2,7 +2,7 @@
 // Content: Send email for password reset
 // Date: 30/08/2024
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "../../../../axios/axios";
 import envConfig from "../../../../envConfig";
@@ -11,6 +11,7 @@ import { MdOutlineCancelScheduleSend } from "react-icons/md";
 import LoadingSpinner from "../../../utils/common-loading-spinner/LoadingSpinner";
 import CustomModel from "../../../utils/custom-models/CustomModel";
 const ResetPasswordRequest = () => {
+  const requestFormRef = useRef();
   const [adminEmail, setAdminEmail] = useState("");
   const [emailValidationError, setEmailValidationError] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -60,6 +61,7 @@ const ResetPasswordRequest = () => {
       setEmailValidationError(true);
       setLoading(false);
     }
+    requestFormRef.current.reset();
   };
 
   const closeModelHandler = () => {
@@ -86,7 +88,11 @@ const ResetPasswordRequest = () => {
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
                 Send reset password request
               </h1>
-              <form className="space-y-4 md:space-y-6" onSubmit={sendRequest}>
+              <form
+                className="space-y-4 md:space-y-6"
+                onSubmit={sendRequest}
+                ref={requestFormRef}
+              >
                 {/* EMAIL FIELDS  */}
                 <div id="email">
                   <label

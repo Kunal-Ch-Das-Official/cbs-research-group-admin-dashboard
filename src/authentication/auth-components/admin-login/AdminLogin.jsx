@@ -2,7 +2,7 @@
 // Content: Login setup
 // Date: 30/08/2024
 
-import { useEffect, useState } from "react";
+import { useRef, useState } from "react";
 import { IoEyeSharp } from "react-icons/io5";
 import envConfig from "../../../../envConfig";
 import { Link, useNavigate } from "react-router-dom";
@@ -13,6 +13,7 @@ import { MdDownloadDone } from "react-icons/md";
 import LoadingSpinner from "../../../utils/common-loading-spinner/LoadingSpinner";
 import { useAuth } from "../../auth-context/AuthContext";
 const AdminLogin = () => {
+  const loginFormRef = useRef();
   const navigate = useNavigate();
   const { login } = useAuth();
   const [adminEmail, setAdminEmail] = useState("");
@@ -28,15 +29,6 @@ const AdminLogin = () => {
     statusIcon: null,
     buttonColor: null,
   });
-
-  // Check is localStorage has auth token or not if available let the user in
-  useEffect(() => {
-    const isAuth = localStorage.getItem("auth-token");
-    if (isAuth) {
-      navigate("/admin-panel");
-      login();
-    }
-  }, []);
 
   // Password show and hide handler
   const showHidePassword = () => {
@@ -94,6 +86,7 @@ const AdminLogin = () => {
       setEmailValidationError(true);
       setIsLoading(false);
     }
+    loginFormRef.current.reset();
   };
 
   const closeModelHandler = () => {
@@ -123,7 +116,11 @@ const AdminLogin = () => {
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl">
                 Sign in as an admin
               </h1>
-              <form className="space-y-4 md:space-y-6" onSubmit={handleLogin}>
+              <form
+                className="space-y-4 md:space-y-6"
+                onSubmit={handleLogin}
+                ref={loginFormRef}
+              >
                 {/* EMAIL FIELDS  */}
                 <div id="email">
                   <label
