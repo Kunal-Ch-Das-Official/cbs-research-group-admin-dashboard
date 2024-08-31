@@ -5,7 +5,7 @@
 import { useEffect, useState } from "react";
 import { IoEyeSharp } from "react-icons/io5";
 import envConfig from "../../../../envConfig";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "../../../../axios/axios";
 import CustomModel from "../../../utils/custom-models/CustomModel";
 import { FcCancel } from "react-icons/fc";
@@ -201,12 +201,12 @@ const AdminLogin = () => {
                       </label>
                     </div>
                   </button>
-                  <a
-                    href="#"
+                  <Link
+                    to={"/forgot-password"}
                     className="text-sm font-medium text-primary-600 hover:underline dark:text-blue-700"
                   >
                     Forgot password?
-                  </a>
+                  </Link>
                 </div>
 
                 {/* SUBMIT BUTTON  */}
