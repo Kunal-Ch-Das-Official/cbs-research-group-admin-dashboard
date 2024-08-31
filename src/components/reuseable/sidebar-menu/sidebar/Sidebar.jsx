@@ -1,15 +1,26 @@
+// Project: CBS Research Group Admin Dashboard
+// Content: Main Sidebar component
+// Date: 30/08/2024
 import { useCallback, useRef, useEffect, useState } from "react";
 import FullMenu from "../full-menu/FullMenu";
 import HalfMenu from "../half-menu/HalfMenu";
 import ToggleMenu from "../toggle-menu/ToggleMenu";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { useAuth } from "../../../../authentication/auth-context/AuthContext";
 
 const Sidebar = () => {
+  const { logout } = useAuth();
   const sidebarRef = useRef(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [screenWidth, setScreenWidth] = useState();
+  const handleLogout = () => {
+    if (localStorage.getItem("auth-token")) {
+      localStorage.removeItem("auth-token");
+    }
+    logout();
+  };
   useEffect(() => {
     AOS.init();
     const handleResize = () => {
@@ -75,10 +86,13 @@ const Sidebar = () => {
         <HalfMenu
           openFullMenu={openFullMenu}
           closeFullmenu={() => setIsMenuOpen(true)}
+          logoutHandler={handleLogout}
         />
       )}
 
-      {isSidebarOpen === true && <FullMenu closeFullMenu={closeSidebar} />}
+      {isSidebarOpen === true && (
+        <FullMenu closeFullMenu={closeSidebar} logoutHandler={handleLogout} />
+      )}
     </main>
   );
 };

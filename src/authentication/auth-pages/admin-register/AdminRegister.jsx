@@ -1,3 +1,6 @@
+// Project: CBS Research Group Admin Dashboard
+// Content: Create new admin user
+// Date: 30/08/2024
 import { useState } from "react";
 import { IoEyeSharp } from "react-icons/io5";
 

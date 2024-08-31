@@ -1,20 +1,35 @@
-import { RiDeleteBin2Fill } from "react-icons/ri";
-import CustomModel from "./utils/custom-models/CustomModel";
+/* 
+Project: CBS Research Group Admin Dashboard
+Content: Application routing setup
+Date: 29/08/2024 
+*/
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import SignIn from "./pages/sign-in/SignIn";
+import AdminPanel from "./pages/admin-panel/AdminPanel";
+import Dashboard from "./pages/dashboard/Dashboard";
+import { AuthProvider } from "./authentication/auth-context/AuthContext";
+import PrivateRoute from "./private/PrivateRoute";
 
 function App() {
   return (
-    <>
-      <CustomModel
-        buttonText={"Got It"}
-        showOrHide={"Hide"}
-        closeButton={"close"}
-        statusIcon={<RiDeleteBin2Fill className="text-red-500 text-5xl" />}
-        alertHead={"Are You Really Want To Delete"}
-        message1={"If You Delete You Will Never Get It Back"}
-        message2={""}
-        buttonColor={"bg-red-500 text-white"}
-      />
-    </>
+    <AuthProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<SignIn />} />
+          <Route path="*" element={<SignIn />} />
+          <Route
+            path="/dashboard"
+            element={
+              <PrivateRoute>
+                <AdminPanel />
+              </PrivateRoute>
+            }
+          >
+            <Route index element={<Dashboard />} />
+          </Route>
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
 }
 

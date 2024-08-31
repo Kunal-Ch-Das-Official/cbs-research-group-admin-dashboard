@@ -1,3 +1,6 @@
+// Project: CBS Research Group Admin Dashboard
+// Content: Full side bar
+// Date: 30/08/2024
 import { MdDashboard } from "react-icons/md";
 import { MdAdminPanelSettings } from "react-icons/md";
 import { IoIosArrowDown } from "react-icons/io";
@@ -17,7 +20,7 @@ import { RiLogoutBoxLine } from "react-icons/ri";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import { IoIosArrowUp } from "react-icons/io";
 import { useState } from "react";
-const FullMenu = ({ closeFullMenu }) => {
+const FullMenu = ({ closeFullMenu, logoutHandler }) => {
   const [adminOperationDropdown, setAdminOperationDropdown] = useState(false);
   const [adminRequestDropdown, setAdminRequestDropdown] = useState(false);
   const [masterAlumniDropdown, setMasterAlumniDropdown] = useState(false);
@@ -865,7 +868,7 @@ const FullMenu = ({ closeFullMenu }) => {
         <hr className="my-2 border-gray-900" />
 
         {/* LOGOUT SECTIONS  */}
-        <ul className="space-y-3 mt-2" id="logout">
+        <ul className="space-y-3 mt-2" id="logout" onClick={logoutHandler}>
           <li>
             <a
               href="#"

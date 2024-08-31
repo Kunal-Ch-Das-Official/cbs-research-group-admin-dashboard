@@ -1,3 +1,7 @@
+// Project: CBS Research Group Admin Dashboard
+// Content: Mini side bar
+// Date: 30/08/2024
+
 import { MdDashboard } from "react-icons/md";
 import { MdAdminPanelSettings } from "react-icons/md";
 import { VscGitPullRequestGoToChanges } from "react-icons/vsc";
@@ -14,8 +18,8 @@ import { GoProjectSymlink } from "react-icons/go";
 import { MdPublishedWithChanges } from "react-icons/md";
 import { IoIosArrowForward } from "react-icons/io";
 import { IoIosArrowBack } from "react-icons/io";
-
-const HalfMenu = ({ openFullMenu, closeFullmenu }) => {
+import { CiLogout } from "react-icons/ci";
+const HalfMenu = ({ openFullMenu, closeFullmenu, logoutHandler }) => {
   return (
     <div>
       <nav
@@ -232,6 +236,23 @@ const HalfMenu = ({ openFullMenu, closeFullmenu }) => {
             </a>
             <div className="absolute shadow-lg hidden group-hover:block bg-white text-black font-semibold px-3 py-[6px] text-[13px] right-0 left-24 w-max top-3 rounded">
               Publications
+            </div>
+          </li>
+
+          {/* LOGOUT  */}
+          <li
+            className="relative group"
+            id="publications"
+            onClick={logoutHandler}
+          >
+            <a
+              href="#"
+              className="text-gray-700 hover:text-black text-sm flex items-center hover:bg-white rounded px-4 py-3 "
+            >
+              <CiLogout className="text-xl text-gray-700 mx-auto inline transition-transform hover:scale-125" />
+            </a>
+            <div className="absolute shadow-lg hidden group-hover:block bg-white text-black font-semibold px-3 py-[6px] text-[13px] right-0 left-24 w-max top-3 rounded">
+              Logout
             </div>
           </li>
         </ul>

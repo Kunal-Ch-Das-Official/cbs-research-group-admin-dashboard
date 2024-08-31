@@ -1,3 +1,9 @@
+/* 
+Project: CBS Research Group Admin Dashboard
+Content: Common alert model
+Date: 29/08/2024 
+*/
+
 import React from "react";
 import alertStyle from "./CustomModel.module.css";
 const CustomModel = ({
@@ -14,7 +20,7 @@ const CustomModel = ({
     <div
       className={`${showOrHide} min-h-screen fixed inset-0 px-4 flex-wrap justify-center items-center w-full h-full z-[9999] before:fixed before:inset-0 before:w-full before:h-full before:bg-[rgba(0,0,0,0.5)] overflow-auto ${alertStyle.overlay}`}
     >
-      <div className="min-[2400px]:top-72 min-[2100px]:top-72 min-[2000px]:top-72 2xl:top-72 lg:top-40 top-40 md:top-40 w-full md:w-2/5 lg:w-2/5 xl:w-2/5 2xl:w-2/5 bg-white shadow-lg rounded-md px-5 py-10 relative mx-auto text-center">
+      <div className="w-full md:w-2/5 lg:w-2/5 xl:w-2/5 2xl:w-2/5 bg-white shadow-lg rounded-md px-5 py-10 relative mx-auto text-center">
         <div className="flex flex-col justify-center items-center">
           <div> {statusIcon} </div>
         </div>

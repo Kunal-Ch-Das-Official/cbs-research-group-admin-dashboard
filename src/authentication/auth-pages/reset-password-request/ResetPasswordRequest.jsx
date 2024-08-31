@@ -1,3 +1,7 @@
+// Project: CBS Research Group Admin Dashboard
+// Content: Send email for password reset
+// Date: 30/08/2024
+
 import { useState } from "react";
 const ResetPasswordRequest = () => {
   const [adminEmail, setAdminEmail] = useState("");

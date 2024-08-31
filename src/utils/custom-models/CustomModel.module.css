@@ -1,3 +1,8 @@
+/* 
+Project: CBS Research Group Admin Dashboard
+Content: Common alert model style
+Date: 29/08/2024 
+*/
 .overlay {
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(8px);
