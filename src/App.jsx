@@ -12,6 +12,7 @@ import AdminPanel from "./AdminPanel";
 import ForgotPassword from "./pages/forgot-password/ForgotPassword";
 import ResetForgottenPassword from "./pages/reset-forgotten-password/ResetForgottenPassword";
 import Index from ".";
+import AdminRegReq from "./pages/send-admin-reg-request/AdminRegReq";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             path="/reset-password/:id/:token"
             element={<ResetForgottenPassword />}
           />
+          <Route path="/become-admin-request" element={<AdminRegReq />} />
           <Route
             path="/admin-panel"
             element={

@@ -7,11 +7,11 @@ import { useRef, useState } from "react";
 import { IoEyeSharp } from "react-icons/io5";
 import envConfig from "../../../../envConfig";
 import { useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
 import LoadingSpinner from "../../../utils/common-loading-spinner/LoadingSpinner";
 import CustomModel from "../../../utils/custom-models/CustomModel";
 import { FcCancel } from "react-icons/fc";
 import { MdDownloadDone } from "react-icons/md";
+import axios from "../../../../axios/axios";
 const ResetPassword = () => {
   const navigate = useNavigate();
   const resetFormRef = useRef();

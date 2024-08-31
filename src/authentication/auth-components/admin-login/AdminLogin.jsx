@@ -217,12 +217,12 @@ const AdminLogin = () => {
                 {/* SEND REQUEST FOR BECOME ADMIN  */}
                 <p className="text-sm font-base text-gray-900">
                   Don’t have admin access?{" "}
-                  <a
-                    href="#"
+                  <Link
+                    to={"/become-admin-request"}
                     className="font-medium text-blue-700 hover:underline"
                   >
                     Send registration request
-                  </a>
+                  </Link>
                 </p>
               </form>
             </div>
