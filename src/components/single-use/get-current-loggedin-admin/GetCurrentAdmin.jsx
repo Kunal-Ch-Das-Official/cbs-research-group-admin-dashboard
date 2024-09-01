@@ -50,7 +50,7 @@ const GetCurrentAdmin = () => {
             {apiResponse.adminUserEmail}
           </p>
           <p className="text-[10px] text-gray-900 mt-0.5">
-            <span className="font-bold mr-1">Logged In since:</span>
+            <span className="font-bold mr-1">Registerd In:</span>
             {new Date(apiResponse.createdAt).toLocaleDateString()}
           </p>
         </div>

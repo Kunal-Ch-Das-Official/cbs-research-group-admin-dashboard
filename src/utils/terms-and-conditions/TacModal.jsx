@@ -4,7 +4,7 @@ import tacModalStyle from "./TacModal.module.css";
 const TacModal = ({ closeTerms }) => {
   return (
     <div
-      className={`${tacModalStyle.overlay} fixed inset-0 p-4 flex flex-wrap justify-center items-center w-full h-full`}
+      className={`${tacModalStyle.overlay} fixed inset-0 p-4 flex flex-wrap z-[1000] justify-center items-center w-full h-full`}
     >
       <div className="w-full max-w-lg bg-white shadow-lg rounded-lg p-6 relative">
         <div className="flex items-center pb-3 border-b border-gray-300">
