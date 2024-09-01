@@ -11,6 +11,7 @@ const environment = {
   becomeAdminRequestUrl: import.meta.env.VITE_APP_BECOME_ADMIN_REQUEST_URL,
   getCurrentLoggedInAdmin: import.meta.env.VITE_APP_GET_CURRENT_LOGGED_IN_ADMIN,
   registerAdminUrl: import.meta.env.VITE_APP_ADMIN_REGISTRATION_URL,
+  changePasswordUrl: import.meta.env.VITE_APP_CHANGE_PASSWORD_URL,
 };
 
 const envConfig = Object.freeze(environment);

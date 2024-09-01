@@ -139,15 +139,15 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
               >
                 Admin Registration
               </Link>
-              <a
+              <Link
+                to={"/admin-panel/password-change"}
                 id="password_change"
-                href="#"
                 className="text-gray-700 hover:text-black text-sm 
                 flex justify-center items-center hover:bg-white hover:font-bold 
                 px-4 py-3 transition-all"
               >
                 Change Password
-              </a>
+              </Link>
             </div>
           </li>
           {/* ADMIN REQUEST  */}

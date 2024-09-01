@@ -14,6 +14,7 @@ import ResetForgottenPassword from "./pages/reset-forgotten-password/ResetForgot
 import Index from ".";
 import AdminRegReq from "./pages/send-admin-reg-request/AdminRegReq";
 import RegisterAdmin from "./pages/register-admin/RegisterAdmin";
+import PasswordChange from "./pages/password-change/PasswordChange";
 
 function App() {
   return (
@@ -38,6 +39,10 @@ function App() {
           >
             <Route index element={<Dashboard />} />
             <Route path="/admin-panel/register" element={<RegisterAdmin />} />
+            <Route
+              path="/admin-panel/password-change"
+              element={<PasswordChange />}
+            />
           </Route>
         </Routes>
       </Router>
