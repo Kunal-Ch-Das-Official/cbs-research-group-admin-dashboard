@@ -4,7 +4,7 @@ import axios from "../../../axios/axios";
 import envConfig from "../../../envConfig";
 import { FcCancel } from "react-icons/fc";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
-const ViewAdminRequests = () => {
+const ManageAdminRequests = () => {
   const [getBecomeAdminReq, setBecomeAdminReq] = useState(null);
   const [loading, setLoading] = useState(false);
   const [resError, setResError] = useState(false);
@@ -29,7 +29,6 @@ const ViewAdminRequests = () => {
           })
           .then((res) => {
             setBecomeAdminReq(res.data);
-            console.log(res);
           });
       } catch (error) {
         setShowErrorAlert({
@@ -67,6 +66,7 @@ const ViewAdminRequests = () => {
             getBecomeAdminReq.map((item, index) => (
               <div key={index}>
                 <GetAllDesireAdminReq
+                  id={item._id}
                   userName={item.reqUserName}
                   userEmail={item.reqUserEmail}
                   recivedAt={new Date(item.createdAt).toLocaleDateString()}
@@ -79,4 +79,4 @@ const ViewAdminRequests = () => {
   );
 };
 
-export default ViewAdminRequests;
+export default ManageAdminRequests;

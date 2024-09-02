@@ -14,6 +14,8 @@ const environment = {
   changePasswordUrl: import.meta.env.VITE_APP_CHANGE_PASSWORD_URL,
   becomeAdminRequestUrl: import.meta.env
     .VITE_APP_BECOME_ADMIN_REQUEST_USERS_URL,
+  becomeAdminReqApprovedUrl: import.meta.env
+    .VITE_APP_BECOME_ADMIN_REQUEST_APPROVED_URL,
 };
 
 const envConfig = Object.freeze(environment);

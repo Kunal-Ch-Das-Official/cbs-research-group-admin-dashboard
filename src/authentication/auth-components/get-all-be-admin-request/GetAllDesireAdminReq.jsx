@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { IoIosCopy } from "react-icons/io";
 import { MdOutlineDone } from "react-icons/md";
 import AdminReqStatus from "../../../utils/admin-request-status/AdminReqStatus";
-const GetAllDesireAdminReq = ({ userName, userEmail, recivedAt }) => {
+import { Link } from "react-router-dom";
+const GetAllDesireAdminReq = ({ userName, userEmail, recivedAt, id }) => {
   const [copySuccess, setCopySuccess] = useState(false);
   const copyEmailHandler = () => {
     const userEmail = document.getElementById("reqUserEmail").innerText;
@@ -53,12 +54,13 @@ const GetAllDesireAdminReq = ({ userName, userEmail, recivedAt }) => {
         </div>
 
         <div className="flex items-center justify-around my-3">
-          <span
+          <Link
+            to={`/admin-panel/approve-request/${id}`}
             className="px-4 cursor-pointer text-black py-1 text-sm uppercase shadow-xl bg-blue-300
             font-semibold rounded-md  hover:bg-blue-500 mx-2"
           >
             Approve
-          </span>
+          </Link>
           <span
             className="px-4 cursor-pointer text-black py-1 text-sm uppercase bg-[#ffe77a] shadow-xl
            hover:bg-[#f7ca00] font-semibold rounded-md  mx-2"
@@ -67,7 +69,7 @@ const GetAllDesireAdminReq = ({ userName, userEmail, recivedAt }) => {
           </span>
           <span
             className="px-4 cursor-pointer text-black py-1 text-sm uppercase bg-red-300 shadow-xl
-            \ font-semibold rounded-md hover:bg-red-400 mx-2"
+             font-semibold rounded-md hover:bg-red-400 mx-2"
           >
             Delete
           </span>

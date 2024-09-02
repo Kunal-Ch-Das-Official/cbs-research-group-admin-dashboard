@@ -22,9 +22,9 @@ import { IoIosArrowUp } from "react-icons/io";
 import { useState } from "react";
 import GetCurrentAdmin from "../../../single-use/get-current-loggedin-admin/GetCurrentAdmin";
 import { Link } from "react-router-dom";
+import { IoIosArrowForward } from "react-icons/io";
 const FullMenu = ({ closeFullMenu, logoutHandler }) => {
   const [adminOperationDropdown, setAdminOperationDropdown] = useState(false);
-  const [adminRequestDropdown, setAdminRequestDropdown] = useState(false);
   const [masterAlumniDropdown, setMasterAlumniDropdown] = useState(false);
   const [doctorateAlumniDropdown, setDoctorateAlumniDropdown] = useState(false);
   const [mscMemberDropdown, setMscMemberDropdown] = useState(false);
@@ -41,39 +41,36 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
       setAdminOperationDropdown((prev) => !prev);
     }
     if (id === 2) {
-      setAdminRequestDropdown((prev) => !prev);
-    }
-    if (id === 3) {
       setMasterAlumniDropdown((prev) => !prev);
     }
-    if (id === 4) {
+    if (id === 3) {
       setDoctorateAlumniDropdown((prev) => !prev);
     }
-    if (id === 5) {
+    if (id === 4) {
       setMscMemberDropdown((prev) => !prev);
     }
-    if (id === 6) {
+    if (id === 5) {
       setPhdMemberDropdown((prev) => !prev);
     }
-    if (id === 7) {
+    if (id === 6) {
       setPersonalAwardsDropdown((prev) => !prev);
     }
-    if (id === 8) {
+    if (id === 7) {
       setTeamAwardsDropdown((prev) => !prev);
     }
-    if (id === 9) {
+    if (id === 8) {
       setLabInstrumentsDropdown((prev) => !prev);
     }
-    if (id === 10) {
+    if (id === 9) {
       setGroupNewsDropdown((prev) => !prev);
     }
-    if (id === 11) {
+    if (id === 10) {
       setContactUsDropdown((prev) => !prev);
     }
-    if (id === 12) {
+    if (id === 11) {
       setProjectsDropdown((prev) => !prev);
     }
-    if (id === 13) {
+    if (id === 12) {
       setPublicationssDropdown((prev) => !prev);
     }
   };
@@ -97,15 +94,16 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
         <hr className="mt-4 border-gray-900" />
 
         {/* DASHBOARD  */}
-        <ul className="space-y-3 mt-2" id="dashboard">
+        <ul className="space-y-3 mt-2" id="dashboard" onClick={closeFullMenu}>
           <li>
             <Link
               to={"/admin-panel"}
-              className="text-gray-700 hover:text-black text-sm flex items-center
+              className="text-gray-700 hover:text-black text-sm flex items-center justify-between
                hover:bg-white rounded px-4 py-3 transition-all"
             >
-              <MdDashboard className="text-xl text-gray-700 mr-5" />
-              <span>Dashboard</span>
+              <MdDashboard className="text-xl text-gray-700" />
+              <span className="mr-12">Dashboard</span>
+              <IoIosArrowForward className="text-lg" />
             </Link>
           </li>
         </ul>
@@ -152,52 +150,14 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
             </div>
           </li>
           {/* ADMIN REQUEST  */}
-          <li onClick={() => handleDropdown(2)} className="cursor-pointer">
-            <p className="text-gray-700 hover:text-black text-sm flex justify-between items-center hover:bg-white rounded px-4 py-3 transition-all">
-              <VscGitPullRequestGoToChanges className="text-xl text-gray-700 mr-4" />
-              <span className="mr-4">Admin Request</span>
-              {adminRequestDropdown === true ? (
-                <IoIosArrowUp className="text-xl text-gray-700 ml-4" />
-              ) : (
-                <IoIosArrowDown className="text-xl text-gray-700 ml-4" />
-              )}
-            </p>
-
-            <div
-              onClick={closeFullMenu}
-              id="admin_operation_dropdown"
-              className={`bg-white border-[1px] border-gray-200 ${
-                adminRequestDropdown === true ? "block" : "hidden"
-              }`}
-            >
-              <Link
-                to={"/admin-panel/view-request"}
-                id="see_admin_request"
-                className="text-gray-700 hover:text-black text-sm 
-                flex justify-center items-center hover:bg-white  
-                px-4 py-3 transition-all border-b-[1px] border-gray-400 hover:font-bold"
-              >
-                See Admin Request
-              </Link>
-              <a
-                id="send_request_accept_mail"
-                href="#"
-                className="text-gray-700 hover:text-black text-sm 
-                flex justify-center items-center hover:bg-white hover:font-bold border-b-[1px] border-gray-400
-                px-4 py-3 transition-all"
-              >
-                Send Accept Mail
-              </a>
-              <a
-                id="send_request_reject_mail"
-                href="#"
-                className="text-gray-700 hover:text-black text-sm 
-                flex justify-center items-center hover:bg-white hover:font-bold 
-                px-4 py-3 transition-all"
-              >
-                Send Reject Mail
-              </a>
-            </div>
+          <li onClick={closeFullMenu}>
+            <Link to={"/admin-panel/manage-request"} className="cursor-pointer">
+              <p className="text-gray-700 hover:text-black text-sm flex justify-between items-center hover:bg-white rounded px-4 py-3 transition-all">
+                <VscGitPullRequestGoToChanges className="text-xl text-gray-700" />
+                <span className="mr-2">Manage Request</span>
+                <IoIosArrowForward className="text-lg" />
+              </p>
+            </Link>
           </li>
         </ul>
         <hr className="my-2 border-gray-900" />
@@ -205,7 +165,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
         {/* ALUMNI SECTION  */}
         <ul className="space-y-3" id="alumni_section">
           {/* MASTERS ALUMNI  */}
-          <li onClick={() => handleDropdown(3)} className="cursor-pointer">
+          <li onClick={() => handleDropdown(2)} className="cursor-pointer">
             <a
               href="#"
               className="text-gray-700 hover:text-black text-sm flex justify-between items-center hover:bg-white rounded px-4 py-3 transition-all"
@@ -266,7 +226,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
             </div>
           </li>
           {/* DOCTORATE ALUMNI  */}
-          <li onClick={() => handleDropdown(4)} className="cursor-pointer">
+          <li onClick={() => handleDropdown(3)} className="cursor-pointer">
             <p className="text-gray-700 hover:text-black text-sm flex justify-between items-center hover:bg-white rounded px-4 py-3 transition-all">
               <FaUserDoctor className="text-xl text-gray-700 mr-4" />
               <span className="mr-1">Doctotate Alumni</span>
@@ -329,7 +289,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
         {/* MEMBERS SECTION  */}
         <ul className="space-y-3" id="member_section">
           {/* MSC MEMBERS  */}
-          <li onClick={() => handleDropdown(5)} className="cursor-pointer">
+          <li onClick={() => handleDropdown(4)} className="cursor-pointer">
             <p className="text-gray-700 hover:text-black text-sm flex justify-between items-center hover:bg-white rounded px-4 py-3 transition-all">
               <RiGroup3Fill className="text-xl text-gray-700" />
               <span className="mr-1">MSC Members</span>
@@ -386,7 +346,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
             </div>
           </li>
           {/* PHD MEMBERS  */}
-          <li onClick={() => handleDropdown(6)} className="cursor-pointer">
+          <li onClick={() => handleDropdown(5)} className="cursor-pointer">
             <p className="text-gray-700 hover:text-black text-sm flex justify-between items-center hover:bg-white rounded px-4 py-3 transition-all">
               <HiUserGroup className="text-xl text-gray-700 mr-4" />
               <span className="mr-4">PHD Members</span>
@@ -449,7 +409,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
         {/* AWARDS SECTION  */}
         <ul className="space-y-3" id="awards_section">
           {/* PERSONAL AWARDS  */}
-          <li onClick={() => handleDropdown(7)} className="cursor-pointer">
+          <li onClick={() => handleDropdown(6)} className="cursor-pointer">
             <p className="text-gray-700 hover:text-black text-sm flex justify-between items-center hover:bg-white rounded px-4 py-3 transition-all">
               <FaAward className="text-xl text-gray-700" />
               <span className="ml-2">Personal Awards</span>
@@ -506,7 +466,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
             </div>
           </li>
           {/* TEAM AWARDS  */}
-          <li onClick={() => handleDropdown(8)} className="cursor-pointer">
+          <li onClick={() => handleDropdown(7)} className="cursor-pointer">
             <p className="text-gray-700 hover:text-black text-sm flex justify-between items-center hover:bg-white rounded px-4 py-3 transition-all">
               <TbMilitaryAward className="text-xl text-gray-700 mr-4" />
               <span className="mr-8">Team Awards</span>
@@ -567,7 +527,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
 
         {/* LAB INSTRUMENTS SECTION  */}
         <ul className="space-y-3" id="lab_instruments_section">
-          <li onClick={() => handleDropdown(9)} className="cursor-pointer">
+          <li onClick={() => handleDropdown(8)} className="cursor-pointer">
             <p className="text-gray-700 hover:text-black text-sm flex justify-between items-center hover:bg-white rounded px-4 py-3 transition-all">
               <SlChemistry className="text-xl text-gray-700 mr-4" />
               <span className="mr-2">Lab Instruments</span>
@@ -628,7 +588,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
 
         {/* GROUP NEWS SECTION  */}
         <ul className="space-y-3" id="group_news_section">
-          <li onClick={() => handleDropdown(10)} className="cursor-pointer">
+          <li onClick={() => handleDropdown(9)} className="cursor-pointer">
             <p className="text-gray-700 hover:text-black text-sm flex justify-between items-center hover:bg-white rounded px-4 py-3 transition-all">
               <PiNewspaperClippingFill className="text-xl text-gray-700 mr-4" />
               <span className="mr-8">Group News</span>
@@ -689,7 +649,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
 
         {/* CONTACT US SECTIONS  */}
         <ul className="space-y-3" id="contact_us_section">
-          <li onClick={() => handleDropdown(11)} className="cursor-pointer">
+          <li onClick={() => handleDropdown(10)} className="cursor-pointer">
             <p className="text-gray-700 hover:text-black text-sm flex justify-between items-center hover:bg-white rounded px-4 py-3 transition-all">
               <BiSolidContact className="text-xl text-gray-700 mr-4" />
               <span className="mr-10">Contact Us</span>
@@ -741,7 +701,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
 
         {/* PROJECTS SECTION  */}
         <ul className="space-y-3" id="projects_section">
-          <li onClick={() => handleDropdown(12)} className="cursor-pointer">
+          <li onClick={() => handleDropdown(11)} className="cursor-pointer">
             <p className="text-gray-700 hover:text-black text-sm flex justify-between items-center hover:bg-white rounded px-4 py-3 transition-all">
               <GoProjectSymlink className="text-xl text-gray-700 mr-4" />
               <span className="mr-14">Projects</span>
@@ -802,7 +762,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
 
         {/* PUBLICATION SECTIONS */}
         <ul className="space-y-3" id="publications_section">
-          <li onClick={() => handleDropdown(13)} className="cursor-pointer">
+          <li onClick={() => handleDropdown(12)} className="cursor-pointer">
             <p className="text-gray-700 hover:text-black text-sm flex justify-between items-center hover:bg-white rounded px-4 py-3 transition-all">
               <MdPublishedWithChanges className="text-xl text-gray-700 mr-4" />
               <span className="mr-8">Publications</span>
