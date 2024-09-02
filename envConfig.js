@@ -16,6 +16,8 @@ const environment = {
     .VITE_APP_BECOME_ADMIN_REQUEST_USERS_URL,
   becomeAdminReqApprovedUrl: import.meta.env
     .VITE_APP_BECOME_ADMIN_REQUEST_APPROVED_URL,
+  becomeAdminRequestRejectedUrl: import.meta.env
+    .VITE_APP_BECOME_ADMIN_REQUEST_REJECTED_URL,
 };
 
 const envConfig = Object.freeze(environment);

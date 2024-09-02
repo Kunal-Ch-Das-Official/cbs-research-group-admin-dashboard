@@ -16,6 +16,7 @@ const SendRegistrationRequest = () => {
 
   const [userEmail, setUserEmail] = useState("");
   const [userName, setUserName] = useState("");
+  const [userMessage, setUserMessage] = useState("");
   const [termsAndConditions, setTermsAndConditions] = useState(false);
   const [emailValidationError, setEmailValidationError] = useState(false);
   const [closeModel, setCloseModel] = useState(false);
@@ -38,6 +39,7 @@ const SendRegistrationRequest = () => {
         const userInfo = {
           reqUserName: userName,
           reqUserEmail: userEmail,
+          message: userMessage,
           termsAndConditions: termsAndConditions,
         };
         await axios
@@ -91,7 +93,6 @@ const SendRegistrationRequest = () => {
 
   const closeModelHandler = () => setCloseModel(false);
   const handlerTermsAndConditonShow = () => {
-    console.log("ok");
     setShowTacPopup(true);
   };
 
@@ -155,7 +156,7 @@ const SendRegistrationRequest = () => {
                     type="email"
                     name="reqUserEmail"
                     id="reqUserEmail"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                    className="bg-gray-50 border  border-gray-300 lowercase text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                     placeholder="adress@company.com"
                     required
                     onChange={(e) => setUserEmail(e.target.value)}
@@ -167,6 +168,23 @@ const SendRegistrationRequest = () => {
                   ) : (
                     <p></p>
                   )}
+                </div>
+
+                <div id="message">
+                  <label
+                    htmlFor="reqUserMessage"
+                    className="block mb-2 text-sm font-medium text-gray-900"
+                  >
+                    Your message
+                  </label>
+                  <textarea
+                    type="text"
+                    name="reqUserMessage"
+                    id="reqUserMessage"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                    placeholder="Enter your message"
+                    onChange={(e) => setUserMessage(e.target.value)}
+                  />
                 </div>
 
                 {/* TERMS AND CONDITIONS  */}

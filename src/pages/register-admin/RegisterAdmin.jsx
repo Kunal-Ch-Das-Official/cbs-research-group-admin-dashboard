@@ -264,7 +264,7 @@ const RegisterAdmin = () => {
                       type="email"
                       placeholder="johnsnow@gmail.com"
                       id="userEmail"
-                      className={`block w-full px-5 py-2 mt-2 bg-white border rounded-md placeholder-gray-400 focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40 ${
+                      className={`block w-full px-5 py-2 mt-2 lowercase bg-white border rounded-md placeholder-gray-400 focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40 ${
                         emailValidationErr
                           ? "border-red-600"
                           : "border-gray-300"

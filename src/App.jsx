@@ -17,47 +17,61 @@ import RegisterAdmin from "./pages/register-admin/RegisterAdmin";
 import PasswordChange from "./pages/password-change/PasswordChange";
 import ApproveRequest from "./pages/approve-request/ApproveRequest";
 import ManageAdminRequests from "./pages/manage-admin-requests/ManageAdminRequests";
+import RejectRequests from "./pages/reject-request/RejectRequests";
+import { AppProvider } from "./app-context/AppContext";
+import DeleteRequest from "./pages/delete-request/DeleteRequest";
 
 function App() {
   return (
-    <AuthProvider>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/sign-in" element={<SignIn />} />
-          <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route
-            path="/reset-password/:id/:token"
-            element={<ResetForgottenPassword />}
-          />
-          <Route path="/become-admin-request" element={<AdminRegReq />} />
-          <Route
-            path="/admin-panel"
-            element={
-              <PrivateRoute>
-                <AdminPanel />
-              </PrivateRoute>
-            }
-          >
-            <Route index element={<Dashboard />} />
-            <Route path="/admin-panel/register" element={<RegisterAdmin />} />
+    <AppProvider>
+      <AuthProvider>
+        <Router>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/sign-in" element={<SignIn />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route
-              path="/admin-panel/password-change"
-              element={<PasswordChange />}
+              path="/reset-password/:id/:token"
+              element={<ResetForgottenPassword />}
             />
+            <Route path="/become-admin-request" element={<AdminRegReq />} />
+            <Route
+              path="/admin-panel"
+              element={
+                <PrivateRoute>
+                  <AdminPanel />
+                </PrivateRoute>
+              }
+            >
+              <Route index element={<Dashboard />} />
+              <Route path="/admin-panel/register" element={<RegisterAdmin />} />
+              <Route
+                path="/admin-panel/password-change"
+                element={<PasswordChange />}
+              />
 
-            <Route
-              path="/admin-panel/manage-request"
-              element={<ManageAdminRequests />}
-            />
-            <Route
-              path="/admin-panel/approve-request/:id"
-              element={<ApproveRequest />}
-            />
-          </Route>
-        </Routes>
-      </Router>
-    </AuthProvider>
+              <Route
+                path="/admin-panel/manage-request"
+                element={<ManageAdminRequests />}
+              />
+              <Route
+                path="/admin-panel/approve-request/:id"
+                element={<ApproveRequest />}
+              />
+              <Route
+                path="/admin-panel/reject-request/:id"
+                element={<RejectRequests />}
+              />
+
+              <Route
+                path="/admin-panel/delete-request/:id"
+                element={<DeleteRequest />}
+              />
+            </Route>
+          </Routes>
+        </Router>
+      </AuthProvider>
+    </AppProvider>
   );
 }
 

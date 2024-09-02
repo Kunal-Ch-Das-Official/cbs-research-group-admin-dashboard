@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import envConfig from "../../../envConfig";
 import { SiGmail } from "react-icons/si";
 import { IoEyeSharp } from "react-icons/io5";
@@ -10,8 +10,11 @@ import { MdDownloadDone } from "react-icons/md";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import { MdCancelScheduleSend } from "react-icons/md";
 import CustomModel from "../../utils/custom-models/CustomModel";
+import { useApp } from "../../app-context/AppContext";
 const ApproveRequest = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
+  const { setisIdAccepted } = useApp();
   const [loginId, setLoginId] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [emailValidatErr, setEmailValidatErr] = useState(false);
@@ -55,6 +58,7 @@ const ApproveRequest = () => {
             }
           )
           .then((res) => {
+            setisIdAccepted(id);
             setAlertMessage({
               message: res.data.message,
               details: res.data.notification,
@@ -79,7 +83,10 @@ const ApproveRequest = () => {
       setEmailValidatErr(true);
     }
   };
-  const closeModelHandler = () => setShowAlert(false);
+  const closeModelHandler = () => {
+    setShowAlert(false);
+    navigate("/admin-panel/manage-request");
+  };
   return (
     <>
       {loading === true && <LoadingSpinner />}
