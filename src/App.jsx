@@ -15,6 +15,7 @@ import Index from ".";
 import AdminRegReq from "./pages/send-admin-reg-request/AdminRegReq";
 import RegisterAdmin from "./pages/register-admin/RegisterAdmin";
 import PasswordChange from "./pages/password-change/PasswordChange";
+import ViewAdminRequests from "./pages/view-admin-requests/ViewAdminRequests";
 
 function App() {
   return (
@@ -42,6 +43,11 @@ function App() {
             <Route
               path="/admin-panel/password-change"
               element={<PasswordChange />}
+            />
+
+            <Route
+              path="/admin-panel/view-request"
+              element={<ViewAdminRequests />}
             />
           </Route>
         </Routes>

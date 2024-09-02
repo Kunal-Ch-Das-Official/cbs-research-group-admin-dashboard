@@ -80,7 +80,8 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
   return (
     <div>
       <nav
-        className="bg-gray-100 h-screen fixed top-0 left-0 min-w-[260px] py-6 px-4 font-[sans-serif] flex flex-col overflow-auto no-scrollbar"
+        className="bg-gray-100 h-screen fixed top-0 left-0 min-w-[260px] py-6 px-4 font-[sans-serif]
+         flex flex-col overflow-auto no-scrollbar shadow-xl"
         data-aos="fade-right"
       >
         <div className="flex justify-end cursor-pointer">
@@ -169,15 +170,15 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
                 adminRequestDropdown === true ? "block" : "hidden"
               }`}
             >
-              <a
+              <Link
+                to={"/admin-panel/view-request"}
                 id="see_admin_request"
-                href="#"
                 className="text-gray-700 hover:text-black text-sm 
                 flex justify-center items-center hover:bg-white  
                 px-4 py-3 transition-all border-b-[1px] border-gray-400 hover:font-bold"
               >
                 See Admin Request
-              </a>
+              </Link>
               <a
                 id="send_request_accept_mail"
                 href="#"

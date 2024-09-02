@@ -2,7 +2,7 @@ import React from "react";
 import footerLogo from "../../../assets/CBS Research Group Logo.png";
 const Footer = () => {
   return (
-    <footer className="bg-gray-100">
+    <footer className="bg-white">
       <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="flex justify-center text-teal-600"></div>
         <div className="flex justify-center">
