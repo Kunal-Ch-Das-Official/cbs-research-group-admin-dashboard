@@ -4,8 +4,11 @@ import { MdOutlineDone } from "react-icons/md";
 import AdminReqStatus from "../../../utils/admin-request-status/AdminReqStatus";
 import { Link } from "react-router-dom";
 import { useApp } from "../../../app-context/AppContext";
-import { MdCancel } from "react-icons/md";
-import { TiDelete } from "react-icons/ti";
+import { TbNotesOff } from "react-icons/tb";
+import { MdDeleteForever } from "react-icons/md";
+import { TbMessageCancel } from "react-icons/tb";
+import { FcApproval } from "react-icons/fc";
+import { MdSpeakerNotesOff } from "react-icons/md";
 const GetAllDesireAdminReq = ({
   userName,
   userEmail,
@@ -70,22 +73,20 @@ const GetAllDesireAdminReq = ({
           </p>
         </div>
       )}
-      <div className="w-full max-w-sm h-[300px] px-4 py-3 bg-white border-2 border-gray-300 rounded-md">
+      <div className="w-full max-w-sm h-[270px] px-4 py-3 bg-white border border-gray-300 rounded-md">
         <div className="flex items-center justify-end">
           {isAccepted && (
             <AdminReqStatus
-              backgroundColor={"bg-green-500"}
-              statusIcon={
-                <MdOutlineDone className="text-black bg-white rounded-full px-1 py-1 text-lg" />
-              }
+              textColor={"text-green-500"}
+              statusIcon={<FcApproval className="text-lg" />}
               statusText={"Approved"}
             />
           )}
           {isRejected && (
             <AdminReqStatus
-              backgroundColor={"bg-red-500"}
+              textColor={"text-red-500"}
               statusIcon={
-                <TiDelete className="text-red-600 text-lg bg-white rounded-full" />
+                <MdSpeakerNotesOff className="text-red-600 text-[15px]" />
               }
               statusText={"rejected"}
             />
@@ -115,38 +116,54 @@ const GetAllDesireAdminReq = ({
           </div>
         </div>
 
-        <div className="flex items-center justify-around my-3">
-          <Link
-            to={`/admin-panel/approve-request/${id}`}
-            className={`px-4 cursor-pointer text-black py-1 text-sm uppercase shadow-xl bg-blue-300
-            font-semibold rounded-md  hover:bg-blue-500 mx-2 ${
-              localStorage.getItem(`isRejected-${id}`) ||
-              localStorage.getItem(`isAccepted-${id}`)
-                ? "hidden"
-                : "flex"
-            }`}
-          >
-            Approve
-          </Link>
-          <Link
-            to={`/admin-panel/reject-request/${id}`}
-            className={`px-4 cursor-pointer text-black py-1 text-sm uppercase bg-[#ffe77a] shadow-xl
-           hover:bg-[#f7ca00] font-semibold rounded-md  mx-2 ${
-             localStorage.getItem(`isRejected-${id}`) ||
-             localStorage.getItem(`isAccepted-${id}`)
-               ? "hidden"
-               : "flex"
-           }`}
-          >
-            Reject
-          </Link>
-          <Link
-            to={`/admin-panel/delete-request/${id}`}
-            className="px-4 cursor-pointer text-black py-1 text-sm uppercase bg-red-300 shadow-xl
-             font-semibold rounded-md hover:bg-red-400 mx-2"
-          >
-            Delete
-          </Link>
+        <div className="-mt-px flex divide-x border-t border-gray-200 border-b  divide-gray-200">
+          <div className="flex w-0 flex-1">
+            <div className="flex w-0 flex-1">
+              <Link
+                to={`/admin-panel/approve-request/${id}`}
+                className={`relative  inline-flex w-0 flex-1 items-center justify-center 
+            gap-x-3 rounded-bl-lg pt-2 pb-4 text-sm font-semibold
+             text-gray-900 transform translate-y-1 hover:scale-110 border-r border-gray-200
+             ${
+               localStorage.getItem(`isRejected-${id}`) ||
+               localStorage.getItem(`isAccepted-${id}`)
+                 ? "hidden"
+                 : "flex"
+             }`}
+              >
+                <FcApproval className="text-2xl" />
+                Approve
+              </Link>
+            </div>
+            <div className="-ml-px flex w-0 flex-1">
+              <Link
+                to={`/admin-panel/reject-request/${id}`}
+                className={`relative inline-flex w-0 flex-1 items-center justify-center 
+              gap-x-3 rounded-bl-lg pt-2 pb-4 text-sm font-semibold
+               text-gray-900 transform translate-y-1 hover:scale-110 border-r border-gray-200
+               ${
+                 localStorage.getItem(`isRejected-${id}`) ||
+                 localStorage.getItem(`isAccepted-${id}`)
+                   ? "hidden"
+                   : "flex"
+               }`}
+              >
+                <TbMessageCancel className="text-2xl text-yellow-500" />
+                Reject
+              </Link>
+            </div>
+            <div className="-ml-px flex w-0 flex-1">
+              <Link
+                to={`/admin-panel/delete-request/${id}`}
+                className="relative pt-2 pb-4 inline-flex w-0 flex-1 items-center justify-center 
+              gap-x-3 rounded-bl-lg border border-transparent text-sm font-semibold
+               text-gray-900 transform translate-y-1 hover:scale-110"
+              >
+                <MdDeleteForever className="text-2xl text-red-500" />
+                Delete
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </>

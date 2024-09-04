@@ -1,9 +1,8 @@
 import React from "react";
-import { IoIosCopy } from "react-icons/io";
-const AdminReqStatus = ({ backgroundColor, statusIcon, statusText }) => {
+const AdminReqStatus = ({ textColor, statusIcon, statusText }) => {
   return (
     <p
-      className={`px-3 py-1 text-xs inline-flex items-center text-white uppercase ${backgroundColor} rounded-full`}
+      className={`px-3 py-1 text-xs inline-flex items-center bg-white shadow-md uppercase ${textColor} rounded-full`}
     >
       <span className="font-medium">{statusText}</span>
       <span className="ml-4 mr-0">{statusIcon}</span>

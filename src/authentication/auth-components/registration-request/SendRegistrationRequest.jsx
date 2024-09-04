@@ -22,12 +22,22 @@ const SendRegistrationRequest = () => {
   const [closeModel, setCloseModel] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [showTacPopup, setShowTacPopup] = useState(false);
+  const [inputValueLengthDisplayer, setInputValueLengthDisplayer] = useState(0);
   const [serverResponse, setServerResponse] = useState({
     message: null,
     details: null,
     statusIcon: null,
     buttonColor: null,
   });
+
+  const handleMesageOnChange = (e) => {
+    const messageValue = e.target.value;
+    setInputValueLengthDisplayer(e.target.value);
+    if (messageValue.length >= 150) {
+      e.target.value = messageValue.slice(0, 150);
+      setUserMessage(e.target.value);
+    }
+  };
 
   const handlerMessageSubmit = async (e) => {
     setIsLoading(true);
@@ -58,34 +68,15 @@ const SendRegistrationRequest = () => {
             setCloseModel(true);
           });
       } catch (error) {
-        if (
-          error.response.data.issue ==
-          'E11000 duplicate key error collection: cbs-data-storage.admin-registration-requests index: reqUserEmail_1 dup key: { reqUserEmail: "dfdsf@gmail.com" }'
-        ) {
-          setServerResponse({
-            message: "Requested user with this email already exist!",
-            details: "Try again with another email id.",
-            statusIcon: (
-              <FcCancel className="text-4xl text-red-500 font-bold" />
-            ),
-            buttonColor: "bg-red-500",
-          });
-        } else {
-          setServerResponse({
-            message: error.response.data.issue,
-            details: error.response.data.details,
-            statusIcon: (
-              <FcCancel className="text-4xl text-red-500 font-bold" />
-            ),
-            buttonColor: "bg-red-500",
-          });
-        }
-        setIsLoading(false);
-        setCloseModel(true);
+        setServerResponse({
+          message: error.response.data.details,
+          details: error.response.data.issue,
+          statusIcon: <FcCancel className="text-4xl text-red-500 font-bold" />,
+          buttonColor: "bg-red-500",
+        });
       }
-    } else {
-      setEmailValidationError(true);
       setIsLoading(false);
+      setCloseModel(true);
     }
 
     userMessageRef.current.reset();
@@ -183,8 +174,18 @@ const SendRegistrationRequest = () => {
                     id="reqUserMessage"
                     className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                     placeholder="Enter your message"
-                    onChange={(e) => setUserMessage(e.target.value)}
+                    onChange={handleMesageOnChange}
                   />
+                  {inputValueLengthDisplayer ? (
+                    <p className="text-yellow-700 text-right">
+                      <span className="text-sm mr-1">Character left:</span>
+                      <span className="text-gray-600 text-sm">
+                        {150 - inputValueLengthDisplayer.length + 1}
+                      </span>
+                    </p>
+                  ) : (
+                    ""
+                  )}
                 </div>
 
                 {/* TERMS AND CONDITIONS  */}
@@ -222,7 +223,7 @@ const SendRegistrationRequest = () => {
                 <div className="flex flex-col">
                   <button
                     type="submit"
-                    className="w-full text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                    className="w-full text-white bg-yellow-500 hover:bg-yellow-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                   >
                     Send Message
                   </button>
@@ -230,7 +231,7 @@ const SendRegistrationRequest = () => {
                     to={"/"}
                     className="mt-4 w-full text-gray-700 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center border border-gray-400"
                   >
-                    Cancel
+                    Back
                   </Link>
                 </div>
               </form>
