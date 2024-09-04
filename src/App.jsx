@@ -20,6 +20,11 @@ import ManageAdminRequests from "./pages/manage-admin-requests/ManageAdminReques
 import RejectRequests from "./pages/reject-request/RejectRequests";
 import { AppProvider } from "./app-context/AppContext";
 import DeleteRequest from "./pages/delete-request/DeleteRequest";
+import UploadMastersAlumni from "./pages/master-alumni/UploadMastersAlumni";
+import ManageMastersAlumni from "./pages/master-alumni/ManageMastersAlumni";
+import PreviewMastersAlumni from "./pages/master-alumni/PreviewMastersAlumni";
+import UpdateMastersAlumni from "./pages/master-alumni/UpdateMastersAlumni";
+import DeleteMastersAlumni from "./pages/master-alumni/DeleteMastersAlumni";
 
 function App() {
   return (
@@ -66,6 +71,27 @@ function App() {
               <Route
                 path="/admin-panel/delete-request/:id"
                 element={<DeleteRequest />}
+              />
+
+              <Route
+                path="/admin-panel/upload-masters-alumni"
+                element={<UploadMastersAlumni />}
+              />
+              <Route
+                path="/admin-panel/manage-masters-alumni"
+                element={<ManageMastersAlumni />}
+              />
+              <Route
+                path="/admin-panel/preview-masters-alumni/:id"
+                element={<PreviewMastersAlumni />}
+              />
+              <Route
+                path="/admin-panel/update-masters-alumni/:id"
+                element={<UpdateMastersAlumni />}
+              />
+              <Route
+                path="/admin-panel/delete-masters-alumni/:id"
+                element={<DeleteMastersAlumni />}
               />
             </Route>
           </Routes>

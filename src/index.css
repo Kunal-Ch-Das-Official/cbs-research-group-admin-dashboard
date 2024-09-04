@@ -20,3 +20,20 @@ Date: 29/08/2024
     scrollbar-width: none; /* Firefox */
   }
 }
+.p-datepicker {
+  background-color: rgb(255, 255, 255);
+  margin-left: 20px;
+}
+.p-component {
+  background-color: rgb(255, 255, 255);
+}
+.p-ripple-disabled {
+  background-color: rgb(255, 255, 255);
+}
+.p-connected-overlay-enter-done {
+  background-color: rgb(255, 255, 255);
+}
+
+#dropzone-file {
+  display: none;
+}

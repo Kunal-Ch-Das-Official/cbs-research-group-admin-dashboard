@@ -77,7 +77,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
   return (
     <div>
       <nav
-        className="bg-gray-100 h-screen fixed top-0 left-0 min-w-[260px] py-6 px-4 font-[sans-serif]
+        className="bg-gray-100 h-screen fixed top-0 left-0 min-w-[260px] py-6 px-4 font-[sans-serif] opacity-100 z-50
          flex flex-col overflow-auto no-scrollbar shadow-xl"
         data-aos="fade-right"
       >
@@ -154,7 +154,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
             <Link to={"/admin-panel/manage-request"} className="cursor-pointer">
               <p className="text-gray-700 hover:text-black text-sm flex justify-between items-center hover:bg-white rounded px-4 py-3 transition-all">
                 <VscGitPullRequestGoToChanges className="text-xl text-gray-700" />
-                <span className="mr-2">Manage Request</span>
+                <span className="mr-2">Manage Requests</span>
                 <IoIosArrowForward className="text-lg" />
               </p>
             </Link>
@@ -186,43 +186,26 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
                 masterAlumniDropdown === true ? "block" : "hidden"
               }`}
             >
-              <a
+              <Link
+                to={"/admin-panel/manage-masters-alumni"}
                 id="see_master_alumni"
                 href="#"
                 className="text-gray-700 hover:text-black text-sm 
                 flex justify-center items-center hover:bg-white  
                 px-4 py-3 transition-all border-b-[1px] border-gray-400 hover:font-bold"
               >
-                See Masters Alumni
-              </a>
-              <a
+                Manage Data
+              </Link>
+              <Link
+                to={"/admin-panel/upload-masters-alumni"}
                 id="upload_new_master_alumni"
                 href="#"
                 className="text-gray-700 hover:text-black text-sm 
                 flex justify-center items-center hover:bg-white hover:font-bold border-b-[1px] border-gray-400
                 px-4 py-3 transition-all"
               >
-                Upload Masters Alumni
-              </a>
-              <a
-                id="edit_master_alumni"
-                href="#"
-                className="text-gray-700 hover:text-black text-sm 
-                flex justify-center items-center hover:bg-white hover:font-bold 
-                px-4 py-3 border-b-[1px] border-gray-400"
-              >
-                Edit Masters Alumni
-              </a>
-
-              <a
-                id="delete_master_alumni"
-                href="#"
-                className="text-gray-700 hover:text-black text-sm 
-                flex justify-center items-center hover:bg-white hover:font-bold 
-                px-4 py-3 transition-all"
-              >
-                Delete Masters Alumni
-              </a>
+                Upload Data
+              </Link>
             </div>
           </li>
           {/* DOCTORATE ALUMNI  */}
