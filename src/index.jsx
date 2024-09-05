@@ -4,7 +4,7 @@ Content: Application direction decider
 Date: 29/08/2024 
 */
 
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "./authentication/auth-context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import AdminLogin from "./authentication/auth-components/admin-login/AdminLogin";

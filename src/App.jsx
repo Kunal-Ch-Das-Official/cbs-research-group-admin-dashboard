@@ -25,6 +25,11 @@ import ManageMastersAlumni from "./pages/master-alumni/ManageMastersAlumni";
 import PreviewMastersAlumni from "./pages/master-alumni/PreviewMastersAlumni";
 import UpdateMastersAlumni from "./pages/master-alumni/UpdateMastersAlumni";
 import DeleteMastersAlumni from "./pages/master-alumni/DeleteMastersAlumni";
+import UploadDoctorateAlumni from "./pages/doctorate-alumni/UploadDoctorateAlumni";
+import ManageDoctorateAlumni from "./pages/doctorate-alumni/ManageDoctorateAlumni";
+import UpdateDoctotateAlumni from "./pages/doctorate-alumni/UpdateDoctotateAlumni";
+import DeleteDoctorateAlumni from "./pages/doctorate-alumni/DeleteDoctorateAlumni";
+import PreviewDoctorateAlumni from "./pages/doctorate-alumni/PreviewDoctorateAlumni";
 
 function App() {
   return (
@@ -92,6 +97,26 @@ function App() {
               <Route
                 path="/admin-panel/delete-masters-alumni/:id"
                 element={<DeleteMastersAlumni />}
+              />
+              <Route
+                path="/admin-panel/upload-doctorate-alumni"
+                element={<UploadDoctorateAlumni />}
+              />
+              <Route
+                path="/admin-panel/manage-doctorate-alumni"
+                element={<ManageDoctorateAlumni />}
+              />
+              <Route
+                path="/admin-panel/update-doctorate-alumni/:id"
+                element={<UpdateDoctotateAlumni />}
+              />
+              <Route
+                path="/admin-panel/delete-doctorate-alumni/:id"
+                element={<DeleteDoctorateAlumni />}
+              />
+              <Route
+                path="/admin-panel/preview-doctorate-alumni/:id"
+                element={<PreviewDoctorateAlumni />}
               />
             </Route>
           </Routes>

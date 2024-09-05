@@ -1,45 +1,41 @@
 import { useState } from "react";
+import style from "../../utils/confirm-model/ConfirmModel.module.css";
+import { MdDeleteForever } from "react-icons/md";
 import { useNavigate, useParams } from "react-router-dom";
-import axios from "../../../axios/axios";
-import envConfig from "../../../envConfig";
-import { TbNotesOff } from "react-icons/tb";
 import { FcCancel } from "react-icons/fc";
 import { MdDownloadDone } from "react-icons/md";
+import axios from "../../../axios/axios";
+import envConfig from "../../../envConfig";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import CustomModel from "../../utils/custom-models/CustomModel";
-import style from "../../utils/custom-models/CustomModel.module.css";
-import { useApp } from "../../app-context/AppContext";
 
-const RejectRequests = () => {
+const DeleteDoctorateAlumni = () => {
   const { id } = useParams();
-  const { setisIdRejected } = useApp();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  const [openAlert, setOpenAlert] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState({
     message: null,
     details: null,
     statusIcon: null,
     buttonColor: null,
   });
-
-  const handleRejection = async () => {
+  const deleteDoctorateAlumni = async () => {
     const authToken = localStorage.getItem("auth-token");
     const adminToken = localStorage.getItem("admin-token");
     const token = authToken || adminToken;
+
     try {
       setLoading(true);
       await axios
-        .post(`${envConfig.becomeAdminRequestRejectedUrl}/${id}`, null, {
+        .delete(`${envConfig.doctorateAlumniUrl}/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         })
         .then((res) => {
-          setisIdRejected(id);
           setAlertMessage({
-            message: res.data.message,
-            details: res.data.notification,
+            message: res.data.details,
             statusIcon: (
               <MdDownloadDone className="text-4xl font-bold text-green-600" />
             ),
@@ -48,25 +44,24 @@ const RejectRequests = () => {
         });
     } catch (error) {
       setAlertMessage({
-        message: error.response.data.issue,
-        details: error.response.data.details,
+        message: error.response.data.details,
+        details: error.response.data.issue,
         statusIcon: <FcCancel className="text-4xl font-bold text-red-600" />,
         buttonColor: "bg-red-600",
       });
     } finally {
       setLoading(false);
-      setOpenAlert(true);
+      setShowAlert(true);
     }
   };
-
   const closeModelHandler = () => {
-    setOpenAlert(false);
-    navigate("/admin-panel/manage-request");
+    setShowAlert(false);
+    navigate("/admin-panel/manage-doctorate-alumni");
   };
   return (
-    <main className="min-h-screen">
+    <div>
       {loading === true && <LoadingSpinner />}
-      {openAlert === true && (
+      {showAlert === true && (
         <CustomModel
           buttonText={"Got it"}
           showOrHide="flex"
@@ -78,7 +73,9 @@ const RejectRequests = () => {
         />
       )}
       <div
-        className={`flex min-h-screen fixed inset-0 px-4 flex-wrap justify-center items-center w-full h-full before:fixed before:inset-0 before:w-full before:h-full before:bg-[rgba(0,0,0,0.5)] ${style.overlay} overflow-auto`}
+        className={`flex min-h-screen fixed inset-0 px-4 flex-wrap justify-center 
+            items-center w-full h-full before:fixed before:inset-0 before:w-full before:h-full
+             before:bg-[rgba(0,0,0,0.5)] ${style.overlay} overflow-auto`}
       >
         <div
           className="w-full md:w-2/5 lg:w-2/5 xl:w-2/5 2xl:w-2/5 bg-white
@@ -86,24 +83,24 @@ const RejectRequests = () => {
         >
           <div className="flex flex-col justify-center items-center">
             <div>
-              <TbNotesOff className="text-[#f7ca00]  text-4xl" />
+              <MdDeleteForever className="text-red-600 text-7xl" />
             </div>
           </div>
           <div className="mt-8">
             <h3 className="text-2xl font-semibold flex-1 text-gray-600">
-              Are you really want to reject this request
+              Sure want to delete?
             </h3>
             <div className="flex flex-row justify-between mx-2">
               <button
-                onClick={handleRejection}
+                onClick={deleteDoctorateAlumni}
                 className={`mx-2 px-6 py-2.5 mt-8 w-full rounded cursor-pointer
-                     text-black text-sm font-semibold border-none outline-none bg-[#ffe77a] shadow-xl
-           hover:bg-[#f7ca00]`}
+                     text-black text-sm font-semibold border-none outline-none bg-red-500 shadow-xl
+           hover:bg-red-600`}
               >
                 Confirm
               </button>
               <button
-                onClick={() => navigate("/admin-panel/manage-request")}
+                onClick={() => navigate("/admin-panel/manage-doctorate-alumni")}
                 className={`mx-2 px-6 py-2.5 mt-8 w-full rounded cursor-pointer hover:text-black hover:bg-gray-300 text-gray-700 text-sm font-semibold shadow-xl outline-none bg-gray-200`}
               >
                 Cancel
@@ -112,8 +109,8 @@ const RejectRequests = () => {
           </div>
         </div>
       </div>
-    </main>
+    </div>
   );
 };
 
-export default RejectRequests;
+export default DeleteDoctorateAlumni;

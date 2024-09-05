@@ -9,12 +9,13 @@ import envConfig from "../../../envConfig";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import CustomModel from "../../utils/custom-models/CustomModel";
 import { useNavigate } from "react-router-dom";
-const UploadMasterAlumni = () => {
+const UploadDoctorateAlumni = () => {
   const navigate = useNavigate();
-  const mastersAlumniSubmitionRef = useRef();
+  const doctorateAlumniSubmitionRef = useRef();
   const [alumniName, setAlumniName] = useState("");
   const [passoutYear, setPassoutYear] = useState(null);
   const [graduateFrom, setGraduateFrom] = useState("");
+  const [mastersDoneFrom, setMastersDoneFrom] = useState("");
   const [alumniDetails, setAlumniDetails] = useState("");
   const [alumniImage, setAlumniImage] = useState(null);
   const [alumniEmailId, setAlumniEmailId] = useState("");
@@ -25,7 +26,6 @@ const UploadMasterAlumni = () => {
   // Functional State
   const [emailValidatErr, setEmailValidatErr] = useState(false);
   const [phoneNumberValidatErr, setPhoneNumberValidatErr] = useState(false);
-  const [noImageErr, setNoImageErr] = useState(false);
   const [loading, setLoading] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [customAlert, setCustomAlert] = useState({
@@ -35,7 +35,7 @@ const UploadMasterAlumni = () => {
     buttonColor: null,
   });
 
-  const mastersAlumniSubmitionHandler = async (e) => {
+  const doctorateAlumniSubmitionHandler = async (e) => {
     e.preventDefault();
     const dateObject = new Date(passoutYear);
     const year = dateObject.getFullYear();
@@ -57,22 +57,19 @@ const UploadMasterAlumni = () => {
       validation = false;
     }
 
-    if (!alumniImage) {
-      setNoImageErr(true);
-      validation = false;
-    }
     if (validation === true) {
       setLoading(true);
-      const mastersAlumniInfo = new FormData();
-      mastersAlumniInfo.append("alumniName", alumniName);
-      mastersAlumniInfo.append("profilePicture", alumniImage);
-      mastersAlumniInfo.append("emailId", alumniEmailId);
-      mastersAlumniInfo.append("phoneNumber", alumniPhoneNo);
-      mastersAlumniInfo.append("bscDoneFrom", graduateFrom);
-      mastersAlumniInfo.append("researchGateId", alumniResearchGateUrl);
-      mastersAlumniInfo.append("googleScholarId", alumniGoogleSchollarUrl);
-      mastersAlumniInfo.append("yearOfPassout", stringifyYear);
-      mastersAlumniInfo.append("details", alumniDetails);
+      const doctorateAlumniInfo = new FormData();
+      doctorateAlumniInfo.append("alumniName", alumniName);
+      doctorateAlumniInfo.append("profilePicture", alumniImage);
+      doctorateAlumniInfo.append("emailId", alumniEmailId);
+      doctorateAlumniInfo.append("phoneNumber", alumniPhoneNo);
+      doctorateAlumniInfo.append("bscDoneFrom", graduateFrom);
+      doctorateAlumniInfo.append("mscDoneFrom", mastersDoneFrom);
+      doctorateAlumniInfo.append("researchGateId", alumniResearchGateUrl);
+      doctorateAlumniInfo.append("googleScholarId", alumniGoogleSchollarUrl);
+      doctorateAlumniInfo.append("yearOfPassout", stringifyYear);
+      doctorateAlumniInfo.append("details", alumniDetails);
 
       const authToken = localStorage.getItem("auth-token");
       const adminToken = localStorage.getItem("admin-token");
@@ -80,7 +77,7 @@ const UploadMasterAlumni = () => {
 
       try {
         await axios
-          .post(envConfig.mastersAlumniUrl, mastersAlumniInfo, {
+          .post(envConfig.doctorateAlumniUrl, doctorateAlumniInfo, {
             headers: {
               Authorization: `Bearer ${token}`,
               "Content-Type": "multipart/form-data",
@@ -106,7 +103,7 @@ const UploadMasterAlumni = () => {
       } finally {
         setLoading(false);
         setShowAlert(true);
-        mastersAlumniSubmitionRef.current.reset();
+        doctorateAlumniSubmitionRef.current.reset();
         setPassoutYear(null);
         setAlumniDetails("");
         setAlumniImage(null);
@@ -117,12 +114,9 @@ const UploadMasterAlumni = () => {
   };
   const closeModelHandler = () => {
     setShowAlert(false);
-    navigate("/admin-panel/manage-masters-alumni");
+    navigate("/admin-panel/manage-doctorate-alumni");
   };
 
-  if (noImageErr === true) {
-    alert("image missing");
-  }
   return (
     <>
       {loading === true && <LoadingSpinner />}
@@ -140,7 +134,7 @@ const UploadMasterAlumni = () => {
       <main className="bg-gray-50 min-h-screen pt-20 pb-12">
         <div className="text-center">
           <h1 className="text-2xl text-gray-500 font-bold">
-            Master Alumni Information Upload
+            Doctorate Alumni Information Upload
           </h1>
           <p className="flex flex-wrap flex-col mx-20 lg:mx-40">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste
@@ -152,26 +146,26 @@ const UploadMasterAlumni = () => {
 
         <form
           className="grid grid-cols-1 lg:grid-cols-2"
-          onSubmit={mastersAlumniSubmitionHandler}
-          ref={mastersAlumniSubmitionRef}
+          onSubmit={doctorateAlumniSubmitionHandler}
+          ref={doctorateAlumniSubmitionRef}
         >
           <div className=" mt-2" id="columnOne">
             <div className="py-0 px-4 mx-auto max-w-2xl">
               <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
                 <div className="sm:col-span-2 mt-2 lg:mt-20">
                   <label
-                    htmlFor="masterAlumniName"
+                    htmlFor="doctorateAlumniName"
                     className="block mb-2 text-sm font-medium text-gray-900"
                   >
                     Alumni Name
                   </label>
                   <input
                     type="text"
-                    name="masterAlumniName"
-                    id="masterAlumniName"
+                    name="doctorateAlumniName"
+                    id="doctorateAlumniName"
                     className="bg-white border border-gray-300 text-gray-900 text-sm 
                   rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                    placeholder="Enter masters alumni name"
+                    placeholder="Enter doctorate alumni name"
                     required
                     onChange={(e) => setAlumniName(e.target.value)}
                   />
@@ -219,6 +213,23 @@ const UploadMasterAlumni = () => {
                     onChange={(e) => setGraduateFrom(e.target.value)}
                   />
                 </div>
+                <div>
+                  <label
+                    htmlFor="mscDoneFrom"
+                    className="block mb-2 text-sm font-medium text-gray-900"
+                  >
+                    Masters done from
+                  </label>
+                  <input
+                    type="text"
+                    name="mscDoneFrom"
+                    id="mscDoneFrom"
+                    className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                    placeholder="Master's complete from"
+                    required
+                    onChange={(e) => setMastersDoneFrom(e.target.value)}
+                  />
+                </div>
                 <div className="sm:col-span-2 mt-2">
                   <label
                     htmlFor="description"
@@ -236,7 +247,7 @@ const UploadMasterAlumni = () => {
                   </div>
                 </div>
               </div>
-              <div>
+              <div className="">
                 <button
                   type="submit"
                   className="inline-flex cursor-pointer items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center shadow-xl bg-[#ffde499f] hover:bg-[#f7ca00] rounded-xl"
@@ -402,4 +413,4 @@ const UploadMasterAlumni = () => {
   );
 };
 
-export default UploadMasterAlumni;
+export default UploadDoctorateAlumni;

@@ -1,4 +1,5 @@
-import React from "react";
+import PropTypes from "prop-types";
+
 const AdminReqStatus = ({ textColor, statusIcon, statusText }) => {
   return (
     <p
@@ -8,6 +9,12 @@ const AdminReqStatus = ({ textColor, statusIcon, statusText }) => {
       <span className="ml-4 mr-0">{statusIcon}</span>
     </p>
   );
+};
+
+AdminReqStatus.propTypes = {
+  statusIcon: PropTypes.any.isRequired,
+  textColor: PropTypes.string.isRequired,
+  statusText: PropTypes.string.isRequired,
 };
 
 export default AdminReqStatus;

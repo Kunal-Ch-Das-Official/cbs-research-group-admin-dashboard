@@ -2,7 +2,7 @@
 // Content: Context api file for private routing
 // Date: 30/08/2024
 
-import React, { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 // Create context
 const AuthContext = createContext();

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "../../../../axios/axios";
 import envConfig from "../../../../envConfig";
 import ComponentLoading from "../../../utils/component-loading/ComponentLoading";

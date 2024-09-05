@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import envConfig from "../../../envConfig";
 import { SiGmail } from "react-icons/si";

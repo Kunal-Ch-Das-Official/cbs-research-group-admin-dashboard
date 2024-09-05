@@ -1,4 +1,3 @@
-import React from "react";
 import ChangeAdminPassword from "../../authentication/auth-components/change-admin-password/ChangeAdminPassword";
 
 const PasswordChange = () => {

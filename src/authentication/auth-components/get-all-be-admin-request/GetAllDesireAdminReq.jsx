@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { IoIosCopy } from "react-icons/io";
 import { MdOutlineDone } from "react-icons/md";
 import AdminReqStatus from "../../../utils/admin-request-status/AdminReqStatus";
 import { Link } from "react-router-dom";
 import { useApp } from "../../../app-context/AppContext";
-import { TbNotesOff } from "react-icons/tb";
 import { MdDeleteForever } from "react-icons/md";
 import { TbMessageCancel } from "react-icons/tb";
 import { FcApproval } from "react-icons/fc";
 import { MdSpeakerNotesOff } from "react-icons/md";
+import PropTypes from "prop-types";
+
 const GetAllDesireAdminReq = ({
   userName,
   userEmail,
@@ -170,4 +171,11 @@ const GetAllDesireAdminReq = ({
   );
 };
 
+GetAllDesireAdminReq.propTypes = {
+  userName: PropTypes.string.isRequired,
+  userEmail: PropTypes.string.isRequired,
+  recivedAt: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
+};
 export default GetAllDesireAdminReq;

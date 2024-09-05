@@ -9,13 +9,14 @@ import envConfig from "../../../envConfig";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import CustomModel from "../../utils/custom-models/CustomModel";
 import { Link, useNavigate, useParams } from "react-router-dom";
-const UpdateMastersAlumni = () => {
+const UpdateDoctotateAlumni = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [previousData, setPreviousData] = useState(null);
   const [alumniName, setAlumniName] = useState("");
   const [passoutYear, setPassoutYear] = useState(null);
   const [graduateFrom, setGraduateFrom] = useState("");
+  const [mastersDoneFrom, setMastersDoneFrom] = useState("");
   const [alumniDetails, setAlumniDetails] = useState("");
   const [alumniImage, setAlumniImage] = useState(null);
   const [alumniEmailId, setAlumniEmailId] = useState("");
@@ -38,7 +39,7 @@ const UpdateMastersAlumni = () => {
     const getPreviousAlumniInfo = async () => {
       try {
         setLoading(true);
-        await axios.get(`${envConfig.mastersAlumniUrl}/${id}`).then((res) => {
+        await axios.get(`${envConfig.doctorateAlumniUrl}/${id}`).then((res) => {
           setPreviousData(res.data);
           setPassoutYear(res ? res.data.yearOfPassout : null);
         });
@@ -59,16 +60,20 @@ const UpdateMastersAlumni = () => {
     const stringifyYear = year.toString();
 
     setLoading(true);
-    const updatedMastersAlumniInfo = new FormData();
-    updatedMastersAlumniInfo.append("alumniName", alumniName);
-    updatedMastersAlumniInfo.append("profilePicture", alumniImage);
-    updatedMastersAlumniInfo.append("emailId", alumniEmailId);
-    updatedMastersAlumniInfo.append("phoneNumber", alumniPhoneNo);
-    updatedMastersAlumniInfo.append("bscDoneFrom", graduateFrom);
-    updatedMastersAlumniInfo.append("researchGateId", alumniResearchGateUrl);
-    updatedMastersAlumniInfo.append("googleScholarId", alumniGoogleSchollarUrl);
-    updatedMastersAlumniInfo.append("yearOfPassout", stringifyYear);
-    updatedMastersAlumniInfo.append("details", alumniDetails);
+    const updatedDoctorateAlumniInfo = new FormData();
+    updatedDoctorateAlumniInfo.append("alumniName", alumniName);
+    updatedDoctorateAlumniInfo.append("profilePicture", alumniImage);
+    updatedDoctorateAlumniInfo.append("emailId", alumniEmailId);
+    updatedDoctorateAlumniInfo.append("phoneNumber", alumniPhoneNo);
+    updatedDoctorateAlumniInfo.append("bscDoneFrom", graduateFrom);
+    updatedDoctorateAlumniInfo.append("mscDoneFrom", mastersDoneFrom);
+    updatedDoctorateAlumniInfo.append("researchGateId", alumniResearchGateUrl);
+    updatedDoctorateAlumniInfo.append(
+      "googleScholarId",
+      alumniGoogleSchollarUrl
+    );
+    updatedDoctorateAlumniInfo.append("yearOfPassout", stringifyYear);
+    updatedDoctorateAlumniInfo.append("details", alumniDetails);
 
     const authToken = localStorage.getItem("auth-token");
     const adminToken = localStorage.getItem("admin-token");
@@ -77,8 +82,8 @@ const UpdateMastersAlumni = () => {
     try {
       await axios
         .patch(
-          `${envConfig.mastersAlumniUrl}/${id}`,
-          updatedMastersAlumniInfo,
+          `${envConfig.doctorateAlumniUrl}/${id}`,
+          updatedDoctorateAlumniInfo,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -116,7 +121,7 @@ const UpdateMastersAlumni = () => {
   };
   const closeModelHandler = () => {
     setShowAlert(false);
-    navigate("/admin-panel/manage-masters-alumni");
+    navigate("/admin-panel/manage-doctorate-alumni");
   };
 
   return (
@@ -137,7 +142,7 @@ const UpdateMastersAlumni = () => {
         <main className="bg-gray-50 min-h-screen pt-20 pb-12">
           <div className="text-center">
             <h1 className="text-2xl text-gray-500 font-bold">
-              Master Alumni Information Update
+              Doctorate Alumni Information Update
             </h1>
             <p className="flex flex-wrap flex-col mx-20 lg:mx-40">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste
@@ -216,6 +221,23 @@ const UpdateMastersAlumni = () => {
                       onChange={(e) => setGraduateFrom(e.target.value)}
                     />
                   </div>
+                  <div>
+                    <label
+                      htmlFor="mscDoneFrom"
+                      className="block mb-2 text-sm font-medium text-gray-900"
+                    >
+                      Masters from
+                    </label>
+                    <input
+                      type="text"
+                      defaultValue={previousData.mscDoneFrom}
+                      name="mscDoneFrom"
+                      id="mscDoneFrom"
+                      className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                      placeholder="Bachelor's complete from"
+                      onChange={(e) => setMastersDoneFrom(e.target.value)}
+                    />
+                  </div>
                   <div className="sm:col-span-2 mt-2">
                     <label
                       htmlFor="description"
@@ -233,7 +255,7 @@ const UpdateMastersAlumni = () => {
                     </div>
                   </div>
                 </div>
-                <div className="">
+                <div>
                   <button
                     type="submit"
                     className="inline-flex cursor-pointer items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center shadow-xl bg-[#ffde499f] hover:bg-[#f7ca00] rounded-xl"
@@ -241,7 +263,7 @@ const UpdateMastersAlumni = () => {
                     Update Alumni Details
                   </button>
                   <Link
-                    to={"/admin-panel/manage-masters-alumni"}
+                    to={"/admin-panel/manage-doctorate-alumni"}
                     className="ml-2 inline-flex cursor-pointer items-center px-5 py-2.5 mt-4 
                     sm:mt-6 text-sm font-medium text-center shadow-xl bg-white border border-gray-200 hover:bg-[#f7ca00] rounded-xl"
                   >
@@ -412,4 +434,4 @@ const UpdateMastersAlumni = () => {
   );
 };
 
-export default UpdateMastersAlumni;
+export default UpdateDoctotateAlumni;

@@ -3,8 +3,7 @@ Project: CBS Research Group Admin Dashboard
 Content: Common alert model
 Date: 29/08/2024 
 */
-
-import React from "react";
+import PropTypes from "prop-types";
 import alertStyle from "./CustomModel.module.css";
 const CustomModel = ({
   buttonText,
@@ -41,6 +40,17 @@ const CustomModel = ({
       </div>
     </div>
   );
+};
+
+CustomModel.propTypes = {
+  buttonText: PropTypes.string,
+  showOrHide: PropTypes.any,
+  closeButton: PropTypes.func,
+  statusIcon: PropTypes.element,
+  message1: PropTypes.string,
+  alertHead: PropTypes.string,
+  message2: PropTypes.string,
+  buttonColor: PropTypes.string,
 };
 
 export default CustomModel;

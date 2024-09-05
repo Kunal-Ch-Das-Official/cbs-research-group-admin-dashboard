@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { GrUserAdmin } from "react-icons/gr";
 import { MdRememberMe } from "react-icons/md";
 import { FaEye } from "react-icons/fa";

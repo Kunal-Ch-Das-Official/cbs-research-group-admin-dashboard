@@ -1,4 +1,3 @@
-import React from "react";
 import ResetPassword from "../../authentication/auth-components/reset-password/ResetPassword";
 
 const ResetForgottenPassword = () => {

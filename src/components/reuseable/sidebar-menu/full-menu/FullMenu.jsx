@@ -227,43 +227,25 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
                 doctorateAlumniDropdown === true ? "block" : "hidden"
               }`}
             >
-              <a
-                id="see_master_alumni"
-                href="#"
-                className="text-gray-700 hover:text-black text-sm 
-                flex justify-center items-center hover:bg-white  
-                px-4 py-3 transition-all border-b-[1px] border-gray-400 hover:font-bold"
-              >
-                See Doctorate Alumni
-              </a>
-              <a
-                id="upload_new_master_alumni"
-                href="#"
-                className="text-gray-700 hover:text-black text-sm 
-                flex justify-center items-center hover:bg-white hover:font-bold border-b-[1px] border-gray-400
-                px-4 py-3 transition-all"
-              >
-                Upload Doctorate Alumni
-              </a>
-              <a
-                id="edit_master_alumni"
-                href="#"
+              <Link
+                to={"/admin-panel/manage-doctorate-alumni"}
+                id="manage_master_alumni"
                 className="text-gray-700 hover:text-black text-sm 
                 flex justify-center items-center hover:bg-white hover:font-bold 
                 px-4 py-3 border-b-[1px] border-gray-400"
               >
-                Edit Doctorate Alumni
-              </a>
+                Manage Data
+              </Link>
 
-              <a
-                id="delete_master_alumni"
-                href="#"
+              <Link
+                to={"/admin-panel/upload-doctorate-alumni"}
+                id="upload_master_alumni"
                 className="text-gray-700 hover:text-black text-sm 
                 flex justify-center items-center hover:bg-white hover:font-bold 
                 px-4 py-3 transition-all"
               >
-                Delete Doctorate Alumni
-              </a>
+                Upload Data
+              </Link>
             </div>
           </li>
         </ul>

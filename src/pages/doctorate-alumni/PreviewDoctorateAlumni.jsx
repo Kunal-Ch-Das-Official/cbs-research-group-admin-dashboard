@@ -6,7 +6,7 @@ import { FaLongArrowAltLeft } from "react-icons/fa";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import axios from "../../../axios/axios";
 import envConfig from "../../../envConfig";
-const PreviewMastersAlumni = () => {
+const PreviewDoctorateAlumni = () => {
   const { id } = useParams();
   const [alumniInfo, setAlumniInfo] = useState(null);
   const [loading, setLoading] = useState(null);
@@ -15,7 +15,7 @@ const PreviewMastersAlumni = () => {
     const fetchSingleAlumni = async () => {
       setLoading(true);
       try {
-        const res = await axios.get(`${envConfig.mastersAlumniUrl}/${id}`);
+        const res = await axios.get(`${envConfig.doctorateAlumniUrl}/${id}`);
         setAlumniInfo(res.data);
       } catch (error) {
         console.error(error);
@@ -46,7 +46,7 @@ const PreviewMastersAlumni = () => {
                   <p className="font-poppins font-bold text-heading sm:text-4xl text-2xl">
                     {alumniInfo.alumniName}
                   </p>
-                  <p className="text-heading mt-1">Masters Alumni</p>
+                  <p className="text-heading mt-1">Doctorate Alumni</p>
                   <p className="text-center inline-flex item-center">
                     <a
                       href={`https://${alumniInfo.googleScholarId}`}
@@ -90,7 +90,13 @@ const PreviewMastersAlumni = () => {
                         <div className="flex flex-col items-start my-1">
                           <div className="ml-0 lg:ml-6">
                             {" "}
-                            {alumniInfo.bscDoneFrom}
+                            BSC: {alumniInfo.bscDoneFrom}
+                          </div>
+                        </div>
+                        <div className="flex flex-col items-start my-1">
+                          <div className="ml-0 lg:ml-6">
+                            {" "}
+                            MSC: {alumniInfo.mscDoneFrom}
                           </div>
                         </div>
                         <div className="flex items-start my-1">
@@ -112,7 +118,7 @@ const PreviewMastersAlumni = () => {
                       <p className="text-start">{alumniInfo.details}</p>
                       <div className="flex justify-start mt-4">
                         <Link
-                          to={"/admin-panel/manage-masters-alumni"}
+                          to={"/admin-panel/manage-doctorate-alumni"}
                           className="text-gray-700 text-lg font-bold bg-yellow-500 px-6 py-1 rounded-lg inline-flex items-center hover:bg-yellow-600 transform translate-y-1 hover:scale-110 cursor-pointer"
                         >
                           <FaLongArrowAltLeft />
@@ -135,4 +141,4 @@ const PreviewMastersAlumni = () => {
   );
 };
 
-export default PreviewMastersAlumni;
+export default PreviewDoctorateAlumni;

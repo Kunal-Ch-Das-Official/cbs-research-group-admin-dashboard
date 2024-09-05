@@ -1,4 +1,4 @@
-import React from "react";
+import PropTypes from "prop-types";
 import { MdCancelPresentation } from "react-icons/md";
 import tacModalStyle from "./TacModal.module.css";
 const TacModal = ({ closeTerms }) => {
@@ -40,6 +40,9 @@ const TacModal = ({ closeTerms }) => {
       </div>
     </div>
   );
+};
+TacModal.propTypes = {
+  closeTerms: PropTypes.func,
 };
 
 export default TacModal;

@@ -2,7 +2,6 @@
 // Content: Common Loading ui
 // Date: 29/08/2024
 
-import React from "react";
 import spinnerStyle from "./LoadingSpinner.module.css";
 
 const LoadingSpinner = () => {

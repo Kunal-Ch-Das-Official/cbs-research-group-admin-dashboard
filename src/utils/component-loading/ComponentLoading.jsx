@@ -1,4 +1,3 @@
-import React from "react";
 import spinnerStyle from "./ComponentLoading.module.css";
 const ComponentLoading = () => {
   return (

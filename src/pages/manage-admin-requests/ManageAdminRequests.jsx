@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import GetAllDesireAdminReq from "../../authentication/auth-components/get-all-be-admin-request/GetAllDesireAdminReq";
 import axios from "../../../axios/axios";
 import envConfig from "../../../envConfig";
 import { FcCancel } from "react-icons/fc";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
+import CustomModel from "../../utils/custom-models/CustomModel";
 const ManageAdminRequests = () => {
   const [getBecomeAdminReq, setBecomeAdminReq] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -23,7 +24,7 @@ const ManageAdminRequests = () => {
     const getBecomeAdminRequest = async () => {
       try {
         await axios
-          .get(envConfig.becomeAdminRequestUrl, {
+          .get(envConfig.becomeAdminUsersRequestUrl, {
             headers: {
               Authorization: `Bearer ${token}`,
             },

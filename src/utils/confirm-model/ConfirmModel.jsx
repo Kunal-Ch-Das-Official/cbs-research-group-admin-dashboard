@@ -4,7 +4,7 @@ Content: Common Confirmation model
 Date: 31/08/2024 
 */
 
-import React from "react";
+import PropTypes from "prop-types";
 import alertStyle from "./ConfirmModel.module.css";
 const ConfirmModel = ({
   showOrHide,
@@ -43,6 +43,16 @@ const ConfirmModel = ({
       </div>
     </div>
   );
+};
+
+ConfirmModel.propTypes = {
+  showOrHide: PropTypes.any,
+  confirmHandler: PropTypes.func,
+  cancelHandler: PropTypes.func,
+  statusIcon: PropTypes.element,
+  alertHead: PropTypes.string,
+  confirmHandlerColor: PropTypes.string,
+  cancelHandlerColor: PropTypes.string,
 };
 
 export default ConfirmModel;

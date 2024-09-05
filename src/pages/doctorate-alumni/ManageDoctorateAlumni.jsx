@@ -1,27 +1,28 @@
 import { useEffect, useState } from "react";
-import MastersAlumniCard from "../../components/reuseable/masters-alumni-card/MastersAlumniCard";
 import axios from "../../../axios/axios";
 import envConfig from "../../../envConfig";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
+import DoctorateAlumnicard from "../../components/reuseable/doctorate-alumni-card/DoctorateAlumnicard";
 
-const ManageMastersAlumni = () => {
+const ManageDoctorateAlumni = () => {
   const [alumniInfo, setAlumniInfo] = useState(null);
   const [loading, setLoding] = useState(false);
 
   useEffect(() => {
     setLoding(true);
-    const getMastersAlumniData = async () => {
+    const getDoctorateAlumniData = async () => {
       try {
-        await axios.get(envConfig.mastersAlumniUrl).then((res) => {
+        await axios.get(envConfig.doctorateAlumniUrl).then((res) => {
           setAlumniInfo(res.data);
         });
       } catch (error) {
-        setAlumniInfo(error.response.data);
+        setAlumniInfo(null);
+        console.log(error);
       } finally {
         setLoding(false);
       }
     };
-    getMastersAlumniData();
+    getDoctorateAlumniData();
   }, []);
 
   return (
@@ -30,7 +31,7 @@ const ManageMastersAlumni = () => {
       <>
         {alumniInfo &&
           alumniInfo.map((data, index) => (
-            <MastersAlumniCard
+            <DoctorateAlumnicard
               key={index}
               id={data._id}
               alumniName={data.alumniName}
@@ -40,6 +41,7 @@ const ManageMastersAlumni = () => {
               alumniEmail={data.emailId}
               contactNumberOfAlumni={data.phoneNumber}
               PreviousCollege={data.bscDoneFrom}
+              PreviousMastersCollege={data.mscDoneFrom}
               passoutYear={data.yearOfPassout}
               uploadDate={new Date(data.createdAt).toLocaleDateString()}
               updateDate={new Date(data.updatedAt).toLocaleDateString()}
@@ -50,4 +52,4 @@ const ManageMastersAlumni = () => {
   );
 };
 
-export default ManageMastersAlumni;
+export default ManageDoctorateAlumni;
