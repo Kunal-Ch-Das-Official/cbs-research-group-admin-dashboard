@@ -16,11 +16,10 @@ import { useAuth } from "../../auth-context/useAuth";
 const AdminLogin = () => {
   const loginFormRef = useRef();
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { login, modelOpen, setModelOpen } = useAuth();
   const [adminEmail, setAdminEmail] = useState("");
   const [adminPassword, setAdminPassword] = useState("");
   const [emailValidationError, setEmailValidationError] = useState(false);
-  const [closeModel, setCloseModel] = useState(false);
   const [token, setToken] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isRememberMeChecked, setRememberMeChecked] = useState(null);
@@ -54,7 +53,6 @@ const AdminLogin = () => {
       };
       try {
         await axios.post(envConfig.loginUrl, loginCredentials).then((res) => {
-          setToken(res.data.authentication_sign);
           setLoginResponse({
             message: res.data.message,
             details: res.data.details,
@@ -64,13 +62,42 @@ const AdminLogin = () => {
             buttonColor: "bg-green-600",
           });
           if (isRememberMeChecked === true) {
-            localStorage.setItem("auth-token", res.data.authentication_sign);
+            const expiresToken = localStorage.getItem("expires") || null;
+            const authToken = localStorage.getItem("auth-token") || null;
+            const adminToken = localStorage.getItem("admin-token") || null;
+            const now = new Date();
+            const item = {
+              value: res.data.authentication_sign,
+              expiry: now.getTime() + 86400000,
+            };
+            if (expiresToken) {
+              localStorage.removeItem("expires");
+              localStorage.setItem("expires", JSON.stringify(item));
+            } else {
+              localStorage.setItem("expires", JSON.stringify(item));
+            }
+            if (authToken) {
+              localStorage.removeItem("auth-token");
+              localStorage.setItem("auth-token", res.data.authentication_sign);
+            } else {
+              localStorage.setItem("auth-token", res.data.authentication_sign);
+            }
+            if (adminToken) {
+              localStorage.removeItem("admin-token");
+            }
           } else {
-            localStorage.setItem("admin-token", res.data.authentication_sign);
+            const adminToken = localStorage.getItem("admin-token") || null;
+            if (adminToken) {
+              localStorage.removeItem("admin-token");
+              localStorage.setItem("admin-token", res.data.authentication_sign);
+            } else {
+              localStorage.setItem("admin-token", res.data.authentication_sign);
+            }
           }
           setIsLoading(false);
-          setCloseModel(true);
+          setModelOpen(true);
           login();
+          setToken(res.data.authentication_sign);
         });
       } catch (error) {
         setLoginResponse({
@@ -80,7 +107,7 @@ const AdminLogin = () => {
           buttonColor: "bg-red-600",
         });
         setToken(null);
-        setCloseModel(true);
+        setModelOpen(true);
         setIsLoading(false);
       }
     } else {
@@ -91,7 +118,7 @@ const AdminLogin = () => {
   };
 
   const closeModelHandler = () => {
-    setCloseModel(false);
+    setModelOpen(false);
     if (token) {
       navigate("/admin-panel");
     }
@@ -102,7 +129,7 @@ const AdminLogin = () => {
       {
         <CustomModel
           buttonText={"Got it"}
-          showOrHide={closeModel === true ? "flex" : "hidden"}
+          showOrHide={modelOpen === true ? "flex" : "hidden"}
           closeButton={closeModelHandler}
           statusIcon={loginResponse.statusIcon}
           alertHead={loginResponse.message}

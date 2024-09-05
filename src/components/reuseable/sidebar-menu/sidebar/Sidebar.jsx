@@ -21,6 +21,9 @@ const Sidebar = () => {
     if (localStorage.getItem("auth-token")) {
       localStorage.removeItem("auth-token");
     }
+    if (localStorage.getItem("expires")) {
+      localStorage.removeItem("expires");
+    }
     if (localStorage.getItem("admin-token")) {
       localStorage.removeItem("admin-token");
     }

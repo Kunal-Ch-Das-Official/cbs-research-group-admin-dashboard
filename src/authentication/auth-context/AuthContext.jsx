@@ -10,6 +10,7 @@ const AuthContext = createContext();
 // check authentication handler
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [modelOpen, setModelOpen] = useState(false);
 
   // login handler
   const login = () => {
@@ -22,7 +23,9 @@ export const AuthProvider = ({ children }) => {
   };
   // return context with all state and handler
   return (
-    <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
+    <AuthContext.Provider
+      value={{ isAuthenticated, login, logout, modelOpen, setModelOpen }}
+    >
       {children}
     </AuthContext.Provider>
   );
