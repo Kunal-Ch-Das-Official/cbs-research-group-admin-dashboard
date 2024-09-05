@@ -10,7 +10,8 @@ import { MdDownloadDone } from "react-icons/md";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import { MdCancelScheduleSend } from "react-icons/md";
 import CustomModel from "../../utils/custom-models/CustomModel";
-import { useApp } from "../../app-context/AppContext";
+import { useApp } from "../../app-context/useApp";
+
 const ApproveRequest = () => {
   const navigate = useNavigate();
   const { id } = useParams();

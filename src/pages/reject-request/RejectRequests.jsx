@@ -8,7 +8,7 @@ import { MdDownloadDone } from "react-icons/md";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import CustomModel from "../../utils/custom-models/CustomModel";
 import style from "../../utils/custom-models/CustomModel.module.css";
-import { useApp } from "../../app-context/AppContext";
+import { useApp } from "../../app-context/useApp";
 
 const RejectRequests = () => {
   const { id } = useParams();

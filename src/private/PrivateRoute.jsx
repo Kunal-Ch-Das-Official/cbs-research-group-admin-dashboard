@@ -5,7 +5,8 @@
 import PropTypes from "prop-types";
 
 import { Navigate } from "react-router-dom";
-import { useAuth } from "../authentication/auth-context/AuthContext";
+import { useAuth } from "../authentication/auth-context/useAuth";
+
 const PrivateRoute = ({ children }) => {
   const { isAuthenticated } = useAuth();
 

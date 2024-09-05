@@ -11,7 +11,8 @@ import CustomModel from "../../../utils/custom-models/CustomModel";
 import { FcCancel } from "react-icons/fc";
 import { MdDownloadDone } from "react-icons/md";
 import LoadingSpinner from "../../../utils/common-loading-spinner/LoadingSpinner";
-import { useAuth } from "../../auth-context/AuthContext";
+import { useAuth } from "../../auth-context/useAuth";
+
 const AdminLogin = () => {
   const loginFormRef = useRef();
   const navigate = useNavigate();

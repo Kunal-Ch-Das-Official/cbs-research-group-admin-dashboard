@@ -6,9 +6,9 @@ import FullMenu from "../full-menu/FullMenu";
 import ToggleMenu from "../toggle-menu/ToggleMenu";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { useAuth } from "../../../../authentication/auth-context/AuthContext";
 import ConfirmModel from "../../../../utils/confirm-model/ConfirmModel";
 import { FiLogOut } from "react-icons/fi";
+import { useAuth } from "../../../../authentication/auth-context/useAuth";
 const Sidebar = () => {
   const { logout } = useAuth();
   const sidebarRef = useRef(null);
@@ -47,6 +47,19 @@ const Sidebar = () => {
     };
   }, []);
 
+  const handleClickOutside = useCallback(
+    (event) => {
+      if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+        if (screenWidth > 767) {
+          isMenuOpen === false && setIsMenuOpen(true);
+        } else {
+          setIsMenuOpen(true);
+        }
+      }
+    },
+    [isMenuOpen, screenWidth]
+  );
+
   // Add event listener when the sidebar is open
   useEffect(() => {
     if (isMenuOpen === false) {
@@ -59,7 +72,7 @@ const Sidebar = () => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [isMenuOpen]);
+  }, [isMenuOpen, handleClickOutside]);
 
   const openFullMenu = useCallback(() => {
     setIsMenuOpen(false);
@@ -67,16 +80,6 @@ const Sidebar = () => {
   const closeSidebar = useCallback(() => {
     setIsMenuOpen(true);
   }, []);
-
-  const handleClickOutside = (event) => {
-    if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
-      if (screenWidth > 767) {
-        isMenuOpen === false && setIsMenuOpen(true);
-      } else {
-        setIsMenuOpen(true);
-      }
-    }
-  };
 
   // useEffect(() => {
   //   const handleScroll = () => {

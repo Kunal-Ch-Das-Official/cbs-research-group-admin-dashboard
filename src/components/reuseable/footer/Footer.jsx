@@ -1,4 +1,3 @@
-import React from "react";
 import footerLogo from "../../../assets/CBS Research Group Logo.png";
 const Footer = () => {
   return (

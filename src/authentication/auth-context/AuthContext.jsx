@@ -2,8 +2,8 @@
 // Content: Context api file for private routing
 // Date: 30/08/2024
 
-import { createContext, useContext, useState } from "react";
-
+import { createContext, useState } from "react";
+import PropTypes from "prop-types";
 // Create context
 const AuthContext = createContext();
 
@@ -28,5 +28,8 @@ export const AuthProvider = ({ children }) => {
   );
 };
 
-// export context
-export const useAuth = () => useContext(AuthContext);
+AuthProvider.propTypes = {
+  children: PropTypes.node,
+};
+
+export default AuthContext;

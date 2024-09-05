@@ -1,7 +1,6 @@
-import React from "react";
 import { BiMenuAltLeft } from "react-icons/bi";
 import comapnyLogo from "../../../../assets/CBS Research Group Logo.png";
-
+import PropTypes from "prop-types";
 const ToggleMenu = ({ openMenu }) => {
   return (
     <div
@@ -24,4 +23,7 @@ const ToggleMenu = ({ openMenu }) => {
   );
 };
 
+ToggleMenu.propTypes = {
+  openMenu: PropTypes.func,
+};
 export default ToggleMenu;

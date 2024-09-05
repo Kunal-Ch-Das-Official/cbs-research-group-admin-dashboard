@@ -3,12 +3,12 @@ import { IoIosCopy } from "react-icons/io";
 import { MdOutlineDone } from "react-icons/md";
 import AdminReqStatus from "../../../utils/admin-request-status/AdminReqStatus";
 import { Link } from "react-router-dom";
-import { useApp } from "../../../app-context/AppContext";
 import { MdDeleteForever } from "react-icons/md";
 import { TbMessageCancel } from "react-icons/tb";
 import { FcApproval } from "react-icons/fc";
 import { MdSpeakerNotesOff } from "react-icons/md";
 import PropTypes from "prop-types";
+import { useApp } from "../../../app-context/useApp";
 
 const GetAllDesireAdminReq = ({
   userName,
@@ -51,7 +51,7 @@ const GetAllDesireAdminReq = ({
     ) {
       setIsAccepted(() => localStorage.setItem(`isAccepted-${id}`, true));
     }
-  }, []);
+  }, [id, isIdAccepted, isIdRejected]);
   useEffect(() => {
     if (id.includes(isIdRejected)) {
       setIsRejected(true);
@@ -59,7 +59,7 @@ const GetAllDesireAdminReq = ({
     if (id.includes(isIdAccepted)) {
       setIsAccepted(true);
     }
-  }, []);
+  }, [id, isIdAccepted, isIdRejected]);
 
   return (
     <>

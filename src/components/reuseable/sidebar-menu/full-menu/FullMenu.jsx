@@ -1,6 +1,7 @@
 // Project: CBS Research Group Admin Dashboard
 // Content: Full side bar
 // Date: 30/08/2024
+import PropTypes from "prop-types";
 import { MdDashboard } from "react-icons/md";
 import { MdAdminPanelSettings } from "react-icons/md";
 import { IoIosArrowDown } from "react-icons/io";
@@ -803,6 +804,10 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
       </nav>
     </div>
   );
+};
+FullMenu.propTypes = {
+  closeFullMenu: PropTypes.func,
+  logoutHandler: PropTypes.func,
 };
 
 export default FullMenu;
