@@ -30,6 +30,11 @@ import ManageDoctorateAlumni from "./pages/doctorate-alumni/ManageDoctorateAlumn
 import UpdateDoctotateAlumni from "./pages/doctorate-alumni/UpdateDoctotateAlumni";
 import DeleteDoctorateAlumni from "./pages/doctorate-alumni/DeleteDoctorateAlumni";
 import PreviewDoctorateAlumni from "./pages/doctorate-alumni/PreviewDoctorateAlumni";
+import UploadMscMember from "./pages/msc-members/UploadMscMember";
+import ManageMscMembers from "./pages/msc-members/ManageMscMembers";
+import PreviewMscMember from "./pages/msc-members/PreviewMscMember";
+import UpdateMscMember from "./pages/msc-members/UpdateMscMember";
+import DeleteMscMember from "./pages/msc-members/DeleteMscMember";
 
 function App() {
   return (
@@ -117,6 +122,26 @@ function App() {
               <Route
                 path="/admin-panel/preview-doctorate-alumni/:id"
                 element={<PreviewDoctorateAlumni />}
+              />
+              <Route
+                path="/admin-panel/upload-msc-member"
+                element={<UploadMscMember />}
+              />
+              <Route
+                path="/admin-panel/manage-msc-members"
+                element={<ManageMscMembers />}
+              />
+              <Route
+                path="/admin-panel/preview-msc-member/:id"
+                element={<PreviewMscMember />}
+              />
+              <Route
+                path="/admin-panel/update-msc-member/:id"
+                element={<UpdateMscMember />}
+              />
+              <Route
+                path="/admin-panel/delete-msc-member/:id"
+                element={<DeleteMscMember />}
               />
             </Route>
           </Routes>

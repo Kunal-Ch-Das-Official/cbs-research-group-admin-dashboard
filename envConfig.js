@@ -31,6 +31,8 @@ const environment = {
   mastersAlumniUrl: import.meta.env.VITE_APP_MASTERS_ALUMNI_URL,
 
   doctorateAlumniUrl: import.meta.env.VITE_APP_DOCTORATE_ALUMNI_URL,
+
+  mscMembersUrl: import.meta.env.VITE_APP_MSC_MEMBERS_URL,
 };
 
 const envConfig = Object.freeze(environment);

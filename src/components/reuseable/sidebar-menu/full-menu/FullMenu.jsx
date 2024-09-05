@@ -272,43 +272,25 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
                 mscMemberDropdown === true ? "block" : "hidden"
               }`}
             >
-              <a
-                id="see_msc_members"
-                href="#"
-                className="text-gray-700 hover:text-black text-sm 
-                flex justify-center items-center hover:bg-white  
-                px-4 py-3 transition-all border-b-[1px] border-gray-400 hover:font-bold"
-              >
-                See MSC Members
-              </a>
-              <a
+              <Link
+                to={"/admin-panel/upload-msc-member"}
                 id="upload_new_msc_members"
-                href="#"
                 className="text-gray-700 hover:text-black text-sm 
                 flex justify-center items-center hover:bg-white hover:font-bold border-b-[1px] border-gray-400
                 px-4 py-3 transition-all"
               >
-                Upload MSC Member
-              </a>
-              <a
-                id="edit_msc_members"
-                href="#"
-                className="text-gray-700 hover:text-black text-sm 
-                flex justify-center items-center hover:bg-white hover:font-bold 
-                px-4 py-3 border-b-[1px] border-gray-400"
-              >
-                Edit MSC Member
-              </a>
+                Upload Data
+              </Link>
 
-              <a
-                id="delete_msc_members"
-                href="#"
+              <Link
+                to={"/admin-panel/manage-msc-members"}
+                id="manage_msc_members"
                 className="text-gray-700 hover:text-black text-sm 
                 flex justify-center items-center hover:bg-white hover:font-bold 
                 px-4 py-3 transition-all"
               >
-                Delete MSC Member
-              </a>
+                Manage Data
+              </Link>
             </div>
           </li>
           {/* PHD MEMBERS  */}
