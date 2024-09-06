@@ -40,6 +40,10 @@ import ManagePhdMembers from "./pages/phd-members/ManagePhdMembers";
 import PreviewPhdMember from "./pages/phd-members/PreviewPhdMember";
 import UpdatePhdMember from "./pages/phd-members/UpdatePhdMember";
 import DeletePhdMember from "./pages/phd-members/DeletePhdMember";
+import UploadPersonalAward from "./pages/personal-awards/UploadPersonalAward";
+import ManagePersonalAwards from "./pages/personal-awards/ManagePersonalAwards";
+import UpdatePersonalAward from "./pages/personal-awards/UpdatePersonalAward";
+import DeletePersonalAward from "./pages/personal-awards/DeletePersonalAward";
 
 function App() {
   return (
@@ -168,6 +172,22 @@ function App() {
               <Route
                 path="/admin-panel/delete-phd-member/:id"
                 element={<DeletePhdMember />}
+              />
+              <Route
+                path="/admin-panel/upload-personal-award"
+                element={<UploadPersonalAward />}
+              />
+              <Route
+                path="/admin-panel/manage-personal-awards"
+                element={<ManagePersonalAwards />}
+              />
+              <Route
+                path="/admin-panel/delete-personal-award/:id"
+                element={<DeletePersonalAward />}
+              />
+              <Route
+                path="/admin-panel/update-personal-award/:id"
+                element={<UpdatePersonalAward />}
               />
             </Route>
           </Routes>

@@ -78,7 +78,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
   return (
     <div>
       <nav
-        className="bg-gray-100 h-screen fixed top-0 left-0 min-w-[260px] py-6 px-4 font-[sans-serif] opacity-100 z-50
+        className="bg-gray-100 h-screen fixed top-0 left-0 min-w-[260px] py-6 px-4 font-[sans-serif] opacity-100 z-[100000]
          flex flex-col overflow-auto no-scrollbar shadow-xl"
         data-aos="fade-right"
       >
@@ -355,43 +355,24 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
                 personalAwardsDropdown === true ? "block" : "hidden"
               }`}
             >
-              <a
-                id="see_personal_awards"
-                href="#"
+              <Link
+                to={"/admin-panel/manage-personal-awards"}
+                id="manage_personal_awards"
                 className="text-gray-700 hover:text-black text-sm 
                 flex justify-center items-center hover:bg-white  
                 px-4 py-3 transition-all border-b-[1px] border-gray-400 hover:font-bold"
               >
-                See Personal Awards
-              </a>
-              <a
+                Manage Data
+              </Link>
+              <Link
+                to={"/admin-panel/upload-personal-award"}
                 id="upload_new_personal_awards"
-                href="#"
                 className="text-gray-700 hover:text-black text-sm 
                 flex justify-center items-center hover:bg-white hover:font-bold border-b-[1px] border-gray-400
                 px-4 py-3 transition-all"
               >
-                Upload Personal Award
-              </a>
-              <a
-                id="edit_personal_awards"
-                href="#"
-                className="text-gray-700 hover:text-black text-sm 
-                flex justify-center items-center hover:bg-white hover:font-bold 
-                px-4 py-3 border-b-[1px] border-gray-400"
-              >
-                Edit Personal Award
-              </a>
-
-              <a
-                id="delete_personal_awards"
-                href="#"
-                className="text-gray-700 hover:text-black text-sm 
-                flex justify-center items-center hover:bg-white hover:font-bold 
-                px-4 py-3 transition-all"
-              >
-                Delete Personal Award
-              </a>
+                Upload Data
+              </Link>
             </div>
           </li>
           {/* TEAM AWARDS  */}
