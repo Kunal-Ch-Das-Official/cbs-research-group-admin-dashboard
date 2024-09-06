@@ -435,43 +435,24 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
                 labInstrumentsDropdown === true ? "block" : "hidden"
               }`}
             >
-              <a
-                id="see_lab_instruments"
-                href="#"
+              <Link
+                to={"/admin-panel/manage-lab-instruments"}
+                id="manage_lab_instruments"
                 className="text-gray-700 hover:text-black text-sm 
                 flex justify-center items-center hover:bg-white  
                 px-4 py-3 transition-all border-b-[1px] border-gray-400 hover:font-bold"
               >
-                See Lab Instruments
-              </a>
-              <a
+                Manage Data
+              </Link>
+              <Link
+                to={"/admin-panel/upload-lab-instrument"}
                 id="upload_new_lab_instrument"
-                href="#"
                 className="text-gray-700 hover:text-black text-sm 
                 flex justify-center items-center hover:bg-white hover:font-bold border-b-[1px] border-gray-400
                 px-4 py-3 transition-all"
               >
-                Upload Lab Instrument
-              </a>
-              <a
-                id="edit_lab_instrument"
-                href="#"
-                className="text-gray-700 hover:text-black text-sm 
-                flex justify-center items-center hover:bg-white hover:font-bold 
-                px-4 py-3 border-b-[1px] border-gray-400"
-              >
-                Edit Lab Instrument
-              </a>
-
-              <a
-                id="delete_lab_instrument"
-                href="#"
-                className="text-gray-700 hover:text-black text-sm 
-                flex justify-center items-center hover:bg-white hover:font-bold 
-                px-4 py-3 transition-all"
-              >
-                Delete Lab Instrument
-              </a>
+                Upload Data
+              </Link>
             </div>
           </li>
         </ul>

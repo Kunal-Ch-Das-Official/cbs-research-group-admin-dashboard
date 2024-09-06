@@ -48,6 +48,10 @@ import UploadTeamAward from "./pages/team-awards/UploadTeamAward";
 import ManageTeamAwards from "./pages/team-awards/ManageTeamAwards";
 import UpdateTeamAward from "./pages/team-awards/UpdateTeamAward";
 import DeleteTeamAward from "./pages/team-awards/DeleteTeamAward";
+import UploadLabInstrument from "./pages/lab-instruments/UploadLabInstrument";
+import ManageLabInstruments from "./pages/lab-instruments/ManageLabInstruments";
+import UpdateLabInstrument from "./pages/lab-instruments/UpdateLabInstrument";
+import DeleteLabInstrument from "./pages/lab-instruments/DeleteLabInstrument";
 
 function App() {
   return (
@@ -210,6 +214,26 @@ function App() {
               <Route
                 path="/admin-panel/delete-team-award/:id"
                 element={<DeleteTeamAward />}
+              />
+
+              <Route
+                path="/admin-panel/upload-lab-instrument"
+                element={<UploadLabInstrument />}
+              />
+
+              <Route
+                path="/admin-panel/manage-lab-instruments"
+                element={<ManageLabInstruments />}
+              />
+
+              <Route
+                path="/admin-panel/update-lab-instrument/:id"
+                element={<UpdateLabInstrument />}
+              />
+
+              <Route
+                path="/admin-panel/delete-lab-instrument/:id"
+                element={<DeleteLabInstrument />}
               />
             </Route>
           </Routes>

@@ -61,38 +61,11 @@ const AdminLogin = () => {
             ),
             buttonColor: "bg-green-600",
           });
+
           if (isRememberMeChecked === true) {
-            const expiresToken = localStorage.getItem("expires") || null;
-            const authToken = localStorage.getItem("auth-token") || null;
-            const adminToken = localStorage.getItem("admin-token") || null;
-            const now = new Date();
-            const item = {
-              value: res.data.authentication_sign,
-              expiry: now.getTime() + 86400000,
-            };
-            if (expiresToken) {
-              localStorage.removeItem("expires");
-              localStorage.setItem("expires", JSON.stringify(item));
-            } else {
-              localStorage.setItem("expires", JSON.stringify(item));
-            }
-            if (authToken) {
-              localStorage.removeItem("auth-token");
-              localStorage.setItem("auth-token", res.data.authentication_sign);
-            } else {
-              localStorage.setItem("auth-token", res.data.authentication_sign);
-            }
-            if (adminToken) {
-              localStorage.removeItem("admin-token");
-            }
+            localStorage.setItem("auth-token", res.data.authentication_sign);
           } else {
-            const adminToken = localStorage.getItem("admin-token") || null;
-            if (adminToken) {
-              localStorage.removeItem("admin-token");
-              localStorage.setItem("admin-token", res.data.authentication_sign);
-            } else {
-              localStorage.setItem("admin-token", res.data.authentication_sign);
-            }
+            localStorage.setItem("admin-token", res.data.authentication_sign);
           }
           setIsLoading(false);
           setModelOpen(true);
