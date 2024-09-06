@@ -35,6 +35,11 @@ import ManageMscMembers from "./pages/msc-members/ManageMscMembers";
 import PreviewMscMember from "./pages/msc-members/PreviewMscMember";
 import UpdateMscMember from "./pages/msc-members/UpdateMscMember";
 import DeleteMscMember from "./pages/msc-members/DeleteMscMember";
+import UploadPhdMember from "./pages/phd-members/UploadPhdMember";
+import ManagePhdMembers from "./pages/phd-members/ManagePhdMembers";
+import PreviewPhdMember from "./pages/phd-members/PreviewPhdMember";
+import UpdatePhdMember from "./pages/phd-members/UpdatePhdMember";
+import DeletePhdMember from "./pages/phd-members/DeletePhdMember";
 
 function App() {
   return (
@@ -142,6 +147,27 @@ function App() {
               <Route
                 path="/admin-panel/delete-msc-member/:id"
                 element={<DeleteMscMember />}
+              />
+
+              <Route
+                path="/admin-panel/upload-phd-member"
+                element={<UploadPhdMember />}
+              />
+              <Route
+                path="/admin-panel/manage-phd-members"
+                element={<ManagePhdMembers />}
+              />
+              <Route
+                path="/admin-panel/preview-phd-member/:id"
+                element={<PreviewPhdMember />}
+              />
+              <Route
+                path="/admin-panel/update-phd-member/:id"
+                element={<UpdatePhdMember />}
+              />
+              <Route
+                path="/admin-panel/delete-phd-member/:id"
+                element={<DeletePhdMember />}
               />
             </Route>
           </Routes>

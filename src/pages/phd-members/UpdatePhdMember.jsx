@@ -8,7 +8,7 @@ import envConfig from "../../../envConfig";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import CustomModel from "../../utils/custom-models/CustomModel";
 import { Link, useNavigate, useParams } from "react-router-dom";
-const UpdateMscMember = () => {
+const UpdatePhdMember = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [previousData, setPreviousData] = useState(null);
@@ -17,6 +17,7 @@ const UpdateMscMember = () => {
   const [membersEmail, setMembersEmail] = useState("");
   const [membersPhoneNo, setMembersPhoneNo] = useState("");
   const [graduateFrom, setGraduateFrom] = useState("");
+  const [mastersFrom, setMastersFrom] = useState("");
   const [researchGateHandle, setResearchGateHandle] = useState("");
   const [googleScholarHandle, setGoogleScholarHandle] = useState("");
   const [currentYear, setCurrentYear] = useState("");
@@ -37,7 +38,7 @@ const UpdateMscMember = () => {
     const getPreviousMembersInfo = async () => {
       try {
         setLoading(true);
-        await axios.get(`${envConfig.mscMembersUrl}/${id}`).then((res) => {
+        await axios.get(`${envConfig.phdMembersUrl}/${id}`).then((res) => {
           setPreviousData(res.data);
         });
       } catch (error) {
@@ -50,19 +51,20 @@ const UpdateMscMember = () => {
     getPreviousMembersInfo();
   }, [id]);
 
-  const updateMscMemberHandler = async (e) => {
+  const updatePhdMemberHandler = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const mscMembersInfo = new FormData();
-    mscMembersInfo.append("memberName", membersName);
-    mscMembersInfo.append("profilePicture", membersImage);
-    mscMembersInfo.append("emailId", membersEmail);
-    mscMembersInfo.append("phoneNumber", membersPhoneNo);
-    mscMembersInfo.append("bscDoneFrom", graduateFrom);
-    mscMembersInfo.append("researchGateId", researchGateHandle);
-    mscMembersInfo.append("googleScholarId", googleScholarHandle);
-    mscMembersInfo.append("currentYear", currentYear);
-    mscMembersInfo.append("details", aboutMember);
+    const phdMembersInfo = new FormData();
+    phdMembersInfo.append("memberName", membersName);
+    phdMembersInfo.append("profilePicture", membersImage);
+    phdMembersInfo.append("emailId", membersEmail);
+    phdMembersInfo.append("phoneNumber", membersPhoneNo);
+    phdMembersInfo.append("bscDoneFrom", graduateFrom);
+    phdMembersInfo.append("mscDoneFrom", mastersFrom);
+    phdMembersInfo.append("researchGateId", researchGateHandle);
+    phdMembersInfo.append("googleScholarId", googleScholarHandle);
+    phdMembersInfo.append("currentYear", currentYear);
+    phdMembersInfo.append("details", aboutMember);
 
     const authToken = localStorage.getItem("auth-token");
     const adminToken = localStorage.getItem("admin-token");
@@ -70,7 +72,7 @@ const UpdateMscMember = () => {
 
     try {
       await axios
-        .patch(`${envConfig.mscMembersUrl}/${id}`, mscMembersInfo, {
+        .patch(`${envConfig.phdMembersUrl}/${id}`, phdMembersInfo, {
           headers: {
             Authorization: `Bearer ${token}`,
             "Content-Type": "multipart/form-data",
@@ -96,7 +98,6 @@ const UpdateMscMember = () => {
     } finally {
       setLoading(false);
       setShowAlert(true);
-
       setMembersImage("");
       setAboutMember(null);
       setPhoneNumberValidatErr(false);
@@ -105,7 +106,7 @@ const UpdateMscMember = () => {
   };
   const closeModelHandler = () => {
     setShowAlert(false);
-    navigate("/admin-panel/manage-msc-members");
+    navigate("/admin-panel/manage-phd-members");
   };
 
   return (
@@ -126,7 +127,7 @@ const UpdateMscMember = () => {
         <main className="bg-gray-50 min-h-screen pt-20 pb-12">
           <div className="text-center">
             <h1 className="text-2xl text-gray-500 font-bold">
-              MSC Members Information Update
+              PHD Members Information Update
             </h1>
             <p className="flex flex-wrap flex-col mx-20 lg:mx-40">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste
@@ -138,7 +139,7 @@ const UpdateMscMember = () => {
 
           <form
             className="grid grid-cols-1 lg:grid-cols-2"
-            onSubmit={updateMscMemberHandler}
+            onSubmit={updatePhdMemberHandler}
           >
             <div className=" mt-2" id="columnOne">
               <div className="py-0 px-4 mx-auto max-w-2xl">
@@ -182,6 +183,14 @@ const UpdateMscMember = () => {
                         >
                           <option value="1st">1st</option>
                           <option value="2nd">2nd</option>
+                          <option value="3rd">3rd</option>
+                          <option value="4th">4th</option>
+                          <option value="5th">5th</option>
+                          <option value="6th">6th</option>
+                          <option value="7th">7th</option>
+                          <option value="8th">8th</option>
+                          <option value="9th">9th</option>
+                          <option value="10th">10th</option>
                         </select>
                       </div>
                     </div>
@@ -200,6 +209,22 @@ const UpdateMscMember = () => {
                       className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                       defaultValue={previousData.bscDoneFrom}
                       onChange={(e) => setGraduateFrom(e.target.value)}
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="mscDoneFrom"
+                      className="block mb-2 text-sm font-medium text-gray-900"
+                    >
+                      Masters from
+                    </label>
+                    <input
+                      type="text"
+                      name="mscDoneFrom"
+                      id="mscDoneFrom"
+                      className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                      defaultValue={previousData.mscDoneFrom}
+                      onChange={(e) => setMastersFrom(e.target.value)}
                     />
                   </div>
                   <div className="sm:col-span-2 mt-2">
@@ -227,7 +252,7 @@ const UpdateMscMember = () => {
                     Update Details
                   </button>
                   <Link
-                    to={"/admin-panel/manage-msc-members"}
+                    to={"/admin-panel/manage-phd-members"}
                     className="inline-flex cursor-pointer items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center 
                     shadow-xl bg-[#fff] hover:bg-[#f7ca00] rounded-xl border border-gray-200"
                   >
@@ -392,4 +417,4 @@ const UpdateMscMember = () => {
   );
 };
 
-export default UpdateMscMember;
+export default UpdatePhdMember;

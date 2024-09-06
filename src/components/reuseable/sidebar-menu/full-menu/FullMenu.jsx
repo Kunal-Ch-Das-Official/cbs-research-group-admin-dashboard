@@ -273,16 +273,6 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
               }`}
             >
               <Link
-                to={"/admin-panel/upload-msc-member"}
-                id="upload_new_msc_members"
-                className="text-gray-700 hover:text-black text-sm 
-                flex justify-center items-center hover:bg-white hover:font-bold border-b-[1px] border-gray-400
-                px-4 py-3 transition-all"
-              >
-                Upload Data
-              </Link>
-
-              <Link
                 to={"/admin-panel/manage-msc-members"}
                 id="manage_msc_members"
                 className="text-gray-700 hover:text-black text-sm 
@@ -290,6 +280,16 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
                 px-4 py-3 transition-all"
               >
                 Manage Data
+              </Link>
+              <hr className="my-2 border-gray-500" />
+              <Link
+                to={"/admin-panel/upload-msc-member"}
+                id="upload_new_msc_members"
+                className="text-gray-700 hover:text-black text-sm 
+                flex justify-center items-center hover:bg-white hover:font-bold border-b-[1px] border-gray-400
+                px-4 py-3 transition-all"
+              >
+                Upload Data
               </Link>
             </div>
           </li>
@@ -312,43 +312,24 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
                 phdMemberDropdown === true ? "block" : "hidden"
               }`}
             >
-              <a
-                id="see_phd_members"
-                href="#"
+              <Link
+                to={"/admin-panel/manage-phd-members"}
+                id="manage_phd_members"
                 className="text-gray-700 hover:text-black text-sm 
                 flex justify-center items-center hover:bg-white  
                 px-4 py-3 transition-all border-b-[1px] border-gray-400 hover:font-bold"
               >
-                See PHD Members
-              </a>
-              <a
+                Manage Data
+              </Link>
+              <Link
+                to={"/admin-panel/upload-phd-member"}
                 id="upload_new_phd_members"
-                href="#"
                 className="text-gray-700 hover:text-black text-sm 
                 flex justify-center items-center hover:bg-white hover:font-bold border-b-[1px] border-gray-400
                 px-4 py-3 transition-all"
               >
-                Upload PHD Member
-              </a>
-              <a
-                id="edit_phd_members"
-                href="#"
-                className="text-gray-700 hover:text-black text-sm 
-                flex justify-center items-center hover:bg-white hover:font-bold 
-                px-4 py-3 border-b-[1px] border-gray-400"
-              >
-                Edit PHD Member
-              </a>
-
-              <a
-                id="delete_phd_members"
-                href="#"
-                className="text-gray-700 hover:text-black text-sm 
-                flex justify-center items-center hover:bg-white hover:font-bold 
-                px-4 py-3 transition-all"
-              >
-                Delete PHd Member
-              </a>
+                Upload Data
+              </Link>
             </div>
           </li>
         </ul>
