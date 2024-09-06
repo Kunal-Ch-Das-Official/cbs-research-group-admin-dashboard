@@ -9,9 +9,9 @@ import { FcCancel } from "react-icons/fc";
 import { MdDownloadDone } from "react-icons/md";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import CustomModel from "../../utils/custom-models/CustomModel";
-const UploadPersonalAward = () => {
+const UploadTeamAward = () => {
   const navigate = useNavigate();
-  const personalAwardFormRef = useRef();
+  const teamAwardFormRef = useRef();
   const [awardTitle, setAwardTitle] = useState("");
   const [awardDetails, setAwardDetails] = useState("");
   const [date, setDate] = useState(null);
@@ -38,7 +38,7 @@ const UploadPersonalAward = () => {
       const adminToken = localStorage.getItem("admin-token") || null;
       const token = authToken || adminToken;
       await axios
-        .post(envConfig.personalAwardsUrl, uploadInfo, {
+        .post(envConfig.teamAwardsUrl, uploadInfo, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -64,13 +64,13 @@ const UploadPersonalAward = () => {
     } finally {
       setLoading(false);
       setShowAlert(true);
-      personalAwardFormRef.current.reset();
+      teamAwardFormRef.current.reset();
     }
   };
 
   const closeModelHandler = () => {
     setShowAlert(false);
-    navigate("/admin-panel/manage-personal-awards");
+    navigate("/admin-panel/manage-team-awards");
   };
 
   return (
@@ -95,14 +95,14 @@ const UploadPersonalAward = () => {
             </div>
 
             <h3 className="mt-3 text-xl font-medium text-center text-gray-600">
-              Upload Personal Awards
+              Upload Team Awards
             </h3>
 
             <p className="mt-1 text-center text-gray-500">
-              Upload personal awards info
+              Upload Team awards info
             </p>
 
-            <form onSubmit={handleAwardSubmit} ref={personalAwardFormRef}>
+            <form onSubmit={handleAwardSubmit} ref={teamAwardFormRef}>
               <div className="w-full mt-4">
                 <input
                   className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg  focus:outline-none "
@@ -216,4 +216,4 @@ const UploadPersonalAward = () => {
   );
 };
 
-export default UploadPersonalAward;
+export default UploadTeamAward;

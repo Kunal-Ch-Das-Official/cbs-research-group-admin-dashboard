@@ -44,6 +44,10 @@ import UploadPersonalAward from "./pages/personal-awards/UploadPersonalAward";
 import ManagePersonalAwards from "./pages/personal-awards/ManagePersonalAwards";
 import UpdatePersonalAward from "./pages/personal-awards/UpdatePersonalAward";
 import DeletePersonalAward from "./pages/personal-awards/DeletePersonalAward";
+import UploadTeamAward from "./pages/team-awards/UploadTeamAward";
+import ManageTeamAwards from "./pages/team-awards/ManageTeamAwards";
+import UpdateTeamAward from "./pages/team-awards/UpdateTeamAward";
+import DeleteTeamAward from "./pages/team-awards/DeleteTeamAward";
 
 function App() {
   return (
@@ -188,6 +192,24 @@ function App() {
               <Route
                 path="/admin-panel/update-personal-award/:id"
                 element={<UpdatePersonalAward />}
+              />
+              <Route
+                path="/admin-panel/upload-team-award"
+                element={<UploadTeamAward />}
+              />
+              <Route
+                path="/admin-panel/manage-team-awards"
+                element={<ManageTeamAwards />}
+              />
+
+              <Route
+                path="/admin-panel/update-team-award/:id"
+                element={<UpdateTeamAward />}
+              />
+
+              <Route
+                path="/admin-panel/delete-team-award/:id"
+                element={<DeleteTeamAward />}
               />
             </Route>
           </Routes>

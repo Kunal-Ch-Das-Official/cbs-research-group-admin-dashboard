@@ -5,12 +5,13 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 const AwardCard = ({
-  id,
   awardTitle,
   recivedDate,
   overView,
   uploadDate,
   updateDate,
+  deleteUrl,
+  updateUrl,
 }) => {
   const [extractOverview, setExtractOverview] = useState("");
   const [isExtractOverview, setIsExtractOverview] = useState(false);
@@ -91,7 +92,7 @@ const AwardCard = ({
 
         <div className="flex items-center justify-around mt-4 gap-x-2 shrink-0">
           <Link
-            to={`/admin-panel/update-personal-award/${id}`}
+            to={updateUrl}
             className=" text-sm border border-gray-200 hover:bg-gray-100 transform translate-y-1 hover:scale-110
           w-[45%] h-8 inline-flex item-center justify-center pt-1 rounded-lg shadow-lg"
           >
@@ -100,7 +101,7 @@ const AwardCard = ({
           </Link>
 
           <Link
-            to={`/admin-panel/delete-personal-award/${id}`}
+            to={deleteUrl}
             className=" text-sm border border-gray-200 hover:bg-gray-100 transform translate-y-1 hover:scale-110
           w-[45%] h-8 inline-flex item-center justify-center pt-1 rounded-lg shadow-lg"
           >
@@ -114,12 +115,13 @@ const AwardCard = ({
 };
 
 AwardCard.propTypes = {
-  id: PropTypes.string,
   awardTitle: PropTypes.string,
   recivedDate: PropTypes.string,
   overView: PropTypes.string,
   uploadDate: PropTypes.string,
   updateDate: PropTypes.string,
+  deleteUrl: PropTypes.string,
+  updateUrl: PropTypes.string,
 };
 
 export default AwardCard;

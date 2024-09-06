@@ -37,6 +37,8 @@ const environment = {
   phdMembersUrl: import.meta.env.VITE_APP_PHD_MEMBERS_URL,
 
   personalAwardsUrl: import.meta.env.VITE_APP_PERSONAL_AWARDS_URL,
+
+  teamAwardsUrl: import.meta.env.VITE_APP_TEAM_AWARDS_URL,
 };
 
 const envConfig = Object.freeze(environment);

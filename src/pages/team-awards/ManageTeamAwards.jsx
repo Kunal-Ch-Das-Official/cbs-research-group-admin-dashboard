@@ -1,18 +1,17 @@
 import AwardCard from "../../components/reuseable/awards-card/AwardCard";
-
 import { useEffect, useState } from "react";
 import axios from "../../../axios/axios";
 import envConfig from "../../../envConfig";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 
-const ManagePersonalAwards = () => {
+const ManageTeamAwards = () => {
   const [allAwards, setAllawards] = useState(null);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
     const getAllPersonalAwards = async () => {
       try {
-        await axios.get(envConfig.personalAwardsUrl).then((res) => {
+        await axios.get(envConfig.teamAwardsUrl).then((res) => {
           setAllawards(res.data);
         });
       } catch (error) {
@@ -35,8 +34,8 @@ const ManagePersonalAwards = () => {
             allAwards.map((data, index) => (
               <AwardCard
                 key={index}
-                updateUrl={`/admin-panel/update-personal-award/${data._id}`}
-                deleteUrl={`/admin-panel/delete-personal-award/${data._id}`}
+                updateUrl={`/admin-panel/update-team-award/${data._id}`}
+                deleteUrl={`/admin-panel/delete-team-award/${data._id}`}
                 awardTitle={data.awardTitle}
                 recivedDate={data.recivedDate}
                 overView={data.recivedFor}
@@ -54,4 +53,4 @@ const ManagePersonalAwards = () => {
   );
 };
 
-export default ManagePersonalAwards;
+export default ManageTeamAwards;

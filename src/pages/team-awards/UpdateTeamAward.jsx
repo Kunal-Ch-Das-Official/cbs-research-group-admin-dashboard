@@ -1,17 +1,18 @@
 import { Calendar } from "primereact/calendar";
 import { FloatLabel } from "primereact/floatlabel";
-import { useRef, useState } from "react";
+import { useState, useEffect } from "react";
 import cbsLogo from "../../assets/CBS Research Group Logo-resized.png";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "../../../axios/axios";
 import envConfig from "../../../envConfig";
 import { FcCancel } from "react-icons/fc";
 import { MdDownloadDone } from "react-icons/md";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import CustomModel from "../../utils/custom-models/CustomModel";
-const UploadPersonalAward = () => {
+const UpdateTeamAward = () => {
+  const { id } = useParams();
+  const [prevData, setPrevData] = useState(null);
   const navigate = useNavigate();
-  const personalAwardFormRef = useRef();
   const [awardTitle, setAwardTitle] = useState("");
   const [awardDetails, setAwardDetails] = useState("");
   const [date, setDate] = useState(null);
@@ -24,12 +25,29 @@ const UploadPersonalAward = () => {
     buttonColor: null,
   });
 
-  const handleAwardSubmit = async (e) => {
+  useEffect(() => {
+    setLoading(true);
+    const getPreviousData = async () => {
+      try {
+        await axios.get(`${envConfig.teamAwardsUrl}/${id}`).then((res) => {
+          setPrevData(res.data);
+        });
+      } catch (error) {
+        console.log(error);
+        setPrevData(null);
+      } finally {
+        setLoading(false);
+      }
+    };
+    getPreviousData();
+  }, [id]);
+
+  const handleAwardUpdate = async (e) => {
     e.preventDefault();
     try {
       setLoading(true);
       const formattedDate = date.toLocaleDateString("en-GB");
-      const uploadInfo = {
+      const updatedInfo = {
         awardTitle: awardTitle,
         recivedFor: awardDetails,
         recivedDate: formattedDate,
@@ -38,12 +56,13 @@ const UploadPersonalAward = () => {
       const adminToken = localStorage.getItem("admin-token") || null;
       const token = authToken || adminToken;
       await axios
-        .post(envConfig.personalAwardsUrl, uploadInfo, {
+        .patch(`${envConfig.teamAwardsUrl}/${id}`, updatedInfo, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         })
         .then((res) => {
+          console.log(res);
           setCustomAlert({
             message: res.data.message,
             details: res.data.details,
@@ -64,13 +83,12 @@ const UploadPersonalAward = () => {
     } finally {
       setLoading(false);
       setShowAlert(true);
-      personalAwardFormRef.current.reset();
     }
   };
 
   const closeModelHandler = () => {
     setShowAlert(false);
-    navigate("/admin-panel/manage-personal-awards");
+    navigate("/admin-panel/manage-team-awards");
   };
 
   return (
@@ -87,6 +105,7 @@ const UploadPersonalAward = () => {
           buttonColor={customAlert.buttonColor}
         />
       )}
+
       <section className="pt-32">
         <div className="w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-xl">
           <div className="px-6 py-4">
@@ -95,21 +114,20 @@ const UploadPersonalAward = () => {
             </div>
 
             <h3 className="mt-3 text-xl font-medium text-center text-gray-600">
-              Upload Personal Awards
+              Update Team Awards
             </h3>
 
             <p className="mt-1 text-center text-gray-500">
-              Upload personal awards info
+              Update Team awards info
             </p>
 
-            <form onSubmit={handleAwardSubmit} ref={personalAwardFormRef}>
+            <form onSubmit={handleAwardUpdate}>
               <div className="w-full mt-4">
                 <input
+                  defaultValue={prevData && prevData.awardTitle}
                   className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg  focus:outline-none "
                   type="text"
-                  placeholder="Write awards title"
                   aria-label="award-title"
-                  required
                   onChange={(e) => setAwardTitle(e.target.value)}
                 />
               </div>
@@ -120,13 +138,12 @@ const UploadPersonalAward = () => {
                       htmlFor="recivedDate"
                       className="text-gray-500 z-[100] pl-4"
                     >
-                      Recived Date
+                      {prevData && prevData.recivedDate}
                     </label>
                     <Calendar
                       className="z-0 border-b  border-l  border-r border-gray-200 pl-4"
                       inputId="recivedDate"
                       value={date}
-                      required
                       onChange={(e) => setDate(e.value)}
                     />
                   </FloatLabel>
@@ -139,20 +156,25 @@ const UploadPersonalAward = () => {
                     About Awards
                   </label>
                   <textarea
+                    defaultValue={prevData && prevData.recivedFor}
                     id="awardDetails"
                     rows="4"
                     className="w-full px-0 text-sm text-gray-900 bg-white border-0"
-                    placeholder="Write about awards details...."
-                    required
                     onChange={(e) => setAwardDetails(e.target.value)}
                   ></textarea>
                 </div>
                 <div className="flex items-center justify-between px-3 py-2 border-t ">
                   <button
                     type="submit"
-                    className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg f  hover:bg-blue-800"
+                    className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-black bg-yellow-500 rounded-lg f  hover:bg-yellow-600"
                   >
-                    Upload
+                    Update
+                  </button>
+                  <button
+                    onClick={() => navigate("/admin-panel/manage-team-awards")}
+                    className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-black bg-gray-300 rounded-lg f  hover:bg-gray-400"
+                  >
+                    Cancel
                   </button>
                   <div className="flex ps-0 space-x-1 rtl:space-x-reverse sm:ps-2">
                     <button
@@ -216,4 +238,4 @@ const UploadPersonalAward = () => {
   );
 };
 
-export default UploadPersonalAward;
+export default UpdateTeamAward;

@@ -393,43 +393,24 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
                 teamAwardsDropdown === true ? "block" : "hidden"
               }`}
             >
-              <a
-                id="see_team_awards"
-                href="#"
+              <Link
+                to={"/admin-panel/manage-team-awards"}
+                id="manage_team_awards"
                 className="text-gray-700 hover:text-black text-sm 
                 flex justify-center items-center hover:bg-white  
                 px-4 py-3 transition-all border-b-[1px] border-gray-400 hover:font-bold"
               >
-                See Team Awards
-              </a>
-              <a
+                Manage Data
+              </Link>
+              <Link
+                to={"/admin-panel/upload-team-award"}
                 id="upload_new_team_awards"
-                href="#"
-                className="text-gray-700 hover:text-black text-sm 
-                flex justify-center items-center hover:bg-white hover:font-bold border-b-[1px] border-gray-400
-                px-4 py-3 transition-all"
-              >
-                Upload Team Award
-              </a>
-              <a
-                id="edit_team_awards"
-                href="#"
-                className="text-gray-700 hover:text-black text-sm 
-                flex justify-center items-center hover:bg-white hover:font-bold 
-                px-4 py-3 border-b-[1px] border-gray-400"
-              >
-                Edit Team Award
-              </a>
-
-              <a
-                id="delete_team_awards"
-                href="#"
                 className="text-gray-700 hover:text-black text-sm 
                 flex justify-center items-center hover:bg-white hover:font-bold 
                 px-4 py-3 transition-all"
               >
-                Delete Team Award
-              </a>
+                Upload Data
+              </Link>
             </div>
           </li>
         </ul>
