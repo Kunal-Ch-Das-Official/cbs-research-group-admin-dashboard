@@ -9,11 +9,19 @@ const AppContext = createContext();
 export const AppProvider = ({ children }) => {
   const [isIdAccepted, setisIdAccepted] = useState(null);
   const [isIdRejected, setisIdRejected] = useState(null);
+  const [isContactResSend, setisContactResSend] = useState(null);
 
   // Return context with all state and handler
   return (
     <AppContext.Provider
-      value={{ isIdAccepted, setisIdAccepted, isIdRejected, setisIdRejected }}
+      value={{
+        isIdAccepted,
+        setisIdAccepted,
+        isIdRejected,
+        setisIdRejected,
+        isContactResSend,
+        setisContactResSend,
+      }}
     >
       {children}
     </AppContext.Provider>

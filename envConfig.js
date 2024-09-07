@@ -43,6 +43,11 @@ const environment = {
   labInstrumntsUrl: import.meta.env.VITE_APP_LAB_INSTRUMENTS_URL,
 
   groupNewsUrl: import.meta.env.VITE_APP_GROUP_NEWS_URL,
+
+  contactFormDataUrl: import.meta.env.VITE_APP_CONTACT_PERSONS_INFO_URL,
+
+  contactApplicationResUrl: import.meta.env
+    .VITE_APP_SEND_CONTACT_APPLICATION_RESPONSE_MAIL_URL,
 };
 
 const envConfig = Object.freeze(environment);

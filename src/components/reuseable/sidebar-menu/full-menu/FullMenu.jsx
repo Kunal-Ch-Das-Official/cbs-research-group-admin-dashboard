@@ -6,7 +6,6 @@ import { MdDashboard } from "react-icons/md";
 import { MdAdminPanelSettings } from "react-icons/md";
 import { IoIosArrowDown } from "react-icons/io";
 import { VscGitPullRequestGoToChanges } from "react-icons/vsc";
-import { BiSolidContact } from "react-icons/bi";
 import { SlChemistry } from "react-icons/sl";
 import { PiNewspaperClippingFill } from "react-icons/pi";
 import { PiStudentFill } from "react-icons/pi";
@@ -34,7 +33,6 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
   const [teamAwardsDropdown, setTeamAwardsDropdown] = useState(false);
   const [labInstrumentsDropdown, setLabInstrumentsDropdown] = useState(false);
   const [groupNewsDropdown, setGroupNewsDropdown] = useState(false);
-  const [contactUsDropdown, setContactUsDropdown] = useState(false);
   const [projectsDropdown, setProjectsDropdown] = useState(false);
   const [publicationsDropdown, setPublicationssDropdown] = useState(false);
   const handleDropdown = (id) => {
@@ -64,9 +62,6 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
     }
     if (id === 9) {
       setGroupNewsDropdown((prev) => !prev);
-    }
-    if (id === 10) {
-      setContactUsDropdown((prev) => !prev);
     }
     if (id === 11) {
       setProjectsDropdown((prev) => !prev);
@@ -501,53 +496,21 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
         <hr className="my-2 border-gray-900" />
 
         {/* CONTACT US SECTIONS  */}
-        <ul className="space-y-3" id="contact_us_section">
-          <li onClick={() => handleDropdown(10)} className="cursor-pointer">
-            <p className="text-gray-700 hover:text-black text-sm flex justify-between items-center hover:bg-white rounded px-4 py-3 transition-all">
-              <BiSolidContact className="text-xl text-gray-700 mr-4" />
-              <span className="mr-10">Contact Us</span>
-              {contactUsDropdown === true ? (
-                <IoIosArrowUp className="text-xl text-gray-700 ml-4" />
-              ) : (
-                <IoIosArrowDown className="text-xl text-gray-700 ml-4" />
-              )}
-            </p>
-            <div
-              onClick={closeFullMenu}
-              id="contact_us_dropdown"
-              className={`bg-white border-[1px] border-gray-200 ${
-                contactUsDropdown === true ? "block" : "hidden"
-              }`}
+        <ul
+          className="space-y-3 mt-2"
+          id="contact_manage"
+          onClick={closeFullMenu}
+        >
+          <li>
+            <Link
+              to={"/admin-panel/manage-contacts"}
+              className="text-gray-700 hover:text-black text-sm flex items-center justify-between
+               hover:bg-white rounded px-4 py-3 transition-all"
             >
-              <a
-                id="see_contact_person"
-                href="#"
-                className="text-gray-700 hover:text-black text-sm 
-                flex justify-center items-center hover:bg-white  
-                px-4 py-3 transition-all border-b-[1px] border-gray-400 hover:font-bold"
-              >
-                See Contact Messages
-              </a>
-              <a
-                id="send_response"
-                href="#"
-                className="text-gray-700 hover:text-black text-sm 
-                flex justify-center items-center hover:bg-white hover:font-bold 
-                px-4 py-3 border-b-[1px] border-gray-400"
-              >
-                Send Response
-              </a>
-
-              <a
-                id="delete_contact_message"
-                href="#"
-                className="text-gray-700 hover:text-black text-sm 
-                flex justify-center items-center hover:bg-white hover:font-bold 
-                px-4 py-3 transition-all"
-              >
-                Delete Contact Message
-              </a>
-            </div>
+              <MdDashboard className="text-xl text-gray-700" />
+              <span className="">Manage Contacts</span>
+              <IoIosArrowForward className="text-lg" />
+            </Link>
           </li>
         </ul>
         <hr className="my-2 border-gray-900" />

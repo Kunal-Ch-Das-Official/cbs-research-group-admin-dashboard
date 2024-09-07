@@ -56,6 +56,10 @@ import UploadGroupnews from "./pages/group-news/UploadGroupnews";
 import ManageGroupnews from "./pages/group-news/ManageGroupnews";
 import UpdateGroupnews from "./pages/group-news/UpdateGroupnews";
 import DeleteGroupnews from "./pages/group-news/DeleteGroupnews";
+import ManageContacts from "./pages/contact-info/ManageContacts";
+import DeleteContactInfo from "./pages/contact-info/DeleteContactInfo";
+import PreviewContactInfo from "./pages/contact-info/PreviewContactInfo";
+import SendApplicationResponse from "./pages/contact-info/SendApplicationResponse";
 
 function App() {
   return (
@@ -254,6 +258,23 @@ function App() {
               <Route
                 path="/admin-panel/delete-group-news/:id"
                 element={<DeleteGroupnews />}
+              />
+
+              <Route
+                path="/admin-panel/manage-contacts"
+                element={<ManageContacts />}
+              />
+              <Route
+                path="/admin-panel/delete-contacts/:id"
+                element={<DeleteContactInfo />}
+              />
+              <Route
+                path="/admin-panel/preview-contacts/:id"
+                element={<PreviewContactInfo />}
+              />
+              <Route
+                path="/admin-panel/send-contact-application-response/:id"
+                element={<SendApplicationResponse />}
               />
             </Route>
           </Routes>
