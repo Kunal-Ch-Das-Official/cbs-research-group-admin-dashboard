@@ -477,43 +477,24 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
                 groupNewsDropdown === true ? "block" : "hidden"
               }`}
             >
-              <a
-                id="see_group_news"
-                href="#"
+              <Link
+                to={"/admin-panel/manage-group-news"}
+                id="manage_group_news"
                 className="text-gray-700 hover:text-black text-sm 
                 flex justify-center items-center hover:bg-white  
                 px-4 py-3 transition-all border-b-[1px] border-gray-400 hover:font-bold"
               >
-                See Group News
-              </a>
-              <a
+                Manage Data
+              </Link>
+              <Link
+                to={"/admin-panel/upload-group-news"}
                 id="upload_new_group_news"
-                href="#"
                 className="text-gray-700 hover:text-black text-sm 
                 flex justify-center items-center hover:bg-white hover:font-bold border-b-[1px] border-gray-400
                 px-4 py-3 transition-all"
               >
-                Upload Group News
-              </a>
-              <a
-                id="edit_group_news"
-                href="#"
-                className="text-gray-700 hover:text-black text-sm 
-                flex justify-center items-center hover:bg-white hover:font-bold 
-                px-4 py-3 border-b-[1px] border-gray-400"
-              >
-                Edit Group News
-              </a>
-
-              <a
-                id="delete_group_news"
-                href="#"
-                className="text-gray-700 hover:text-black text-sm 
-                flex justify-center items-center hover:bg-white hover:font-bold 
-                px-4 py-3 transition-all"
-              >
-                Delete Group News
-              </a>
+                Upload Data
+              </Link>
             </div>
           </li>
         </ul>

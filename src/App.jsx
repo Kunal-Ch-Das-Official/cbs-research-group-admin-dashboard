@@ -52,6 +52,10 @@ import UploadLabInstrument from "./pages/lab-instruments/UploadLabInstrument";
 import ManageLabInstruments from "./pages/lab-instruments/ManageLabInstruments";
 import UpdateLabInstrument from "./pages/lab-instruments/UpdateLabInstrument";
 import DeleteLabInstrument from "./pages/lab-instruments/DeleteLabInstrument";
+import UploadGroupnews from "./pages/group-news/UploadGroupnews";
+import ManageGroupnews from "./pages/group-news/ManageGroupnews";
+import UpdateGroupnews from "./pages/group-news/UpdateGroupnews";
+import DeleteGroupnews from "./pages/group-news/DeleteGroupnews";
 
 function App() {
   return (
@@ -234,6 +238,22 @@ function App() {
               <Route
                 path="/admin-panel/delete-lab-instrument/:id"
                 element={<DeleteLabInstrument />}
+              />
+              <Route
+                path="/admin-panel/upload-group-news"
+                element={<UploadGroupnews />}
+              />
+              <Route
+                path="/admin-panel/manage-group-news"
+                element={<ManageGroupnews />}
+              />
+              <Route
+                path="/admin-panel/update-group-news/:id"
+                element={<UpdateGroupnews />}
+              />
+              <Route
+                path="/admin-panel/delete-group-news/:id"
+                element={<DeleteGroupnews />}
               />
             </Route>
           </Routes>
