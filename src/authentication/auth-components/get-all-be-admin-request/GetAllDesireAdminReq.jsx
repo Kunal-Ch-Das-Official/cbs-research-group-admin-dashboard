@@ -17,6 +17,7 @@ const GetAllDesireAdminReq = ({
   id,
   message,
 }) => {
+  console.log(message);
   const { isIdAccepted, isIdRejected } = useApp();
   const [copySuccess, setCopySuccess] = useState(false);
 

@@ -534,43 +534,24 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
                 projectsDropdown === true ? "block" : "hidden"
               }`}
             >
-              <a
-                id="see_projects"
-                href="#"
+              <Link
+                to={"/admin-panel/manage-projects"}
+                id="manage_projects"
                 className="text-gray-700 hover:text-black text-sm 
                 flex justify-center items-center hover:bg-white  
                 px-4 py-3 transition-all border-b-[1px] border-gray-400 hover:font-bold"
               >
-                See Projects
-              </a>
-              <a
+                Manage Data
+              </Link>
+              <Link
+                to={"/admin-panel/upload-project"}
                 id="upload_new_project"
-                href="#"
                 className="text-gray-700 hover:text-black text-sm 
                 flex justify-center items-center hover:bg-white hover:font-bold border-b-[1px] border-gray-400
                 px-4 py-3 transition-all"
               >
-                Upload Project
-              </a>
-              <a
-                id="edit_project"
-                href="#"
-                className="text-gray-700 hover:text-black text-sm 
-                flex justify-center items-center hover:bg-white hover:font-bold 
-                px-4 py-3 border-b-[1px] border-gray-400"
-              >
-                Edit Project
-              </a>
-
-              <a
-                id="delete_project"
-                href="#"
-                className="text-gray-700 hover:text-black text-sm 
-                flex justify-center items-center hover:bg-white hover:font-bold 
-                px-4 py-3 transition-all"
-              >
-                Delete Project
-              </a>
+                Upload Data
+              </Link>
             </div>
           </li>
         </ul>

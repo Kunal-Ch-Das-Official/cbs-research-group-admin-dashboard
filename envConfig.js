@@ -48,6 +48,8 @@ const environment = {
 
   contactApplicationResUrl: import.meta.env
     .VITE_APP_SEND_CONTACT_APPLICATION_RESPONSE_MAIL_URL,
+
+  projectsUrl: import.meta.env.VITE_APP_PROJECTS_URL,
 };
 
 const envConfig = Object.freeze(environment);

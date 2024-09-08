@@ -60,6 +60,10 @@ import ManageContacts from "./pages/contact-info/ManageContacts";
 import DeleteContactInfo from "./pages/contact-info/DeleteContactInfo";
 import PreviewContactInfo from "./pages/contact-info/PreviewContactInfo";
 import SendApplicationResponse from "./pages/contact-info/SendApplicationResponse";
+import UploadProject from "./pages/projects/UploadProject";
+import ManageProjects from "./pages/projects/ManageProjects";
+import UpdateProject from "./pages/projects/UpdateProject";
+import DeleteProject from "./pages/projects/DeleteProject";
 
 function App() {
   return (
@@ -275,6 +279,22 @@ function App() {
               <Route
                 path="/admin-panel/send-contact-application-response/:id"
                 element={<SendApplicationResponse />}
+              />
+              <Route
+                path="/admin-panel/upload-project"
+                element={<UploadProject />}
+              />
+              <Route
+                path="/admin-panel/manage-projects"
+                element={<ManageProjects />}
+              />
+              <Route
+                path="/admin-panel/update-project/:id"
+                element={<UpdateProject />}
+              />
+              <Route
+                path="/admin-panel/delete-project/:id"
+                element={<DeleteProject />}
               />
             </Route>
           </Routes>
