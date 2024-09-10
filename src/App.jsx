@@ -71,19 +71,263 @@ import UpdatePublication from "./pages/publications/UpdatePublication";
 import PreviewPublication from "./pages/publications/PreviewPublication";
 
 function App() {
+  const publicRoutes = [
+    {
+      path: "/",
+      element: <Index />,
+    },
+    {
+      path: "/sign-in",
+      element: <SignIn />,
+    },
+    {
+      path: "/forgot-password",
+      element: <ForgotPassword />,
+    },
+    {
+      path: "/reset-password/:id/:token",
+      element: <ResetForgottenPassword />,
+    },
+    {
+      path: "/become-admin-request",
+      element: <AdminRegReq />,
+    },
+  ];
+
+  const privateRoutes = [
+    {
+      path: "/admin-panel/register",
+      element: <RegisterAdmin />,
+    },
+    {
+      path: "/admin-panel/password-change",
+      element: <PasswordChange />,
+    },
+    {
+      path: "/admin-panel/manage-request",
+      element: <ManageAdminRequests />,
+    },
+    {
+      path: "/admin-panel/approve-request/:id",
+      element: <ApproveRequest />,
+    },
+    {
+      path: "/admin-panel/reject-request/:id",
+      element: <RejectRequests />,
+    },
+    {
+      path: "/admin-panel/delete-request/:id",
+      element: <DeleteRequest />,
+    },
+    {
+      path: "/admin-panel/upload-masters-alumni",
+      element: <UploadMastersAlumni />,
+    },
+    {
+      path: "/admin-panel/manage-masters-alumni",
+      element: <ManageMastersAlumni />,
+    },
+    {
+      path: "/admin-panel/preview-masters-alumni/:id",
+      element: <PreviewMastersAlumni />,
+    },
+    {
+      path: "/admin-panel/update-masters-alumni/:id",
+      element: <UpdateMastersAlumni />,
+    },
+    {
+      path: "/admin-panel/delete-masters-alumni/:id",
+      element: <DeleteMastersAlumni />,
+    },
+    {
+      path: "/admin-panel/upload-doctorate-alumni",
+      element: <UploadDoctorateAlumni />,
+    },
+    {
+      path: "/admin-panel/manage-doctorate-alumni",
+      element: <ManageDoctorateAlumni />,
+    },
+    {
+      path: "/admin-panel/update-doctorate-alumni/:id",
+      element: <UpdateDoctotateAlumni />,
+    },
+    {
+      path: "/admin-panel/delete-doctorate-alumni/:id",
+      element: <DeleteDoctorateAlumni />,
+    },
+    {
+      path: "/admin-panel/preview-doctorate-alumni/:id",
+      element: <PreviewDoctorateAlumni />,
+    },
+    {
+      path: "/admin-panel/upload-msc-member",
+      element: <UploadMscMember />,
+    },
+    {
+      path: "/admin-panel/manage-msc-members",
+      element: <ManageMscMembers />,
+    },
+    {
+      path: "/admin-panel/preview-msc-member/:id",
+      element: <PreviewMscMember />,
+    },
+    {
+      path: "/admin-panel/update-msc-member/:id",
+      element: <UpdateMscMember />,
+    },
+    {
+      path: "/admin-panel/delete-msc-member/:id",
+      element: <DeleteMscMember />,
+    },
+    {
+      path: "/admin-panel/upload-phd-member",
+      element: <UploadPhdMember />,
+    },
+    {
+      path: "/admin-panel/manage-phd-members",
+      element: <ManagePhdMembers />,
+    },
+    {
+      path: "/admin-panel/preview-phd-member/:id",
+      element: <PreviewPhdMember />,
+    },
+    {
+      path: "/admin-panel/update-phd-member/:id",
+      element: <UpdatePhdMember />,
+    },
+    {
+      path: "/admin-panel/delete-phd-member/:id",
+      element: <DeletePhdMember />,
+    },
+    {
+      path: "/admin-panel/upload-personal-award",
+      element: <UploadPersonalAward />,
+    },
+    {
+      path: "/admin-panel/manage-personal-awards",
+      element: <ManagePersonalAwards />,
+    },
+    {
+      path: "/admin-panel/delete-personal-award/:id",
+      element: <DeletePersonalAward />,
+    },
+    {
+      path: "/admin-panel/update-personal-award/:id",
+      element: <UpdatePersonalAward />,
+    },
+    {
+      path: "/admin-panel/upload-team-award",
+      element: <UploadTeamAward />,
+    },
+    {
+      path: "/admin-panel/manage-team-awards",
+      element: <ManageTeamAwards />,
+    },
+    {
+      path: "/admin-panel/update-team-award/:id",
+      element: <UpdateTeamAward />,
+    },
+    {
+      path: "/admin-panel/delete-team-award/:id",
+      element: <DeleteTeamAward />,
+    },
+    {
+      path: "/admin-panel/upload-lab-instrument",
+      element: <UploadLabInstrument />,
+    },
+    {
+      path: "/admin-panel/manage-lab-instruments",
+      element: <ManageLabInstruments />,
+    },
+    {
+      path: "/admin-panel/update-lab-instrument/:id",
+      element: <UpdateLabInstrument />,
+    },
+    {
+      path: "/admin-panel/delete-lab-instrument/:id",
+      element: <DeleteLabInstrument />,
+    },
+    {
+      path: "/admin-panel/upload-group-news",
+      element: <UploadGroupnews />,
+    },
+    {
+      path: "/admin-panel/manage-group-news",
+      element: <ManageGroupnews />,
+    },
+    {
+      path: "/admin-panel/update-group-news/:id",
+      element: <UpdateGroupnews />,
+    },
+    {
+      path: "/admin-panel/delete-group-news/:id",
+      element: <DeleteGroupnews />,
+    },
+    {
+      path: "/admin-panel/manage-contacts",
+      element: <ManageContacts />,
+    },
+    {
+      path: "/admin-panel/delete-contacts/:id",
+      element: <DeleteContactInfo />,
+    },
+    {
+      path: "/admin-panel/preview-contacts/:id",
+      element: <PreviewContactInfo />,
+    },
+    {
+      path: "/admin-panel/send-contact-application-response/:id",
+      element: <SendApplicationResponse />,
+    },
+    {
+      path: "/admin-panel/upload-project",
+      element: <UploadProject />,
+    },
+    {
+      path: "/admin-panel/manage-projects",
+      element: <ManageProjects />,
+    },
+    {
+      path: "/admin-panel/update-project/:id",
+      element: <UpdateProject />,
+    },
+    {
+      path: "/admin-panel/delete-project/:id",
+      element: <DeleteProject />,
+    },
+    {
+      path: "/admin-panel/upload-publication",
+      element: <UploadPublication />,
+    },
+    {
+      path: "/admin-panel/manage-publications",
+      element: <ManagePublications />,
+    },
+    {
+      path: "/admin-panel/preview-publication/:id",
+      element: <PreviewPublication />,
+    },
+    {
+      path: "/admin-panel/update-publication/:id",
+      element: <UpdatePublication />,
+    },
+    {
+      path: "/admin-panel/delete-publication/:id",
+      element: <DeletePublication />,
+    },
+  ];
+
   return (
     <AppProvider>
       <AuthProvider>
         <Router>
           <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/sign-in" element={<SignIn />} />
-            <Route path="/forgot-password" element={<ForgotPassword />} />
-            <Route
-              path="/reset-password/:id/:token"
-              element={<ResetForgottenPassword />}
-            />
-            <Route path="/become-admin-request" element={<AdminRegReq />} />
+            {/* Public Routes  */}
+            {publicRoutes.map((item, index) => (
+              <Route key={index} path={item.path} element={item.element} />
+            ))}
+
+            {/* Private Routes  */}
             <Route
               path="/admin-panel"
               element={
@@ -93,7 +337,22 @@ function App() {
               }
             >
               <Route index element={<Dashboard />} />
-              <Route path="/admin-panel/register" element={<RegisterAdmin />} />
+              {privateRoutes.map((item, index) => (
+                <Route key={index} path={item.path} element={item.element} />
+              ))}
+            </Route>
+          </Routes>
+        </Router>
+      </AuthProvider>
+    </AppProvider>
+  );
+}
+
+export default App;
+
+{
+  /* <div>
+<Route path="/admin-panel/register" element={<RegisterAdmin />} />
               <Route
                 path="/admin-panel/password-change"
                 element={<PasswordChange />}
@@ -137,6 +396,7 @@ function App() {
                 path="/admin-panel/delete-masters-alumni/:id"
                 element={<DeleteMastersAlumni />}
               />
+
               <Route
                 path="/admin-panel/upload-doctorate-alumni"
                 element={<UploadDoctorateAlumni />}
@@ -157,6 +417,7 @@ function App() {
                 path="/admin-panel/preview-doctorate-alumni/:id"
                 element={<PreviewDoctorateAlumni />}
               />
+
               <Route
                 path="/admin-panel/upload-msc-member"
                 element={<UploadMscMember />}
@@ -198,6 +459,7 @@ function App() {
                 path="/admin-panel/delete-phd-member/:id"
                 element={<DeletePhdMember />}
               />
+
               <Route
                 path="/admin-panel/upload-personal-award"
                 element={<UploadPersonalAward />}
@@ -214,6 +476,7 @@ function App() {
                 path="/admin-panel/update-personal-award/:id"
                 element={<UpdatePersonalAward />}
               />
+
               <Route
                 path="/admin-panel/upload-team-award"
                 element={<UploadTeamAward />}
@@ -252,6 +515,7 @@ function App() {
                 path="/admin-panel/delete-lab-instrument/:id"
                 element={<DeleteLabInstrument />}
               />
+
               <Route
                 path="/admin-panel/upload-group-news"
                 element={<UploadGroupnews />}
@@ -285,6 +549,7 @@ function App() {
                 path="/admin-panel/send-contact-application-response/:id"
                 element={<SendApplicationResponse />}
               />
+
               <Route
                 path="/admin-panel/upload-project"
                 element={<UploadProject />}
@@ -301,6 +566,7 @@ function App() {
                 path="/admin-panel/delete-project/:id"
                 element={<DeleteProject />}
               />
+
               <Route
                 path="/admin-panel/upload-publication"
                 element={<UploadPublication />}
@@ -324,12 +590,5 @@ function App() {
                 path="/admin-panel/delete-publication/:id"
                 element={<DeletePublication />}
               />
-            </Route>
-          </Routes>
-        </Router>
-      </AuthProvider>
-    </AppProvider>
-  );
+</div> */
 }
-
-export default App;
