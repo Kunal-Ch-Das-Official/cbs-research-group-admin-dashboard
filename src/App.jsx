@@ -96,223 +96,223 @@ function App() {
 
   const privateRoutes = [
     {
-      path: "/admin-panel/register",
+      path: "/register",
       element: <RegisterAdmin />,
     },
     {
-      path: "/admin-panel/password-change",
+      path: "/password-change",
       element: <PasswordChange />,
     },
     {
-      path: "/admin-panel/manage-request",
+      path: "/manage-request",
       element: <ManageAdminRequests />,
     },
     {
-      path: "/admin-panel/approve-request/:id",
+      path: "/approve-request/:id",
       element: <ApproveRequest />,
     },
     {
-      path: "/admin-panel/reject-request/:id",
+      path: "/reject-request/:id",
       element: <RejectRequests />,
     },
     {
-      path: "/admin-panel/delete-request/:id",
+      path: "/delete-request/:id",
       element: <DeleteRequest />,
     },
     {
-      path: "/admin-panel/upload-masters-alumni",
+      path: "/upload-masters-alumni",
       element: <UploadMastersAlumni />,
     },
     {
-      path: "/admin-panel/manage-masters-alumni",
+      path: "/manage-masters-alumni",
       element: <ManageMastersAlumni />,
     },
     {
-      path: "/admin-panel/preview-masters-alumni/:id",
+      path: "/preview-masters-alumni/:id",
       element: <PreviewMastersAlumni />,
     },
     {
-      path: "/admin-panel/update-masters-alumni/:id",
+      path: "/update-masters-alumni/:id",
       element: <UpdateMastersAlumni />,
     },
     {
-      path: "/admin-panel/delete-masters-alumni/:id",
+      path: "/delete-masters-alumni/:id",
       element: <DeleteMastersAlumni />,
     },
     {
-      path: "/admin-panel/upload-doctorate-alumni",
+      path: "/upload-doctorate-alumni",
       element: <UploadDoctorateAlumni />,
     },
     {
-      path: "/admin-panel/manage-doctorate-alumni",
+      path: "/manage-doctorate-alumni",
       element: <ManageDoctorateAlumni />,
     },
     {
-      path: "/admin-panel/update-doctorate-alumni/:id",
+      path: "/update-doctorate-alumni/:id",
       element: <UpdateDoctotateAlumni />,
     },
     {
-      path: "/admin-panel/delete-doctorate-alumni/:id",
+      path: "/delete-doctorate-alumni/:id",
       element: <DeleteDoctorateAlumni />,
     },
     {
-      path: "/admin-panel/preview-doctorate-alumni/:id",
+      path: "/preview-doctorate-alumni/:id",
       element: <PreviewDoctorateAlumni />,
     },
     {
-      path: "/admin-panel/upload-msc-member",
+      path: "/upload-msc-member",
       element: <UploadMscMember />,
     },
     {
-      path: "/admin-panel/manage-msc-members",
+      path: "/manage-msc-members",
       element: <ManageMscMembers />,
     },
     {
-      path: "/admin-panel/preview-msc-member/:id",
+      path: "/preview-msc-member/:id",
       element: <PreviewMscMember />,
     },
     {
-      path: "/admin-panel/update-msc-member/:id",
+      path: "/update-msc-member/:id",
       element: <UpdateMscMember />,
     },
     {
-      path: "/admin-panel/delete-msc-member/:id",
+      path: "/delete-msc-member/:id",
       element: <DeleteMscMember />,
     },
     {
-      path: "/admin-panel/upload-phd-member",
+      path: "/upload-phd-member",
       element: <UploadPhdMember />,
     },
     {
-      path: "/admin-panel/manage-phd-members",
+      path: "/manage-phd-members",
       element: <ManagePhdMembers />,
     },
     {
-      path: "/admin-panel/preview-phd-member/:id",
+      path: "/preview-phd-member/:id",
       element: <PreviewPhdMember />,
     },
     {
-      path: "/admin-panel/update-phd-member/:id",
+      path: "/update-phd-member/:id",
       element: <UpdatePhdMember />,
     },
     {
-      path: "/admin-panel/delete-phd-member/:id",
+      path: "/delete-phd-member/:id",
       element: <DeletePhdMember />,
     },
     {
-      path: "/admin-panel/upload-personal-award",
+      path: "/upload-personal-award",
       element: <UploadPersonalAward />,
     },
     {
-      path: "/admin-panel/manage-personal-awards",
+      path: "/manage-personal-awards",
       element: <ManagePersonalAwards />,
     },
     {
-      path: "/admin-panel/delete-personal-award/:id",
+      path: "/delete-personal-award/:id",
       element: <DeletePersonalAward />,
     },
     {
-      path: "/admin-panel/update-personal-award/:id",
+      path: "/update-personal-award/:id",
       element: <UpdatePersonalAward />,
     },
     {
-      path: "/admin-panel/upload-team-award",
+      path: "/upload-team-award",
       element: <UploadTeamAward />,
     },
     {
-      path: "/admin-panel/manage-team-awards",
+      path: "/manage-team-awards",
       element: <ManageTeamAwards />,
     },
     {
-      path: "/admin-panel/update-team-award/:id",
+      path: "/update-team-award/:id",
       element: <UpdateTeamAward />,
     },
     {
-      path: "/admin-panel/delete-team-award/:id",
+      path: "/delete-team-award/:id",
       element: <DeleteTeamAward />,
     },
     {
-      path: "/admin-panel/upload-lab-instrument",
+      path: "/upload-lab-instrument",
       element: <UploadLabInstrument />,
     },
     {
-      path: "/admin-panel/manage-lab-instruments",
+      path: "/manage-lab-instruments",
       element: <ManageLabInstruments />,
     },
     {
-      path: "/admin-panel/update-lab-instrument/:id",
+      path: "/update-lab-instrument/:id",
       element: <UpdateLabInstrument />,
     },
     {
-      path: "/admin-panel/delete-lab-instrument/:id",
+      path: "/delete-lab-instrument/:id",
       element: <DeleteLabInstrument />,
     },
     {
-      path: "/admin-panel/upload-group-news",
+      path: "/upload-group-news",
       element: <UploadGroupnews />,
     },
     {
-      path: "/admin-panel/manage-group-news",
+      path: "/manage-group-news",
       element: <ManageGroupnews />,
     },
     {
-      path: "/admin-panel/update-group-news/:id",
+      path: "/update-group-news/:id",
       element: <UpdateGroupnews />,
     },
     {
-      path: "/admin-panel/delete-group-news/:id",
+      path: "/delete-group-news/:id",
       element: <DeleteGroupnews />,
     },
     {
-      path: "/admin-panel/manage-contacts",
+      path: "/manage-contacts",
       element: <ManageContacts />,
     },
     {
-      path: "/admin-panel/delete-contacts/:id",
+      path: "/delete-contacts/:id",
       element: <DeleteContactInfo />,
     },
     {
-      path: "/admin-panel/preview-contacts/:id",
+      path: "/preview-contacts/:id",
       element: <PreviewContactInfo />,
     },
     {
-      path: "/admin-panel/send-contact-application-response/:id",
+      path: "/send-contact-application-response/:id",
       element: <SendApplicationResponse />,
     },
     {
-      path: "/admin-panel/upload-project",
+      path: "/upload-project",
       element: <UploadProject />,
     },
     {
-      path: "/admin-panel/manage-projects",
+      path: "/manage-projects",
       element: <ManageProjects />,
     },
     {
-      path: "/admin-panel/update-project/:id",
+      path: "/update-project/:id",
       element: <UpdateProject />,
     },
     {
-      path: "/admin-panel/delete-project/:id",
+      path: "/delete-project/:id",
       element: <DeleteProject />,
     },
     {
-      path: "/admin-panel/upload-publication",
+      path: "/upload-publication",
       element: <UploadPublication />,
     },
     {
-      path: "/admin-panel/manage-publications",
+      path: "/manage-publications",
       element: <ManagePublications />,
     },
     {
-      path: "/admin-panel/preview-publication/:id",
+      path: "/preview-publication/:id",
       element: <PreviewPublication />,
     },
     {
-      path: "/admin-panel/update-publication/:id",
+      path: "/update-publication/:id",
       element: <UpdatePublication />,
     },
     {
-      path: "/admin-panel/delete-publication/:id",
+      path: "/delete-publication/:id",
       element: <DeletePublication />,
     },
   ];
@@ -338,7 +338,11 @@ function App() {
             >
               <Route index element={<Dashboard />} />
               {privateRoutes.map((item, index) => (
-                <Route key={index} path={item.path} element={item.element} />
+                <Route
+                  key={index}
+                  path={`/admin-panel/${item.path}`}
+                  element={item.element}
+                />
               ))}
             </Route>
           </Routes>
@@ -349,246 +353,3 @@ function App() {
 }
 
 export default App;
-
-{
-  /* <div>
-<Route path="/admin-panel/register" element={<RegisterAdmin />} />
-              <Route
-                path="/admin-panel/password-change"
-                element={<PasswordChange />}
-              />
-
-              <Route
-                path="/admin-panel/manage-request"
-                element={<ManageAdminRequests />}
-              />
-              <Route
-                path="/admin-panel/approve-request/:id"
-                element={<ApproveRequest />}
-              />
-              <Route
-                path="/admin-panel/reject-request/:id"
-                element={<RejectRequests />}
-              />
-
-              <Route
-                path="/admin-panel/delete-request/:id"
-                element={<DeleteRequest />}
-              />
-
-              <Route
-                path="/admin-panel/upload-masters-alumni"
-                element={<UploadMastersAlumni />}
-              />
-              <Route
-                path="/admin-panel/manage-masters-alumni"
-                element={<ManageMastersAlumni />}
-              />
-              <Route
-                path="/admin-panel/preview-masters-alumni/:id"
-                element={<PreviewMastersAlumni />}
-              />
-              <Route
-                path="/admin-panel/update-masters-alumni/:id"
-                element={<UpdateMastersAlumni />}
-              />
-              <Route
-                path="/admin-panel/delete-masters-alumni/:id"
-                element={<DeleteMastersAlumni />}
-              />
-
-              <Route
-                path="/admin-panel/upload-doctorate-alumni"
-                element={<UploadDoctorateAlumni />}
-              />
-              <Route
-                path="/admin-panel/manage-doctorate-alumni"
-                element={<ManageDoctorateAlumni />}
-              />
-              <Route
-                path="/admin-panel/update-doctorate-alumni/:id"
-                element={<UpdateDoctotateAlumni />}
-              />
-              <Route
-                path="/admin-panel/delete-doctorate-alumni/:id"
-                element={<DeleteDoctorateAlumni />}
-              />
-              <Route
-                path="/admin-panel/preview-doctorate-alumni/:id"
-                element={<PreviewDoctorateAlumni />}
-              />
-
-              <Route
-                path="/admin-panel/upload-msc-member"
-                element={<UploadMscMember />}
-              />
-              <Route
-                path="/admin-panel/manage-msc-members"
-                element={<ManageMscMembers />}
-              />
-              <Route
-                path="/admin-panel/preview-msc-member/:id"
-                element={<PreviewMscMember />}
-              />
-              <Route
-                path="/admin-panel/update-msc-member/:id"
-                element={<UpdateMscMember />}
-              />
-              <Route
-                path="/admin-panel/delete-msc-member/:id"
-                element={<DeleteMscMember />}
-              />
-
-              <Route
-                path="/admin-panel/upload-phd-member"
-                element={<UploadPhdMember />}
-              />
-              <Route
-                path="/admin-panel/manage-phd-members"
-                element={<ManagePhdMembers />}
-              />
-              <Route
-                path="/admin-panel/preview-phd-member/:id"
-                element={<PreviewPhdMember />}
-              />
-              <Route
-                path="/admin-panel/update-phd-member/:id"
-                element={<UpdatePhdMember />}
-              />
-              <Route
-                path="/admin-panel/delete-phd-member/:id"
-                element={<DeletePhdMember />}
-              />
-
-              <Route
-                path="/admin-panel/upload-personal-award"
-                element={<UploadPersonalAward />}
-              />
-              <Route
-                path="/admin-panel/manage-personal-awards"
-                element={<ManagePersonalAwards />}
-              />
-              <Route
-                path="/admin-panel/delete-personal-award/:id"
-                element={<DeletePersonalAward />}
-              />
-              <Route
-                path="/admin-panel/update-personal-award/:id"
-                element={<UpdatePersonalAward />}
-              />
-
-              <Route
-                path="/admin-panel/upload-team-award"
-                element={<UploadTeamAward />}
-              />
-              <Route
-                path="/admin-panel/manage-team-awards"
-                element={<ManageTeamAwards />}
-              />
-
-              <Route
-                path="/admin-panel/update-team-award/:id"
-                element={<UpdateTeamAward />}
-              />
-
-              <Route
-                path="/admin-panel/delete-team-award/:id"
-                element={<DeleteTeamAward />}
-              />
-
-              <Route
-                path="/admin-panel/upload-lab-instrument"
-                element={<UploadLabInstrument />}
-              />
-
-              <Route
-                path="/admin-panel/manage-lab-instruments"
-                element={<ManageLabInstruments />}
-              />
-
-              <Route
-                path="/admin-panel/update-lab-instrument/:id"
-                element={<UpdateLabInstrument />}
-              />
-
-              <Route
-                path="/admin-panel/delete-lab-instrument/:id"
-                element={<DeleteLabInstrument />}
-              />
-
-              <Route
-                path="/admin-panel/upload-group-news"
-                element={<UploadGroupnews />}
-              />
-              <Route
-                path="/admin-panel/manage-group-news"
-                element={<ManageGroupnews />}
-              />
-              <Route
-                path="/admin-panel/update-group-news/:id"
-                element={<UpdateGroupnews />}
-              />
-              <Route
-                path="/admin-panel/delete-group-news/:id"
-                element={<DeleteGroupnews />}
-              />
-
-              <Route
-                path="/admin-panel/manage-contacts"
-                element={<ManageContacts />}
-              />
-              <Route
-                path="/admin-panel/delete-contacts/:id"
-                element={<DeleteContactInfo />}
-              />
-              <Route
-                path="/admin-panel/preview-contacts/:id"
-                element={<PreviewContactInfo />}
-              />
-              <Route
-                path="/admin-panel/send-contact-application-response/:id"
-                element={<SendApplicationResponse />}
-              />
-
-              <Route
-                path="/admin-panel/upload-project"
-                element={<UploadProject />}
-              />
-              <Route
-                path="/admin-panel/manage-projects"
-                element={<ManageProjects />}
-              />
-              <Route
-                path="/admin-panel/update-project/:id"
-                element={<UpdateProject />}
-              />
-              <Route
-                path="/admin-panel/delete-project/:id"
-                element={<DeleteProject />}
-              />
-
-              <Route
-                path="/admin-panel/upload-publication"
-                element={<UploadPublication />}
-              />
-              <Route
-                path="/admin-panel/manage-publications"
-                element={<ManagePublications />}
-              />
-
-              <Route
-                path="/admin-panel/preview-publication/:id"
-                element={<PreviewPublication />}
-              />
-
-              <Route
-                path="/admin-panel/update-publication/:id"
-                element={<UpdatePublication />}
-              />
-
-              <Route
-                path="/admin-panel/delete-publication/:id"
-                element={<DeletePublication />}
-              />
-</div> */
-}
