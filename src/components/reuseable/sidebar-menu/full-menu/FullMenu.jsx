@@ -577,43 +577,24 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
                 publicationsDropdown === true ? "block" : "hidden"
               }`}
             >
-              <a
-                id="see_publications"
-                href="#"
+              <Link
+                to={"/admin-panel/manage-publications"}
+                id="manage_publications"
                 className="text-gray-700 hover:text-black text-sm 
                 flex justify-center items-center hover:bg-white  
                 px-4 py-3 transition-all border-b-[1px] border-gray-400 hover:font-bold"
               >
-                See Publications
-              </a>
-              <a
+                Manage Data
+              </Link>
+              <Link
+                to={"/admin-panel/upload-publication"}
                 id="upload_new_publication"
-                href="#"
                 className="text-gray-700 hover:text-black text-sm 
                 flex justify-center items-center hover:bg-white hover:font-bold border-b-[1px] border-gray-400
                 px-4 py-3 transition-all"
               >
-                Upload Publication
-              </a>
-              <a
-                id="edit_publication"
-                href="#"
-                className="text-gray-700 hover:text-black text-sm 
-                flex justify-center items-center hover:bg-white hover:font-bold 
-                px-4 py-3 border-b-[1px] border-gray-400"
-              >
-                Edit Publication
-              </a>
-
-              <a
-                id="delete_publication"
-                href="#"
-                className="text-gray-700 hover:text-black text-sm 
-                flex justify-center items-center hover:bg-white hover:font-bold 
-                px-4 py-3 transition-all"
-              >
-                Delete Publication
-              </a>
+                Upload Data
+              </Link>
             </div>
           </li>
         </ul>

@@ -50,6 +50,8 @@ const environment = {
     .VITE_APP_SEND_CONTACT_APPLICATION_RESPONSE_MAIL_URL,
 
   projectsUrl: import.meta.env.VITE_APP_PROJECTS_URL,
+
+  publicationsUrl: import.meta.env.VITE_APP_PUBLICATION_URL,
 };
 
 const envConfig = Object.freeze(environment);

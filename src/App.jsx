@@ -64,6 +64,11 @@ import UploadProject from "./pages/projects/UploadProject";
 import ManageProjects from "./pages/projects/ManageProjects";
 import UpdateProject from "./pages/projects/UpdateProject";
 import DeleteProject from "./pages/projects/DeleteProject";
+import UploadPublication from "./pages/publications/UploadPublication";
+import ManagePublications from "./pages/publications/ManagePublications";
+import DeletePublication from "./pages/publications/DeletePublication";
+import UpdatePublication from "./pages/publications/UpdatePublication";
+import PreviewPublication from "./pages/publications/PreviewPublication";
 
 function App() {
   return (
@@ -295,6 +300,29 @@ function App() {
               <Route
                 path="/admin-panel/delete-project/:id"
                 element={<DeleteProject />}
+              />
+              <Route
+                path="/admin-panel/upload-publication"
+                element={<UploadPublication />}
+              />
+              <Route
+                path="/admin-panel/manage-publications"
+                element={<ManagePublications />}
+              />
+
+              <Route
+                path="/admin-panel/preview-publication/:id"
+                element={<PreviewPublication />}
+              />
+
+              <Route
+                path="/admin-panel/update-publication/:id"
+                element={<UpdatePublication />}
+              />
+
+              <Route
+                path="/admin-panel/delete-publication/:id"
+                element={<DeletePublication />}
               />
             </Route>
           </Routes>
