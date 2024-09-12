@@ -7,6 +7,7 @@ import { useAuth } from "../../../authentication/auth-context/useAuth";
 const GetCurrentAdmin = () => {
   const [apiResponse, setApiResponse] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [sectionColor, setSectionColor] = useState(false);
   const { logout } = useAuth();
   useEffect(() => {
     const getLoggedinAdmin = async () => {
@@ -39,6 +40,64 @@ const GetCurrentAdmin = () => {
     getLoggedinAdmin();
   }, [logout]);
 
+  useEffect(() => {
+    const conditionalElement =
+      apiResponse && apiResponse.adminUserName[0].toUpperCase();
+    if (conditionalElement == "A") {
+      setSectionColor("bg-blue-300");
+    } else if (conditionalElement == "B") {
+      setSectionColor("bg-yellow-300");
+    } else if (conditionalElement == "C") {
+      setSectionColor("bg-green-300");
+    } else if (conditionalElement == "D") {
+      setSectionColor("bg-orange-300");
+    } else if (conditionalElement == "E") {
+      setSectionColor("bg-rose-300");
+    } else if (conditionalElement == "F") {
+      setSectionColor("bg-pink-600");
+    } else if (conditionalElement == "G") {
+      setSectionColor("bg-pink-600");
+    } else if (conditionalElement == "H") {
+      setSectionColor("bg-purple-500");
+    } else if (conditionalElement == "I") {
+      setSectionColor("bg-violet-500");
+    } else if (conditionalElement == "J") {
+      setSectionColor("bg-indigo-500");
+    } else if (conditionalElement == "K") {
+      setSectionColor("bg-emerald-300");
+    } else if (conditionalElement == "L") {
+      setSectionColor("bg-lime-300");
+    } else if (conditionalElement == "M") {
+      setSectionColor("bg-amber-200");
+    } else if (conditionalElement == "N") {
+      setSectionColor("bg-white");
+    } else if (conditionalElement == "O") {
+      setSectionColor("bg-gray-200");
+    } else if (conditionalElement == "P") {
+      setSectionColor("bg-red-300");
+    } else if (conditionalElement == "Q") {
+      setSectionColor("bg-amber-400");
+    } else if (conditionalElement == "R") {
+      setSectionColor("bg-yellow-400");
+    } else if (conditionalElement == "S") {
+      setSectionColor("bg-lime-500");
+    } else if (conditionalElement == "T") {
+      setSectionColor("bg-teal-500");
+    } else if (conditionalElement == "U") {
+      setSectionColor("bg-violet-600");
+    } else if (conditionalElement == "V") {
+      setSectionColor("bg-purple-400");
+    } else if (conditionalElement == "W") {
+      setSectionColor("bg-purple-300");
+    } else if (conditionalElement == "X") {
+      setSectionColor("bg-pink-200");
+    } else if (conditionalElement == "Y") {
+      setSectionColor("bg-rose-500");
+    } else if (conditionalElement == "Z") {
+      setSectionColor("bg-green-100");
+    }
+  }, [apiResponse]);
+
   if (loading) {
     return <ComponentLoading />;
   }
@@ -48,18 +107,22 @@ const GetCurrentAdmin = () => {
   }
 
   return (
-    <div>
+    <div className="border border-gray-200 py-4 mt-2 rounded-xl bg-white">
       <div className="flex flex-wrap flex-col justify-center items-center cursor-pointer">
-        <div className="bg-gray-300 w-12 h-12 rounded-full flex items-center justify-center font-bold text-gray-900 text-xl">
+        <div
+          className={`${sectionColor} w-12 h-12 rounded-full flex items-center justify-center font-bold text-gray-900 text-xl`}
+        >
           <span>{apiResponse.adminUserName[0]}</span>
         </div>
         <div className="text-center mt-4">
-          <p className="text-base text-black">{apiResponse.adminUserName}</p>
-          <p className="text-xs text-gray-900 mt-0.5">
+          <p className="text-base font-semibold text-black">
+            {apiResponse.adminUserName}
+          </p>
+          <p className="text-xs text-gray-900 mt-0.5 font-semibold">
             {apiResponse.adminUserEmail}
           </p>
-          <p className="text-[10px] text-gray-900 mt-0.5">
-            <span className="font-bold mr-1">Registerd In:</span>
+          <p className="text-[12px] text-gray-900 mt-0.5">
+            <span className="font-bold mr-1 text-green-600">Registerd In:</span>
             {new Date(apiResponse.createdAt).toLocaleDateString()}
           </p>
         </div>

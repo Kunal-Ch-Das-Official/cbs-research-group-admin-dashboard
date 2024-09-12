@@ -13,16 +13,14 @@ const Index = () => {
   const navigate = useNavigate();
   const { modelOpen, login } = useAuth();
 
-  // Set up an Axios interceptor to catch 401 errors
-
   useEffect(() => {
-    const handlerReload = (window.onload = () => {
+    const pageLoadHandler = (window.onload = () => {
       const adminToken = localStorage.getItem("admin-token") || null;
       if (adminToken) {
         localStorage.removeItem("admin-token");
       }
     });
-    handlerReload();
+    pageLoadHandler();
   }, []);
   useEffect(() => {
     const isAuth = localStorage.getItem("auth-token");

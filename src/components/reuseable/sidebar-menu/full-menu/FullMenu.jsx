@@ -73,7 +73,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
   return (
     <div>
       <nav
-        className="bg-gray-100 h-screen fixed top-0 left-0 min-w-[260px] py-6 px-4 font-[sans-serif] opacity-100 z-[100000]
+        className="bg-rose-50 h-screen fixed top-0 left-0 min-w-[260px] py-6 px-4 font-[sans-serif] opacity-100 z-[100000]
          flex flex-col overflow-auto no-scrollbar shadow-xl"
         data-aos="fade-right"
       >
