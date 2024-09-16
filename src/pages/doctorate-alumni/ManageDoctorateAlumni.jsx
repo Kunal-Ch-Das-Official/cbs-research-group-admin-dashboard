@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "../../../axios/axios";
 import envConfig from "../../../envConfig";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
-import DoctorateAlumnicard from "../../components/reuseable/doctorate-alumni-card/DoctorateAlumnicard";
+import StudentCard from "../../components/reuseable/students-card/StudentCard";
 
 const ManageDoctorateAlumni = () => {
   const [alumniInfo, setAlumniInfo] = useState(null);
@@ -31,20 +31,23 @@ const ManageDoctorateAlumni = () => {
       <>
         {alumniInfo &&
           alumniInfo.map((data, index) => (
-            <DoctorateAlumnicard
+            <StudentCard
               key={index}
-              id={data._id}
-              alumniName={data.alumniName}
+              requiredName={data.alumniName}
               googleSchollarUrl={data.googleScholarId}
               researchGateUrl={data.researchGateId}
-              alumniImageUrl={data.profilePicture}
-              alumniEmail={data.emailId}
-              contactNumberOfAlumni={data.phoneNumber}
+              ImageUrl={data.profilePicture}
+              EmailId={data.emailId}
+              contactNumber={data.phoneNumber}
               PreviousCollege={data.bscDoneFrom}
               PreviousMastersCollege={data.mscDoneFrom}
-              passoutYear={data.yearOfPassout}
+              passwoutYear={data.yearOfPassout}
+              currentYear={null}
               uploadDate={new Date(data.createdAt).toLocaleDateString()}
               updateDate={new Date(data.updatedAt).toLocaleDateString()}
+              previewRouteLink={`/admin-panel/preview-doctorate-alumni/${data._id}`}
+              updateRouteLink={`/admin-panel/update-doctorate-alumni/${data._id}`}
+              deleteRouteLink={`/admin-panel/delete-doctorate-alumni/${data._id}`}
             />
           ))}
       </>

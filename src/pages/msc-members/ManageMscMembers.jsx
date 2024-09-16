@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "../../../axios/axios";
 import envConfig from "../../../envConfig";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
-import MscMembersCard from "../../components/single-use/msc-members-card/MscMembersCard";
+import StudentCard from "../../components/reuseable/students-card/StudentCard";
 
 const ManageMscMembers = () => {
   const [membersInfo, setMembersInfo] = useState(null);
@@ -30,19 +30,23 @@ const ManageMscMembers = () => {
       <>
         {membersInfo &&
           membersInfo.map((data, index) => (
-            <MscMembersCard
+            <StudentCard
               key={index}
-              id={data._id}
-              membersName={data.memberName}
+              requiredName={data.memberName}
               googleSchollarUrl={data.googleScholarId}
               researchGateUrl={data.researchGateId}
-              membersImageUrl={data.profilePicture}
-              membersEmail={data.emailId}
-              contactNumberOfMember={data.phoneNumber}
+              ImageUrl={data.profilePicture}
+              EmailId={data.emailId}
+              contactNumber={data.phoneNumber}
               PreviousCollege={data.bscDoneFrom}
+              PreviousMastersCollege={null}
+              passwoutYear={null}
               currentYear={data.currentYear}
               uploadDate={new Date(data.createdAt).toLocaleDateString()}
               updateDate={new Date(data.updatedAt).toLocaleDateString()}
+              previewRouteLink={`/admin-panel/preview-msc-member/${data._id}`}
+              updateRouteLink={`/admin-panel/update-msc-member/${data._id}`}
+              deleteRouteLink={`/admin-panel/delete-msc-member/${data._id}`}
             />
           ))}
       </>

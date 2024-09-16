@@ -5,18 +5,22 @@ import { GrDocumentUpdate } from "react-icons/gr";
 import { MdPreview } from "react-icons/md";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-const MscMembersCard = ({
-  id,
-  membersName,
+const StudentCard = ({
+  requiredName,
   googleSchollarUrl,
   researchGateUrl,
-  membersImageUrl,
-  membersEmail,
-  contactNumberOfMember,
+  ImageUrl,
+  EmailId,
+  contactNumber,
   PreviousCollege,
+  PreviousMastersCollege,
+  passwoutYear,
   currentYear,
   uploadDate,
   updateDate,
+  previewRouteLink,
+  updateRouteLink,
+  deleteRouteLink,
 }) => {
   return (
     <section>
@@ -26,36 +30,38 @@ const MscMembersCard = ({
             <div className="flex-1 truncate">
               <div className="flex items-center space-x-3">
                 <h3 className="truncate text-lg font-medium text-gray-900">
-                  {membersName}
+                  {requiredName}
                 </h3>
               </div>
               <div id="socialHandle" className="inline-flex items-center">
-                <a href={googleSchollarUrl} target="blank" className="mr-4">
+                <a
+                  href={`https://${googleSchollarUrl}`}
+                  target="_blank"
+                  className="mr-4"
+                >
                   <FaGoogleScholar className="text-xl text-gray-500 hover:text-blue-500 transform translate-y-1 hover:scale-110" />
                 </a>
-                <a href={researchGateUrl} target="blank">
+                <a href={`https://${researchGateUrl}`} target="_blank">
                   <FaResearchgate className="text-xl text-gray-500 hover:text-orange-300 transform translate-y-1 hover:scale-110" />
                 </a>
               </div>
             </div>
             <img
               className="h-10 w-10 flex-shrink-0 rounded-full bg-gray-300 ring-2 ring-gray-300"
-              src={membersImageUrl}
-              alt={membersName}
+              src={ImageUrl}
+              alt={requiredName}
             />
           </div>
 
           <div className="pl-6 mb-2 flex flex-col" id="AditionalInfo">
             <p className="mt-1 truncate text-md text-gray-500 inline-flex items-center">
               <span className="text-gray-600 font-bold mr-1">Email Id:</span>
-              <span className="text-md flex flex-wrap flex-col">
-                {membersEmail}
-              </span>
+              <span className="text-md flex flex-wrap flex-col">{EmailId}</span>
             </p>
             <p className="mt-1 truncate text-md text-gray-500 inline-flex items-center">
               <span className="text-gray-600 font-bold mr-1">Phone:</span>
               <span className="text-md flex flex-wrap flex-col">
-                {contactNumberOfMember}
+                {contactNumber}
               </span>
             </p>
             <div className="mt-1 text-md text-gray-500 inline-flex item-center">
@@ -64,12 +70,30 @@ const MscMembersCard = ({
                 {PreviousCollege}
               </div>
             </div>
+
+            <div className="mt-1 text-md text-gray-500 inline-flex item-center">
+              <span
+                className={`text-gray-600 font-bold mr-1 ${
+                  PreviousMastersCollege ? "inline-flex" : "hidden"
+                }`}
+              >
+                Masters:
+              </span>
+              <div
+                className={`text-md flex flex-col max-w-[400px] ${
+                  PreviousMastersCollege ? "inline-flex" : "hidden"
+                }`}
+              >
+                {PreviousMastersCollege}
+              </div>
+            </div>
+
             <p className="mt-1 truncate text-md text-gray-500 inline-flex items-center">
               <span className="text-gray-600 font-bold mr-1">
-                Current Year:
+                {currentYear ? "Current Year:" : "Passout Year:"}
               </span>
               <span className="text-md flex flex-wrap flex-col">
-                {currentYear}
+                {currentYear ? currentYear : passwoutYear}
               </span>
             </p>
           </div>
@@ -96,7 +120,7 @@ const MscMembersCard = ({
             <div className="-mt-px flex divide-x  divide-gray-200">
               <div className="flex w-0 flex-1">
                 <Link
-                  to={`/admin-panel/preview-msc-member/${id}`}
+                  to={previewRouteLink}
                   className="relative -mr-px inline-flex w-0 flex-1 items-center justify-center 
                   gap-x-3 rounded-bl-lg border border-transparent py-4 text-sm font-semibold
                    text-gray-900 transform translate-y-1 hover:scale-110"
@@ -107,7 +131,7 @@ const MscMembersCard = ({
               </div>
               <div className="-ml-px flex w-0 flex-1">
                 <Link
-                  to={`/admin-panel/update-msc-member/${id}`}
+                  to={updateRouteLink}
                   className="relative inline-flex w-0 flex-1 items-center justify-center 
                   gap-x-3 rounded-br-lg border border-transparent py-4 text-sm font-semibold
                    text-gray-900 transform translate-y-1 hover:scale-110"
@@ -118,7 +142,7 @@ const MscMembersCard = ({
               </div>
               <div className="-ml-px flex w-0 flex-1">
                 <Link
-                  to={`/admin-panel/delete-msc-member/${id}`}
+                  to={deleteRouteLink}
                   className="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 
                   rounded-br-lg border border-transparent py-4 text-sm font-semibold
                    text-gray-900 transform translate-y-1 hover:scale-110"
@@ -135,17 +159,21 @@ const MscMembersCard = ({
   );
 };
 
-MscMembersCard.propTypes = {
-  id: PropTypes.string,
-  membersName: PropTypes.string,
+StudentCard.propTypes = {
+  requiredName: PropTypes.string,
   googleSchollarUrl: PropTypes.string,
   researchGateUrl: PropTypes.string,
-  membersImageUrl: PropTypes.string,
-  membersEmail: PropTypes.string,
-  contactNumberOfMember: PropTypes.string,
+  ImageUrl: PropTypes.string,
+  EmailId: PropTypes.string,
+  contactNumber: PropTypes.string,
   PreviousCollege: PropTypes.string,
-  currentYear: PropTypes.string,
+  PreviousMastersCollege: PropTypes.string || null,
+  passwoutYear: PropTypes.string || null,
+  currentYear: PropTypes.string || null,
   uploadDate: PropTypes.string,
   updateDate: PropTypes.string,
+  previewRouteLink: PropTypes.string,
+  updateRouteLink: PropTypes.string,
+  deleteRouteLink: PropTypes.string,
 };
-export default MscMembersCard;
+export default StudentCard;

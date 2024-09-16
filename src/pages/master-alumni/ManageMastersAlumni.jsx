@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import MastersAlumniCard from "../../components/reuseable/masters-alumni-card/MastersAlumniCard";
 import axios from "../../../axios/axios";
 import envConfig from "../../../envConfig";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
+import StudentCard from "../../components/reuseable/students-card/StudentCard";
 
 const ManageMastersAlumni = () => {
   const [alumniInfo, setAlumniInfo] = useState(null);
@@ -30,19 +30,23 @@ const ManageMastersAlumni = () => {
       <>
         {alumniInfo &&
           alumniInfo.map((data, index) => (
-            <MastersAlumniCard
+            <StudentCard
               key={index}
-              id={data._id}
-              alumniName={data.alumniName}
+              requiredName={data.alumniName}
               googleSchollarUrl={data.googleScholarId}
               researchGateUrl={data.researchGateId}
-              alumniImageUrl={data.profilePicture}
-              alumniEmail={data.emailId}
-              contactNumberOfAlumni={data.phoneNumber}
+              ImageUrl={data.profilePicture}
+              EmailId={data.emailId}
+              contactNumber={data.phoneNumber}
               PreviousCollege={data.bscDoneFrom}
-              passoutYear={data.yearOfPassout}
+              PreviousMastersCollege={null}
+              passwoutYear={data.yearOfPassout}
+              currentYear={null}
               uploadDate={new Date(data.createdAt).toLocaleDateString()}
               updateDate={new Date(data.updatedAt).toLocaleDateString()}
+              previewRouteLink={`/admin-panel/preview-masters-alumni/${data._id}`}
+              updateRouteLink={`/admin-panel/update-masters-alumni/${data._id}`}
+              deleteRouteLink={`/admin-panel/delete-masters-alumni/${data._id}`}
             />
           ))}
       </>

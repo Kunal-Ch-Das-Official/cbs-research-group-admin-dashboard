@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "../../../axios/axios";
 import envConfig from "../../../envConfig";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
-import PhdMembersCard from "../../components/single-use/phd-members-card/PhdMembersCard";
+import StudentCard from "../../components/reuseable/students-card/StudentCard";
 
 const ManagePhdMembers = () => {
   const [membersInfo, setMembersInfo] = useState(null);
@@ -30,20 +30,23 @@ const ManagePhdMembers = () => {
       <>
         {membersInfo &&
           membersInfo.map((data, index) => (
-            <PhdMembersCard
+            <StudentCard
               key={index}
-              id={data._id}
-              membersName={data.memberName}
+              requiredName={data.memberName}
               googleSchollarUrl={data.googleScholarId}
               researchGateUrl={data.researchGateId}
-              membersImageUrl={data.profilePicture}
-              membersEmail={data.emailId}
-              contactNumberOfMember={data.phoneNumber}
+              ImageUrl={data.profilePicture}
+              EmailId={data.emailId}
+              contactNumber={data.phoneNumber}
               PreviousCollege={data.bscDoneFrom}
-              MastersCollege={data.mscDoneFrom}
+              PreviousMastersCollege={data.mscDoneFrom}
+              passwoutYear={null}
               currentYear={data.currentYear}
               uploadDate={new Date(data.createdAt).toLocaleDateString()}
               updateDate={new Date(data.updatedAt).toLocaleDateString()}
+              previewRouteLink={`/admin-panel/preview-phd-member/${data._id}`}
+              updateRouteLink={`/admin-panel/update-phd-member/${data._id}`}
+              deleteRouteLink={`/admin-panel/delete-phd-member/${data._id}`}
             />
           ))}
       </>
