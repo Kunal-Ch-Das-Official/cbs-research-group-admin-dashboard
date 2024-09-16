@@ -1,4 +1,3 @@
-import { Editor } from "primereact/editor";
 import cbsLogo from "../../assets/CBS Research Group Logo-resized.png";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -9,6 +8,7 @@ import envConfig from "../../../envConfig";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import CustomModel from "../../utils/custom-models/CustomModel";
 import { useApp } from "../../app-context/useApp";
+import TextEditor from "../../utils/text-editor/TextEditor";
 const SendApplicationResponse = () => {
   const { id } = useParams();
   const { setisContactResSend } = useApp();
@@ -116,18 +116,11 @@ const SendApplicationResponse = () => {
 
               <div className="w-full mb-4 mt-6 border border-gray-100 bg-gray-50 ">
                 <div className="px-4 py-2 bg-white rounded-t-lg">
-                  <label htmlFor="awardDetails" className="sr-only">
-                    Email Body
-                  </label>
-
-                  <div className="card">
-                    <Editor
-                      className="bg-white"
-                      value={emailBody}
-                      onTextChange={(e) => setEmailBody(e.textValue)}
-                      style={{ height: "320px" }}
-                    />
-                  </div>
+                  <TextEditor
+                    editorLabel={"Email Body"}
+                    eventValue={emailBody}
+                    eventHandler={setEmailBody}
+                  />
                 </div>
                 <div className="flex items-center px-3 py-2 border-t ">
                   <button

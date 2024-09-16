@@ -1,4 +1,3 @@
-import { Editor } from "primereact/editor";
 import { Calendar } from "primereact/calendar";
 import { useRef, useState } from "react";
 import { MdDateRange } from "react-icons/md";
@@ -9,6 +8,7 @@ import envConfig from "../../../envConfig";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import CustomModel from "../../utils/custom-models/CustomModel";
 import { useNavigate } from "react-router-dom";
+import TextEditor from "../../utils/text-editor/TextEditor";
 const UploadMasterAlumni = () => {
   const navigate = useNavigate();
   const mastersAlumniSubmitionRef = useRef();
@@ -220,20 +220,11 @@ const UploadMasterAlumni = () => {
                   />
                 </div>
                 <div className="sm:col-span-2 mt-2">
-                  <label
-                    htmlFor="description"
-                    className="block mb-2 text-sm font-medium text-gray-900"
-                  >
-                    Alumni details
-                  </label>
-                  <div className="card" id="alumni-details">
-                    <Editor
-                      className="bg-white"
-                      value={alumniDetails}
-                      onTextChange={(e) => setAlumniDetails(e.textValue)}
-                      style={{ height: "220px" }}
-                    />
-                  </div>
+                  <TextEditor
+                    editorLabel={"Alumni details"}
+                    eventValue={alumniDetails}
+                    eventHandler={setAlumniDetails}
+                  />
                 </div>
               </div>
               <div>

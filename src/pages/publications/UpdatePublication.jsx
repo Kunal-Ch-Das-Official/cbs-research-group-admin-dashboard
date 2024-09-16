@@ -1,5 +1,4 @@
 import { Calendar } from "primereact/calendar";
-import { Editor } from "primereact/editor";
 import { useEffect, useState } from "react";
 import { FaFileImage } from "react-icons/fa";
 import axios from "../../../axios/axios";
@@ -10,6 +9,7 @@ import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import CustomModel from "../../utils/custom-models/CustomModel";
 import { useNavigate, useParams } from "react-router-dom";
 import { getSingleData } from "../../../operations/apis/getSingleData";
+import TextEditor from "../../utils/text-editor/TextEditor";
 const UpdatePublication = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -280,21 +280,11 @@ const UpdatePublication = () => {
                 </div>
 
                 <div className="sm:col-span-2">
-                  <label
-                    htmlFor="aboutPublication"
-                    className="block mb-2 text-sm font-medium text-gray-900"
-                  >
-                    Description
-                  </label>
-                  <div className="card">
-                    <Editor
-                      id="aboutPublication"
-                      className="bg-white"
-                      value={prevData && prevData.aboutPublication}
-                      onTextChange={(e) => setAboutPublication(e.textValue)}
-                      style={{ height: "320px" }}
-                    />
-                  </div>
+                  <TextEditor
+                    editorLabel={" About Project"}
+                    eventValue={prevData && prevData.aboutPublication}
+                    eventHandler={setAboutPublication}
+                  />
                 </div>
               </div>
 

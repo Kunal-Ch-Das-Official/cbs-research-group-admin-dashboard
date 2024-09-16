@@ -1,4 +1,3 @@
-import { Editor } from "primereact/editor";
 import { useEffect, useState } from "react";
 import { MdDateRange } from "react-icons/md";
 import { FcCancel } from "react-icons/fc";
@@ -9,6 +8,7 @@ import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import CustomModel from "../../utils/custom-models/CustomModel";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { getSingleData } from "../../../operations/apis/getSingleData";
+import TextEditor from "../../utils/text-editor/TextEditor";
 const UpdateMscMember = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -199,20 +199,11 @@ const UpdateMscMember = () => {
                     />
                   </div>
                   <div className="sm:col-span-2 mt-2">
-                    <label
-                      htmlFor="msc_member_details"
-                      className="block mb-2 text-sm font-medium text-gray-900"
-                    >
-                      About Member
-                    </label>
-                    <div className="card" id="msc_member_details">
-                      <Editor
-                        className="bg-white"
-                        value={previousData.details}
-                        onTextChange={(e) => setAboutMember(e.textValue)}
-                        style={{ height: "220px" }}
-                      />
-                    </div>
+                    <TextEditor
+                      editorLabel={"Alumni Member"}
+                      eventValue={previousData.details}
+                      eventHandler={setAboutMember}
+                    />
                   </div>
                 </div>
                 <div className="flex flex-row">

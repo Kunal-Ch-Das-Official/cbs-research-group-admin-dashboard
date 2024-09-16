@@ -1,4 +1,3 @@
-import { Editor } from "primereact/editor";
 import { Calendar } from "primereact/calendar";
 import { useEffect, useState } from "react";
 import { MdDateRange } from "react-icons/md";
@@ -10,6 +9,7 @@ import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import CustomModel from "../../utils/custom-models/CustomModel";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { getSingleData } from "../../../operations/apis/getSingleData";
+import TextEditor from "../../utils/text-editor/TextEditor";
 const UpdateMastersAlumni = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -213,20 +213,11 @@ const UpdateMastersAlumni = () => {
                     />
                   </div>
                   <div className="sm:col-span-2 mt-2">
-                    <label
-                      htmlFor="description"
-                      className="block mb-2 text-sm font-medium text-gray-900"
-                    >
-                      Alumni details
-                    </label>
-                    <div className="card" id="alumni-details">
-                      <Editor
-                        className="bg-white"
-                        value={previousData.details}
-                        onTextChange={(e) => setAlumniDetails(e.textValue)}
-                        style={{ height: "220px" }}
-                      />
-                    </div>
+                    <TextEditor
+                      editorLabel={"Alumni details"}
+                      eventValue={previousData.details}
+                      eventHandler={setAlumniDetails}
+                    />
                   </div>
                 </div>
                 <div className="">

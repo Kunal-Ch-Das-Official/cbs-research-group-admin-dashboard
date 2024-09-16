@@ -1,4 +1,3 @@
-import { Editor } from "primereact/editor";
 import { useRef, useState } from "react";
 import { MdDateRange } from "react-icons/md";
 import { FcCancel } from "react-icons/fc";
@@ -8,6 +7,7 @@ import envConfig from "../../../envConfig";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import CustomModel from "../../utils/custom-models/CustomModel";
 import { useNavigate } from "react-router-dom";
+import TextEditor from "../../utils/text-editor/TextEditor";
 const UploadPhdMember = () => {
   const navigate = useNavigate();
   const phdMemberSubmitionRef = useRef();
@@ -234,20 +234,11 @@ const UploadPhdMember = () => {
                   />
                 </div>
                 <div className="sm:col-span-2 mt-2">
-                  <label
-                    htmlFor="msc_member_details"
-                    className="block mb-2 text-sm font-medium text-gray-900"
-                  >
-                    About Member
-                  </label>
-                  <div className="card" id="msc_member_details">
-                    <Editor
-                      className="bg-white"
-                      value={aboutMember}
-                      onTextChange={(e) => setAboutMember(e.textValue)}
-                      style={{ height: "220px" }}
-                    />
-                  </div>
+                  <TextEditor
+                    editorLabel={"About Member"}
+                    eventValue={aboutMember}
+                    eventHandler={setAboutMember}
+                  />
                 </div>
               </div>
               <div>

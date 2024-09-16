@@ -1,5 +1,4 @@
 import { Calendar } from "primereact/calendar";
-import { Editor } from "primereact/editor";
 import { useRef, useState } from "react";
 import { FaFileImage } from "react-icons/fa";
 import axios from "../../../axios/axios";
@@ -9,6 +8,7 @@ import { MdDownloadDone } from "react-icons/md";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import CustomModel from "../../utils/custom-models/CustomModel";
 import { useNavigate } from "react-router-dom";
+import TextEditor from "../../utils/text-editor/TextEditor";
 const UploadPublication = () => {
   const publicationFormRef = useRef();
   const navigate = useNavigate();
@@ -269,21 +269,11 @@ const UploadPublication = () => {
               </div>
 
               <div className="sm:col-span-2">
-                <label
-                  htmlFor="aboutPublication"
-                  className="block mb-2 text-sm font-medium text-gray-900"
-                >
-                  Description
-                </label>
-                <div className="card">
-                  <Editor
-                    id="aboutPublication"
-                    className="bg-white"
-                    value={aboutPublication}
-                    onTextChange={(e) => setAboutPublication(e.textValue)}
-                    style={{ height: "320px" }}
-                  />
-                </div>
+                <TextEditor
+                  editorLabel={"Description"}
+                  eventValue={aboutPublication}
+                  eventHandler={setAboutPublication}
+                />
               </div>
             </div>
 
