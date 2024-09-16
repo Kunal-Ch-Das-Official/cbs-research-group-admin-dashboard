@@ -42,11 +42,14 @@ const UpdateTeamAward = () => {
     getPreviousData();
   }, [id]);
 
+  console.log(date);
+
   const handleAwardUpdate = async (e) => {
     e.preventDefault();
     try {
       setLoading(true);
       const formattedDate = date.toLocaleDateString("en-GB");
+      console.log(formattedDate);
       const updatedInfo = {
         awardTitle: awardTitle,
         recivedFor: awardDetails,
@@ -64,7 +67,6 @@ const UpdateTeamAward = () => {
         .then((res) => {
           console.log(res);
           setCustomAlert({
-            message: res.data.message,
             details: res.data.details,
             statusIcon: (
               <MdDownloadDone className="text-4xl font-bold text-green-600" />
@@ -75,8 +77,7 @@ const UpdateTeamAward = () => {
     } catch (error) {
       console.log(error);
       setCustomAlert({
-        message: error.response.data.details,
-        details: error.response.data.issue,
+        details: error.response.data.details,
         statusIcon: <FcCancel className="text-4xl font-bold text-red-600" />,
         buttonColor: "bg-red-600",
       });
@@ -131,26 +132,27 @@ const UpdateTeamAward = () => {
                   onChange={(e) => setAwardTitle(e.target.value)}
                 />
               </div>
-              <div className="w-full my-4 border border-gray-200 py-4">
+              <div className="w-full my-4 border border-gray-200">
                 <div className="card">
                   <FloatLabel>
                     <label
                       htmlFor="recivedDate"
                       className="text-gray-500 z-[100] pl-4"
                     >
-                      {prevData && prevData.recivedDate}
+                      {/* {prevData && prevData.recivedDate} */}
                     </label>
                     <Calendar
                       className="z-0 border-b  border-l  border-r border-gray-200 pl-4"
                       inputId="recivedDate"
-                      value={date}
+                      value={prevData && prevData.recivedDate}
                       onChange={(e) => setDate(e.value)}
+                      placeholder={prevData && prevData.recivedDate}
                     />
                   </FloatLabel>
                 </div>
               </div>
 
-              <div className="w-full mb-4 mt-6 border border-gray-200 rounded-lg bg-gray-50 ">
+              <div className="w-full mb-4 mt-12 border border-gray-200 rounded-lg bg-gray-50 ">
                 <div className="px-4 py-2 bg-white rounded-t-lg">
                   <label htmlFor="awardDetails" className="sr-only">
                     About Awards

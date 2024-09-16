@@ -1,28 +1,21 @@
 import { useEffect, useState } from "react";
 import PublicationCard from "../../components/single-use/publication-card/PublicationCard";
-import axios from "../../../axios/axios";
 import envConfig from "../../../envConfig";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
+import { getAllData } from "../../../operations/apis/getAllData";
 
 const ManagePublications = () => {
   const [allPublication, setAllPublication] = useState(null);
   const [loading, setLoading] = useState(false);
+
   useEffect(() => {
-    setLoading(true);
-    const getAllPublication = async () => {
-      try {
-        await axios.get(envConfig.publicationsUrl).then((res) => {
-          setAllPublication(res.data);
-        });
-      } catch (error) {
-        setAllPublication(null);
-        console.log(error);
-      } finally {
-        setLoading(false);
-      }
+    const fetchData = async () => {
+      const output = await getAllData(setLoading, envConfig.publicationsUrl);
+      output && setAllPublication(output);
     };
-    getAllPublication();
+    fetchData();
   }, []);
+
   return (
     <main className="bg-gray-50 min-h-screen">
       {loading === true && <LoadingSpinner />}

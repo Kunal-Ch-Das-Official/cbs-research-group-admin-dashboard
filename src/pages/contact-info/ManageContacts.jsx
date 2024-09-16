@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import ContactInfoCard from "../../components/single-use/contact-info-card/ContactInfoCard";
-import axios from "../../../axios/axios";
 import envConfig from "../../../envConfig";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
+import { getAllData } from "../../../operations/apis/getAllData";
 
 const ManageContacts = () => {
   const [allContactData, setAllContactData] = useState(null);
@@ -10,26 +10,11 @@ const ManageContacts = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const getAllData = async () => {
-      try {
-        setLoading(true);
-        const authToken = localStorage.getItem("auth-token") || null;
-        const adminToken = localStorage.getItem("admin-token") || null;
-        const token = authToken || adminToken;
-        const res = await axios.get(envConfig.contactFormDataUrl, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        setAllContactData(res.data);
-      } catch (error) {
-        setAllContactData(null);
-        console.log(error);
-      } finally {
-        setLoading(false);
-      }
+    const fetchData = async () => {
+      const output = await getAllData(setLoading, envConfig.contactFormDataUrl);
+      output && setAllContactData(output);
     };
-    getAllData();
+    fetchData();
   }, []);
 
   useEffect(() => {

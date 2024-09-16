@@ -1,28 +1,19 @@
 import { useEffect, useState } from "react";
-import axios from "../../../axios/axios";
 import envConfig from "../../../envConfig";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import StudentCard from "../../components/reuseable/students-card/StudentCard";
+import { getAllData } from "../../../operations/apis/getAllData";
 
 const ManageDoctorateAlumni = () => {
   const [alumniInfo, setAlumniInfo] = useState(null);
-  const [loading, setLoding] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setLoding(true);
-    const getDoctorateAlumniData = async () => {
-      try {
-        await axios.get(envConfig.doctorateAlumniUrl).then((res) => {
-          setAlumniInfo(res.data);
-        });
-      } catch (error) {
-        setAlumniInfo(null);
-        console.log(error);
-      } finally {
-        setLoding(false);
-      }
+    const fetchData = async () => {
+      const output = await getAllData(setLoading, envConfig.doctorateAlumniUrl);
+      output && setAlumniInfo(output);
     };
-    getDoctorateAlumniData();
+    fetchData();
   }, []);
 
   return (

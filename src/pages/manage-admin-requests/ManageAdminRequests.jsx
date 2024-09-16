@@ -1,67 +1,80 @@
 import { useEffect, useState } from "react";
 import GetAllDesireAdminReq from "../../authentication/auth-components/get-all-be-admin-request/GetAllDesireAdminReq";
-import axios from "../../../axios/axios";
 import envConfig from "../../../envConfig";
-import { FcCancel } from "react-icons/fc";
+// import { FcCancel } from "react-icons/fc";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
-import CustomModel from "../../utils/custom-models/CustomModel";
+// import CustomModel from "../../utils/custom-models/CustomModel";
+import { getAllData } from "../../../operations/apis/getAllData";
 const ManageAdminRequests = () => {
   const [getBecomeAdminReq, setBecomeAdminReq] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [resError, setResError] = useState(false);
+  // const [resError, setResError] = useState(false);
   const [noData, setNoData] = useState(false);
-  const [showErrorAlert, setShowErrorAlert] = useState({
-    message: null,
-    details: null,
-    statusIcon: null,
-    buttonColor: null,
-  });
+  // const [showErrorAlert, setShowErrorAlert] = useState({
+  //   message: null,
+  //   details: null,
+  //   statusIcon: null,
+  //   buttonColor: null,
+  // });
+  // useEffect(() => {
+  //   setLoading(true);
+  //   const authToken = localStorage.getItem("auth-token");
+  //   const adminToken = localStorage.getItem("admin-token");
+  //   const token = authToken || adminToken;
+  //   const getBecomeAdminRequest = async () => {
+  //     try {
+  //       await axios
+  //         .get(envConfig.becomeAdminUsersRequestUrl, {
+  //           headers: {
+  //             Authorization: `Bearer ${token}`,
+  //           },
+  //         })
+  //         .then((res) => {
+  //           setBecomeAdminReq(res.data);
+  //           res.data.length === 0 ? setNoData(true) : setNoData(false);
+  //         });
+  //     } catch (error) {
+  //       setShowErrorAlert({
+  //         message: error.response.data.issue,
+  //         details: error.response.data.details,
+  //         statusIcon: <FcCancel className="text-4xl font-bold text-red-600" />,
+  //         buttonColor: "bg-red-600",
+  //       });
+  //       setResError(true);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+  //   getBecomeAdminRequest();
+  // }, []);
+
   useEffect(() => {
-    setLoading(true);
-    const authToken = localStorage.getItem("auth-token");
-    const adminToken = localStorage.getItem("admin-token");
-    const token = authToken || adminToken;
-    const getBecomeAdminRequest = async () => {
-      try {
-        await axios
-          .get(envConfig.becomeAdminUsersRequestUrl, {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          })
-          .then((res) => {
-            setBecomeAdminReq(res.data);
-            res.data.length === 0 ? setNoData(true) : setNoData(false);
-          });
-      } catch (error) {
-        setShowErrorAlert({
-          message: error.response.data.issue,
-          details: error.response.data.details,
-          statusIcon: <FcCancel className="text-4xl font-bold text-red-600" />,
-          buttonColor: "bg-red-600",
-        });
-        setResError(true);
-      } finally {
-        setLoading(false);
-      }
+    const fetchData = async () => {
+      const output = await getAllData(
+        setLoading,
+        envConfig.becomeAdminUsersRequestUrl
+      );
+      output ? setBecomeAdminReq(output) : setNoData(true);
     };
-    getBecomeAdminRequest();
+    fetchData();
   }, []);
-  const closeModelHandler = () => setResError(false);
+
+  // const closeModelHandler = () => setResError(false);
+  // {resError === true && (
+  //   <CustomModel
+  //     buttonText={"Got it"}
+  //     showOrHide="flex"
+  //     closeButton={closeModelHandler}
+  //     statusIcon={showErrorAlert.statusIcon}
+  //     alertHead={showErrorAlert.message}
+  //     message1={showErrorAlert.details}
+  //     buttonColor={showErrorAlert.buttonColor}
+  //   />
+  // )}
   return (
     <>
       {loading === true && <LoadingSpinner />}
-      {resError === true && (
-        <CustomModel
-          buttonText={"Got it"}
-          showOrHide="flex"
-          closeButton={closeModelHandler}
-          statusIcon={showErrorAlert.statusIcon}
-          alertHead={showErrorAlert.message}
-          message1={showErrorAlert.details}
-          buttonColor={showErrorAlert.buttonColor}
-        />
-      )}
+
       {noData === true ? (
         <h2 className="text-2xl text-gray-500 text-center font-bold pt-28">
           {" "}

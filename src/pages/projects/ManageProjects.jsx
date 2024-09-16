@@ -1,29 +1,21 @@
 import { useEffect, useState } from "react";
 import ProjectCard from "../../components/single-use/project-card/ProjectCard";
-import axios from "../../../axios/axios";
 import envConfig from "../../../envConfig";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
+import { getAllData } from "../../../operations/apis/getAllData";
 
 const ManageProjects = () => {
   const [allProjects, setAllProjects] = useState(null);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const getAllProjects = async () => {
-      try {
-        setLoading(true);
-        await axios.get(envConfig.projectsUrl).then((res) => {
-          setAllProjects(res.data);
-        });
-      } catch (error) {
-        console.log(error);
-        setAllProjects(null);
-      } finally {
-        setLoading(false);
-      }
+    const fetchData = async () => {
+      const output = await getAllData(setLoading, envConfig.projectsUrl);
+      output && setAllProjects(output);
     };
-    getAllProjects();
+    fetchData();
   }, []);
+
   return (
     <>
       {loading === true && <LoadingSpinner />}

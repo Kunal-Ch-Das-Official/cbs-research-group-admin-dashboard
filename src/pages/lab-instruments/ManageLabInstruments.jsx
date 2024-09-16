@@ -1,28 +1,21 @@
 import { useEffect, useState } from "react";
 import LabInstrumentCard from "../../components/single-use/lab-instrument-card/LabInstrumentCard";
-import axios from "../../../axios/axios";
 import envConfig from "../../../envConfig";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
+import { getAllData } from "../../../operations/apis/getAllData";
 
 const ManageLabInstruments = () => {
   const [allInstruments, setAllInstruments] = useState(null);
   const [loading, setLoading] = useState(false);
+
   useEffect(() => {
-    const getAllInstruments = async () => {
-      setLoading(true);
-      try {
-        await axios.get(envConfig.labInstrumntsUrl).then((res) => {
-          setAllInstruments(res.data);
-        });
-      } catch (error) {
-        setAllInstruments(null);
-        console.log(error);
-      } finally {
-        setLoading(false);
-      }
+    const fetchData = async () => {
+      const output = await getAllData(setLoading, envConfig.labInstrumntsUrl);
+      output && setAllInstruments(output);
     };
-    getAllInstruments();
+    fetchData();
   }, []);
+
   return (
     <main className="bg-gray-100 pt-20">
       {loading === true && <LoadingSpinner />}

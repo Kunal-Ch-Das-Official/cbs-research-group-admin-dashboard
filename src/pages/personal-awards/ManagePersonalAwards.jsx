@@ -1,28 +1,19 @@
 import AwardCard from "../../components/reuseable/awards-card/AwardCard";
-
 import { useEffect, useState } from "react";
-import axios from "../../../axios/axios";
 import envConfig from "../../../envConfig";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
+import { getAllData } from "../../../operations/apis/getAllData";
 
 const ManagePersonalAwards = () => {
   const [allAwards, setAllawards] = useState(null);
   const [loading, setLoading] = useState(false);
+
   useEffect(() => {
-    setLoading(true);
-    const getAllPersonalAwards = async () => {
-      try {
-        await axios.get(envConfig.personalAwardsUrl).then((res) => {
-          setAllawards(res.data);
-        });
-      } catch (error) {
-        setAllawards(null);
-        console.log(error);
-      } finally {
-        setLoading(false);
-      }
+    const fetchData = async () => {
+      const output = await getAllData(setLoading, envConfig.personalAwardsUrl);
+      output && setAllawards(output);
     };
-    getAllPersonalAwards();
+    fetchData();
   }, []);
 
   return (

@@ -1,27 +1,19 @@
 import { useEffect, useState } from "react";
 import GroupNewsCard from "../../components/single-use/group-news-card/GroupNewsCard";
-import axios from "../../../axios/axios";
 import envConfig from "../../../envConfig";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
+import { getAllData } from "../../../operations/apis/getAllData";
 
 const ManageGroupnews = () => {
   const [allGroupNews, setAllGroupNews] = useState(null);
   const [loadIng, setLoading] = useState(false);
+
   useEffect(() => {
-    setLoading(true);
-    const getAllGroupNews = async () => {
-      try {
-        await axios.get(envConfig.groupNewsUrl).then((res) => {
-          setAllGroupNews(res.data);
-        });
-      } catch (error) {
-        console.log(error);
-        setAllGroupNews(null);
-      } finally {
-        setLoading(false);
-      }
+    const fetchData = async () => {
+      const output = await getAllData(setLoading, envConfig.groupNewsUrl);
+      output && setAllGroupNews(output);
     };
-    getAllGroupNews();
+    fetchData();
   }, []);
   return (
     <main className="bg-gray-50">
