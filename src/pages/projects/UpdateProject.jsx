@@ -8,6 +8,7 @@ import axios from "../../../axios/axios";
 import envConfig from "../../../envConfig";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import CustomModel from "../../utils/custom-models/CustomModel";
+import { getSingleData } from "../../../operations/apis/getSingleData";
 
 const UpdateProject = () => {
   const { id } = useParams();
@@ -24,22 +25,17 @@ const UpdateProject = () => {
     statusIcon: null,
     buttonColor: null,
   });
-  console.log(projectStatus);
+
   useEffect(() => {
-    const getPreviousData = async () => {
-      try {
-        setLoading(true);
-        await axios.get(`${envConfig.projectsUrl}/${id}`).then((res) => {
-          setPrevData(res.data);
-        });
-      } catch (error) {
-        console.log(error);
-        setPrevData(null);
-      } finally {
-        setLoading(false);
-      }
+    const fetchReqData = async () => {
+      const response = await getSingleData(
+        setLoading,
+        envConfig.projectsUrl,
+        id
+      );
+      response && setPrevData(response);
     };
-    getPreviousData();
+    fetchReqData();
   }, [id]);
 
   const projectUpdateHandler = async (e) => {

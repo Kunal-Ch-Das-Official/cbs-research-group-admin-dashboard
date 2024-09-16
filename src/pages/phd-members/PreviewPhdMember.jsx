@@ -1,28 +1,24 @@
 import { useEffect, useState } from "react";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
-import axios from "../../../axios/axios";
 import envConfig from "../../../envConfig";
 import StudentPreview from "../../components/reuseable/student-preview/StudentPreview";
 import { useParams } from "react-router-dom";
+import { getSingleData } from "../../../operations/apis/getSingleData";
 const PreviewPhdMember = () => {
   const { id } = useParams();
   const [memberInfo, setMemberInfo] = useState(null);
   const [loading, setLoading] = useState(null);
 
   useEffect(() => {
-    const fetchSingleMember = async () => {
-      setLoading(true);
-      try {
-        const res = await axios.get(`${envConfig.phdMembersUrl}/${id}`);
-        setMemberInfo(res.data);
-      } catch (error) {
-        console.error(error);
-        setMemberInfo(null);
-      } finally {
-        setLoading(false);
-      }
+    const fetchReqData = async () => {
+      const response = await getSingleData(
+        setLoading,
+        envConfig.phdMembersUrl,
+        id
+      );
+      response && setMemberInfo(response);
     };
-    fetchSingleMember();
+    fetchReqData();
   }, [id]);
 
   return (

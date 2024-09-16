@@ -8,6 +8,7 @@ import envConfig from "../../../envConfig";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import CustomModel from "../../utils/custom-models/CustomModel";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import { getSingleData } from "../../../operations/apis/getSingleData";
 const UpdatePhdMember = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -35,20 +36,15 @@ const UpdatePhdMember = () => {
   });
 
   useEffect(() => {
-    const getPreviousMembersInfo = async () => {
-      try {
-        setLoading(true);
-        await axios.get(`${envConfig.phdMembersUrl}/${id}`).then((res) => {
-          setPreviousData(res.data);
-        });
-      } catch (error) {
-        console.log(error);
-        setPreviousData(null);
-      } finally {
-        setLoading(false);
-      }
+    const fetchReqData = async () => {
+      const response = await getSingleData(
+        setLoading,
+        envConfig.phdMembersUrl,
+        id
+      );
+      response && setPreviousData(response);
     };
-    getPreviousMembersInfo();
+    fetchReqData();
   }, [id]);
 
   const updatePhdMemberHandler = async (e) => {

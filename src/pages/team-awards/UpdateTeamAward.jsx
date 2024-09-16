@@ -9,6 +9,7 @@ import { FcCancel } from "react-icons/fc";
 import { MdDownloadDone } from "react-icons/md";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import CustomModel from "../../utils/custom-models/CustomModel";
+import { getSingleData } from "../../../operations/apis/getSingleData";
 const UpdateTeamAward = () => {
   const { id } = useParams();
   const [prevData, setPrevData] = useState(null);
@@ -26,23 +27,16 @@ const UpdateTeamAward = () => {
   });
 
   useEffect(() => {
-    setLoading(true);
-    const getPreviousData = async () => {
-      try {
-        await axios.get(`${envConfig.teamAwardsUrl}/${id}`).then((res) => {
-          setPrevData(res.data);
-        });
-      } catch (error) {
-        console.log(error);
-        setPrevData(null);
-      } finally {
-        setLoading(false);
-      }
+    const fetchReqData = async () => {
+      const response = await getSingleData(
+        setLoading,
+        envConfig.teamAwardsUrl,
+        id
+      );
+      response && setPrevData(response);
     };
-    getPreviousData();
+    fetchReqData();
   }, [id]);
-
-  console.log(date);
 
   const handleAwardUpdate = async (e) => {
     e.preventDefault();

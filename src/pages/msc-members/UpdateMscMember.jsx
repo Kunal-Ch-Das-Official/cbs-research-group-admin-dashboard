@@ -8,6 +8,7 @@ import envConfig from "../../../envConfig";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import CustomModel from "../../utils/custom-models/CustomModel";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import { getSingleData } from "../../../operations/apis/getSingleData";
 const UpdateMscMember = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -34,20 +35,15 @@ const UpdateMscMember = () => {
   });
 
   useEffect(() => {
-    const getPreviousMembersInfo = async () => {
-      try {
-        setLoading(true);
-        await axios.get(`${envConfig.mscMembersUrl}/${id}`).then((res) => {
-          setPreviousData(res.data);
-        });
-      } catch (error) {
-        console.log(error);
-        setPreviousData(null);
-      } finally {
-        setLoading(false);
-      }
+    const fetchReqData = async () => {
+      const response = await getSingleData(
+        setLoading,
+        envConfig.mscMembersUrl,
+        id
+      );
+      response && setPreviousData(response);
     };
-    getPreviousMembersInfo();
+    fetchReqData();
   }, [id]);
 
   const updateMscMemberHandler = async (e) => {

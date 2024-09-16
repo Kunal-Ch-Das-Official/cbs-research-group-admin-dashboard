@@ -9,6 +9,7 @@ import { FcCancel } from "react-icons/fc";
 import { MdDownloadDone } from "react-icons/md";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import CustomModel from "../../utils/custom-models/CustomModel";
+import { getSingleData } from "../../../operations/apis/getSingleData";
 const UpdatePersonalAward = () => {
   const { id } = useParams();
   const [prevData, setPrevData] = useState(null);
@@ -26,20 +27,15 @@ const UpdatePersonalAward = () => {
   });
 
   useEffect(() => {
-    setLoading(true);
-    const getPreviousData = async () => {
-      try {
-        await axios.get(`${envConfig.personalAwardsUrl}/${id}`).then((res) => {
-          setPrevData(res.data);
-        });
-      } catch (error) {
-        console.log(error);
-        setPrevData(null);
-      } finally {
-        setLoading(false);
-      }
+    const fetchReqData = async () => {
+      const response = await getSingleData(
+        setLoading,
+        envConfig.personalAwardsUrl,
+        id
+      );
+      response && setPrevData(response);
     };
-    getPreviousData();
+    fetchReqData();
   }, [id]);
 
   const handleAwardUpdate = async (e) => {

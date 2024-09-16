@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import axios from "../../../axios/axios";
 import envConfig from "../../../envConfig";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import { FaFilePdf } from "react-icons/fa6";
 
 import { IoArrowBack } from "react-icons/io5";
+import { getSingleData } from "../../../operations/apis/getSingleData";
 const PreviewPublication = () => {
   const { id } = useParams();
   const [publicationInfo, setPublicationInfo] = useState(null);
@@ -13,22 +13,17 @@ const PreviewPublication = () => {
   const [extractDescription, setExtractDescription] = useState("");
   const [isExtractDescription, setIsExtractDescription] = useState(false);
   const [showFullText, setShowFullText] = useState(false);
-  useEffect(() => {
-    setLoading(true);
 
-    const getRequestedPublication = async () => {
-      try {
-        await axios.get(`${envConfig.publicationsUrl}/${id}`).then((res) => {
-          setPublicationInfo(res.data);
-        });
-      } catch (error) {
-        setPublicationInfo(null);
-        console.log(error);
-      } finally {
-        setLoading(false);
-      }
+  useEffect(() => {
+    const fetchReqData = async () => {
+      const response = await getSingleData(
+        setLoading,
+        envConfig.publicationsUrl,
+        id
+      );
+      response && setPublicationInfo(response);
     };
-    getRequestedPublication();
+    fetchReqData();
   }, [id]);
 
   useEffect(() => {

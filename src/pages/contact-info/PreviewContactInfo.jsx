@@ -4,8 +4,8 @@ import { IoArrowBack } from "react-icons/io5";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
-import axios from "../../../axios/axios";
 import envConfig from "../../../envConfig";
+import { getSingleData } from "../../../operations/apis/getSingleData";
 
 const PreviewContactInfo = () => {
   const { id } = useParams();
@@ -14,30 +14,15 @@ const PreviewContactInfo = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const getRequestedApplication = async () => {
-      try {
-        setLoading(true);
-        const authToken = localStorage.getItem("auth-token") || null;
-        const adminToken = localStorage.getItem("admin-token") || null;
-        const token = authToken || adminToken;
-
-        await axios
-          .get(`${envConfig.contactFormDataUrl}/${id}`, {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          })
-          .then((res) => {
-            setCorespondingInfo(res.data);
-          });
-      } catch (error) {
-        setCorespondingInfo(null);
-        console.log(error);
-      } finally {
-        setLoading(false);
-      }
+    const fetchReqData = async () => {
+      const response = await getSingleData(
+        setLoading,
+        envConfig.contactFormDataUrl,
+        id
+      );
+      response && setCorespondingInfo(response);
     };
-    getRequestedApplication();
+    fetchReqData();
   }, [id]);
 
   return (

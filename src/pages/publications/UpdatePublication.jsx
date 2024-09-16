@@ -9,6 +9,7 @@ import { MdDownloadDone } from "react-icons/md";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import CustomModel from "../../utils/custom-models/CustomModel";
 import { useNavigate, useParams } from "react-router-dom";
+import { getSingleData } from "../../../operations/apis/getSingleData";
 const UpdatePublication = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -31,20 +32,15 @@ const UpdatePublication = () => {
   });
 
   useEffect(() => {
-    setLoading(true);
-    const getPreviousData = async () => {
-      try {
-        await axios.get(`${envConfig.publicationsUrl}/${id}`).then((res) => {
-          setPrevData(res.data);
-        });
-      } catch (error) {
-        console.log(error);
-        setPrevData(null);
-      } finally {
-        setLoading(false);
-      }
+    const fetchReqData = async () => {
+      const response = await getSingleData(
+        setLoading,
+        envConfig.publicationsUrl,
+        id
+      );
+      response && setPrevData(response);
     };
-    getPreviousData();
+    fetchReqData();
   }, [id]);
 
   const updatePublicationHandler = async (e) => {

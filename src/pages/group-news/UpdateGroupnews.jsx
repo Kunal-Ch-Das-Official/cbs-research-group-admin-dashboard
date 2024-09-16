@@ -9,6 +9,7 @@ import envConfig from "../../../envConfig";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import CustomModel from "../../utils/custom-models/CustomModel";
 import { useNavigate, useParams } from "react-router-dom";
+import { getSingleData } from "../../../operations/apis/getSingleData";
 
 const UpdateGroupnews = () => {
   const { id } = useParams();
@@ -26,21 +27,17 @@ const UpdateGroupnews = () => {
   });
 
   useEffect(() => {
-    const getCorespondingGroupNews = async () => {
-      try {
-        setLoading(true);
-        axios.get(`${envConfig.groupNewsUrl}/${id}`).then((res) => {
-          setPrevData(res.data);
-        });
-      } catch (error) {
-        setPrevData(null);
-        console.log(error);
-      } finally {
-        setLoading(false);
-      }
+    const fetchReqData = async () => {
+      const response = await getSingleData(
+        setLoading,
+        envConfig.groupNewsUrl,
+        id
+      );
+      response && setPrevData(response);
     };
-    getCorespondingGroupNews();
+    fetchReqData();
   }, [id]);
+
   const handleGroupNewsUpdate = async (e) => {
     e.preventDefault();
     try {

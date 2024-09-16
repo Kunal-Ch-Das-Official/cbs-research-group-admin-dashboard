@@ -1,28 +1,24 @@
 import { useEffect, useState } from "react";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
-import axios from "../../../axios/axios";
 import envConfig from "../../../envConfig";
 import StudentPreview from "../../components/reuseable/student-preview/StudentPreview";
 import { useParams } from "react-router-dom";
+import { getSingleData } from "../../../operations/apis/getSingleData";
 const PreviewMastersAlumni = () => {
   const { id } = useParams();
   const [alumniInfo, setAlumniInfo] = useState(null);
   const [loading, setLoading] = useState(null);
 
   useEffect(() => {
-    const fetchSingleAlumni = async () => {
-      setLoading(true);
-      try {
-        const res = await axios.get(`${envConfig.mastersAlumniUrl}/${id}`);
-        setAlumniInfo(res.data);
-      } catch (error) {
-        console.error(error);
-        setAlumniInfo(null);
-      } finally {
-        setLoading(false);
-      }
+    const fetchReqData = async () => {
+      const response = await getSingleData(
+        setLoading,
+        envConfig.mastersAlumniUrl,
+        id
+      );
+      response && setAlumniInfo(response);
     };
-    fetchSingleAlumni();
+    fetchReqData();
   }, [id]);
 
   return (

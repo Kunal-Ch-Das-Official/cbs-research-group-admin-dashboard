@@ -6,6 +6,7 @@ import { FcCancel } from "react-icons/fc";
 import { MdDownloadDone } from "react-icons/md";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import CustomModel from "../../utils/custom-models/CustomModel";
+import { getSingleData } from "../../../operations/apis/getSingleData";
 const UpdateLabInstrument = () => {
   const navigate = useNavigate();
   const { id } = useParams();
@@ -23,20 +24,15 @@ const UpdateLabInstrument = () => {
   });
 
   useEffect(() => {
-    const getCorespondingInstrument = async () => {
-      try {
-        setLoading(true);
-        await axios.get(`${envConfig.labInstrumntsUrl}/${id}`).then((res) => {
-          setPrevData(res.data);
-        });
-      } catch (error) {
-        setPrevData(null);
-        console.log(error);
-      } finally {
-        setLoading(false);
-      }
+    const fetchReqData = async () => {
+      const response = await getSingleData(
+        setLoading,
+        envConfig.labInstrumntsUrl,
+        id
+      );
+      response && setPrevData(response);
     };
-    getCorespondingInstrument();
+    fetchReqData();
   }, [id]);
 
   const updateLabInstrumentHandler = async (e) => {

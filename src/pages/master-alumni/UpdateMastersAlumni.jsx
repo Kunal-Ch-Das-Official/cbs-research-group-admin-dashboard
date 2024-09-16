@@ -9,6 +9,7 @@ import envConfig from "../../../envConfig";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import CustomModel from "../../utils/custom-models/CustomModel";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import { getSingleData } from "../../../operations/apis/getSingleData";
 const UpdateMastersAlumni = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -35,21 +36,16 @@ const UpdateMastersAlumni = () => {
   });
 
   useEffect(() => {
-    const getPreviousAlumniInfo = async () => {
-      try {
-        setLoading(true);
-        await axios.get(`${envConfig.mastersAlumniUrl}/${id}`).then((res) => {
-          setPreviousData(res.data);
-          setPassoutYear(res ? res.data.yearOfPassout : null);
-        });
-      } catch (error) {
-        console.log(error);
-        setPreviousData(null);
-      } finally {
-        setLoading(false);
-      }
+    const fetchReqData = async () => {
+      const response = await getSingleData(
+        setLoading,
+        envConfig.mastersAlumniUrl,
+        id
+      );
+      response && setPreviousData(response);
+      setPassoutYear(response ? response.yearOfPassout : null);
     };
-    getPreviousAlumniInfo();
+    fetchReqData();
   }, [id]);
 
   const updateMasterAlumniHandler = async (e) => {
