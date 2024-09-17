@@ -9,6 +9,7 @@ import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import CustomModel from "../../utils/custom-models/CustomModel";
 import { useApp } from "../../app-context/useApp";
 import TextEditor from "../../utils/text-editor/TextEditor";
+import TextInput from "../../utils/inputs/TextInput";
 const SendApplicationResponse = () => {
   const { id } = useParams();
   const { setisContactResSend } = useApp();
@@ -103,16 +104,13 @@ const SendApplicationResponse = () => {
             </p>
 
             <form onSubmit={responseSendingHandler}>
-              <div className="w-full mt-4">
-                <input
-                  className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg  focus:outline-none "
-                  type="text"
-                  placeholder="Write email subject"
-                  aria-label="award-title"
-                  required
-                  onChange={(e) => setSubject(e.target.value)}
-                />
-              </div>
+              <TextInput
+                inputLabel={""}
+                defaultText={null}
+                textValue={setSubject}
+                placeHolderText={"Write email subject"}
+                isRequired={true}
+              />
 
               <div className="w-full mb-4 mt-6 border border-gray-100 bg-gray-50 ">
                 <div className="px-4 py-2 bg-white rounded-t-lg">

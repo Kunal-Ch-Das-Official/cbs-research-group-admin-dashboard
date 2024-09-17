@@ -6,6 +6,7 @@ const EmailInput = ({
   emailValue,
   emailValidationError,
   placeHolderText,
+  isRequired,
 }) => {
   return (
     <div id="email">
@@ -26,7 +27,7 @@ const EmailInput = ({
        border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 
        block w-full p-2.5`}
         placeholder={placeHolderText}
-        required
+        required={isRequired}
         onChange={(e) => emailValue(e.target.value)}
       />
       {emailValidationError === true ? (
@@ -40,6 +41,7 @@ const EmailInput = ({
   );
 };
 EmailInput.propTypes = {
+  isRequired: PropTypes.bool,
   inputLabel: PropTypes.string,
   defaultEmail: PropTypes.string || null,
   emailValue: PropTypes.any,

@@ -100,6 +100,7 @@ const ResetPasswordRequest = () => {
                   emailValue={setAdminEmail}
                   emailValidationError={emailValidationError}
                   placeHolderText={"your_name@email.com"}
+                  isRequired={true}
                 />
                 {/* ACTION BUTTONS  */}
                 <div className="flex flex-col">

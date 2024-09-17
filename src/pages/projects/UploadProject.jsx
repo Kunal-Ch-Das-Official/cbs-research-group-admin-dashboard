@@ -8,6 +8,7 @@ import envConfig from "../../../envConfig";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import CustomModel from "../../utils/custom-models/CustomModel";
 import TextEditor from "../../utils/text-editor/TextEditor";
+import TextInput from "../../utils/inputs/TextInput";
 
 const UploadProject = () => {
   const projectformRef = useRef();
@@ -103,13 +104,12 @@ const UploadProject = () => {
 
             <form onSubmit={projectUploadHandler} ref={projectformRef}>
               <div className="w-full mt-4">
-                <input
-                  className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg  focus:outline-none "
-                  type="text"
-                  placeholder="Enter the project name"
-                  aria-label="project_name"
-                  required
-                  onChange={(e) => setProjectName(e.target.value)}
+                <TextInput
+                  inputLabel={""}
+                  defaultText={null}
+                  textValue={setProjectName}
+                  placeHolderText={"Enter the project name"}
+                  isRequired={true}
                 />
               </div>
 

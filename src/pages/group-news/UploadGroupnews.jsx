@@ -9,6 +9,7 @@ import envConfig from "../../../envConfig";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import CustomModel from "../../utils/custom-models/CustomModel";
 import { useNavigate } from "react-router-dom";
+import TextInput from "../../utils/inputs/TextInput";
 
 const UploadGroupnews = () => {
   const navigate = useNavigate();
@@ -96,27 +97,14 @@ const UploadGroupnews = () => {
                 ref={groupNewsFormRef}
               >
                 {/* PASSWORD FIELDS  */}
-                <div id="title">
-                  <label
-                    htmlFor="newsTitle"
-                    className="block mb-2 text-sm font-medium text-gray-900"
-                  >
-                    Title
-                  </label>
 
-                  <div className="relative flex items-center">
-                    <input
-                      type="text"
-                      name="newsTitle"
-                      id="newsTitle"
-                      placeholder="Enter news title"
-                      className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                      required
-                      onChange={(e) => setNewsTitle(e.target.value)}
-                    />
-                  </div>
-                </div>
-
+                <TextInput
+                  inputLabel={"News title"}
+                  defaultText={null}
+                  textValue={setNewsTitle}
+                  placeHolderText={"Enter the title of the group news"}
+                  isRequired={true}
+                />
                 {/* CONFIRM PASSWORD FIELDS  */}
                 <div id="content">
                   <label

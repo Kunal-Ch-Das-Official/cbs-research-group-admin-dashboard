@@ -9,6 +9,7 @@ import { FcCancel } from "react-icons/fc";
 import { MdDownloadDone } from "react-icons/md";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import CustomModel from "../../utils/custom-models/CustomModel";
+import TextInput from "../../utils/inputs/TextInput";
 const UploadTeamAward = () => {
   const navigate = useNavigate();
   const teamAwardFormRef = useRef();
@@ -104,13 +105,12 @@ const UploadTeamAward = () => {
 
             <form onSubmit={handleAwardSubmit} ref={teamAwardFormRef}>
               <div className="w-full mt-4">
-                <input
-                  className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg  focus:outline-none "
-                  type="text"
-                  placeholder="Write awards title"
-                  aria-label="award-title"
-                  required
-                  onChange={(e) => setAwardTitle(e.target.value)}
+                <TextInput
+                  inputLabel={""}
+                  defaultText={null}
+                  textValue={setAwardTitle}
+                  placeHolderText={"Write awards title"}
+                  isRequired={true}
                 />
               </div>
               <div className="w-full my-4 border border-gray-200 py-4">

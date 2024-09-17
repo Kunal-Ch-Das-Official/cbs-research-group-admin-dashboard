@@ -120,6 +120,7 @@ const AdminLogin = () => {
                   emailValue={setAdminEmail}
                   emailValidationError={emailValidationError}
                   placeHolderText={"your_name@email.com"}
+                  isRequired={true}
                 />
                 {/* PASSWORD FIELDS  */}
 

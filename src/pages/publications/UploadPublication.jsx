@@ -9,6 +9,7 @@ import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import CustomModel from "../../utils/custom-models/CustomModel";
 import { useNavigate } from "react-router-dom";
 import TextEditor from "../../utils/text-editor/TextEditor";
+import TextInput from "../../utils/inputs/TextInput";
 const UploadPublication = () => {
   const publicationFormRef = useRef();
   const navigate = useNavigate();
@@ -106,43 +107,21 @@ const UploadPublication = () => {
           </h2>
           <form onSubmit={uploadPublicationHandler} ref={publicationFormRef}>
             <div className="grid gap-4 sm:grid-cols-2 sm:gap-6 pt-10">
-              <div className="sm:col-span-2">
-                <label
-                  htmlFor="publicationTitle"
-                  className="block mb-2 text-sm font-medium text-gray-900"
-                >
-                  Publication title
-                </label>
-                <input
-                  onChange={(e) => setpPublicationTitle(e.target.value)}
-                  type="text"
-                  name="publicationTitle"
-                  id="publicationTitle"
-                  className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg
-                   focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
-                  placeholder="Type publication title"
-                  required
-                />
-              </div>
+              <TextInput
+                inputLabel={"Publication title"}
+                defaultText={null}
+                textValue={setpPublicationTitle}
+                placeHolderText={"Enter publication title"}
+                isRequired={true}
+              />
 
-              <div className="sm:col-span-2">
-                <label
-                  htmlFor="contributerName"
-                  className="block mb-2 text-sm font-medium text-gray-900"
-                >
-                  Publication contributer
-                </label>
-                <input
-                  onChange={(e) => setpPublicationContributer(e.target.value)}
-                  type="text"
-                  name="contributerName"
-                  id="contributerName"
-                  className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg
-                   focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
-                  placeholder="Type contributers name with comma"
-                  required=""
-                />
-              </div>
+              <TextInput
+                inputLabel={"Publication contributer"}
+                defaultText={null}
+                textValue={setpPublicationContributer}
+                placeHolderText={"Enter contributers name with comma"}
+                isRequired={true}
+              />
 
               <div>
                 <label htmlFor="buttondisplay"></label>
@@ -248,25 +227,13 @@ const UploadPublication = () => {
                   onChange={(e) => setThirdImage(e.target.files[0])}
                 />
               </div>
-
-              <div className="sm:col-span-2">
-                <label
-                  htmlFor="pdfLink"
-                  className="block mb-2 text-sm font-medium text-gray-900"
-                >
-                  Coresponding PDF Link
-                </label>
-                <input
-                  onChange={(e) => setPdfLink(e.target.value)}
-                  type="text"
-                  name="pdfLink"
-                  id="pdfLink"
-                  className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg
-                   focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
-                  placeholder="Paste coresponding pdf link"
-                  required=""
-                />
-              </div>
+              <TextInput
+                inputLabel={"Coresponding PDF Link"}
+                defaultText={null}
+                textValue={setPdfLink}
+                placeHolderText={"Paste coresponding pdf link"}
+                isRequired={true}
+              />
 
               <div className="sm:col-span-2">
                 <TextEditor

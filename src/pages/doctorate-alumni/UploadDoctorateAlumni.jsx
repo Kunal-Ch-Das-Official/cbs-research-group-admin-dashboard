@@ -10,6 +10,7 @@ import CustomModel from "../../utils/custom-models/CustomModel";
 import { useNavigate } from "react-router-dom";
 import TextEditor from "../../utils/text-editor/TextEditor";
 import EmailInput from "../../utils/inputs/EmailInput";
+import TextInput from "../../utils/inputs/TextInput";
 const UploadDoctorateAlumni = () => {
   const navigate = useNavigate();
   const doctorateAlumniSubmitionRef = useRef();
@@ -153,24 +154,13 @@ const UploadDoctorateAlumni = () => {
           <div className=" mt-2" id="columnOne">
             <div className="py-0 px-4 mx-auto max-w-2xl">
               <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
-                <div className="sm:col-span-2 mt-2 lg:mt-20">
-                  <label
-                    htmlFor="doctorateAlumniName"
-                    className="block mb-2 text-sm font-medium text-gray-900"
-                  >
-                    Alumni Name
-                  </label>
-                  <input
-                    type="text"
-                    name="doctorateAlumniName"
-                    id="doctorateAlumniName"
-                    className="bg-white border border-gray-300 text-gray-900 text-sm 
-                  rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                    placeholder="Enter doctorate alumni name"
-                    required
-                    onChange={(e) => setAlumniName(e.target.value)}
-                  />
-                </div>
+                <TextInput
+                  inputLabel={"Alumni Name"}
+                  defaultText={null}
+                  textValue={setAlumniName}
+                  placeHolderText={"Enter doctorate alumni name"}
+                  isRequired={true}
+                />
                 <div>
                   <label
                     htmlFor="Calendar"
@@ -197,40 +187,22 @@ const UploadDoctorateAlumni = () => {
                     </div>
                   </div>
                 </div>
-                <div>
-                  <label
-                    htmlFor="bscDoneFrom"
-                    className="block mb-2 text-sm font-medium text-gray-900"
-                  >
-                    Graduate from
-                  </label>
-                  <input
-                    type="text"
-                    name="bscDoneFrom"
-                    id="bscDoneFrom"
-                    className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                    placeholder="Bachelor's complete from"
-                    required
-                    onChange={(e) => setGraduateFrom(e.target.value)}
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="mscDoneFrom"
-                    className="block mb-2 text-sm font-medium text-gray-900"
-                  >
-                    Masters done from
-                  </label>
-                  <input
-                    type="text"
-                    name="mscDoneFrom"
-                    id="mscDoneFrom"
-                    className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                    placeholder="Master's complete from"
-                    required
-                    onChange={(e) => setMastersDoneFrom(e.target.value)}
-                  />
-                </div>
+
+                <TextInput
+                  inputLabel={"Graduate from"}
+                  defaultText={null}
+                  textValue={setGraduateFrom}
+                  placeHolderText={"Bachelor's complete from"}
+                  isRequired={true}
+                />
+
+                <TextInput
+                  inputLabel={"Masters done from"}
+                  defaultText={null}
+                  textValue={setMastersDoneFrom}
+                  placeHolderText={"Master's complete from"}
+                  isRequired={true}
+                />
                 <div className="sm:col-span-2 mt-2">
                   <TextEditor
                     editorLabel={"Alumni details"}
@@ -321,6 +293,7 @@ const UploadDoctorateAlumni = () => {
                 emailValue={setAlumniEmailId}
                 emailValidationError={emailValidatErr}
                 placeHolderText={"your_name@email.com"}
+                isRequired={false}
               />
               <div className="w-full mt-2" id="PhoneNumber">
                 <label
@@ -346,41 +319,21 @@ const UploadDoctorateAlumni = () => {
                   ""
                 )}
               </div>
-              <div className="w-full mt-2" id="ResearchGate">
-                <label
-                  htmlFor="researchGateId"
-                  className="block mb-2 text-sm font-medium text-gray-900"
-                >
-                  Research Gate Id
-                </label>
-                <input
-                  type="text"
-                  name="researchGateId"
-                  id="researchGateId"
-                  className="bg-white  border border-gray-300 text-gray-900 text-sm rounded-lg
-                   focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                  placeholder="Research Gate Url"
-                  required
-                  onChange={(e) => setAlumniResearchGateUrl(e.target.value)}
-                />
-              </div>
-              <div className="w-full mt-2" id="GoogleSchollar">
-                <label
-                  htmlFor="GoogleSchollarId"
-                  className="block mb-2 text-sm font-medium text-gray-900 "
-                >
-                  Google Schollar Id
-                </label>
-                <input
-                  type="text"
-                  name="GoogleSchollarId"
-                  id="GoogleSchollarId"
-                  className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                  placeholder="Google Schollar Url"
-                  required
-                  onChange={(e) => setAlumniGoogleSchollarUrl(e.target.value)}
-                />
-              </div>
+
+              <TextInput
+                inputLabel={"Research Gate Id"}
+                defaultText={null}
+                textValue={setAlumniResearchGateUrl}
+                placeHolderText={"Research Gate Url"}
+                isRequired={true}
+              />
+              <TextInput
+                inputLabel={"Google Schollar Id"}
+                defaultText={null}
+                textValue={setAlumniGoogleSchollarUrl}
+                placeHolderText={"Google Schollar Url"}
+                isRequired={true}
+              />
             </div>
           </div>
         </form>

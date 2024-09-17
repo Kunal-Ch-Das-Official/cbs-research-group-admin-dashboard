@@ -12,6 +12,7 @@ import LoadingSpinner from "../../../utils/common-loading-spinner/LoadingSpinner
 import CustomModel from "../../../utils/custom-models/CustomModel";
 import TacModal from "../../../utils/terms-and-conditions/TacModal";
 import EmailInput from "../../../utils/inputs/EmailInput";
+import TextInput from "../../../utils/inputs/TextInput";
 const SendRegistrationRequest = () => {
   const userMessageRef = useRef();
 
@@ -119,23 +120,14 @@ const SendRegistrationRequest = () => {
                 ref={userMessageRef}
               >
                 {/* USER NAME FIELDS  */}
-                <div id="userName">
-                  <label
-                    htmlFor="reqUserName"
-                    className="block mb-2 text-sm font-medium text-gray-900"
-                  >
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    name="reqUserName"
-                    id="reqUserName"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                    placeholder="John doe"
-                    required
-                    onChange={(e) => setUserName(e.target.value)}
-                  />
-                </div>
+
+                <TextInput
+                  inputLabel={"Name"}
+                  defaultText={null}
+                  textValue={setUserName}
+                  placeHolderText={"Enter your name"}
+                  isRequired={true}
+                />
                 {/* USER EMAI FIELDS  */}
 
                 <EmailInput
@@ -144,6 +136,7 @@ const SendRegistrationRequest = () => {
                   emailValue={setUserEmail}
                   emailValidationError={emailValidationError}
                   placeHolderText={"your_name@email.com"}
+                  isRequired={true}
                 />
 
                 <div id="message">

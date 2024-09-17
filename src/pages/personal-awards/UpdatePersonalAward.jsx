@@ -10,6 +10,7 @@ import { MdDownloadDone } from "react-icons/md";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import CustomModel from "../../utils/custom-models/CustomModel";
 import { getSingleData } from "../../../operations/apis/getSingleData";
+import TextInput from "../../utils/inputs/TextInput";
 const UpdatePersonalAward = () => {
   const { id } = useParams();
   const [prevData, setPrevData] = useState(null);
@@ -118,15 +119,13 @@ const UpdatePersonalAward = () => {
             </p>
 
             <form onSubmit={handleAwardUpdate}>
-              <div className="w-full mt-4">
-                <input
-                  defaultValue={prevData && prevData.awardTitle}
-                  className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg  focus:outline-none "
-                  type="text"
-                  aria-label="award-title"
-                  onChange={(e) => setAwardTitle(e.target.value)}
-                />
-              </div>
+              <TextInput
+                inputLabel={""}
+                defaultText={prevData && prevData.awardTitle}
+                textValue={setAwardTitle}
+                placeHolderText={null}
+                isRequired={false}
+              />
               <div className="w-full my-4 border border-gray-200 py-4">
                 <div className="card">
                   <FloatLabel>

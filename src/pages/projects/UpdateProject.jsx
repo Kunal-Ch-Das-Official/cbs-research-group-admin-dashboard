@@ -9,6 +9,7 @@ import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import CustomModel from "../../utils/custom-models/CustomModel";
 import { getSingleData } from "../../../operations/apis/getSingleData";
 import TextEditor from "../../utils/text-editor/TextEditor";
+import TextInput from "../../utils/inputs/TextInput";
 
 const UpdateProject = () => {
   const { id } = useParams();
@@ -116,12 +117,12 @@ const UpdateProject = () => {
 
             <form onSubmit={projectUpdateHandler}>
               <div className="w-full mt-4">
-                <input
-                  className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg  focus:outline-none "
-                  type="text"
-                  defaultValue={prevData && prevData.projectName}
-                  aria-label="project_name"
-                  onChange={(e) => setProjectName(e.target.value)}
+                <TextInput
+                  inputLabel={""}
+                  defaultText={prevData && prevData.projectName}
+                  textValue={setProjectName}
+                  placeHolderText={null}
+                  isRequired={false}
                 />
               </div>
 

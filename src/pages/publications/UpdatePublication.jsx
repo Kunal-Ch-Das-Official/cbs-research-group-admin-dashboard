@@ -10,12 +10,13 @@ import CustomModel from "../../utils/custom-models/CustomModel";
 import { useNavigate, useParams } from "react-router-dom";
 import { getSingleData } from "../../../operations/apis/getSingleData";
 import TextEditor from "../../utils/text-editor/TextEditor";
+import TextInput from "../../utils/inputs/TextInput";
 const UpdatePublication = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [prevData, setPrevData] = useState(null);
   const [publicationTitle, setpPublicationTitle] = useState("");
-  const [publicationContributer, setpPublicationContributer] = useState("");
+  const [publicationContributer, setPublicationContributer] = useState("");
   const [firstImage, setFirstImage] = useState(null);
   const [secondImage, setSecondImage] = useState(null);
   const [thirdImage, setThirdImage] = useState(null);
@@ -117,41 +118,21 @@ const UpdatePublication = () => {
             </h2>
             <form onSubmit={updatePublicationHandler}>
               <div className="grid gap-4 sm:grid-cols-2 sm:gap-6 pt-10">
-                <div className="sm:col-span-2">
-                  <label
-                    htmlFor="publicationTitle"
-                    className="block mb-2 text-sm font-medium text-gray-900"
-                  >
-                    Publication title
-                  </label>
-                  <input
-                    onChange={(e) => setpPublicationTitle(e.target.value)}
-                    type="text"
-                    name="publicationTitle"
-                    id="publicationTitle"
-                    className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg
-                   focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
-                    defaultValue={prevData && prevData.title}
-                  />
-                </div>
+                <TextInput
+                  inputLabel={"Publication title"}
+                  defaultText={prevData && prevData.title}
+                  textValue={setpPublicationTitle}
+                  placeHolderText={null}
+                  isRequired={false}
+                />
 
-                <div className="sm:col-span-2">
-                  <label
-                    htmlFor="contributerName"
-                    className="block mb-2 text-sm font-medium text-gray-900"
-                  >
-                    Publication contributer
-                  </label>
-                  <input
-                    onChange={(e) => setpPublicationContributer(e.target.value)}
-                    type="text"
-                    name="contributerName"
-                    id="contributerName"
-                    className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg
-                   focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
-                    defaultValue={prevData && prevData.contributer}
-                  />
-                </div>
+                <TextInput
+                  inputLabel={" Publication contributer"}
+                  defaultText={prevData && prevData.contributer}
+                  textValue={setPublicationContributer}
+                  placeHolderText={null}
+                  isRequired={false}
+                />
 
                 <div>
                   <label htmlFor="buttondisplay"></label>
@@ -260,24 +241,13 @@ const UpdatePublication = () => {
                     onChange={(e) => setThirdImage(e.target.files[0])}
                   />
                 </div>
-
-                <div className="sm:col-span-2">
-                  <label
-                    htmlFor="pdfLink"
-                    className="block mb-2 text-sm font-medium text-gray-900"
-                  >
-                    Coresponding PDF Link
-                  </label>
-                  <input
-                    onChange={(e) => setPdfLink(e.target.value)}
-                    type="text"
-                    name="pdfLink"
-                    id="pdfLink"
-                    className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg
-                   focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
-                    defaultValue={prevData && prevData.pdfLink}
-                  />
-                </div>
+                <TextInput
+                  inputLabel={"Coresponding PDF Link"}
+                  defaultText={prevData && prevData.pdfLink}
+                  textValue={setPdfLink}
+                  placeHolderText={null}
+                  isRequired={false}
+                />
 
                 <div className="sm:col-span-2">
                   <TextEditor

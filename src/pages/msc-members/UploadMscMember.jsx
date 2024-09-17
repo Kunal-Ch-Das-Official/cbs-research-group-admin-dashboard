@@ -9,6 +9,7 @@ import CustomModel from "../../utils/custom-models/CustomModel";
 import { useNavigate } from "react-router-dom";
 import TextEditor from "../../utils/text-editor/TextEditor";
 import EmailInput from "../../utils/inputs/EmailInput";
+import TextInput from "../../utils/inputs/TextInput";
 const UploadMscMember = () => {
   const navigate = useNavigate();
   const mscMemberSubmitionRef = useRef();
@@ -146,24 +147,14 @@ const UploadMscMember = () => {
           <div className=" mt-2" id="columnOne">
             <div className="py-0 px-4 mx-auto max-w-2xl">
               <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
-                <div className="sm:col-span-2 mt-2 lg:mt-20">
-                  <label
-                    htmlFor="mscMember"
-                    className="block mb-2 text-sm font-medium text-gray-900"
-                  >
-                    {"Member's Name"}
-                  </label>
-                  <input
-                    type="text"
-                    name="mscMember"
-                    id="mscMember"
-                    className="bg-white border border-gray-300 text-gray-900 text-sm 
-                  rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                    placeholder="Enter project student's name"
-                    required
-                    onChange={(e) => setMembersName(e.target.value)}
-                  />
-                </div>
+                <TextInput
+                  inputLabel={"Member's Name"}
+                  defaultText={null}
+                  textValue={setMembersName}
+                  placeHolderText={"Enter project student's name"}
+                  isRequired={true}
+                />
+
                 <div>
                   <label
                     htmlFor="currentYear"
@@ -190,23 +181,14 @@ const UploadMscMember = () => {
                     </div>
                   </div>
                 </div>
-                <div>
-                  <label
-                    htmlFor="bscDoneFrom"
-                    className="block mb-2 text-sm font-medium text-gray-900"
-                  >
-                    Graduate from
-                  </label>
-                  <input
-                    type="text"
-                    name="bscDoneFrom"
-                    id="bscDoneFrom"
-                    className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                    placeholder="Bachelor's complete from"
-                    required
-                    onChange={(e) => setGraduateFrom(e.target.value)}
-                  />
-                </div>
+                <TextInput
+                  inputLabel={"Graduate from"}
+                  defaultText={null}
+                  textValue={setGraduateFrom}
+                  placeHolderText={"Bachelor's complete from"}
+                  isRequired={true}
+                />
+
                 <div className="sm:col-span-2 mt-2">
                   <TextEditor
                     editorLabel={"About Member"}
@@ -297,6 +279,7 @@ const UploadMscMember = () => {
                 emailValue={setMembersEmail}
                 emailValidationError={emailValidatErr}
                 placeHolderText={"your_name@email.com"}
+                isRequired={true}
               />
               <div className="w-full mt-2" id="PhoneNumber">
                 <label
@@ -322,41 +305,20 @@ const UploadMscMember = () => {
                   ""
                 )}
               </div>
-              <div className="w-full mt-2" id="ResearchGate">
-                <label
-                  htmlFor="researchGateId"
-                  className="block mb-2 text-sm font-medium text-gray-900"
-                >
-                  Research Gate Id
-                </label>
-                <input
-                  type="text"
-                  name="researchGateId"
-                  id="researchGateId"
-                  className="bg-white  border border-gray-300 text-gray-900 text-sm rounded-lg
-                   focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                  placeholder="Research Gate Url"
-                  required
-                  onChange={(e) => setResearchGateHandle(e.target.value)}
-                />
-              </div>
-              <div className="w-full mt-2" id="GoogleSchollar">
-                <label
-                  htmlFor="GoogleSchollarId"
-                  className="block mb-2 text-sm font-medium text-gray-900 "
-                >
-                  Google Schollar Id
-                </label>
-                <input
-                  type="text"
-                  name="GoogleSchollarId"
-                  id="GoogleSchollarId"
-                  className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                  placeholder="Google Schollar Url"
-                  required
-                  onChange={(e) => setGoogleScholarHandle(e.target.value)}
-                />
-              </div>
+              <TextInput
+                inputLabel={"Research Gate Id"}
+                defaultText={null}
+                textValue={setResearchGateHandle}
+                placeHolderText={"Research Gate Url"}
+                isRequired={true}
+              />
+              <TextInput
+                inputLabel={"Google Schollar Id"}
+                defaultText={null}
+                textValue={setGoogleScholarHandle}
+                placeHolderText={"Google Schollar Url"}
+                isRequired={true}
+              />
             </div>
           </div>
         </form>

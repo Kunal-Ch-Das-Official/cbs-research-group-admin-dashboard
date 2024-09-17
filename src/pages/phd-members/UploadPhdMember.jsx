@@ -324,6 +324,7 @@ const UploadPhdMember = () => {
                 emailValue={setMembersEmail}
                 emailValidationError={emailValidatErr}
                 placeHolderText={"your_name@email.com"}
+                isRequired={true}
               />
               <div className="w-full mt-2" id="PhoneNumber">
                 <label

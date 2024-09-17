@@ -9,6 +9,7 @@ import { FcCancel } from "react-icons/fc";
 import { MdDownloadDone } from "react-icons/md";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import CustomModel from "../../utils/custom-models/CustomModel";
+import TextInput from "../../utils/inputs/TextInput";
 const UploadPersonalAward = () => {
   const navigate = useNavigate();
   const personalAwardFormRef = useRef();
@@ -103,16 +104,13 @@ const UploadPersonalAward = () => {
             </p>
 
             <form onSubmit={handleAwardSubmit} ref={personalAwardFormRef}>
-              <div className="w-full mt-4">
-                <input
-                  className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-500 bg-white border rounded-lg  focus:outline-none "
-                  type="text"
-                  placeholder="Write awards title"
-                  aria-label="award-title"
-                  required
-                  onChange={(e) => setAwardTitle(e.target.value)}
-                />
-              </div>
+              <TextInput
+                inputLabel={""}
+                defaultText={null}
+                textValue={setAwardTitle}
+                placeHolderText={"Write awards title"}
+                isRequired={true}
+              />
               <div className="w-full my-4 border border-gray-200 py-4">
                 <div className="card">
                   <FloatLabel>

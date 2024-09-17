@@ -11,6 +11,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { getSingleData } from "../../../operations/apis/getSingleData";
 import TextEditor from "../../utils/text-editor/TextEditor";
 import EmailInput from "../../utils/inputs/EmailInput";
+import TextInput from "../../utils/inputs/TextInput";
 const UpdateMastersAlumni = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -151,24 +152,13 @@ const UpdateMastersAlumni = () => {
             <div className=" mt-2" id="columnOne">
               <div className="py-0 px-4 mx-auto max-w-2xl">
                 <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
-                  <div className="sm:col-span-2 mt-2 lg:mt-20">
-                    <label
-                      htmlFor="masterAlumniName"
-                      className="block mb-2 text-sm font-medium text-gray-900"
-                    >
-                      Alumni Name
-                    </label>
-                    <input
-                      type="text"
-                      defaultValue={previousData.alumniName}
-                      name="masterAlumniName"
-                      id="masterAlumniName"
-                      className="bg-white border border-gray-300 text-gray-900 text-sm 
-                  rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                      placeholder="Enter masters alumni name"
-                      onChange={(e) => setAlumniName(e.target.value)}
-                    />
-                  </div>
+                  <TextInput
+                    inputLabel={"Alumni Name"}
+                    defaultText={previousData.alumniName}
+                    textValue={setAlumniName}
+                    placeHolderText={null}
+                    isRequired={false}
+                  />
                   <div>
                     <label
                       htmlFor="Calendar"
@@ -196,23 +186,14 @@ const UpdateMastersAlumni = () => {
                       </div>
                     </div>
                   </div>
-                  <div>
-                    <label
-                      htmlFor="bscDoneFrom"
-                      className="block mb-2 text-sm font-medium text-gray-900"
-                    >
-                      Graduate from
-                    </label>
-                    <input
-                      type="text"
-                      defaultValue={previousData.bscDoneFrom}
-                      name="bscDoneFrom"
-                      id="bscDoneFrom"
-                      className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                      placeholder="Bachelor's complete from"
-                      onChange={(e) => setGraduateFrom(e.target.value)}
-                    />
-                  </div>
+                  <TextInput
+                    inputLabel={"Graduate from"}
+                    defaultText={previousData.bscDoneFrom}
+                    textValue={setGraduateFrom}
+                    placeHolderText={null}
+                    isRequired={false}
+                  />
+
                   <div className="sm:col-span-2 mt-2">
                     <TextEditor
                       editorLabel={"Alumni details"}
@@ -309,6 +290,7 @@ const UpdateMastersAlumni = () => {
                   emailValue={setAlumniEmailId}
                   emailValidationError={emailValidatErr}
                   placeHolderText={null}
+                  isRequired={false}
                 />
                 <div className="w-full mt-2" id="PhoneNumber">
                   <label
@@ -334,41 +316,20 @@ const UpdateMastersAlumni = () => {
                     ""
                   )}
                 </div>
-                <div className="w-full mt-2" id="ResearchGate">
-                  <label
-                    htmlFor="researchGateId"
-                    className="block mb-2 text-sm font-medium text-gray-900"
-                  >
-                    Research Gate Id
-                  </label>
-                  <input
-                    type="text"
-                    defaultValue={previousData.researchGateId}
-                    name="researchGateId"
-                    id="researchGateId"
-                    className="bg-white  border border-gray-300 text-gray-900 text-sm rounded-lg
-                   focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                    placeholder="Research Gate Url"
-                    onChange={(e) => setAlumniResearchGateUrl(e.target.value)}
-                  />
-                </div>
-                <div className="w-full mt-2" id="GoogleSchollar">
-                  <label
-                    htmlFor="GoogleSchollarId"
-                    className="block mb-2 text-sm font-medium text-gray-900 "
-                  >
-                    Google Schollar Id
-                  </label>
-                  <input
-                    type="text"
-                    defaultValue={previousData.googleScholarId}
-                    name="GoogleSchollarId"
-                    id="GoogleSchollarId"
-                    className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                    placeholder="Google Schollar Url"
-                    onChange={(e) => setAlumniGoogleSchollarUrl(e.target.value)}
-                  />
-                </div>
+                <TextInput
+                  inputLabel={"Research Gate Id"}
+                  defaultText={previousData.researchGateId}
+                  textValue={setAlumniResearchGateUrl}
+                  placeHolderText={null}
+                  isRequired={false}
+                />
+                <TextInput
+                  inputLabel={"Google Schollar Id"}
+                  defaultText={previousData.googleScholarId}
+                  textValue={setAlumniGoogleSchollarUrl}
+                  placeHolderText={null}
+                  isRequired={false}
+                />
               </div>
             </div>
           </form>

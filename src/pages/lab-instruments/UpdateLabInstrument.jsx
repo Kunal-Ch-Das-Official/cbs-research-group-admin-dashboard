@@ -7,6 +7,7 @@ import { MdDownloadDone } from "react-icons/md";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import CustomModel from "../../utils/custom-models/CustomModel";
 import { getSingleData } from "../../../operations/apis/getSingleData";
+import TextInput from "../../utils/inputs/TextInput";
 const UpdateLabInstrument = () => {
   const navigate = useNavigate();
   const { id } = useParams();
@@ -102,20 +103,12 @@ const UpdateLabInstrument = () => {
           >
             <div className="flex flex-wrap -mx-3 mb-6">
               <div className="w-full md:w-full px-3 mb-6">
-                <label
-                  className="block uppercase text-gray-500 text-sm font-bold mb-2"
-                  htmlFor="instrumentName"
-                >
-                  Instruement name
-                </label>
-                <input
-                  className=" block w-full bg-white text-gray-900 font-medium border
-                     border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none focus:border-[#98c01d]"
-                  type="text"
-                  defaultValue={getPrevData && getPrevData.instrumentName}
-                  name="instrumentName"
-                  id="instrumentName"
-                  onChange={(e) => setInstrumentName(e.target.value)}
+                <TextInput
+                  inputLabel={"Instruement name"}
+                  defaultText={getPrevData && getPrevData.instrumentName}
+                  textValue={setInstrumentName}
+                  placeHolderText={null}
+                  isRequired={false}
                 />
               </div>
               <div className="w-full px-3 mb-6">

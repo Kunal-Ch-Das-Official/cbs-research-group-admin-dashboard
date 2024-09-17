@@ -10,6 +10,7 @@ import { FcCancel } from "react-icons/fc";
 import { MdDownloadDone } from "react-icons/md";
 import CustomModel from "../../utils/custom-models/CustomModel";
 import EmailInput from "../../utils/inputs/EmailInput";
+import TextInput from "../../utils/inputs/TextInput";
 
 const RegisterAdmin = () => {
   const [showTerms, setShowTerms] = useState(false);
@@ -220,38 +221,20 @@ const RegisterAdmin = () => {
               </div>
               <form onSubmit={handleRegistration}>
                 <div className="grid grid-cols-1 gap-6 mt-8 md:grid-cols-2">
-                  <div>
-                    <label
-                      htmlFor="firstName"
-                      className="block mb-2 text-sm text-gray-600"
-                    >
-                      First Name
-                    </label>
-                    <input
-                      onChange={(e) => setFirstName(e.target.value)}
-                      type="text"
-                      value={firstName}
-                      placeholder="John"
-                      id="firstName"
-                      className="block w-full px-5 py-2 mt-2 bg-white border border-gray-300 rounded-md placeholder-gray-400 focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="lastName"
-                      className="block mb-2 text-sm text-gray-600"
-                    >
-                      Last name
-                    </label>
-                    <input
-                      onChange={(e) => setLastName(e.target.value)}
-                      value={lastName}
-                      type="text"
-                      placeholder="Doe"
-                      id="lastName"
-                      className="block w-full px-5 py-2 mt-2 bg-white border border-gray-300 rounded-md placeholder-gray-400 focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
-                    />
-                  </div>
+                  <TextInput
+                    inputLabel={"First Name"}
+                    defaultText={null}
+                    textValue={setFirstName}
+                    placeHolderText={"John"}
+                    isRequired={true}
+                  />
+                  <TextInput
+                    inputLabel={"Last Name"}
+                    defaultText={null}
+                    textValue={setLastName}
+                    placeHolderText={"Doe"}
+                    isRequired={true}
+                  />
 
                   <EmailInput
                     inputLabel={"Email address"}
@@ -259,6 +242,7 @@ const RegisterAdmin = () => {
                     emailValue={setUserEmail}
                     emailValidationError={emailValidationErr}
                     placeHolderText={"your_name@email.com"}
+                    isRequired={true}
                   />
                   <div>
                     <label
