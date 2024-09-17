@@ -11,6 +11,7 @@ import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import { MdCancelScheduleSend } from "react-icons/md";
 import CustomModel from "../../utils/custom-models/CustomModel";
 import { useApp } from "../../app-context/useApp";
+import showPasswordHandler from "../../../operations/functional/ShowPasswordHandler";
 
 const ApproveRequest = () => {
   const navigate = useNavigate();
@@ -27,13 +28,6 @@ const ApproveRequest = () => {
     statusIcon: null,
     buttonColor: null,
   });
-
-  const showHidePassword = () => {
-    const loginPasswordfield = document.getElementById("newAdminUsersPassword");
-    loginPasswordfield.type === "password"
-      ? (loginPasswordfield.type = "text")
-      : (loginPasswordfield.type = "password");
-  };
 
   const mailSendHandler = async (e) => {
     e.preventDefault();
@@ -165,7 +159,9 @@ const ApproveRequest = () => {
                     />
                     <IoEyeSharp
                       className="text-xl text-gray-600 absolute right-2 cursor-pointer"
-                      onClick={showHidePassword}
+                      onClick={() =>
+                        showPasswordHandler("newAdminUsersPassword")
+                      }
                     />
                   </div>
                 </div>

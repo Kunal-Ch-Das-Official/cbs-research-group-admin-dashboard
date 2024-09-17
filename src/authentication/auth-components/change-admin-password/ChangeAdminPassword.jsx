@@ -9,6 +9,7 @@ import { FcCancel } from "react-icons/fc";
 import { MdDownloadDone } from "react-icons/md";
 import LoadingSpinner from "../../../utils/common-loading-spinner/LoadingSpinner";
 import CustomModel from "../../../utils/custom-models/CustomModel";
+import showPasswordHandler from "../../../../operations/functional/ShowPasswordHandler";
 const ChangeAdminPassword = () => {
   const changePasswordRef = useRef();
   const [newPassword, setNewpassword] = useState("");
@@ -22,23 +23,6 @@ const ChangeAdminPassword = () => {
     statusIcon: null,
     buttonColor: null,
   });
-  // Password show and hide handler
-  const showHidePassword = (id) => {
-    const getPassword = document.getElementById("adminUserPassword");
-    const getConfirmPassword = document.getElementById(
-      "adminUserPassword_confirmation"
-    );
-    if (id === 1) {
-      getPassword.type === "password"
-        ? (getPassword.type = "text")
-        : (getPassword.type = "password");
-    }
-    if (id === 2) {
-      getConfirmPassword.type === "password"
-        ? (getConfirmPassword.type = "text")
-        : (getConfirmPassword.type = "password");
-    }
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -134,7 +118,7 @@ const ChangeAdminPassword = () => {
                     />
                     <IoEyeSharp
                       className="text-xl text-gray-600 absolute right-2 cursor-pointer"
-                      onClick={() => showHidePassword(1)}
+                      onClick={() => showPasswordHandler("adminUserPassword")}
                     />
                   </div>
                 </div>
@@ -159,7 +143,9 @@ const ChangeAdminPassword = () => {
                     />
                     <IoEyeSharp
                       className="text-xl text-gray-600 absolute right-2 cursor-pointer"
-                      onClick={() => showHidePassword(2)}
+                      onClick={() =>
+                        showPasswordHandler("adminUserPassword_confirmation")
+                      }
                     />
                   </div>
                   {passwordValidationError === true ? (

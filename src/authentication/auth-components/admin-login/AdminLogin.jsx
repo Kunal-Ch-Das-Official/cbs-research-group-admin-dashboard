@@ -12,6 +12,7 @@ import { FcCancel } from "react-icons/fc";
 import { MdDownloadDone } from "react-icons/md";
 import LoadingSpinner from "../../../utils/common-loading-spinner/LoadingSpinner";
 import { useAuth } from "../../auth-context/useAuth";
+import showPasswordHandler from "../../../../operations/functional/ShowPasswordHandler";
 
 const AdminLogin = () => {
   const loginFormRef = useRef();
@@ -29,16 +30,6 @@ const AdminLogin = () => {
     statusIcon: null,
     buttonColor: null,
   });
-
-  // Password show and hide handler
-  const showHidePassword = () => {
-    const adminUserPassword = document.getElementById("adminUserPassword");
-    if (adminUserPassword.type == "password") {
-      adminUserPassword.type = "text";
-    } else {
-      adminUserPassword.type = "password";
-    }
-  };
 
   // Submit handler
   const handleLogin = async (e) => {
@@ -168,7 +159,7 @@ const AdminLogin = () => {
                     />
                     <IoEyeSharp
                       className="text-xl text-gray-600 absolute right-2 cursor-pointer"
-                      onClick={showHidePassword}
+                      onClick={() => showPasswordHandler("adminUserPassword")}
                     />
                   </div>
                 </div>

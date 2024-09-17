@@ -3,6 +3,7 @@
 // Date: 30/08/2024
 import { useState } from "react";
 import { IoEyeSharp } from "react-icons/io5";
+import showPasswordHandler from "../../../../operations/functional/ShowPasswordHandler";
 
 const AdminRegister = () => {
   const [adminEmail, setAdminEmail] = useState("");
@@ -25,24 +26,6 @@ const AdminRegister = () => {
       setShowPasswordError(true);
     } else {
       setShowPasswordError(false);
-    }
-  };
-
-  // Show and hide password handler //
-  const viewPassword = (id) => {
-    if (id === 1) {
-      const passwordFields = document.getElementById("adminUserPassword");
-      passwordFields.type === "password"
-        ? (passwordFields.type = "text")
-        : (passwordFields.type = "password");
-    }
-    if (id === 2) {
-      const confirmPasswordFields = document.getElementById(
-        "adminUserPassword_confirmation"
-      );
-      confirmPasswordFields.type === "password"
-        ? (confirmPasswordFields.type = "text")
-        : (confirmPasswordFields.type = "password");
     }
   };
 
@@ -127,7 +110,7 @@ const AdminRegister = () => {
                     />
                     <IoEyeSharp
                       className="text-xl text-gray-600 absolute right-2 cursor-pointer"
-                      onClick={() => viewPassword(1)}
+                      onClick={() => showPasswordHandler("adminUserPassword")}
                     />
                   </div>
                   {/* Password validator message  */}
@@ -161,7 +144,9 @@ const AdminRegister = () => {
                     />
                     <IoEyeSharp
                       className="text-xl text-gray-600 absolute right-2 cursor-pointer"
-                      onClick={() => viewPassword(2)}
+                      onClick={() =>
+                        showPasswordHandler("adminUserPassword_confirmation")
+                      }
                     />
                   </div>
                   {/* Password validator message  */}

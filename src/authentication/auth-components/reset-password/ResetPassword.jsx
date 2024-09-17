@@ -12,6 +12,7 @@ import CustomModel from "../../../utils/custom-models/CustomModel";
 import { FcCancel } from "react-icons/fc";
 import { MdDownloadDone } from "react-icons/md";
 import axios from "../../../../axios/axios";
+import showPasswordHandler from "../../../../operations/functional/ShowPasswordHandler";
 const ResetPassword = () => {
   const navigate = useNavigate();
   const resetFormRef = useRef();
@@ -27,20 +28,6 @@ const ResetPassword = () => {
     statusIcon: null,
     buttonColor: null,
   });
-  // Password show and hide handler
-  const showHidePassword = (id) => {
-    const getPassword = document.getElementById("adminUserPassword");
-    const getConfirmPassword = document.getElementById(
-      "adminUserPassword_confirmation"
-    );
-    if (id === 1) {
-      getPassword.type = getPassword.type === "password" ? "text" : "password";
-    }
-    if (id === 2) {
-      getConfirmPassword.type =
-        getConfirmPassword.type === "password" ? "text" : "password";
-    }
-  };
 
   const handleSubmit = async (e) => {
     setLoading(true);
@@ -137,7 +124,7 @@ const ResetPassword = () => {
                     />
                     <IoEyeSharp
                       className="text-xl text-gray-600 absolute right-2 cursor-pointer"
-                      onClick={() => showHidePassword(1)}
+                      onClick={() => showPasswordHandler("adminUserPassword")}
                     />
                   </div>
                 </div>
@@ -161,7 +148,9 @@ const ResetPassword = () => {
                     />
                     <IoEyeSharp
                       className="text-xl text-gray-600 absolute right-2 cursor-pointer"
-                      onClick={() => showHidePassword(2)}
+                      onClick={() =>
+                        showPasswordHandler("adminUserPassword_confirmation")
+                      }
                     />
                   </div>
                   {passwordValidationError && (
