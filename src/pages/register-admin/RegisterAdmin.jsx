@@ -9,6 +9,7 @@ import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import { FcCancel } from "react-icons/fc";
 import { MdDownloadDone } from "react-icons/md";
 import CustomModel from "../../utils/custom-models/CustomModel";
+import EmailInput from "../../utils/inputs/EmailInput";
 
 const RegisterAdmin = () => {
   const [showTerms, setShowTerms] = useState(false);
@@ -251,31 +252,14 @@ const RegisterAdmin = () => {
                       className="block w-full px-5 py-2 mt-2 bg-white border border-gray-300 rounded-md placeholder-gray-400 focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"
                     />
                   </div>
-                  <div>
-                    <label
-                      htmlFor="userEmail"
-                      className="block mb-2 text-sm text-gray-600"
-                    >
-                      Email address
-                    </label>
-                    <input
-                      onChange={(e) => setUserEmail(e.target.value)}
-                      value={userEmail}
-                      type="email"
-                      placeholder="johnsnow@gmail.com"
-                      id="userEmail"
-                      className={`block w-full px-5 py-2 mt-2 lowercase bg-white border rounded-md placeholder-gray-400 focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40 ${
-                        emailValidationErr
-                          ? "border-red-600"
-                          : "border-gray-300"
-                      }`}
-                    />
-                    {emailValidationErr && (
-                      <span className="text-red-600">
-                        Invalid email address
-                      </span>
-                    )}
-                  </div>
+
+                  <EmailInput
+                    inputLabel={"Email address"}
+                    defaultEmail={null}
+                    emailValue={setUserEmail}
+                    emailValidationError={emailValidationErr}
+                    placeHolderText={"your_name@email.com"}
+                  />
                   <div>
                     <label
                       htmlFor="Password"

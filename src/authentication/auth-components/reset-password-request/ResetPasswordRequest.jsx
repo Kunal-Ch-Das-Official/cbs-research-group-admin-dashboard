@@ -10,6 +10,7 @@ import { MdFileDownloadDone } from "react-icons/md";
 import { MdOutlineCancelScheduleSend } from "react-icons/md";
 import LoadingSpinner from "../../../utils/common-loading-spinner/LoadingSpinner";
 import CustomModel from "../../../utils/custom-models/CustomModel";
+import EmailInput from "../../../utils/inputs/EmailInput";
 const ResetPasswordRequest = () => {
   const requestFormRef = useRef();
   const [adminEmail, setAdminEmail] = useState("");
@@ -93,30 +94,13 @@ const ResetPasswordRequest = () => {
                 ref={requestFormRef}
               >
                 {/* EMAIL FIELDS  */}
-                <div id="email">
-                  <label
-                    htmlFor="adminUserEmail"
-                    className="block mb-2 text-sm font-medium text-gray-900"
-                  >
-                    Authorized email
-                  </label>
-                  <input
-                    type="email"
-                    name="adminUserEmail"
-                    id="adminUserEmail"
-                    className="bg-gray-50 border lowercase border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                    placeholder="name@company.com"
-                    required
-                    onChange={(e) => setAdminEmail(e.target.value)}
-                  />
-                  {emailValidationError === true ? (
-                    <p className="ml-2 text-red-500 font-sm text-xs my-0 py-0">
-                      Please provide a valid email
-                    </p>
-                  ) : (
-                    <p></p>
-                  )}
-                </div>
+                <EmailInput
+                  inputLabel={"Authorized email"}
+                  defaultEmail={null}
+                  emailValue={setAdminEmail}
+                  emailValidationError={emailValidationError}
+                  placeHolderText={"your_name@email.com"}
+                />
                 {/* ACTION BUTTONS  */}
                 <div className="flex flex-col">
                   <button

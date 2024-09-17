@@ -11,6 +11,7 @@ import { MdDownloadDone } from "react-icons/md";
 import LoadingSpinner from "../../../utils/common-loading-spinner/LoadingSpinner";
 import CustomModel from "../../../utils/custom-models/CustomModel";
 import TacModal from "../../../utils/terms-and-conditions/TacModal";
+import EmailInput from "../../../utils/inputs/EmailInput";
 const SendRegistrationRequest = () => {
   const userMessageRef = useRef();
 
@@ -136,30 +137,14 @@ const SendRegistrationRequest = () => {
                   />
                 </div>
                 {/* USER EMAI FIELDS  */}
-                <div id="emailId">
-                  <label
-                    htmlFor="reqUserEmail"
-                    className="block mb-2 text-sm font-medium text-gray-900"
-                  >
-                    Email id
-                  </label>
-                  <input
-                    type="email"
-                    name="reqUserEmail"
-                    id="reqUserEmail"
-                    className="bg-gray-50 border  border-gray-300 lowercase text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                    placeholder="adress@company.com"
-                    required
-                    onChange={(e) => setUserEmail(e.target.value)}
-                  />
-                  {emailValidationError === true ? (
-                    <p className="ml-2 text-red-500 font-sm text-xs my-0 py-0">
-                      Please provide a valid email
-                    </p>
-                  ) : (
-                    <p></p>
-                  )}
-                </div>
+
+                <EmailInput
+                  inputLabel={"Email id"}
+                  defaultEmail={null}
+                  emailValue={setUserEmail}
+                  emailValidationError={emailValidationError}
+                  placeHolderText={"your_name@email.com"}
+                />
 
                 <div id="message">
                   <label

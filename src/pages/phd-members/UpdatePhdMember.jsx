@@ -9,6 +9,7 @@ import CustomModel from "../../utils/custom-models/CustomModel";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { getSingleData } from "../../../operations/apis/getSingleData";
 import TextEditor from "../../utils/text-editor/TextEditor";
+import EmailInput from "../../utils/inputs/EmailInput";
 const UpdatePhdMember = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -313,30 +314,14 @@ const UpdatePhdMember = () => {
                   </div>
                 </div>
 
-                <div className="w-full mt-2" id=" EmailId">
-                  <label
-                    htmlFor="emailId"
-                    className="block mb-2 text-sm font-medium text-gray-900"
-                  >
-                    Email Id
-                  </label>
-                  <input
-                    type="email"
-                    name="emailId"
-                    id="emailId"
-                    className="bg-white lowercase border border-gray-300 text-gray-900 text-sm rounded-lg
-                 focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                    defaultValue={previousData.emailId}
-                    onChange={(e) => setMembersEmail(e.target.value)}
-                  />
-                  {emailValidatErr === true ? (
-                    <p className="text-red-600 text-xs">
-                      Email id is not valid.
-                    </p>
-                  ) : (
-                    ""
-                  )}
-                </div>
+                <EmailInput
+                  inputLabel={"Email Id"}
+                  defaultEmail={previousData.emailId}
+                  emailValue={setMembersEmail}
+                  emailValidationError={emailValidatErr}
+                  placeHolderText={null}
+                />
+
                 <div className="w-full mt-2" id="PhoneNumber">
                   <label
                     htmlFor="phoneNumber"

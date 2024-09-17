@@ -9,6 +9,7 @@ import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import CustomModel from "../../utils/custom-models/CustomModel";
 import { useNavigate } from "react-router-dom";
 import TextEditor from "../../utils/text-editor/TextEditor";
+import EmailInput from "../../utils/inputs/EmailInput";
 const UploadMasterAlumni = () => {
   const navigate = useNavigate();
   const mastersAlumniSubmitionRef = useRef();
@@ -303,29 +304,13 @@ const UploadMasterAlumni = () => {
                 </div>
               </div>
 
-              <div className="w-full mt-2" id=" EmailId">
-                <label
-                  htmlFor="emailId"
-                  className="block mb-2 text-sm font-medium text-gray-900"
-                >
-                  Email Id
-                </label>
-                <input
-                  type="email"
-                  name="emailId"
-                  id="emailId"
-                  className="bg-white lowercase border border-gray-300 text-gray-900 text-sm rounded-lg
-                   focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                  placeholder="Enter master alumni emails"
-                  required
-                  onChange={(e) => setAlumniEmailId(e.target.value)}
-                />
-                {emailValidatErr === true ? (
-                  <p className="text-red-600 text-xs">Email id is not valid.</p>
-                ) : (
-                  ""
-                )}
-              </div>
+              <EmailInput
+                inputLabel={"Email Id"}
+                defaultEmail={null}
+                emailValue={setAlumniEmailId}
+                emailValidationError={emailValidatErr}
+                placeHolderText={"your_name@email.com"}
+              />
               <div className="w-full mt-2" id="PhoneNumber">
                 <label
                   htmlFor="phoneNumber"

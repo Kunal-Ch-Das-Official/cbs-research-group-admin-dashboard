@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import envConfig from "../../../envConfig";
-import { SiGmail } from "react-icons/si";
 import { SiMinutemailer } from "react-icons/si";
 import axios from "../../../axios/axios";
 import { FcCancel } from "react-icons/fc";
@@ -11,6 +10,7 @@ import { MdCancelScheduleSend } from "react-icons/md";
 import CustomModel from "../../utils/custom-models/CustomModel";
 import { useApp } from "../../app-context/useApp";
 import PasswordInput from "../../utils/inputs/PasswordInput";
+import EmailInput from "../../utils/inputs/EmailInput";
 
 const ApproveRequest = () => {
   const navigate = useNavigate();
@@ -108,35 +108,14 @@ const ApproveRequest = () => {
                 // ref={changePasswordRef}
               >
                 {/* LOGIN EMAIL ID FIELDS  */}
-                <div id="emailId">
-                  <label
-                    htmlFor="newAdminLoginId"
-                    className="block mb-2 text-sm font-medium text-gray-900"
-                  >
-                    New Admin User Login ID
-                  </label>
 
-                  <div className="relative flex items-center">
-                    <input
-                      type="email"
-                      name="newAdminLoginId"
-                      id="newAdminLoginId"
-                      placeholder="example@gmail.com"
-                      className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600
-                       focus:border-primary-600 block w-full p-2.5"
-                      required
-                      onChange={(e) => setLoginId(e.target.value)}
-                    />
-                    <SiGmail className="text-lg text-gray-600 absolute right-2 cursor-pointer" />
-                  </div>
-                  {emailValidatErr === true ? (
-                    <p className="text-red-600 text-xs ml-1">
-                      Provide a valid email id
-                    </p>
-                  ) : (
-                    <p></p>
-                  )}
-                </div>
+                <EmailInput
+                  inputLabel={"New Admin User Login ID"}
+                  defaultEmail={null}
+                  emailValue={setLoginId}
+                  emailValidationError={emailValidatErr}
+                  placeHolderText={"your_name@email.com"}
+                />
                 {/* CONFIRM PASSWORD FIELDS  */}
 
                 <PasswordInput

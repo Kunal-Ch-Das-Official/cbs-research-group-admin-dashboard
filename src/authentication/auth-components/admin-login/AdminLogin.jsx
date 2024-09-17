@@ -12,6 +12,7 @@ import { MdDownloadDone } from "react-icons/md";
 import LoadingSpinner from "../../../utils/common-loading-spinner/LoadingSpinner";
 import { useAuth } from "../../auth-context/useAuth";
 import PasswordInput from "../../../utils/inputs/PasswordInput";
+import EmailInput from "../../../utils/inputs/EmailInput";
 
 const AdminLogin = () => {
   const loginFormRef = useRef();
@@ -113,30 +114,13 @@ const AdminLogin = () => {
                 ref={loginFormRef}
               >
                 {/* EMAIL FIELDS  */}
-                <div id="email">
-                  <label
-                    htmlFor="adminUserEmail"
-                    className="block mb-2 text-sm font-medium text-gray-900"
-                  >
-                    Admin email id
-                  </label>
-                  <input
-                    type="email"
-                    name="adminUserEmail"
-                    id="adminUserEmail"
-                    className="bg-gray-50 border lowercase border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                    placeholder="name@company.com"
-                    required
-                    onChange={(e) => setAdminEmail(e.target.value)}
-                  />
-                  {emailValidationError === true ? (
-                    <p className="ml-2 text-red-500 font-sm text-xs my-0 py-0">
-                      Please provide a valid email
-                    </p>
-                  ) : (
-                    <p></p>
-                  )}
-                </div>
+                <EmailInput
+                  inputLabel={"Admin email id"}
+                  defaultEmail={null}
+                  emailValue={setAdminEmail}
+                  emailValidationError={emailValidationError}
+                  placeHolderText={"your_name@email.com"}
+                />
                 {/* PASSWORD FIELDS  */}
 
                 <PasswordInput
