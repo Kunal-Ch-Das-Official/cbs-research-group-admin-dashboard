@@ -22,7 +22,6 @@ const ResetPasswordRequest = () => {
     statusIcon: null,
     buttonColor: null,
   });
-  // Password show and hide handler
 
   const sendRequest = async (e) => {
     setLoading(true);

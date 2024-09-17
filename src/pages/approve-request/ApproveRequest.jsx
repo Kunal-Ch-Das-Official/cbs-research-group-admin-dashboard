@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import envConfig from "../../../envConfig";
 import { SiGmail } from "react-icons/si";
-import { IoEyeSharp } from "react-icons/io5";
 import { SiMinutemailer } from "react-icons/si";
 import axios from "../../../axios/axios";
 import { FcCancel } from "react-icons/fc";
@@ -11,7 +10,7 @@ import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import { MdCancelScheduleSend } from "react-icons/md";
 import CustomModel from "../../utils/custom-models/CustomModel";
 import { useApp } from "../../app-context/useApp";
-import showPasswordHandler from "../../../operations/functional/ShowPasswordHandler";
+import PasswordInput from "../../utils/inputs/PasswordInput";
 
 const ApproveRequest = () => {
   const navigate = useNavigate();
@@ -139,32 +138,12 @@ const ApproveRequest = () => {
                   )}
                 </div>
                 {/* CONFIRM PASSWORD FIELDS  */}
-                <div id="confirmPassword">
-                  <label
-                    htmlFor="newAdminUsersPassword"
-                    className="block mb-2 text-sm font-medium text-gray-900"
-                  >
-                    New Admin User Login Password
-                  </label>
 
-                  <div className="relative flex items-center">
-                    <input
-                      type="password"
-                      name="newAdminUsersPassword"
-                      id="newAdminUsersPassword"
-                      placeholder="•••••••••••••"
-                      className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                      required
-                      onChange={(e) => setLoginPassword(e.target.value)}
-                    />
-                    <IoEyeSharp
-                      className="text-xl text-gray-600 absolute right-2 cursor-pointer"
-                      onClick={() =>
-                        showPasswordHandler("newAdminUsersPassword")
-                      }
-                    />
-                  </div>
-                </div>
+                <PasswordInput
+                  inputId={"newAdminUsersPassword"}
+                  passwordLabel={"New Admin User Login Password"}
+                  inputValue={setLoginPassword}
+                />
 
                 {/* SUBMIT BUTTON  */}
                 <div>

@@ -4,7 +4,6 @@ Content: Password reset component
 Date: 29/08/2024 
 */
 import { useRef, useState } from "react";
-import { IoEyeSharp } from "react-icons/io5";
 import envConfig from "../../../../envConfig";
 import { useNavigate, useParams } from "react-router-dom";
 import LoadingSpinner from "../../../utils/common-loading-spinner/LoadingSpinner";
@@ -12,7 +11,7 @@ import CustomModel from "../../../utils/custom-models/CustomModel";
 import { FcCancel } from "react-icons/fc";
 import { MdDownloadDone } from "react-icons/md";
 import axios from "../../../../axios/axios";
-import showPasswordHandler from "../../../../operations/functional/ShowPasswordHandler";
+import PasswordInput from "../../../utils/inputs/PasswordInput";
 const ResetPassword = () => {
   const navigate = useNavigate();
   const resetFormRef = useRef();
@@ -105,54 +104,22 @@ const ResetPassword = () => {
                 ref={resetFormRef}
               >
                 {/* PASSWORD FIELDS */}
-                <div id="password">
-                  <label
-                    htmlFor="adminUserPassword"
-                    className="block mb-2 text-sm font-medium text-gray-900"
-                  >
-                    Password
-                  </label>
-                  <div className="relative flex items-center">
-                    <input
-                      type="password"
-                      name="adminUserPassword"
-                      id="adminUserPassword"
-                      placeholder="••••••••"
-                      className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                      required
-                      onChange={(e) => setNewPassword(e.target.value)}
-                    />
-                    <IoEyeSharp
-                      className="text-xl text-gray-600 absolute right-2 cursor-pointer"
-                      onClick={() => showPasswordHandler("adminUserPassword")}
-                    />
-                  </div>
+                <div id="confirmPassword">
+                  <PasswordInput
+                    inputId={"adminUserPassword"}
+                    passwordLabel={"Password"}
+                    inputValue={setNewPassword}
+                  />
                 </div>
                 {/* CONFIRM PASSWORD FIELDS */}
+
                 <div id="confirmPassword">
-                  <label
-                    htmlFor="adminUserPassword_confirmation"
-                    className="block mb-2 text-sm font-medium text-gray-900"
-                  >
-                    Confirm password
-                  </label>
-                  <div className="relative flex items-center">
-                    <input
-                      type="password"
-                      name="adminUserPassword_confirmation"
-                      id="adminUserPassword_confirmation"
-                      placeholder="••••••••"
-                      className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                      required
-                      onChange={(e) => setNewConfirmPassword(e.target.value)}
-                    />
-                    <IoEyeSharp
-                      className="text-xl text-gray-600 absolute right-2 cursor-pointer"
-                      onClick={() =>
-                        showPasswordHandler("adminUserPassword_confirmation")
-                      }
-                    />
-                  </div>
+                  <PasswordInput
+                    inputId={"confirmPassword"}
+                    passwordLabel={"Confirm password"}
+                    inputValue={setNewConfirmPassword}
+                  />
+
                   {passwordValidationError && (
                     <p className="ml-2 text-red-500 font-sm text-xs my-0 py-0">
                       Password and confirm password are not the same

@@ -3,7 +3,6 @@
 // Date: 30/08/2024
 
 import { useRef, useState } from "react";
-import { IoEyeSharp } from "react-icons/io5";
 import envConfig from "../../../../envConfig";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "../../../../axios/axios";
@@ -12,7 +11,7 @@ import { FcCancel } from "react-icons/fc";
 import { MdDownloadDone } from "react-icons/md";
 import LoadingSpinner from "../../../utils/common-loading-spinner/LoadingSpinner";
 import { useAuth } from "../../auth-context/useAuth";
-import showPasswordHandler from "../../../../operations/functional/ShowPasswordHandler";
+import PasswordInput from "../../../utils/inputs/PasswordInput";
 
 const AdminLogin = () => {
   const loginFormRef = useRef();
@@ -139,30 +138,12 @@ const AdminLogin = () => {
                   )}
                 </div>
                 {/* PASSWORD FIELDS  */}
-                <div id="password">
-                  <label
-                    htmlFor="adminUserPassword"
-                    className="block mb-2 text-sm font-medium text-gray-900"
-                  >
-                    Admin password
-                  </label>
 
-                  <div className="relative flex items-center">
-                    <input
-                      type="password"
-                      name="adminUserPassword"
-                      id="adminUserPassword"
-                      placeholder="••••••••"
-                      className="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                      required
-                      onChange={(e) => setAdminPassword(e.target.value)}
-                    />
-                    <IoEyeSharp
-                      className="text-xl text-gray-600 absolute right-2 cursor-pointer"
-                      onClick={() => showPasswordHandler("adminUserPassword")}
-                    />
-                  </div>
-                </div>
+                <PasswordInput
+                  inputId={"authAdminPassword"}
+                  passwordLabel={"Admin password"}
+                  inputValue={setAdminPassword}
+                />
 
                 {/* REMEMBER ME AND FORGOT PASSWORD BUTTON  */}
                 <div className="flex items-center justify-between ">
