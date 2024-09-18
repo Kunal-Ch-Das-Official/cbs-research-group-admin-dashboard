@@ -44,16 +44,25 @@ const ManageContacts = () => {
   }, [allContactData]); // Remove getRecivedTime from dependencies
 
   return (
-    <>
+    <main className="bg-gray-50 ">
       {loading && <LoadingSpinner />}
       <SectionHeading
         heading={"Manage All Details"}
         subHeading={`
          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium accusamus quaerat, odit, laborum placeat ipsa corporis ipsam eaque id ullam asperiores illo! Illum ex voluptate possimus recusandae, placeat assumenda magni.`}
       />
-      {allContactData ? (
-        <div className="bg-gray-50 pt-10">
-          {allContactData.map((data, index) => (
+      {allContactData && allContactData.length === 0 ? (
+        <h2 className="text-2xl text-gray-500 text-center font-bold pt-20">
+          {" "}
+          Currently contact box are empty!
+        </h2>
+      ) : (
+        ""
+      )}
+
+      <div className="py-20">
+        {allContactData &&
+          allContactData.map((data, index) => (
             <ContactInfoCard
               key={index}
               id={data._id}
@@ -66,13 +75,8 @@ const ManageContacts = () => {
               deleteUrl={`/admin-panel/delete-contacts/${data._id}`}
             />
           ))}
-        </div>
-      ) : (
-        <h2 className="text-center pt-20 text-gray-500 text-2xl font-bold">
-          Contact details are not available.
-        </h2>
-      )}
-    </>
+      </div>
+    </main>
   );
 };
 

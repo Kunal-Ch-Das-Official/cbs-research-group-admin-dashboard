@@ -25,9 +25,16 @@ const ManageLabInstruments = () => {
          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium accusamus quaerat, odit, laborum placeat ipsa corporis ipsam eaque id ullam asperiores illo! Illum ex voluptate possimus recusandae, placeat assumenda magni.`}
       />
       {loading === true && <LoadingSpinner />}
-
+      {allInstruments && allInstruments.length === 0 ? (
+        <h2 className="text-2xl text-gray-500 text-center font-bold pt-20">
+          {" "}
+          Currently lab-instrument details are not available!
+        </h2>
+      ) : (
+        ""
+      )}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 mx-auto py-20">
-        {allInstruments ? (
+        {allInstruments &&
           allInstruments.map((data, index) => (
             <LabInstrumentCard
               key={index}
@@ -39,12 +46,7 @@ const ManageLabInstruments = () => {
               updateUrl={`/admin-panel/update-lab-instrument/${data._id}`}
               deleteUrl={`/admin-panel/delete-lab-instrument/${data._id}`}
             />
-          ))
-        ) : (
-          <h2 className="text-2xl mt-28 text-gray-500 font-bold text-center">
-            Lab Instruments are not available
-          </h2>
-        )}
+          ))}
       </div>
     </main>
   );

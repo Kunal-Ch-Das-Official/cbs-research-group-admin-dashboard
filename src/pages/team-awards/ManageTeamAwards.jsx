@@ -25,28 +25,30 @@ const ManageTeamAwards = () => {
          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium accusamus quaerat, odit, laborum placeat ipsa corporis ipsam eaque id ullam asperiores illo! Illum ex voluptate possimus recusandae, placeat assumenda magni.`}
       />
       {loading === true && <LoadingSpinner />}
-
-      {allAwards ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 mx-auto gap-1 py-20">
-          {allAwards &&
-            allAwards.map((data, index) => (
-              <AwardCard
-                key={index}
-                updateUrl={`/admin-panel/update-team-award/${data._id}`}
-                deleteUrl={`/admin-panel/delete-team-award/${data._id}`}
-                awardTitle={data.awardTitle}
-                recivedDate={data.recivedDate}
-                overView={data.recivedFor}
-                uploadDate={new Date(data.createdAt).toLocaleDateString()}
-                updateDate={new Date(data.updatedAt).toLocaleDateString()}
-              />
-            ))}
-        </div>
+      {allAwards && allAwards.length === 0 ? (
+        <h2 className="text-2xl text-gray-500 text-center font-bold pt-20">
+          {" "}
+          Currently awards details are not available!
+        </h2>
       ) : (
-        <h1 className="text-gray-500 text-2xl text-center mt-28">
-          Awards data is not available.
-        </h1>
+        ""
       )}
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 mx-auto gap-1 py-20">
+        {allAwards &&
+          allAwards.map((data, index) => (
+            <AwardCard
+              key={index}
+              updateUrl={`/admin-panel/update-team-award/${data._id}`}
+              deleteUrl={`/admin-panel/delete-team-award/${data._id}`}
+              awardTitle={data.awardTitle}
+              recivedDate={data.recivedDate}
+              overView={data.recivedFor}
+              uploadDate={new Date(data.createdAt).toLocaleDateString()}
+              updateDate={new Date(data.updatedAt).toLocaleDateString()}
+            />
+          ))}
+      </div>
     </main>
   );
 };

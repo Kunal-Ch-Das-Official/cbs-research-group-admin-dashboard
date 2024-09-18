@@ -24,27 +24,32 @@ const ManageGroupnews = () => {
          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium accusamus quaerat, odit, laborum placeat ipsa corporis ipsam eaque id ullam asperiores illo! Illum ex voluptate possimus recusandae, placeat assumenda magni.`}
       />
       {loadIng === true && <LoadingSpinner />}
-      {allGroupNews ? (
-        <div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4
-         mx-auto content-center gap-1 py-16"
-        >
-          {allGroupNews &&
-            allGroupNews.map((data, index) => (
-              <GroupNewsCard
-                key={index}
-                newsTitle={data.newsTitle}
-                newsContent={data.content}
-                createDate={data.createdAt}
-                updateDate={data.updatedAt}
-                updateUrl={`/admin-panel/update-group-news/${data._id}`}
-                deleteUrl={`/admin-panel/delete-group-news/${data._id}`}
-              />
-            ))}
-        </div>
+      {allGroupNews && allGroupNews.length === 0 ? (
+        <h2 className="text-2xl text-gray-500 text-center font-bold pt-20">
+          {" "}
+          Currently group news are not available!
+        </h2>
       ) : (
-        <h1>No group news are available.</h1>
+        ""
       )}
+      <div
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4
+         mx-auto content-center gap-1 py-16"
+      >
+        {allGroupNews &&
+          allGroupNews.map((data, index) => (
+            <GroupNewsCard
+              key={index}
+              newsTitle={data.newsTitle}
+              newsContent={data.content}
+              createDate={data.createdAt}
+              updateDate={data.updatedAt}
+              updateUrl={`/admin-panel/update-group-news/${data._id}`}
+              deleteUrl={`/admin-panel/delete-group-news/${data._id}`}
+            />
+          ))}
+      </div>
+      )
     </main>
   );
 };

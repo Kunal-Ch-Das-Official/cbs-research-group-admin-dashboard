@@ -24,7 +24,14 @@ const ManagePhdMembers = () => {
         subHeading={`
          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium accusamus quaerat, odit, laborum placeat ipsa corporis ipsam eaque id ullam asperiores illo! Illum ex voluptate possimus recusandae, placeat assumenda magni.`}
       />
-
+      {membersInfo && membersInfo.length === 0 ? (
+        <h2 className="text-2xl text-gray-500 text-center font-bold pt-20">
+          {" "}
+          Currently member details are not available!
+        </h2>
+      ) : (
+        ""
+      )}
       <div
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-1
      w-full mx-auto py-20"
