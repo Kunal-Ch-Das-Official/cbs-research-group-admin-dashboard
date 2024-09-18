@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import envConfig from "../../../envConfig";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import { getAllData } from "../../../operations/apis/getAllData";
+import SectionHeading from "../../components/reuseable/section-heading/SectionHeading";
 
 const ManagePersonalAwards = () => {
   const [allAwards, setAllawards] = useState(null);
@@ -17,11 +18,15 @@ const ManagePersonalAwards = () => {
   }, []);
 
   return (
-    <main className="bg-gray-100">
+    <main className="bg-gray-50">
       {loading === true && <LoadingSpinner />}
-
+      <SectionHeading
+        heading={"Manage All Details"}
+        subHeading={`
+         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium accusamus quaerat, odit, laborum placeat ipsa corporis ipsam eaque id ullam asperiores illo! Illum ex voluptate possimus recusandae, placeat assumenda magni.`}
+      />
       {allAwards ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 mx-auto gap-1 pt-28">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 mx-auto gap-1 py-20">
           {allAwards &&
             allAwards.map((data, index) => (
               <AwardCard

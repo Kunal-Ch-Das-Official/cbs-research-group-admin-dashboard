@@ -3,6 +3,7 @@ import ContactInfoCard from "../../components/single-use/contact-info-card/Conta
 import envConfig from "../../../envConfig";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import { getAllData } from "../../../operations/apis/getAllData";
+import SectionHeading from "../../components/reuseable/section-heading/SectionHeading";
 
 const ManageContacts = () => {
   const [allContactData, setAllContactData] = useState(null);
@@ -45,8 +46,13 @@ const ManageContacts = () => {
   return (
     <>
       {loading && <LoadingSpinner />}
+      <SectionHeading
+        heading={"Manage All Details"}
+        subHeading={`
+         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium accusamus quaerat, odit, laborum placeat ipsa corporis ipsam eaque id ullam asperiores illo! Illum ex voluptate possimus recusandae, placeat assumenda magni.`}
+      />
       {allContactData ? (
-        <div className="bg-gray-50 pt-20">
+        <div className="bg-gray-50 pt-10">
           {allContactData.map((data, index) => (
             <ContactInfoCard
               key={index}

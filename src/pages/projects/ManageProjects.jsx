@@ -3,6 +3,7 @@ import ProjectCard from "../../components/single-use/project-card/ProjectCard";
 import envConfig from "../../../envConfig";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import { getAllData } from "../../../operations/apis/getAllData";
+import SectionHeading from "../../components/reuseable/section-heading/SectionHeading";
 
 const ManageProjects = () => {
   const [allProjects, setAllProjects] = useState(null);
@@ -17,13 +18,17 @@ const ManageProjects = () => {
   }, []);
 
   return (
-    <>
+    <main className="min-h-screen bg-gray-50">
       {loading === true && <LoadingSpinner />}
-
+      <SectionHeading
+        heading={"Manage All Details"}
+        subHeading={`
+         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium accusamus quaerat, odit, laborum placeat ipsa corporis ipsam eaque id ullam asperiores illo! Illum ex voluptate possimus recusandae, placeat assumenda magni.`}
+      />
       {allProjects ? (
         <div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 space-x-1 space-y-2 
-         gap-1 w-full mx-auto bg-gray-100 pt-28"
+         gap-1 w-full mx-auto py-20"
         >
           {allProjects &&
             allProjects.map((data, index) => (
@@ -43,7 +48,7 @@ const ManageProjects = () => {
           Projects are not available.
         </h2>
       )}
-    </>
+    </main>
   );
 };
 

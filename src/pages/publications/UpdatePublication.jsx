@@ -15,6 +15,7 @@ import YellowBtn from "../../utils/buttons/YellowBtn";
 import TransparentLink from "../../utils/custom-link/TransparentLink";
 import { BiSolidEdit } from "react-icons/bi";
 import { TbEditOff } from "react-icons/tb";
+import SectionHeading from "../../components/reuseable/section-heading/SectionHeading";
 const UpdatePublication = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -115,11 +116,13 @@ const UpdatePublication = () => {
         />
       )}
       {prevData ? (
-        <section className="bg-gray-50 pt-10">
+        <section className="bg-gray-50">
+          <SectionHeading
+            heading={"Manage All Details"}
+            subHeading={`
+         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium accusamus quaerat, odit, laborum placeat ipsa corporis ipsam eaque id ullam asperiores illo! Illum ex voluptate possimus recusandae, placeat assumenda magni.`}
+          />
           <div className="py-8 px-4 mx-auto max-w-2xl lg:py-16">
-            <h2 className="mb-4 text-xl font-bold text-gray-900">
-              Add a new publication
-            </h2>
             <form onSubmit={updatePublicationHandler}>
               <div className="grid gap-4 sm:grid-cols-2 sm:gap-6 pt-10">
                 <TextInput

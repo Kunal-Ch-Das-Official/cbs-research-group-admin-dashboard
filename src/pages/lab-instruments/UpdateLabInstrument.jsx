@@ -12,6 +12,7 @@ import FileInput from "../../utils/inputs/FileInput";
 import TransparentLink from "../../utils/custom-link/TransparentLink";
 import YellowBtn from "../../utils/buttons/YellowBtn";
 import { TbNotes, TbNotesOff } from "react-icons/tb";
+import SectionHeading from "../../components/reuseable/section-heading/SectionHeading";
 
 const UpdateLabInstrument = () => {
   const navigate = useNavigate();
@@ -87,7 +88,12 @@ const UpdateLabInstrument = () => {
     navigate("/admin-panel/manage-lab-instruments");
   };
   return (
-    <div>
+    <main className="bg-gray-50">
+      <SectionHeading
+        heading={"Manage All Details"}
+        subHeading={`
+         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium accusamus quaerat, odit, laborum placeat ipsa corporis ipsam eaque id ullam asperiores illo! Illum ex voluptate possimus recusandae, placeat assumenda magni.`}
+      />
       {loading === true && <LoadingSpinner />}
       {showAlert === true && (
         <CustomModel
@@ -100,7 +106,7 @@ const UpdateLabInstrument = () => {
           buttonColor={customAlert.buttonColor}
         />
       )}
-      <div className="bg-gray-100 flex justify-center item-center pt-20">
+      <div className="flex justify-center item-center py-10">
         <div className="w-full md:w-1/2 lg:w-1/2 m-1 mx-auto">
           <form
             className="w-full bg-white shadow-md p-6"
@@ -161,7 +167,7 @@ const UpdateLabInstrument = () => {
           </form>
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 

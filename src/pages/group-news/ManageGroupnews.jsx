@@ -3,6 +3,7 @@ import GroupNewsCard from "../../components/single-use/group-news-card/GroupNews
 import envConfig from "../../../envConfig";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import { getAllData } from "../../../operations/apis/getAllData";
+import SectionHeading from "../../components/reuseable/section-heading/SectionHeading";
 
 const ManageGroupnews = () => {
   const [allGroupNews, setAllGroupNews] = useState(null);
@@ -17,9 +18,17 @@ const ManageGroupnews = () => {
   }, []);
   return (
     <main className="bg-gray-50">
+      <SectionHeading
+        heading={"Manage All Details"}
+        subHeading={`
+         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium accusamus quaerat, odit, laborum placeat ipsa corporis ipsam eaque id ullam asperiores illo! Illum ex voluptate possimus recusandae, placeat assumenda magni.`}
+      />
       {loadIng === true && <LoadingSpinner />}
       {allGroupNews ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 mx-auto content-center gap-1 pt-20">
+        <div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4
+         mx-auto content-center gap-1 py-16"
+        >
           {allGroupNews &&
             allGroupNews.map((data, index) => (
               <GroupNewsCard

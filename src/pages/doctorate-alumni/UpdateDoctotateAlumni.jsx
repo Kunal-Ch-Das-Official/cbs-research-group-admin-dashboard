@@ -17,6 +17,7 @@ import YellowBtn from "../../utils/buttons/YellowBtn";
 import TransparentLink from "../../utils/custom-link/TransparentLink";
 import { FaUserEdit } from "react-icons/fa";
 import { TbUserCancel } from "react-icons/tb";
+import SectionHeading from "../../components/reuseable/section-heading/SectionHeading";
 const UpdateDoctotateAlumni = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -141,18 +142,12 @@ const UpdateDoctotateAlumni = () => {
         />
       )}
       {previousData ? (
-        <main className="bg-gray-50 min-h-screen pt-20 pb-12">
-          <div className="text-center">
-            <h1 className="text-2xl text-gray-500 font-bold">
-              Doctorate Alumni Information Update
-            </h1>
-            <p className="flex flex-wrap flex-col mx-20 lg:mx-40">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste
-              eveniet ipsam dolorum architecto quod aliquam possimus nemo
-              excepturi vitae vero illum non expedita cumque repellat velit
-              consequatur, eos cupiditate minus.
-            </p>
-          </div>
+        <main className="bg-gray-50 min-h-screen pb-12">
+          <SectionHeading
+            heading={"Manage All Details"}
+            subHeading={`
+         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium accusamus quaerat, odit, laborum placeat ipsa corporis ipsam eaque id ullam asperiores illo! Illum ex voluptate possimus recusandae, placeat assumenda magni.`}
+          />
 
           <form
             className="grid grid-cols-1 lg:grid-cols-2 pt-20"
@@ -171,7 +166,7 @@ const UpdateDoctotateAlumni = () => {
                   <div>
                     <label
                       htmlFor="Calendar"
-                      className="block mb-2 text-sm font-medium text-gray-900 "
+                      className="block mb-2 text-sm font-medium text-gray-900 mt-2"
                     >
                       Passout Year
                     </label>

@@ -12,6 +12,7 @@ import TextEditor from "../../utils/text-editor/TextEditor";
 import TextInput from "../../utils/inputs/TextInput";
 import YellowBtn from "../../utils/buttons/YellowBtn";
 import { MdOutlinePostAdd } from "react-icons/md";
+import SectionHeading from "../../components/reuseable/section-heading/SectionHeading";
 const UploadPublication = () => {
   const publicationFormRef = useRef();
   const navigate = useNavigate();
@@ -102,11 +103,13 @@ const UploadPublication = () => {
           buttonColor={customAlert.buttonColor}
         />
       )}
-      <section className="bg-gray-50 pt-10">
+      <section className="bg-gray-50 ">
+        <SectionHeading
+          heading={"Manage All Details"}
+          subHeading={`
+         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium accusamus quaerat, odit, laborum placeat ipsa corporis ipsam eaque id ullam asperiores illo! Illum ex voluptate possimus recusandae, placeat assumenda magni.`}
+        />
         <div className="py-8 px-4 mx-auto max-w-2xl lg:py-16">
-          <h2 className="mb-4 text-xl font-bold text-gray-900">
-            Add a new publication
-          </h2>
           <form onSubmit={uploadPublicationHandler} ref={publicationFormRef}>
             <div className="grid gap-4 sm:grid-cols-2 sm:gap-6 pt-10">
               <TextInput

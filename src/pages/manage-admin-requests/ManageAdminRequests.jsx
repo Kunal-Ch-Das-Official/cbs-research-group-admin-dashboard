@@ -5,6 +5,7 @@ import envConfig from "../../../envConfig";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 // import CustomModel from "../../utils/custom-models/CustomModel";
 import { getAllData } from "../../../operations/apis/getAllData";
+import SectionHeading from "../../components/reuseable/section-heading/SectionHeading";
 const ManageAdminRequests = () => {
   const [getBecomeAdminReq, setBecomeAdminReq] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -21,7 +22,12 @@ const ManageAdminRequests = () => {
     fetchData();
   }, []);
   return (
-    <>
+    <main className="bg-gray-50">
+      <SectionHeading
+        heading={"Manage All Details"}
+        subHeading={`
+         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium accusamus quaerat, odit, laborum placeat ipsa corporis ipsam eaque id ullam asperiores illo! Illum ex voluptate possimus recusandae, placeat assumenda magni.`}
+      />
       {loading === true && <LoadingSpinner />}
 
       {noData === true ? (
@@ -30,7 +36,7 @@ const ManageAdminRequests = () => {
           Currently requests are not available!
         </h2>
       ) : (
-        <main className="pt-24 pb-12 flex justify-center bg-gray-100">
+        <main className="py-20 flex justify-center">
           <div className="grid grid-cols-1 md:grid-cols-2 min-[1120px]:grid-cols-3 2xl:grid-cols-4 xl:grid-cols-3 gap-x-2 gap-y-2">
             {getBecomeAdminReq &&
               getBecomeAdminReq.map((item, index) => (
@@ -47,7 +53,7 @@ const ManageAdminRequests = () => {
           </div>
         </main>
       )}
-    </>
+    </main>
   );
 };
 

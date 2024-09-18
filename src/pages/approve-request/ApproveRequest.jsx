@@ -84,7 +84,7 @@ const ApproveRequest = () => {
     navigate("/admin-panel/manage-request");
   };
   return (
-    <>
+    <main className="min-h-screen py-10">
       {loading === true && <LoadingSpinner />}
       {showAlert === true && (
         <CustomModel
@@ -147,7 +147,7 @@ const ApproveRequest = () => {
           </div>
         </div>
       </section>
-    </>
+    </main>
   );
 };
 

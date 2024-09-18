@@ -3,6 +3,7 @@ import PublicationCard from "../../components/single-use/publication-card/Public
 import envConfig from "../../../envConfig";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import { getAllData } from "../../../operations/apis/getAllData";
+import SectionHeading from "../../components/reuseable/section-heading/SectionHeading";
 
 const ManagePublications = () => {
   const [allPublication, setAllPublication] = useState(null);
@@ -18,9 +19,14 @@ const ManagePublications = () => {
 
   return (
     <main className="bg-gray-50 min-h-screen">
+      <SectionHeading
+        heading={"Manage All Details"}
+        subHeading={`
+         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium accusamus quaerat, odit, laborum placeat ipsa corporis ipsam eaque id ullam asperiores illo! Illum ex voluptate possimus recusandae, placeat assumenda magni.`}
+      />
       {loading === true && <LoadingSpinner />}
       {allPublication ? (
-        <div className="pt-28 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-2">
+        <div className="py-20 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-2">
           {allPublication &&
             allPublication.map((data, index) => (
               <PublicationCard

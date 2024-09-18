@@ -3,6 +3,7 @@ import LabInstrumentCard from "../../components/single-use/lab-instrument-card/L
 import envConfig from "../../../envConfig";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import { getAllData } from "../../../operations/apis/getAllData";
+import SectionHeading from "../../components/reuseable/section-heading/SectionHeading";
 
 const ManageLabInstruments = () => {
   const [allInstruments, setAllInstruments] = useState(null);
@@ -17,10 +18,15 @@ const ManageLabInstruments = () => {
   }, []);
 
   return (
-    <main className="bg-gray-100 pt-20">
+    <main className="bg-gray-100">
+      <SectionHeading
+        heading={"Manage All Details"}
+        subHeading={`
+         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium accusamus quaerat, odit, laborum placeat ipsa corporis ipsam eaque id ullam asperiores illo! Illum ex voluptate possimus recusandae, placeat assumenda magni.`}
+      />
       {loading === true && <LoadingSpinner />}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 mx-auto py-20">
         {allInstruments ? (
           allInstruments.map((data, index) => (
             <LabInstrumentCard

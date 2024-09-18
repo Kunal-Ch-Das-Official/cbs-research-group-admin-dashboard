@@ -14,6 +14,7 @@ import TextInput from "../../utils/inputs/TextInput";
 import FileInput from "../../utils/inputs/FileInput";
 import YellowBtn from "../../utils/buttons/YellowBtn";
 import { MdDriveFolderUpload } from "react-icons/md";
+import SectionHeading from "../../components/reuseable/section-heading/SectionHeading";
 const UploadMasterAlumni = () => {
   const navigate = useNavigate();
   const mastersAlumniSubmitionRef = useRef();
@@ -142,18 +143,12 @@ const UploadMasterAlumni = () => {
           buttonColor={customAlert.buttonColor}
         />
       )}
-      <main className="bg-gray-50 min-h-screen pt-20 pb-12">
-        <div className="text-center">
-          <h1 className="text-2xl text-gray-500 font-bold">
-            Master Alumni Information Upload
-          </h1>
-          <p className="flex flex-wrap flex-col mx-20 lg:mx-40">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste
-            eveniet ipsam dolorum architecto quod aliquam possimus nemo
-            excepturi vitae vero illum non expedita cumque repellat velit
-            consequatur, eos cupiditate minus.
-          </p>
-        </div>
+      <main className="bg-gray-50 min-h-screen">
+        <SectionHeading
+          heading={"Manage All Details"}
+          subHeading={`
+         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium accusamus quaerat, odit, laborum placeat ipsa corporis ipsam eaque id ullam asperiores illo! Illum ex voluptate possimus recusandae, placeat assumenda magni.`}
+        />
 
         <form
           className="grid grid-cols-1 lg:grid-cols-2 pt-20"
@@ -173,7 +168,7 @@ const UploadMasterAlumni = () => {
                 <div>
                   <label
                     htmlFor="Calendar"
-                    className="block mb-2 text-sm font-medium text-gray-900 "
+                    className="block mb-2 text-sm font-medium text-gray-900 mt-2"
                   >
                     Passout Year
                   </label>

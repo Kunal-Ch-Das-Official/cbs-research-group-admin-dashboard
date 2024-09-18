@@ -10,6 +10,7 @@ import TextInput from "../../utils/inputs/TextInput";
 import FileInput from "../../utils/inputs/FileInput";
 import YellowBtn from "../../utils/buttons/YellowBtn";
 import { MdAssignmentAdd } from "react-icons/md";
+import SectionHeading from "../../components/reuseable/section-heading/SectionHeading";
 const UploadLabInstrument = () => {
   const navigate = useNavigate();
   const labInstrumentFormRef = useRef();
@@ -72,7 +73,12 @@ const UploadLabInstrument = () => {
     navigate("/admin-panel/manage-lab-instruments");
   };
   return (
-    <div>
+    <main className="bg-gray-50">
+      <SectionHeading
+        heading={"Manage All Details"}
+        subHeading={`
+         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium accusamus quaerat, odit, laborum placeat ipsa corporis ipsam eaque id ullam asperiores illo! Illum ex voluptate possimus recusandae, placeat assumenda magni.`}
+      />
       {loading === true && <LoadingSpinner />}
       {showAlert === true && (
         <CustomModel
@@ -85,7 +91,7 @@ const UploadLabInstrument = () => {
           buttonColor={customAlert.buttonColor}
         />
       )}
-      <div className="bg-gray-100 flex justify-center item-center pt-20">
+      <div className="flex justify-center item-center py-10">
         <div className="w-full md:w-1/2 lg:w-1/2 m-1 mx-auto">
           <form
             className="w-full bg-white shadow-md p-6"
@@ -142,7 +148,7 @@ const UploadLabInstrument = () => {
           </form>
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 

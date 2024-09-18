@@ -13,6 +13,7 @@ import TextInput from "../../utils/inputs/TextInput";
 import FileInput from "../../utils/inputs/FileInput";
 import { MdDriveFolderUpload } from "react-icons/md";
 import YellowBtn from "../../utils/buttons/YellowBtn";
+import SectionHeading from "../../components/reuseable/section-heading/SectionHeading";
 const UploadMscMember = () => {
   const navigate = useNavigate();
   const mscMemberSubmitionRef = useRef();
@@ -129,18 +130,12 @@ const UploadMscMember = () => {
           buttonColor={customAlert.buttonColor}
         />
       )}
-      <main className="bg-gray-50 min-h-screen pt-20 pb-12">
-        <div className="text-center">
-          <h1 className="text-2xl text-gray-500 font-bold">
-            MSC Members Information Upload
-          </h1>
-          <p className="flex flex-wrap flex-col mx-20 lg:mx-40">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste
-            eveniet ipsam dolorum architecto quod aliquam possimus nemo
-            excepturi vitae vero illum non expedita cumque repellat velit
-            consequatur, eos cupiditate minus.
-          </p>
-        </div>
+      <main className="bg-gray-50 min-h-screen">
+        <SectionHeading
+          heading={"Manage All Details"}
+          subHeading={`
+         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium accusamus quaerat, odit, laborum placeat ipsa corporis ipsam eaque id ullam asperiores illo! Illum ex voluptate possimus recusandae, placeat assumenda magni.`}
+        />
 
         <form
           className="grid grid-cols-1 lg:grid-cols-2 pt-20"
@@ -161,21 +156,21 @@ const UploadMscMember = () => {
                 <div>
                   <label
                     htmlFor="currentYear"
-                    className="block mb-2 text-sm font-medium text-gray-900 "
+                    className="block mb-2 text-sm font-medium text-gray-900 mt-2"
                   >
                     Current Year
                   </label>
 
                   <div
-                    className=" bg-white border border-gray-300 text-gray-900 text-sm rounded-lg 
+                    className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg 
                 focus:ring-primary-600 focus:border-primary-600  w-full inline-flex items-center"
                   >
-                    <MdDateRange className="text-2xl mr-2 text-gray-600" />
+                    <MdDateRange className="text-2xl mx-2 text-gray-600" />
                     <div className="bg-white outline-none ">
                       <select
                         id="currentYear"
                         required
-                        className="w-64 py-2"
+                        className="w-64 py-3"
                         onChange={(e) => setCurrentYear(e.target.value)}
                       >
                         <option value={null}>Select Year</option>
