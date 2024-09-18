@@ -10,6 +10,8 @@ import { useNavigate } from "react-router-dom";
 import TextEditor from "../../utils/text-editor/TextEditor";
 import EmailInput from "../../utils/inputs/EmailInput";
 import FileInput from "../../utils/inputs/FileInput";
+import YellowBtn from "../../utils/buttons/YellowBtn";
+import { IoPersonAddSharp } from "react-icons/io5";
 const UploadPhdMember = () => {
   const navigate = useNavigate();
   const phdMemberSubmitionRef = useRef();
@@ -243,6 +245,12 @@ const UploadPhdMember = () => {
                   />
                 </div>
               </div>
+              <YellowBtn
+                btnType={"submit"}
+                eventHandler={null}
+                btnText={"Upload Member Details"}
+                icon={<IoPersonAddSharp />}
+              />
               <div>
                 <button
                   type="submit"

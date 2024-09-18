@@ -7,12 +7,16 @@ import axios from "../../../axios/axios";
 import envConfig from "../../../envConfig";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import CustomModel from "../../utils/custom-models/CustomModel";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getSingleData } from "../../../operations/apis/getSingleData";
 import TextEditor from "../../utils/text-editor/TextEditor";
 import EmailInput from "../../utils/inputs/EmailInput";
 import TextInput from "../../utils/inputs/TextInput";
 import FileInput from "../../utils/inputs/FileInput";
+import YellowBtn from "../../utils/buttons/YellowBtn";
+import TransparentLink from "../../utils/custom-link/TransparentLink";
+import { FaUserEdit } from "react-icons/fa";
+import { TbUserCancel } from "react-icons/tb";
 const UpdateDoctotateAlumni = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -151,7 +155,7 @@ const UpdateDoctotateAlumni = () => {
           </div>
 
           <form
-            className="grid grid-cols-1 lg:grid-cols-2"
+            className="grid grid-cols-1 lg:grid-cols-2 pt-20"
             onSubmit={updateMasterAlumniHandler}
           >
             <div className=" mt-2" id="columnOne">
@@ -215,19 +219,20 @@ const UpdateDoctotateAlumni = () => {
                   </div>
                 </div>
                 <div>
-                  <button
-                    type="submit"
-                    className="inline-flex cursor-pointer items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center shadow-xl bg-[#ffde499f] hover:bg-[#f7ca00] rounded-xl"
-                  >
-                    Update Alumni Details
-                  </button>
-                  <Link
-                    to={"/admin-panel/manage-doctorate-alumni"}
-                    className="ml-2 inline-flex cursor-pointer items-center px-5 py-2.5 mt-4 
-                    sm:mt-6 text-sm font-medium text-center shadow-xl bg-white border border-gray-200 hover:bg-[#f7ca00] rounded-xl"
-                  >
-                    Back
-                  </Link>
+                  <div className="flex flex-col">
+                    <YellowBtn
+                      btnType={"submit"}
+                      eventHandler={null}
+                      btnText={"Update Alumni Details"}
+                      icon={<FaUserEdit />}
+                    />
+
+                    <TransparentLink
+                      path={"/admin-panel/manage-doctorate-alumni"}
+                      linkText={"Cancel"}
+                      icon={<TbUserCancel />}
+                    />
+                  </div>
                 </div>
               </div>
             </div>

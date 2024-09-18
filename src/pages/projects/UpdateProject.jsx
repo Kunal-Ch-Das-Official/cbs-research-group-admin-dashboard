@@ -10,6 +10,10 @@ import CustomModel from "../../utils/custom-models/CustomModel";
 import { getSingleData } from "../../../operations/apis/getSingleData";
 import TextEditor from "../../utils/text-editor/TextEditor";
 import TextInput from "../../utils/inputs/TextInput";
+import YellowBtn from "../../utils/buttons/YellowBtn";
+import TransparentLink from "../../utils/custom-link/TransparentLink";
+import { TbEditOff } from "react-icons/tb";
+import { BiEdit } from "react-icons/bi";
 
 const UpdateProject = () => {
   const { id } = useParams();
@@ -136,20 +140,14 @@ const UpdateProject = () => {
                 <select
                   onChange={(e) => setProjectStatus(e.target.value)}
                   id="projectStatus"
-                  className="bg-white border border-gray-300 text-gray-600 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                  className="bg-white capitalize border border-gray-300 text-gray-600 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                 >
                   <option selected>{prevData && prevData.projectStatus}</option>
                   {prevData && (
-                    <option
-                      value={
-                        prevData.projectStatus == "on-going"
-                          ? "completed"
-                          : "on-going"
-                      }
-                    >
-                      {prevData.projectStatus == "on-going"
-                        ? "Completed"
-                        : "On-going"}
+                    <option value={projectStatus}>
+                      {prevData.projectStatus == "ongoing"
+                        ? "completed"
+                        : "Ongoing"}
                     </option>
                   )}
                 </select>
@@ -163,21 +161,19 @@ const UpdateProject = () => {
                     eventHandler={setProjectDescription}
                   />
                 </div>
-                <div className="flex items-center px-3 py-2 border-t ">
-                  <button
-                    type="submit"
-                    className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center
-                     text-black bg-yellow-500 rounded-lg f  hover:bg-yellow-600"
-                  >
-                    Update Data
-                  </button>
-                  <button
-                    onClick={() => navigate("/admin-panel/manage-projects")}
-                    className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center
-                     text-black bg-gray-300 rounded-lg f  hover:bg-gray-400 ml-2"
-                  >
-                    Back
-                  </button>
+                <div className="flex flex-col items-center px-3 py-2 border-t ">
+                  <YellowBtn
+                    btnType={"submit"}
+                    eventHandler={null}
+                    btnText={"Update Project"}
+                    icon={<BiEdit />}
+                  />
+
+                  <TransparentLink
+                    path={"/admin-panel/manage-projects"}
+                    linkText={"Cancel"}
+                    icon={<TbEditOff />}
+                  />
 
                   <div className="flex ps-0 space-x-1 rtl:space-x-reverse sm:ps-2"></div>
                 </div>

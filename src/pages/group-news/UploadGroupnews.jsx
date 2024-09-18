@@ -10,7 +10,8 @@ import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import CustomModel from "../../utils/custom-models/CustomModel";
 import { useNavigate } from "react-router-dom";
 import TextInput from "../../utils/inputs/TextInput";
-
+import YellowBtn from "../../utils/buttons/YellowBtn";
+import { MdOutlinePostAdd } from "react-icons/md";
 const UploadGroupnews = () => {
   const navigate = useNavigate();
   const groupNewsFormRef = useRef();
@@ -128,12 +129,12 @@ const UploadGroupnews = () => {
                 </div>
 
                 {/* SUBMIT BUTTON  */}
-                <button
-                  type="submit"
-                  className="w-full text-white bg-[#f7ca00] hover:bg-[#c1a630] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                >
-                  Upload News
-                </button>
+                <YellowBtn
+                  btnType={"submit"}
+                  eventHandler={null}
+                  btnText={"Upload Group News"}
+                  icon={<MdOutlinePostAdd />}
+                />
               </form>
             </div>
           </div>

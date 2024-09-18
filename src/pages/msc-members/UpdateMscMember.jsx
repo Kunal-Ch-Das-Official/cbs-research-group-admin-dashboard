@@ -6,12 +6,16 @@ import axios from "../../../axios/axios";
 import envConfig from "../../../envConfig";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import CustomModel from "../../utils/custom-models/CustomModel";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getSingleData } from "../../../operations/apis/getSingleData";
 import TextEditor from "../../utils/text-editor/TextEditor";
 import EmailInput from "../../utils/inputs/EmailInput";
 import TextInput from "../../utils/inputs/TextInput";
 import FileInput from "../../utils/inputs/FileInput";
+import YellowBtn from "../../utils/buttons/YellowBtn";
+import TransparentLink from "../../utils/custom-link/TransparentLink";
+import { FaUserEdit } from "react-icons/fa";
+import { TbUserCancel } from "react-icons/tb";
 const UpdateMscMember = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -136,10 +140,10 @@ const UpdateMscMember = () => {
           </div>
 
           <form
-            className="grid grid-cols-1 lg:grid-cols-2"
+            className="grid grid-cols-1 lg:grid-cols-2 pt-20"
             onSubmit={updateMscMemberHandler}
           >
-            <div className=" mt-2" id="columnOne">
+            <div className=" mt-4" id="columnOne">
               <div className="py-0 px-4 mx-auto max-w-2xl">
                 <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
                   <TextInput
@@ -192,20 +196,19 @@ const UpdateMscMember = () => {
                     />
                   </div>
                 </div>
-                <div className="flex flex-row">
-                  <button
-                    type="submit"
-                    className="mr-2 inline-flex cursor-pointer items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center shadow-xl bg-[#ffde499f] hover:bg-[#f7ca00] rounded-xl"
-                  >
-                    Update Details
-                  </button>
-                  <Link
-                    to={"/admin-panel/manage-msc-members"}
-                    className="inline-flex cursor-pointer items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center 
-                    shadow-xl bg-[#fff] hover:bg-[#f7ca00] rounded-xl border border-gray-200"
-                  >
-                    Back
-                  </Link>
+                <div className="flex flex-col">
+                  <YellowBtn
+                    btnType={"submit"}
+                    eventHandler={null}
+                    btnText={"Update Member Details"}
+                    icon={<FaUserEdit />}
+                  />
+
+                  <TransparentLink
+                    path={"/admin-panel/manage-msc-members"}
+                    linkText={"Cancel"}
+                    icon={<TbUserCancel />}
+                  />
                 </div>
               </div>
             </div>

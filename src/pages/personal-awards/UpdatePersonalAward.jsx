@@ -11,6 +11,10 @@ import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import CustomModel from "../../utils/custom-models/CustomModel";
 import { getSingleData } from "../../../operations/apis/getSingleData";
 import TextInput from "../../utils/inputs/TextInput";
+import YellowBtn from "../../utils/buttons/YellowBtn";
+import TransparentLink from "../../utils/custom-link/TransparentLink";
+import { TbNotes } from "react-icons/tb";
+import { TbNotesOff } from "react-icons/tb";
 const UpdatePersonalAward = () => {
   const { id } = useParams();
   const [prevData, setPrevData] = useState(null);
@@ -104,7 +108,7 @@ const UpdatePersonalAward = () => {
       )}
 
       <section className="pt-32">
-        <div className="w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-xl">
+        <div className="w-full max-w-lg mx-auto overflow-hidden bg-white rounded-lg shadow-xl">
           <div className="px-6 py-4">
             <div className="flex justify-center mx-auto">
               <img className="w-auto h-7 sm:h-8" src={cbsLogo} alt="cbsLogo" />
@@ -159,20 +163,22 @@ const UpdatePersonalAward = () => {
                   ></textarea>
                 </div>
                 <div className="flex items-center justify-between px-3 py-2 border-t ">
-                  <button
-                    type="submit"
-                    className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-black bg-yellow-500 rounded-lg f  hover:bg-yellow-600"
-                  >
-                    Update
-                  </button>
-                  <button
-                    onClick={() =>
-                      navigate("/admin-panel/manage-personal-awards")
-                    }
-                    className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-black bg-gray-300 rounded-lg f  hover:bg-gray-400"
-                  >
-                    Cancel
-                  </button>
+                  <div className="mr-2">
+                    <YellowBtn
+                      btnType={"submit"}
+                      eventHandler={null}
+                      btnText={"Update"}
+                      icon={<TbNotes />}
+                    />
+                  </div>
+                  <div>
+                    <TransparentLink
+                      path={"/admin-panel/manage-personal-awards"}
+                      linkText={"Cancel"}
+                      icon={<TbNotesOff />}
+                    />
+                  </div>
+
                   <div className="flex ps-0 space-x-1 rtl:space-x-reverse sm:ps-2">
                     <button
                       type="button"

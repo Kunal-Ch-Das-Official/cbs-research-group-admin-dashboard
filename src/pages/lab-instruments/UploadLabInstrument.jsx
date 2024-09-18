@@ -8,6 +8,8 @@ import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import CustomModel from "../../utils/custom-models/CustomModel";
 import TextInput from "../../utils/inputs/TextInput";
 import FileInput from "../../utils/inputs/FileInput";
+import YellowBtn from "../../utils/buttons/YellowBtn";
+import { MdAssignmentAdd } from "react-icons/md";
 const UploadLabInstrument = () => {
   const navigate = useNavigate();
   const labInstrumentFormRef = useRef();
@@ -118,12 +120,12 @@ const UploadLabInstrument = () => {
               </div>
 
               <div className="w-full md:w-full px-3 mb-6">
-                <button
-                  type="submit"
-                  className="appearance-none block w-full bg-yellow-500 text-black font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-yellow-600 focus:outline-none focus:bg-white focus:border-gray-500"
-                >
-                  Add Instrument
-                </button>
+                <YellowBtn
+                  btnType={"submit"}
+                  eventHandler={null}
+                  btnText={"Add Instrument"}
+                  icon={<MdAssignmentAdd />}
+                />
               </div>
 
               <div className="flex items-center justify-center w-full mb-4">

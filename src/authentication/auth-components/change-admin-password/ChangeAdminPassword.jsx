@@ -9,6 +9,10 @@ import { MdDownloadDone } from "react-icons/md";
 import LoadingSpinner from "../../../utils/common-loading-spinner/LoadingSpinner";
 import CustomModel from "../../../utils/custom-models/CustomModel";
 import PasswordInput from "../../../utils/inputs/PasswordInput";
+import YellowBtn from "../../../utils/buttons/YellowBtn";
+import TransparentLink from "../../../utils/custom-link/TransparentLink";
+import { FaExchangeAlt } from "react-icons/fa";
+import { TbCalendarCancel } from "react-icons/tb";
 const ChangeAdminPassword = () => {
   const changePasswordRef = useRef();
   const [newPassword, setNewpassword] = useState("");
@@ -126,12 +130,20 @@ const ChangeAdminPassword = () => {
                 </div>
 
                 {/* SUBMIT BUTTON  */}
-                <button
-                  type="submit"
-                  className="w-full text-white bg-[#f7ca00] hover:bg-[#c1a630] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                >
-                  Change password
-                </button>
+                <div className="flex flex-col">
+                  <YellowBtn
+                    btnType={"submit"}
+                    eventHandler={null}
+                    btnText={"Change password"}
+                    icon={<FaExchangeAlt />}
+                  />
+
+                  <TransparentLink
+                    path={"/"}
+                    linkText={"Cancel"}
+                    icon={<TbCalendarCancel />}
+                  />
+                </div>
               </form>
             </div>
           </div>

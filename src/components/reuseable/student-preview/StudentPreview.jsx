@@ -107,7 +107,7 @@ const StudentPreview = ({
                       className="text-gray-700 text-lg font-bold bg-yellow-500 px-6 py-1 rounded-lg inline-flex items-center hover:bg-yellow-600 transform translate-y-1 hover:scale-110 cursor-pointer"
                     >
                       <FaLongArrowAltLeft />
-                      <span className="ml-2"> Back</span>
+                      <span className="ml-2">Return</span>
                     </Link>
                   </div>
                 </div>

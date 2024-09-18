@@ -9,6 +9,10 @@ import CustomModel from "../../utils/custom-models/CustomModel";
 import { getSingleData } from "../../../operations/apis/getSingleData";
 import TextInput from "../../utils/inputs/TextInput";
 import FileInput from "../../utils/inputs/FileInput";
+import TransparentLink from "../../utils/custom-link/TransparentLink";
+import YellowBtn from "../../utils/buttons/YellowBtn";
+import { TbNotes, TbNotesOff } from "react-icons/tb";
+
 const UpdateLabInstrument = () => {
   const navigate = useNavigate();
   const { id } = useParams();
@@ -128,21 +132,19 @@ const UpdateLabInstrument = () => {
                 ></textarea>
               </div>
 
-              <div className="w-full md:w-full px-3 mb-6">
-                <button
-                  type="submit"
-                  className="appearance-none block w-full bg-yellow-500 text-black font-bold border border-gray-200 rounded-lg py-3 px-3 leading-tight hover:bg-yellow-600 focus:outline-none focus:bg-white focus:border-gray-500"
-                >
-                  Add Instrument
-                </button>
-                <button
-                  onClick={() =>
-                    navigate("/admin-panel/manage-lab-instruments")
-                  }
-                  className="mt-4 appearance-none block w-full bg-gray-50 text-black font-bold border border-gray-400 rounded-lg py-3 px-3 leading-tight hover:bg-gray-100 focus:outline-none focus:bg-white focus:border-gray-500"
-                >
-                  Back
-                </button>
+              <div className="flex flex-col w-full">
+                <YellowBtn
+                  btnType={"submit"}
+                  eventHandler={null}
+                  btnText={"Update Instrument"}
+                  icon={<TbNotes />}
+                />
+
+                <TransparentLink
+                  path={"/admin-panel/manage-lab-instruments"}
+                  linkText={"Cancel"}
+                  icon={<TbNotesOff />}
+                />
               </div>
 
               <div className="flex items-center justify-center w-full mb-4">

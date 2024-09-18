@@ -10,6 +10,8 @@ import CustomModel from "../../utils/custom-models/CustomModel";
 import { useNavigate } from "react-router-dom";
 import TextEditor from "../../utils/text-editor/TextEditor";
 import TextInput from "../../utils/inputs/TextInput";
+import YellowBtn from "../../utils/buttons/YellowBtn";
+import { MdOutlinePostAdd } from "react-icons/md";
 const UploadPublication = () => {
   const publicationFormRef = useRef();
   const navigate = useNavigate();
@@ -154,7 +156,7 @@ const UploadPublication = () => {
                 </div>
                 <label
                   htmlFor="uploadFile1"
-                  className="bg-gray-800 hover:bg-gray-700 text-white text-sm px-3 py-2 outline-none rounded-md cursor-pointer ml-auto w-max block"
+                  className="bg-blue-600 hover:bg-blue-800 font-bold text-white text-sm px-3 py-2 outline-none rounded-md cursor-pointer ml-auto w-max block"
                 >
                   Upload
                 </label>
@@ -185,7 +187,7 @@ const UploadPublication = () => {
                 </div>
                 <label
                   htmlFor="uploadFile2"
-                  className="bg-gray-800 hover:bg-gray-700 text-white text-sm px-3 py-2 outline-none rounded-md cursor-pointer ml-auto w-max block"
+                  className="bg-blue-600 hover:bg-blue-800 font-bold text-white text-sm px-3 py-2 outline-none rounded-md cursor-pointer ml-auto w-max block"
                 >
                   Upload
                 </label>
@@ -216,7 +218,7 @@ const UploadPublication = () => {
                 </div>
                 <label
                   htmlFor="uploadFile3"
-                  className="bg-gray-800 hover:bg-gray-700 text-white text-sm px-3 py-2 outline-none rounded-md cursor-pointer ml-auto w-max block"
+                  className="bg-blue-600 hover:bg-blue-800 font-bold text-white text-sm px-3 py-2 outline-none rounded-md cursor-pointer ml-auto w-max block"
                 >
                   Upload
                 </label>
@@ -244,13 +246,12 @@ const UploadPublication = () => {
               </div>
             </div>
 
-            <button
-              type="submit"
-              className="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center
-               text-black bg-yellow-500 rounded-lg"
-            >
-              Add publication
-            </button>
+            <YellowBtn
+              btnType={"submit"}
+              eventHandler={null}
+              btnText={"Upload Publication"}
+              icon={<MdOutlinePostAdd />}
+            />
           </form>
         </div>
       </section>

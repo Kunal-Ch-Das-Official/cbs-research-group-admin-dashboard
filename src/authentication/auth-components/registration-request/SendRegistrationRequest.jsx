@@ -4,7 +4,6 @@
 
 import { useRef, useState } from "react";
 import envConfig from "../../../../envConfig";
-import { Link } from "react-router-dom";
 import axios from "../../../../axios/axios";
 import { FcCancel } from "react-icons/fc";
 import { MdDownloadDone } from "react-icons/md";
@@ -13,6 +12,10 @@ import CustomModel from "../../../utils/custom-models/CustomModel";
 import TacModal from "../../../utils/terms-and-conditions/TacModal";
 import EmailInput from "../../../utils/inputs/EmailInput";
 import TextInput from "../../../utils/inputs/TextInput";
+import { MdCancelScheduleSend } from "react-icons/md";
+import { IoSend } from "react-icons/io5";
+import TransparentLink from "../../../utils/custom-link/TransparentLink";
+import YellowBtn from "../../../utils/buttons/YellowBtn";
 const SendRegistrationRequest = () => {
   const userMessageRef = useRef();
 
@@ -199,18 +202,18 @@ const SendRegistrationRequest = () => {
 
                 {/* SUBMIT BUTTON  */}
                 <div className="flex flex-col">
-                  <button
-                    type="submit"
-                    className="w-full text-white bg-yellow-500 hover:bg-yellow-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                  >
-                    Send Message
-                  </button>
-                  <Link
-                    to={"/"}
-                    className="mt-4 w-full text-gray-700 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center border border-gray-400"
-                  >
-                    Back
-                  </Link>
+                  <YellowBtn
+                    btnType={"submit"}
+                    eventHandler={null}
+                    btnText={"Send Message"}
+                    icon={<IoSend />}
+                  />
+
+                  <TransparentLink
+                    path={"/"}
+                    linkText={"Cancel"}
+                    icon={<MdCancelScheduleSend />}
+                  />
                 </div>
               </form>
             </div>

@@ -12,6 +12,8 @@ import TextEditor from "../../utils/text-editor/TextEditor";
 import EmailInput from "../../utils/inputs/EmailInput";
 import TextInput from "../../utils/inputs/TextInput";
 import FileInput from "../../utils/inputs/FileInput";
+import YellowBtn from "../../utils/buttons/YellowBtn";
+import { MdDriveFolderUpload } from "react-icons/md";
 const UploadDoctorateAlumni = () => {
   const navigate = useNavigate();
   const doctorateAlumniSubmitionRef = useRef();
@@ -148,11 +150,11 @@ const UploadDoctorateAlumni = () => {
         </div>
 
         <form
-          className="grid grid-cols-1 lg:grid-cols-2"
+          className="grid grid-cols-1 lg:grid-cols-2 pt-20"
           onSubmit={doctorateAlumniSubmitionHandler}
           ref={doctorateAlumniSubmitionRef}
         >
-          <div className=" mt-2" id="columnOne">
+          <div className=" mt-4" id="columnOne">
             <div className="py-0 px-4 mx-auto max-w-2xl">
               <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
                 <TextInput
@@ -212,14 +214,12 @@ const UploadDoctorateAlumni = () => {
                   />
                 </div>
               </div>
-              <div className="">
-                <button
-                  type="submit"
-                  className="inline-flex cursor-pointer items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center shadow-xl bg-[#ffde499f] hover:bg-[#f7ca00] rounded-xl"
-                >
-                  Upload Alumni Details
-                </button>
-              </div>
+              <YellowBtn
+                btnType={"submit"}
+                eventHandler={null}
+                btnText={"Upload Alumni Details"}
+                icon={<MdDriveFolderUpload />}
+              />
             </div>
           </div>
 

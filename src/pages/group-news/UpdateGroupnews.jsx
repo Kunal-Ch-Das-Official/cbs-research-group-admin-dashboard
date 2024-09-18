@@ -11,6 +11,10 @@ import CustomModel from "../../utils/custom-models/CustomModel";
 import { useNavigate, useParams } from "react-router-dom";
 import { getSingleData } from "../../../operations/apis/getSingleData";
 import TextInput from "../../utils/inputs/TextInput";
+import YellowBtn from "../../utils/buttons/YellowBtn";
+import TransparentLink from "../../utils/custom-link/TransparentLink";
+import { MdSpeakerNotes } from "react-icons/md";
+import { MdSpeakerNotesOff } from "react-icons/md";
 
 const UpdateGroupnews = () => {
   const { id } = useParams();
@@ -139,18 +143,20 @@ const UpdateGroupnews = () => {
                 </div>
 
                 {/* SUBMIT BUTTON  */}
-                <button
-                  type="submit"
-                  className="w-full text-black bg-[#f7ca00] hover:bg-[#c1a630] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                >
-                  Upload News
-                </button>
-                <button
-                  onClick={() => navigate("/admin-panel/manage-group-news")}
-                  className="w-full text-black bg-gray-100 hover:bg-gray-200 mt-4 border border-gray-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                >
-                  Cancel
-                </button>
+                <div className="flex flex-col">
+                  <YellowBtn
+                    btnType={"submit"}
+                    eventHandler={null}
+                    btnText={"Update Group News"}
+                    icon={<MdSpeakerNotes />}
+                  />
+
+                  <TransparentLink
+                    path={"/admin-panel/manage-group-news"}
+                    linkText={"Cancel"}
+                    icon={<MdSpeakerNotesOff />}
+                  />
+                </div>
               </form>
             </div>
           </div>

@@ -12,6 +12,8 @@ import { FcCancel } from "react-icons/fc";
 import { MdDownloadDone } from "react-icons/md";
 import axios from "../../../../axios/axios";
 import PasswordInput from "../../../utils/inputs/PasswordInput";
+import YellowBtn from "../../../utils/buttons/YellowBtn";
+import { MdLockReset } from "react-icons/md";
 const ResetPassword = () => {
   const navigate = useNavigate();
   const resetFormRef = useRef();
@@ -128,12 +130,13 @@ const ResetPassword = () => {
                 </div>
 
                 {/* SUBMIT BUTTON */}
-                <button
-                  type="submit"
-                  className="w-full text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                >
-                  Change password
-                </button>
+
+                <YellowBtn
+                  btnType={"submit"}
+                  eventHandler={null}
+                  btnText={"Reset Password"}
+                  icon={<MdLockReset />}
+                />
               </form>
             </div>
           </div>

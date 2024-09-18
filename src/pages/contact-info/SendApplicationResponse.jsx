@@ -10,6 +10,10 @@ import CustomModel from "../../utils/custom-models/CustomModel";
 import { useApp } from "../../app-context/useApp";
 import TextEditor from "../../utils/text-editor/TextEditor";
 import TextInput from "../../utils/inputs/TextInput";
+import YellowBtn from "../../utils/buttons/YellowBtn";
+import TransparentLink from "../../utils/custom-link/TransparentLink";
+import { IoSendSharp } from "react-icons/io5";
+import { MdCancelScheduleSend } from "react-icons/md";
 const SendApplicationResponse = () => {
   const { id } = useParams();
   const { setisContactResSend } = useApp();
@@ -120,24 +124,22 @@ const SendApplicationResponse = () => {
                     eventHandler={setEmailBody}
                   />
                 </div>
-                <div className="flex items-center px-3 py-2 border-t ">
-                  <button
-                    type="submit"
-                    className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg f  hover:bg-blue-800"
-                  >
-                    Send Response
-                  </button>
-                  <button
-                    onClick={() =>
-                      navigate(`/admin-panel/preview-contacts/${id}`)
-                    }
-                    className="ml-4 inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-black
-                     bg-gray-300 rounded-lg f  hover:bg-gray-400"
-                  >
-                    Back
-                  </button>
-                  <div className="flex ps-0 space-x-1 rtl:space-x-reverse sm:ps-2"></div>
+
+                <div className="flex flex-col">
+                  <YellowBtn
+                    btnType={"submit"}
+                    eventHandler={null}
+                    btnText={"Send Response"}
+                    icon={<IoSendSharp />}
+                  />
+
+                  <TransparentLink
+                    path={`/admin-panel/preview-contacts/${id}`}
+                    linkText={"Cancel"}
+                    icon={<MdCancelScheduleSend />}
+                  />
                 </div>
+                <div className="flex ps-0 space-x-1 rtl:space-x-reverse sm:ps-2"></div>
               </div>
             </form>
           </div>

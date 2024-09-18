@@ -11,6 +11,8 @@ import { MdDownloadDone } from "react-icons/md";
 import CustomModel from "../../utils/custom-models/CustomModel";
 import EmailInput from "../../utils/inputs/EmailInput";
 import TextInput from "../../utils/inputs/TextInput";
+import YellowBtn from "../../utils/buttons/YellowBtn";
+import { MdCreateNewFolder } from "react-icons/md";
 
 const RegisterAdmin = () => {
   const [showTerms, setShowTerms] = useState(false);
@@ -309,13 +311,12 @@ const RegisterAdmin = () => {
                   </div>
                 </div>
                 <div className="mt-6">
-                  <button
-                    type="submit"
-                    className="w-full px-6 py-2.5 text-sm font-medium tracking-wide text-white capitalize rounded-md bg-[#f7ca00]
-                     hover:bg-[#c1a630] focus:outline-none focus:bg-[#f7ca00]"
-                  >
-                    Create account
-                  </button>
+                  <YellowBtn
+                    btnType={"submit"}
+                    eventHandler={null}
+                    btnText={"Create Account"}
+                    icon={<MdCreateNewFolder />}
+                  />
                 </div>
               </form>
               {termsNotFollow && (

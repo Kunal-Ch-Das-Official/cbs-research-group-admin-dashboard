@@ -11,6 +11,8 @@ import TextEditor from "../../utils/text-editor/TextEditor";
 import EmailInput from "../../utils/inputs/EmailInput";
 import TextInput from "../../utils/inputs/TextInput";
 import FileInput from "../../utils/inputs/FileInput";
+import { MdDriveFolderUpload } from "react-icons/md";
+import YellowBtn from "../../utils/buttons/YellowBtn";
 const UploadMscMember = () => {
   const navigate = useNavigate();
   const mscMemberSubmitionRef = useRef();
@@ -141,11 +143,11 @@ const UploadMscMember = () => {
         </div>
 
         <form
-          className="grid grid-cols-1 lg:grid-cols-2"
+          className="grid grid-cols-1 lg:grid-cols-2 pt-20"
           onSubmit={mscMemberSubmitionHandler}
           ref={mscMemberSubmitionRef}
         >
-          <div className=" mt-2" id="columnOne">
+          <div className=" mt-4" id="columnOne">
             <div className="py-0 px-4 mx-auto max-w-2xl">
               <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
                 <TextInput
@@ -172,10 +174,11 @@ const UploadMscMember = () => {
                     <div className="bg-white outline-none ">
                       <select
                         id="currentYear"
+                        required
                         className="w-64 py-2"
                         onChange={(e) => setCurrentYear(e.target.value)}
                       >
-                        <option value={null}></option>
+                        <option value={null}>Select Year</option>
                         <option value="1st">1st</option>
                         <option value="2nd">2nd</option>
                       </select>
@@ -198,14 +201,12 @@ const UploadMscMember = () => {
                   />
                 </div>
               </div>
-              <div>
-                <button
-                  type="submit"
-                  className="inline-flex cursor-pointer items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center shadow-xl bg-[#ffde499f] hover:bg-[#f7ca00] rounded-xl"
-                >
-                  Upload Details
-                </button>
-              </div>
+              <YellowBtn
+                btnType={"submit"}
+                eventHandler={null}
+                btnText={"Upload Member Details"}
+                icon={<MdDriveFolderUpload />}
+              />
             </div>
           </div>
 

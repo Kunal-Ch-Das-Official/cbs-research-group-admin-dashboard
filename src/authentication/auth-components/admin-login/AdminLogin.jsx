@@ -7,13 +7,14 @@ import envConfig from "../../../../envConfig";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "../../../../axios/axios";
 import CustomModel from "../../../utils/custom-models/CustomModel";
-import { FcCancel } from "react-icons/fc";
-import { MdDownloadDone } from "react-icons/md";
 import LoadingSpinner from "../../../utils/common-loading-spinner/LoadingSpinner";
 import { useAuth } from "../../auth-context/useAuth";
 import PasswordInput from "../../../utils/inputs/PasswordInput";
 import EmailInput from "../../../utils/inputs/EmailInput";
-
+import YellowBtn from "../../../utils/buttons/YellowBtn";
+import { BiSolidLogInCircle } from "react-icons/bi";
+import { BsShieldFillExclamation } from "react-icons/bs";
+import { PiShieldCheckFill } from "react-icons/pi";
 const AdminLogin = () => {
   const loginFormRef = useRef();
   const navigate = useNavigate();
@@ -48,7 +49,7 @@ const AdminLogin = () => {
             message: res.data.message,
             details: res.data.details,
             statusIcon: (
-              <MdDownloadDone className="text-4xl font-bold text-green-600" />
+              <PiShieldCheckFill className="text-7xl font-bold text-green-600" />
             ),
             buttonColor: "bg-green-600",
           });
@@ -67,7 +68,9 @@ const AdminLogin = () => {
         setLoginResponse({
           message: error.response.data.issue,
           details: error.response.data.details,
-          statusIcon: <FcCancel className="text-4xl font-bold text-red-600" />,
+          statusIcon: (
+            <BsShieldFillExclamation className="text-7xl font-bold text-red-600" />
+          ),
           buttonColor: "bg-red-600",
         });
         setToken(null);
@@ -165,12 +168,13 @@ const AdminLogin = () => {
                 </div>
 
                 {/* SUBMIT BUTTON  */}
-                <button
-                  type="submit"
-                  className="w-full text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                >
-                  Sign in
-                </button>
+
+                <YellowBtn
+                  btnType={"submit"}
+                  eventHandler={null}
+                  btnText={"Sign In"}
+                  icon={<BiSolidLogInCircle />}
+                />
 
                 {/* SEND REQUEST FOR BECOME ADMIN  */}
                 <p className="text-sm font-base text-gray-900">

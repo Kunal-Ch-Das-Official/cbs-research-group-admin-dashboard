@@ -11,6 +11,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import { getSingleData } from "../../../operations/apis/getSingleData";
 import TextEditor from "../../utils/text-editor/TextEditor";
 import TextInput from "../../utils/inputs/TextInput";
+import YellowBtn from "../../utils/buttons/YellowBtn";
+import TransparentLink from "../../utils/custom-link/TransparentLink";
+import { BiSolidEdit } from "react-icons/bi";
+import { TbEditOff } from "react-icons/tb";
 const UpdatePublication = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -168,7 +172,7 @@ const UpdatePublication = () => {
                   </div>
                   <label
                     htmlFor="uploadFile1"
-                    className="bg-gray-800 hover:bg-gray-700 text-white text-sm px-3 py-2 outline-none rounded-md cursor-pointer ml-auto w-max block"
+                    className="bg-blue-600 hover:bg-blue-800 text-white font-bold text-sm px-3 py-2 outline-none rounded-md cursor-pointer ml-auto w-max block"
                   >
                     Upload
                   </label>
@@ -199,7 +203,7 @@ const UpdatePublication = () => {
                   </div>
                   <label
                     htmlFor="uploadFile2"
-                    className="bg-gray-800 hover:bg-gray-700 text-white text-sm px-3 py-2 outline-none rounded-md cursor-pointer ml-auto w-max block"
+                    className="bg-blue-600 hover:bg-blue-800 text-white font-bold text-sm px-3 py-2 outline-none rounded-md cursor-pointer ml-auto w-max block"
                   >
                     Upload
                   </label>
@@ -230,7 +234,7 @@ const UpdatePublication = () => {
                   </div>
                   <label
                     htmlFor="uploadFile3"
-                    className="bg-gray-800 hover:bg-gray-700 text-white text-sm px-3 py-2 outline-none rounded-md cursor-pointer ml-auto w-max block"
+                    className="bg-blue-600 hover:bg-blue-800 text-white font-bold text-sm px-3 py-2 outline-none rounded-md cursor-pointer ml-auto w-max block"
                   >
                     Upload
                   </label>
@@ -258,20 +262,20 @@ const UpdatePublication = () => {
                 </div>
               </div>
 
-              <button
-                type="submit"
-                className="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center
-               text-black bg-yellow-500 rounded-lg"
-              >
-                Update publication
-              </button>
-              <button
-                onClick={() => navigate("/admin-panel/manage-publications")}
-                className="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center
-               text-black bg-gray-100 hover:bg-gray-200 ml-4 rounded-lg"
-              >
-                Back
-              </button>
+              <div className="flex flex-col">
+                <YellowBtn
+                  btnType={"submit"}
+                  eventHandler={null}
+                  btnText={"Update Publication"}
+                  icon={<BiSolidEdit />}
+                />
+
+                <TransparentLink
+                  path={"/admin-panel/manage-publications"}
+                  linkText={"Cancel"}
+                  icon={<TbEditOff />}
+                />
+              </div>
             </form>
           </div>
         </section>

@@ -11,6 +11,10 @@ import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import CustomModel from "../../utils/custom-models/CustomModel";
 import { getSingleData } from "../../../operations/apis/getSingleData";
 import TextInput from "../../utils/inputs/TextInput";
+import TransparentLink from "../../utils/custom-link/TransparentLink";
+import YellowBtn from "../../utils/buttons/YellowBtn";
+import { TbNotes } from "react-icons/tb";
+import { TbNotesOff } from "react-icons/tb";
 const UpdateTeamAward = () => {
   const { id } = useParams();
   const [prevData, setPrevData] = useState(null);
@@ -103,7 +107,7 @@ const UpdateTeamAward = () => {
       )}
 
       <section className="pt-32">
-        <div className="w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-xl">
+        <div className="w-full max-w-lg mx-auto overflow-hidden bg-white rounded-lg shadow-xl">
           <div className="px-6 py-4">
             <div className="flex justify-center mx-auto">
               <img className="w-auto h-7 sm:h-8" src={cbsLogo} alt="cbsLogo" />
@@ -127,8 +131,8 @@ const UpdateTeamAward = () => {
                   isRequired={false}
                 />
               </div>
-              <div className="w-full my-4 border border-gray-200">
-                <div className="card">
+              <div className="w-full mt-4 mb-12">
+                <div className="card ">
                   <FloatLabel>
                     <label
                       htmlFor="recivedDate"
@@ -137,7 +141,7 @@ const UpdateTeamAward = () => {
                       {/* {prevData && prevData.recivedDate} */}
                     </label>
                     <Calendar
-                      className="z-0 border-b  border-l  border-r border-gray-200 pl-4"
+                      className="z-0 border py-2 border-gray-200 pl-4 rounded-lg"
                       inputId="recivedDate"
                       value={prevData && prevData.recivedDate}
                       onChange={(e) => setDate(e.value)}
@@ -147,7 +151,7 @@ const UpdateTeamAward = () => {
                 </div>
               </div>
 
-              <div className="w-full mb-4 mt-12 border border-gray-200 rounded-lg bg-gray-50 ">
+              <div className="w-full mb-4 mt-20 border border-gray-200 rounded-lg bg-gray-50 ">
                 <div className="px-4 py-2 bg-white rounded-t-lg">
                   <label htmlFor="awardDetails" className="sr-only">
                     About Awards
@@ -160,19 +164,24 @@ const UpdateTeamAward = () => {
                     onChange={(e) => setAwardDetails(e.target.value)}
                   ></textarea>
                 </div>
+
                 <div className="flex items-center justify-between px-3 py-2 border-t ">
-                  <button
-                    type="submit"
-                    className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-black bg-yellow-500 rounded-lg f  hover:bg-yellow-600"
-                  >
-                    Update
-                  </button>
-                  <button
-                    onClick={() => navigate("/admin-panel/manage-team-awards")}
-                    className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-black bg-gray-300 rounded-lg f  hover:bg-gray-400"
-                  >
-                    Cancel
-                  </button>
+                  <div className="mr-2">
+                    <YellowBtn
+                      btnType={"submit"}
+                      eventHandler={null}
+                      btnText={"Update"}
+                      icon={<TbNotes />}
+                    />
+                  </div>
+                  <div>
+                    <TransparentLink
+                      path={"/admin-panel/manage-team-awards"}
+                      linkText={"Cancel"}
+                      icon={<TbNotesOff />}
+                    />
+                  </div>
+
                   <div className="flex ps-0 space-x-1 rtl:space-x-reverse sm:ps-2">
                     <button
                       type="button"

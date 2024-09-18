@@ -10,6 +10,8 @@ import { MdDownloadDone } from "react-icons/md";
 import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
 import CustomModel from "../../utils/custom-models/CustomModel";
 import TextInput from "../../utils/inputs/TextInput";
+import YellowBtn from "../../utils/buttons/YellowBtn";
+import { ImFolderUpload } from "react-icons/im";
 const UploadTeamAward = () => {
   const navigate = useNavigate();
   const teamAwardFormRef = useRef();
@@ -89,7 +91,7 @@ const UploadTeamAward = () => {
         />
       )}
       <section className="pt-32">
-        <div className="w-full max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-xl">
+        <div className="w-full max-w-lg mx-auto overflow-hidden bg-white rounded-lg shadow-xl">
           <div className="px-6 py-4">
             <div className="flex justify-center mx-auto">
               <img className="w-auto h-7 sm:h-8" src={cbsLogo} alt="cbsLogo" />
@@ -148,12 +150,13 @@ const UploadTeamAward = () => {
                   ></textarea>
                 </div>
                 <div className="flex items-center justify-between px-3 py-2 border-t ">
-                  <button
-                    type="submit"
-                    className="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg f  hover:bg-blue-800"
-                  >
-                    Upload
-                  </button>
+                  <YellowBtn
+                    btnType={"submit"}
+                    eventHandler={null}
+                    btnText={"Upload"}
+                    icon={<ImFolderUpload />}
+                  />
+
                   <div className="flex ps-0 space-x-1 rtl:space-x-reverse sm:ps-2">
                     <button
                       type="button"
