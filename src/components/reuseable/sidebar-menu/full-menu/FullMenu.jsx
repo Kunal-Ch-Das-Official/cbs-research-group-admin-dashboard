@@ -150,7 +150,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
             <Link to={"/admin-panel/manage-request"} className="cursor-pointer">
               <p className="text-gray-700 hover:text-black text-sm flex justify-between items-center hover:bg-white rounded px-4 py-3 transition-all">
                 <VscGitPullRequestGoToChanges className="text-xl text-gray-700" />
-                <span className="mr-2">Manage Requests</span>
+                <span>Manage Requests</span>
                 <IoIosArrowForward className="text-lg" />
               </p>
             </Link>
@@ -276,12 +276,12 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
               >
                 Manage Data
               </Link>
-              <hr className="my-2 border-gray-500" />
+              <hr className=" border-gray-500" />
               <Link
                 to={"/admin-panel/upload-msc-member"}
                 id="upload_new_msc_members"
                 className="text-gray-700 hover:text-black text-sm 
-                flex justify-center items-center hover:bg-white hover:font-bold border-b-[1px] border-gray-400
+                flex justify-center items-center hover:bg-white hover:font-bold 
                 px-4 py-3 transition-all"
               >
                 Upload Data

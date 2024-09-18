@@ -4,71 +4,186 @@ Content: Common alert model style
 Date: 29/08/2024 
 */
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import SignIn from "./pages/sign-in/SignIn";
-import Dashboard from "./pages/dashboard/Dashboard";
+import { AppProvider } from "./app-context/AppContext";
 import { AuthProvider } from "./authentication/auth-context/AuthContext";
+import { Suspense, lazy } from "react";
+import LoadingSpinner from "./utils/common-loading-spinner/LoadingSpinner";
+import Index from ".";
 import PrivateRoute from "./private/PrivateRoute";
 import AdminPanel from "./AdminPanel";
-import ForgotPassword from "./pages/forgot-password/ForgotPassword";
-import ResetForgottenPassword from "./pages/reset-forgotten-password/ResetForgottenPassword";
-import Index from ".";
-import AdminRegReq from "./pages/send-admin-reg-request/AdminRegReq";
-import RegisterAdmin from "./pages/register-admin/RegisterAdmin";
-import PasswordChange from "./pages/password-change/PasswordChange";
-import ApproveRequest from "./pages/approve-request/ApproveRequest";
-import ManageAdminRequests from "./pages/manage-admin-requests/ManageAdminRequests";
-import RejectRequests from "./pages/reject-request/RejectRequests";
-import { AppProvider } from "./app-context/AppContext";
-import DeleteRequest from "./pages/delete-request/DeleteRequest";
-import UploadMastersAlumni from "./pages/master-alumni/UploadMastersAlumni";
-import ManageMastersAlumni from "./pages/master-alumni/ManageMastersAlumni";
-import PreviewMastersAlumni from "./pages/master-alumni/PreviewMastersAlumni";
-import UpdateMastersAlumni from "./pages/master-alumni/UpdateMastersAlumni";
-import DeleteMastersAlumni from "./pages/master-alumni/DeleteMastersAlumni";
-import UploadDoctorateAlumni from "./pages/doctorate-alumni/UploadDoctorateAlumni";
-import ManageDoctorateAlumni from "./pages/doctorate-alumni/ManageDoctorateAlumni";
-import UpdateDoctotateAlumni from "./pages/doctorate-alumni/UpdateDoctotateAlumni";
-import DeleteDoctorateAlumni from "./pages/doctorate-alumni/DeleteDoctorateAlumni";
-import PreviewDoctorateAlumni from "./pages/doctorate-alumni/PreviewDoctorateAlumni";
-import UploadMscMember from "./pages/msc-members/UploadMscMember";
-import ManageMscMembers from "./pages/msc-members/ManageMscMembers";
-import PreviewMscMember from "./pages/msc-members/PreviewMscMember";
-import UpdateMscMember from "./pages/msc-members/UpdateMscMember";
-import DeleteMscMember from "./pages/msc-members/DeleteMscMember";
-import UploadPhdMember from "./pages/phd-members/UploadPhdMember";
-import ManagePhdMembers from "./pages/phd-members/ManagePhdMembers";
-import PreviewPhdMember from "./pages/phd-members/PreviewPhdMember";
-import UpdatePhdMember from "./pages/phd-members/UpdatePhdMember";
-import DeletePhdMember from "./pages/phd-members/DeletePhdMember";
-import UploadPersonalAward from "./pages/personal-awards/UploadPersonalAward";
-import ManagePersonalAwards from "./pages/personal-awards/ManagePersonalAwards";
-import UpdatePersonalAward from "./pages/personal-awards/UpdatePersonalAward";
-import DeletePersonalAward from "./pages/personal-awards/DeletePersonalAward";
-import UploadTeamAward from "./pages/team-awards/UploadTeamAward";
-import ManageTeamAwards from "./pages/team-awards/ManageTeamAwards";
-import UpdateTeamAward from "./pages/team-awards/UpdateTeamAward";
-import DeleteTeamAward from "./pages/team-awards/DeleteTeamAward";
-import UploadLabInstrument from "./pages/lab-instruments/UploadLabInstrument";
-import ManageLabInstruments from "./pages/lab-instruments/ManageLabInstruments";
-import UpdateLabInstrument from "./pages/lab-instruments/UpdateLabInstrument";
-import DeleteLabInstrument from "./pages/lab-instruments/DeleteLabInstrument";
-import UploadGroupnews from "./pages/group-news/UploadGroupnews";
-import ManageGroupnews from "./pages/group-news/ManageGroupnews";
-import UpdateGroupnews from "./pages/group-news/UpdateGroupnews";
-import DeleteGroupnews from "./pages/group-news/DeleteGroupnews";
-import ManageContacts from "./pages/contact-info/ManageContacts";
-import DeleteContactInfo from "./pages/contact-info/DeleteContactInfo";
-import PreviewContactInfo from "./pages/contact-info/PreviewContactInfo";
-import SendApplicationResponse from "./pages/contact-info/SendApplicationResponse";
-import UploadProject from "./pages/projects/UploadProject";
-import ManageProjects from "./pages/projects/ManageProjects";
-import UpdateProject from "./pages/projects/UpdateProject";
-import DeleteProject from "./pages/projects/DeleteProject";
-import UploadPublication from "./pages/publications/UploadPublication";
-import ManagePublications from "./pages/publications/ManagePublications";
-import DeletePublication from "./pages/publications/DeletePublication";
-import UpdatePublication from "./pages/publications/UpdatePublication";
-import PreviewPublication from "./pages/publications/PreviewPublication";
+import SignIn from "./pages/sign-in/SignIn";
+import Dashboard from "./pages/dashboard/Dashboard";
+
+const ForgotPassword = lazy(() =>
+  import("./pages/forgot-password/ForgotPassword")
+);
+const ResetForgottenPassword = lazy(() =>
+  import("./pages/reset-forgotten-password/ResetForgottenPassword")
+);
+const AdminRegReq = lazy(() =>
+  import("./pages/send-admin-reg-request/AdminRegReq")
+);
+const RegisterAdmin = lazy(() =>
+  import("./pages/register-admin/RegisterAdmin")
+);
+const PasswordChange = lazy(() =>
+  import("./pages/password-change/PasswordChange")
+);
+const ApproveRequest = lazy(() =>
+  import("./pages/approve-request/ApproveRequest")
+);
+const ManageAdminRequests = lazy(() =>
+  import("./pages/manage-admin-requests/ManageAdminRequests")
+);
+const RejectRequests = lazy(() =>
+  import("./pages/reject-request/RejectRequests")
+);
+
+const DeleteRequest = lazy(() =>
+  import("./pages/delete-request/DeleteRequest")
+);
+const UploadMastersAlumni = lazy(() =>
+  import("./pages/master-alumni/UploadMastersAlumni")
+);
+const ManageMastersAlumni = lazy(() =>
+  import("./pages/master-alumni/ManageMastersAlumni")
+);
+const PreviewMastersAlumni = lazy(() =>
+  import("./pages/master-alumni/PreviewMastersAlumni")
+);
+const UpdateMastersAlumni = lazy(() =>
+  import("./pages/master-alumni/UpdateMastersAlumni")
+);
+const DeleteMastersAlumni = lazy(() =>
+  import("./pages/master-alumni/DeleteMastersAlumni")
+);
+const UploadDoctorateAlumni = lazy(() =>
+  import("./pages/doctorate-alumni/UploadDoctorateAlumni")
+);
+const ManageDoctorateAlumni = lazy(() =>
+  import("./pages/doctorate-alumni/ManageDoctorateAlumni")
+);
+const UpdateDoctotateAlumni = lazy(() =>
+  import("./pages/doctorate-alumni/UpdateDoctotateAlumni")
+);
+const DeleteDoctorateAlumni = lazy(() =>
+  import("./pages/doctorate-alumni/DeleteDoctorateAlumni")
+);
+const PreviewDoctorateAlumni = lazy(() =>
+  import("./pages/doctorate-alumni/PreviewDoctorateAlumni")
+);
+const UploadMscMember = lazy(() =>
+  import("./pages/msc-members/UploadMscMember")
+);
+const ManageMscMembers = lazy(() =>
+  import("./pages/msc-members/ManageMscMembers")
+);
+const PreviewMscMember = lazy(() =>
+  import("./pages/msc-members/PreviewMscMember")
+);
+const UpdateMscMember = lazy(() =>
+  import("./pages/msc-members/UpdateMscMember")
+);
+const DeleteMscMember = lazy(() =>
+  import("./pages/msc-members/DeleteMscMember")
+);
+const UploadPhdMember = lazy(() =>
+  import("./pages/phd-members/UploadPhdMember")
+);
+const ManagePhdMembers = lazy(() =>
+  import("./pages/phd-members/ManagePhdMembers")
+);
+
+const PreviewPhdMember = lazy(() =>
+  import("./pages/phd-members/PreviewPhdMember")
+);
+const UpdatePhdMember = lazy(() =>
+  import("./pages/phd-members/UpdatePhdMember")
+);
+const DeletePhdMember = lazy(() =>
+  import("./pages/phd-members/DeletePhdMember")
+);
+const UploadPersonalAward = lazy(() =>
+  import("./pages/personal-awards/UploadPersonalAward")
+);
+const ManagePersonalAwards = lazy(() =>
+  import("./pages/personal-awards/ManagePersonalAwards")
+);
+const UpdatePersonalAward = lazy(() =>
+  import("./pages/personal-awards/UpdatePersonalAward")
+);
+const DeletePersonalAward = lazy(() =>
+  import("./pages/personal-awards/DeletePersonalAward")
+);
+const UploadTeamAward = lazy(() =>
+  import("./pages/team-awards/UploadTeamAward")
+);
+const ManageTeamAwards = lazy(() =>
+  import("./pages/team-awards/ManageTeamAwards")
+);
+const UpdateTeamAward = lazy(() =>
+  import("./pages/team-awards/UpdateTeamAward")
+);
+const DeleteTeamAward = lazy(() =>
+  import("./pages/team-awards/DeleteTeamAward")
+);
+const UploadLabInstrument = lazy(() =>
+  import("./pages/lab-instruments/UploadLabInstrument")
+);
+const ManageLabInstruments = lazy(() =>
+  import("./pages/lab-instruments/ManageLabInstruments")
+);
+const UpdateLabInstrument = lazy(() =>
+  import("./pages/lab-instruments/UpdateLabInstrument")
+);
+const DeleteLabInstrument = lazy(() =>
+  import("./pages/lab-instruments/DeleteLabInstrument")
+);
+const UploadGroupnews = lazy(() =>
+  import("./pages/group-news/UploadGroupnews")
+);
+const ManageGroupnews = lazy(() =>
+  import("./pages/group-news/ManageGroupnews")
+);
+const UpdateGroupnews = lazy(() =>
+  import("./pages/group-news/UpdateGroupnews")
+);
+const DeleteGroupnews = lazy(() =>
+  import("./pages/group-news/DeleteGroupnews")
+);
+
+const ManageContacts = lazy(() =>
+  import("./pages/contact-info/ManageContacts")
+);
+const DeleteContactInfo = lazy(() =>
+  import("./pages/contact-info/DeleteContactInfo")
+);
+const PreviewContactInfo = lazy(() =>
+  import("./pages/contact-info/PreviewContactInfo")
+);
+const SendApplicationResponse = lazy(() =>
+  import("./pages/contact-info/SendApplicationResponse")
+);
+const UploadProject = lazy(() => import("./pages/projects/UploadProject"));
+
+const ManagePublications = lazy(() =>
+  import("./pages/publications/ManagePublications")
+);
+const UploadPublication = lazy(() =>
+  import("./pages/publications/UploadPublication")
+);
+const DeleteProject = lazy(() => import("./pages/projects/DeleteProject"));
+const UpdateProject = lazy(() => import("./pages/projects/UpdateProject"));
+const ManageProjects = lazy(() => import("./pages/projects/ManageProjects"));
+const DeletePublication = lazy(() =>
+  import("./pages/publications/DeletePublication")
+);
+const UpdatePublication = lazy(() =>
+  import("./pages/publications/UpdatePublication")
+);
+const PreviewPublication = lazy(() =>
+  import("./pages/publications/PreviewPublication")
+);
 
 function App() {
   const publicRoutes = [
@@ -82,15 +197,27 @@ function App() {
     },
     {
       path: "/forgot-password",
-      element: <ForgotPassword />,
+      element: (
+        <Suspense fallback={<LoadingSpinner />}>
+          <ForgotPassword />
+        </Suspense>
+      ),
     },
     {
       path: "/reset-password/:id/:token",
-      element: <ResetForgottenPassword />,
+      element: (
+        <Suspense fallback={<LoadingSpinner />}>
+          <ResetForgottenPassword />
+        </Suspense>
+      ),
     },
     {
       path: "/become-admin-request",
-      element: <AdminRegReq />,
+      element: (
+        <Suspense fallback={<LoadingSpinner />}>
+          <AdminRegReq />
+        </Suspense>
+      ),
     },
   ];
 
@@ -341,7 +468,11 @@ function App() {
                 <Route
                   key={index}
                   path={`/admin-panel/${item.path}`}
-                  element={item.element}
+                  element={
+                    <Suspense fallback={<LoadingSpinner />}>
+                      {item.element}
+                    </Suspense>
+                  }
                 />
               ))}
             </Route>
