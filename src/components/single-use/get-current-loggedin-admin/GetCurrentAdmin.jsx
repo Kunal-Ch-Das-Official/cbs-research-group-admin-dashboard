@@ -103,11 +103,15 @@ const GetCurrentAdmin = () => {
   }
 
   if (!apiResponse) {
-    return <div>Something went wrong!</div>;
+    return (
+      <div className="text-center text-gray-500 text-2xl font-bold pt-20">
+        Something went wrong!
+      </div>
+    );
   }
 
   return (
-    <div className="border border-gray-200 py-4 mt-2 rounded-xl bg-white">
+    <div className="border border-gray-200 py-4 mt-2 rounded-xl bg-gray-50">
       <div className="flex flex-wrap flex-col justify-center items-center cursor-pointer">
         <div
           className={`${sectionColor} w-12 h-12 rounded-full flex items-center justify-center font-bold text-gray-900 text-xl`}

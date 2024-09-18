@@ -17,12 +17,12 @@ import { RiGroup3Fill } from "react-icons/ri";
 import { GoProjectSymlink } from "react-icons/go";
 import { MdPublishedWithChanges } from "react-icons/md";
 import { RiLogoutBoxLine } from "react-icons/ri";
-import { IoCloseCircleOutline } from "react-icons/io5";
 import { IoIosArrowUp } from "react-icons/io";
 import { useState } from "react";
 import GetCurrentAdmin from "../../../single-use/get-current-loggedin-admin/GetCurrentAdmin";
 import { Link } from "react-router-dom";
 import { IoIosArrowForward } from "react-icons/io";
+import { MdCancelPresentation } from "react-icons/md";
 const FullMenu = ({ closeFullMenu, logoutHandler }) => {
   const [adminOperationDropdown, setAdminOperationDropdown] = useState(false);
   const [masterAlumniDropdown, setMasterAlumniDropdown] = useState(false);
@@ -73,13 +73,13 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
   return (
     <div>
       <nav
-        className="bg-rose-50 h-screen fixed top-0 left-0 min-w-[260px] py-6 px-4 font-[sans-serif] opacity-100 z-[100000]
+        className="bg-white h-screen fixed top-0 left-0 min-w-[260px] py-6 px-4 font-[sans-serif] opacity-100 z-[100000]
          flex flex-col overflow-auto no-scrollbar shadow-xl"
         data-aos="fade-right"
       >
         <div className="flex justify-end cursor-pointer">
-          <IoCloseCircleOutline
-            className="text-3xl hover:bg-black hover:text-white rounded-full"
+          <MdCancelPresentation
+            className="text-3xl text-gray-700 transform translate-1 hover:scale-110 hover:text-black"
             onClick={closeFullMenu}
           />
         </div>
@@ -95,7 +95,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
             <Link
               to={"/admin-panel"}
               className="text-gray-700 hover:text-black text-sm flex items-center justify-between
-               hover:bg-white rounded px-4 py-3 transition-all"
+               hover:bg-gray-300  rounded px-4 py-3 transition-all"
             >
               <MdDashboard className="text-xl text-gray-700" />
               <span className="mr-12">Dashboard</span>
@@ -109,7 +109,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
         <ul className="space-y-3" id="admin_section">
           {/* ADMIN OPERATIONS  */}
           <li onClick={() => handleDropdown(1)} className="cursor-pointer">
-            <p className="text-gray-700 hover:text-black text-sm flex justify-between items-center hover:bg-white rounded px-4 py-3 transition-all">
+            <p className="text-gray-700 hover:text-black text-sm flex justify-between items-center hover:bg-gray-300  rounded px-4 py-3 transition-all">
               <MdAdminPanelSettings className="text-xl text-gray-700 mr-4" />
               <span className="">Admin Operations</span>
               {adminOperationDropdown === true ? (
@@ -129,7 +129,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
                 to={"/admin-panel/register"}
                 id="register_admin"
                 className="text-gray-700 hover:text-black text-sm 
-                flex justify-center items-center hover:bg-white  
+                flex justify-center items-center hover:bg-gray-300   
                 px-4 py-3 transition-all border-b-[1px] border-gray-400 hover:font-bold"
               >
                 Admin Registration
@@ -138,7 +138,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
                 to={"/admin-panel/password-change"}
                 id="password_change"
                 className="text-gray-700 hover:text-black text-sm 
-                flex justify-center items-center hover:bg-white hover:font-bold 
+                flex justify-center items-center hover:bg-gray-300  hover:font-bold 
                 px-4 py-3 transition-all"
               >
                 Change Password
@@ -148,7 +148,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
           {/* ADMIN REQUEST  */}
           <li onClick={closeFullMenu}>
             <Link to={"/admin-panel/manage-request"} className="cursor-pointer">
-              <p className="text-gray-700 hover:text-black text-sm flex justify-between items-center hover:bg-white rounded px-4 py-3 transition-all">
+              <p className="text-gray-700 hover:text-black text-sm flex justify-between items-center hover:bg-gray-300  rounded px-4 py-3 transition-all">
                 <VscGitPullRequestGoToChanges className="text-xl text-gray-700" />
                 <span>Manage Requests</span>
                 <IoIosArrowForward className="text-lg" />
@@ -164,7 +164,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
           <li onClick={() => handleDropdown(2)} className="cursor-pointer">
             <a
               href="#"
-              className="text-gray-700 hover:text-black text-sm flex justify-between items-center hover:bg-white rounded px-4 py-3 transition-all"
+              className="text-gray-700 hover:text-black text-sm flex justify-between items-center hover:bg-gray-300  rounded px-4 py-3 transition-all"
             >
               <PiStudentFill className="text-xl text-gray-700" />
               <span className="">Masters Alumni</span>
@@ -187,7 +187,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
                 id="see_master_alumni"
                 href="#"
                 className="text-gray-700 hover:text-black text-sm 
-                flex justify-center items-center hover:bg-white  
+                flex justify-center items-center hover:bg-gray-300   
                 px-4 py-3 transition-all border-b-[1px] border-gray-400 hover:font-bold"
               >
                 Manage Data
@@ -197,7 +197,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
                 id="upload_new_master_alumni"
                 href="#"
                 className="text-gray-700 hover:text-black text-sm 
-                flex justify-center items-center hover:bg-white hover:font-bold border-b-[1px] border-gray-400
+                flex justify-center items-center hover:bg-gray-300  hover:font-bold border-b-[1px] border-gray-400
                 px-4 py-3 transition-all"
               >
                 Upload Data
@@ -206,7 +206,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
           </li>
           {/* DOCTORATE ALUMNI  */}
           <li onClick={() => handleDropdown(3)} className="cursor-pointer">
-            <p className="text-gray-700 hover:text-black text-sm flex justify-between items-center hover:bg-white rounded px-4 py-3 transition-all">
+            <p className="text-gray-700 hover:text-black text-sm flex justify-between items-center hover:bg-gray-300  rounded px-4 py-3 transition-all">
               <FaUserDoctor className="text-xl text-gray-700 mr-4" />
               <span className="mr-1">Doctotate Alumni</span>
               {doctorateAlumniDropdown === true ? (
@@ -227,7 +227,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
                 to={"/admin-panel/manage-doctorate-alumni"}
                 id="manage_master_alumni"
                 className="text-gray-700 hover:text-black text-sm 
-                flex justify-center items-center hover:bg-white hover:font-bold 
+                flex justify-center items-center hover:bg-gray-300  hover:font-bold 
                 px-4 py-3 border-b-[1px] border-gray-400"
               >
                 Manage Data
@@ -237,7 +237,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
                 to={"/admin-panel/upload-doctorate-alumni"}
                 id="upload_master_alumni"
                 className="text-gray-700 hover:text-black text-sm 
-                flex justify-center items-center hover:bg-white hover:font-bold 
+                flex justify-center items-center hover:bg-gray-300  hover:font-bold 
                 px-4 py-3 transition-all"
               >
                 Upload Data
@@ -251,7 +251,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
         <ul className="space-y-3" id="member_section">
           {/* MSC MEMBERS  */}
           <li onClick={() => handleDropdown(4)} className="cursor-pointer">
-            <p className="text-gray-700 hover:text-black text-sm flex justify-between items-center hover:bg-white rounded px-4 py-3 transition-all">
+            <p className="text-gray-700 hover:text-black text-sm flex justify-between items-center hover:bg-gray-300  rounded px-4 py-3 transition-all">
               <RiGroup3Fill className="text-xl text-gray-700" />
               <span className="mr-1">MSC Members</span>
               {mscMemberDropdown === true ? (
@@ -271,7 +271,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
                 to={"/admin-panel/manage-msc-members"}
                 id="manage_msc_members"
                 className="text-gray-700 hover:text-black text-sm 
-                flex justify-center items-center hover:bg-white hover:font-bold 
+                flex justify-center items-center hover:bg-gray-300  hover:font-bold 
                 px-4 py-3 transition-all"
               >
                 Manage Data
@@ -281,7 +281,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
                 to={"/admin-panel/upload-msc-member"}
                 id="upload_new_msc_members"
                 className="text-gray-700 hover:text-black text-sm 
-                flex justify-center items-center hover:bg-white hover:font-bold 
+                flex justify-center items-center hover:bg-gray-300  hover:font-bold 
                 px-4 py-3 transition-all"
               >
                 Upload Data
@@ -290,7 +290,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
           </li>
           {/* PHD MEMBERS  */}
           <li onClick={() => handleDropdown(5)} className="cursor-pointer">
-            <p className="text-gray-700 hover:text-black text-sm flex justify-between items-center hover:bg-white rounded px-4 py-3 transition-all">
+            <p className="text-gray-700 hover:text-black text-sm flex justify-between items-center hover:bg-gray-300  rounded px-4 py-3 transition-all">
               <HiUserGroup className="text-xl text-gray-700 mr-4" />
               <span className="mr-4">PHD Members</span>
               {phdMemberDropdown === true ? (
@@ -311,7 +311,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
                 to={"/admin-panel/manage-phd-members"}
                 id="manage_phd_members"
                 className="text-gray-700 hover:text-black text-sm 
-                flex justify-center items-center hover:bg-white  
+                flex justify-center items-center hover:bg-gray-300   
                 px-4 py-3 transition-all border-b-[1px] border-gray-400 hover:font-bold"
               >
                 Manage Data
@@ -320,7 +320,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
                 to={"/admin-panel/upload-phd-member"}
                 id="upload_new_phd_members"
                 className="text-gray-700 hover:text-black text-sm 
-                flex justify-center items-center hover:bg-white hover:font-bold border-b-[1px] border-gray-400
+                flex justify-center items-center hover:bg-gray-300  hover:font-bold border-b-[1px] border-gray-400
                 px-4 py-3 transition-all"
               >
                 Upload Data
@@ -334,7 +334,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
         <ul className="space-y-3" id="awards_section">
           {/* PERSONAL AWARDS  */}
           <li onClick={() => handleDropdown(6)} className="cursor-pointer">
-            <p className="text-gray-700 hover:text-black text-sm flex justify-between items-center hover:bg-white rounded px-4 py-3 transition-all">
+            <p className="text-gray-700 hover:text-black text-sm flex justify-between items-center hover:bg-gray-300  rounded px-4 py-3 transition-all">
               <FaAward className="text-xl text-gray-700" />
               <span className="ml-2">Personal Awards</span>
               {personalAwardsDropdown === true ? (
@@ -354,7 +354,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
                 to={"/admin-panel/manage-personal-awards"}
                 id="manage_personal_awards"
                 className="text-gray-700 hover:text-black text-sm 
-                flex justify-center items-center hover:bg-white  
+                flex justify-center items-center hover:bg-gray-300   
                 px-4 py-3 transition-all border-b-[1px] border-gray-400 hover:font-bold"
               >
                 Manage Data
@@ -363,7 +363,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
                 to={"/admin-panel/upload-personal-award"}
                 id="upload_new_personal_awards"
                 className="text-gray-700 hover:text-black text-sm 
-                flex justify-center items-center hover:bg-white hover:font-bold border-b-[1px] border-gray-400
+                flex justify-center items-center hover:bg-gray-300  hover:font-bold border-b-[1px] border-gray-400
                 px-4 py-3 transition-all"
               >
                 Upload Data
@@ -372,7 +372,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
           </li>
           {/* TEAM AWARDS  */}
           <li onClick={() => handleDropdown(7)} className="cursor-pointer">
-            <p className="text-gray-700 hover:text-black text-sm flex justify-between items-center hover:bg-white rounded px-4 py-3 transition-all">
+            <p className="text-gray-700 hover:text-black text-sm flex justify-between items-center hover:bg-gray-300  rounded px-4 py-3 transition-all">
               <TbMilitaryAward className="text-xl text-gray-700 mr-4" />
               <span className="mr-8">Team Awards</span>
               {teamAwardsDropdown === true ? (
@@ -392,7 +392,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
                 to={"/admin-panel/manage-team-awards"}
                 id="manage_team_awards"
                 className="text-gray-700 hover:text-black text-sm 
-                flex justify-center items-center hover:bg-white  
+                flex justify-center items-center hover:bg-gray-300   
                 px-4 py-3 transition-all border-b-[1px] border-gray-400 hover:font-bold"
               >
                 Manage Data
@@ -401,7 +401,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
                 to={"/admin-panel/upload-team-award"}
                 id="upload_new_team_awards"
                 className="text-gray-700 hover:text-black text-sm 
-                flex justify-center items-center hover:bg-white hover:font-bold 
+                flex justify-center items-center hover:bg-gray-300  hover:font-bold 
                 px-4 py-3 transition-all"
               >
                 Upload Data
@@ -414,7 +414,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
         {/* LAB INSTRUMENTS SECTION  */}
         <ul className="space-y-3" id="lab_instruments_section">
           <li onClick={() => handleDropdown(8)} className="cursor-pointer">
-            <p className="text-gray-700 hover:text-black text-sm flex justify-between items-center hover:bg-white rounded px-4 py-3 transition-all">
+            <p className="text-gray-700 hover:text-black text-sm flex justify-between items-center hover:bg-gray-300  rounded px-4 py-3 transition-all">
               <SlChemistry className="text-xl text-gray-700 mr-4" />
               <span className="mr-2">Lab Instruments</span>
               {labInstrumentsDropdown === true ? (
@@ -434,7 +434,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
                 to={"/admin-panel/manage-lab-instruments"}
                 id="manage_lab_instruments"
                 className="text-gray-700 hover:text-black text-sm 
-                flex justify-center items-center hover:bg-white  
+                flex justify-center items-center hover:bg-gray-300   
                 px-4 py-3 transition-all border-b-[1px] border-gray-400 hover:font-bold"
               >
                 Manage Data
@@ -443,7 +443,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
                 to={"/admin-panel/upload-lab-instrument"}
                 id="upload_new_lab_instrument"
                 className="text-gray-700 hover:text-black text-sm 
-                flex justify-center items-center hover:bg-white hover:font-bold border-b-[1px] border-gray-400
+                flex justify-center items-center hover:bg-gray-300  hover:font-bold border-b-[1px] border-gray-400
                 px-4 py-3 transition-all"
               >
                 Upload Data
@@ -456,7 +456,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
         {/* GROUP NEWS SECTION  */}
         <ul className="space-y-3" id="group_news_section">
           <li onClick={() => handleDropdown(9)} className="cursor-pointer">
-            <p className="text-gray-700 hover:text-black text-sm flex justify-between items-center hover:bg-white rounded px-4 py-3 transition-all">
+            <p className="text-gray-700 hover:text-black text-sm flex justify-between items-center hover:bg-gray-300  rounded px-4 py-3 transition-all">
               <PiNewspaperClippingFill className="text-xl text-gray-700 mr-4" />
               <span className="mr-8">Group News</span>
               {groupNewsDropdown === true ? (
@@ -476,7 +476,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
                 to={"/admin-panel/manage-group-news"}
                 id="manage_group_news"
                 className="text-gray-700 hover:text-black text-sm 
-                flex justify-center items-center hover:bg-white  
+                flex justify-center items-center hover:bg-gray-300   
                 px-4 py-3 transition-all border-b-[1px] border-gray-400 hover:font-bold"
               >
                 Manage Data
@@ -485,7 +485,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
                 to={"/admin-panel/upload-group-news"}
                 id="upload_new_group_news"
                 className="text-gray-700 hover:text-black text-sm 
-                flex justify-center items-center hover:bg-white hover:font-bold border-b-[1px] border-gray-400
+                flex justify-center items-center hover:bg-gray-300  hover:font-bold border-b-[1px] border-gray-400
                 px-4 py-3 transition-all"
               >
                 Upload Data
@@ -505,7 +505,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
             <Link
               to={"/admin-panel/manage-contacts"}
               className="text-gray-700 hover:text-black text-sm flex items-center justify-between
-               hover:bg-white rounded px-4 py-3 transition-all"
+               hover:bg-gray-300  rounded px-4 py-3 transition-all"
             >
               <MdDashboard className="text-xl text-gray-700" />
               <span className="">Manage Contacts</span>
@@ -518,7 +518,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
         {/* PROJECTS SECTION  */}
         <ul className="space-y-3" id="projects_section">
           <li onClick={() => handleDropdown(11)} className="cursor-pointer">
-            <p className="text-gray-700 hover:text-black text-sm flex justify-between items-center hover:bg-white rounded px-4 py-3 transition-all">
+            <p className="text-gray-700 hover:text-black text-sm flex justify-between items-center hover:bg-gray-300  rounded px-4 py-3 transition-all">
               <GoProjectSymlink className="text-xl text-gray-700 mr-4" />
               <span className="mr-14">Projects</span>
               {projectsDropdown === true ? (
@@ -538,7 +538,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
                 to={"/admin-panel/manage-projects"}
                 id="manage_projects"
                 className="text-gray-700 hover:text-black text-sm 
-                flex justify-center items-center hover:bg-white  
+                flex justify-center items-center hover:bg-gray-300   
                 px-4 py-3 transition-all border-b-[1px] border-gray-400 hover:font-bold"
               >
                 Manage Data
@@ -547,7 +547,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
                 to={"/admin-panel/upload-project"}
                 id="upload_new_project"
                 className="text-gray-700 hover:text-black text-sm 
-                flex justify-center items-center hover:bg-white hover:font-bold border-b-[1px] border-gray-400
+                flex justify-center items-center hover:bg-gray-300  hover:font-bold border-b-[1px] border-gray-400
                 px-4 py-3 transition-all"
               >
                 Upload Data
@@ -560,7 +560,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
         {/* PUBLICATION SECTIONS */}
         <ul className="space-y-3" id="publications_section">
           <li onClick={() => handleDropdown(12)} className="cursor-pointer">
-            <p className="text-gray-700 hover:text-black text-sm flex justify-between items-center hover:bg-white rounded px-4 py-3 transition-all">
+            <p className="text-gray-700 hover:text-black text-sm flex justify-between items-center hover:bg-gray-300  rounded px-4 py-3 transition-all">
               <MdPublishedWithChanges className="text-xl text-gray-700 mr-4" />
               <span className="mr-8">Publications</span>
               {publicationsDropdown === true ? (
@@ -581,7 +581,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
                 to={"/admin-panel/manage-publications"}
                 id="manage_publications"
                 className="text-gray-700 hover:text-black text-sm 
-                flex justify-center items-center hover:bg-white  
+                flex justify-center items-center hover:bg-gray-300   
                 px-4 py-3 transition-all border-b-[1px] border-gray-400 hover:font-bold"
               >
                 Manage Data
@@ -590,7 +590,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
                 to={"/admin-panel/upload-publication"}
                 id="upload_new_publication"
                 className="text-gray-700 hover:text-black text-sm 
-                flex justify-center items-center hover:bg-white hover:font-bold border-b-[1px] border-gray-400
+                flex justify-center items-center hover:bg-gray-300  hover:font-bold border-b-[1px] border-gray-400
                 px-4 py-3 transition-all"
               >
                 Upload Data
@@ -606,7 +606,7 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
             <a
               href="#"
               className="text-gray-700 hover:text-black text-sm flex items-center
-               hover:bg-white rounded px-4 py-3 transition-all"
+               hover:bg-gray-300  rounded px-4 py-3 transition-all"
             >
               <RiLogoutBoxLine className="text-xl text-gray-700 mr-5" />
               <span className="ml-1">Logout</span>

@@ -15,7 +15,7 @@ const Sidebar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [screenWidth, setScreenWidth] = useState();
   const [wantToLogout, setWantToLogout] = useState(false);
-  // const [isSticky, setIsSticky] = useState(false);
+  const [isSticky, setIsSticky] = useState(false);
   const handleConfirmLogout = () => setWantToLogout(true);
   const handleLogout = () => {
     if (localStorage.getItem("auth-token")) {
@@ -84,20 +84,21 @@ const Sidebar = () => {
     setIsMenuOpen(true);
   }, []);
 
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     if (window.scrollY > 120) {
-  //       setIsSticky(true);
-  //     } else {
-  //       setIsSticky(false);
-  //     }
-  //   };
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 90) {
+        setIsSticky(true);
+      } else {
+        setIsSticky(false);
+      }
+    };
 
-  //   window.addEventListener("scroll", handleScroll);
-  //   return () => {
-  //     window.removeEventListener("scroll", handleScroll);
-  //   };
-  // }, []);
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <>
       {wantToLogout === true && (
@@ -115,7 +116,7 @@ const Sidebar = () => {
         {isMenuOpen === true ? (
           <ToggleMenu
             openMenu={openFullMenu}
-            // isVisable={isSticky === true ? "inline-flex" : "hidden"}
+            isVisable={isSticky === true ? "inline-flex" : "hidden"}
           />
         ) : (
           <FullMenu

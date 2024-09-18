@@ -1,10 +1,11 @@
 import { BiMenuAltLeft } from "react-icons/bi";
 import comapnyLogo from "../../../../assets/CBS Research Group Logo.png";
 import PropTypes from "prop-types";
-const ToggleMenu = ({ openMenu }) => {
+import { Link } from "react-router-dom";
+const ToggleMenu = ({ openMenu, isVisable }) => {
   return (
     <div
-      className={`pt-2 pl-2 fixed top-0 left-0 inline-flex bg-white z-[1000] items-center justify-between pr-10 border-b-[1px] border-gray-200 pb-2 w-full`}
+      className={`${isVisable} pt-2 pl-2 fixed top-0 left-0  bg-white z-[1000] items-center justify-between pr-10 border-b-[1px] border-gray-200 pb-2 w-full`}
     >
       <div className=" inline-flex items-center ">
         <BiMenuAltLeft
@@ -12,18 +13,19 @@ const ToggleMenu = ({ openMenu }) => {
           onClick={openMenu}
         />
       </div>
-      <div>
+      <Link to={"/admin-panel"}>
         <img
           src={comapnyLogo}
           alt="CBS-Research-Group-Logo"
           className="h-[40px] w-[80px]"
         />
-      </div>
+      </Link>
     </div>
   );
 };
 
 ToggleMenu.propTypes = {
   openMenu: PropTypes.func,
+  isVisable: PropTypes.bool || PropTypes.string,
 };
 export default ToggleMenu;
