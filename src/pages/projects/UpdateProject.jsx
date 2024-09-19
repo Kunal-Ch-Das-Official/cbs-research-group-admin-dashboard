@@ -127,6 +127,7 @@ const UpdateProject = () => {
                   textValue={setProjectName}
                   placeHolderText={null}
                   isRequired={false}
+                  fieldId={"projectNameUpdate"}
                 />
               </div>
 

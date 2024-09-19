@@ -42,23 +42,24 @@ const UploadMscMember = () => {
   const mscMemberSubmitionHandler = async (e) => {
     e.preventDefault();
 
-    let validation = true;
+    let emailValidation = true;
+    let numberValidation = true;
     const validateEmail = membersEmail.split("@")[1];
     if (validateEmail === "gmail.com" || validateEmail === "outlook.com") {
-      validation = true;
+      emailValidation = true;
     } else {
       setEmailValidatErr(true);
-      validation = false;
+      emailValidation = false;
     }
 
     if (membersPhoneNo.length === 10) {
-      validation = true;
+      numberValidation = true;
     } else {
       setPhoneNumberValidatErr(true);
-      validation = false;
+      numberValidation = false;
     }
 
-    if (validation === true) {
+    if (emailValidation === true && numberValidation === true) {
       setLoading(true);
       const mscMembersInfo = new FormData();
       mscMembersInfo.append("memberName", membersName);
@@ -151,6 +152,7 @@ const UploadMscMember = () => {
                   textValue={setMembersName}
                   placeHolderText={"Enter project student's name"}
                   isRequired={true}
+                  fieldId={"mscMemberName"}
                 />
 
                 <div>
@@ -186,6 +188,7 @@ const UploadMscMember = () => {
                   textValue={setGraduateFrom}
                   placeHolderText={"Bachelor's complete from"}
                   isRequired={true}
+                  fieldId={"mscMemberGraduateFrom"}
                 />
 
                 <div className="sm:col-span-2 mt-2">
@@ -225,6 +228,7 @@ const UploadMscMember = () => {
                 emailValidationError={emailValidatErr}
                 placeHolderText={"your_name@email.com"}
                 isRequired={true}
+                fieldId={"mscMemberEmailUpload"}
               />
               <div className="w-full mt-2" id="PhoneNumber">
                 <label
@@ -237,7 +241,15 @@ const UploadMscMember = () => {
                   type="number"
                   name="phoneNumber"
                   id="phoneNumber"
-                  className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                  className={`bg-white border
+                          ${
+                            phoneNumberValidatErr === true
+                              ? "border-red-600"
+                              : "border-gray-300"
+                          }
+                  
+                  text-gray-900 text-sm rounded-lg focus:ring-primary-600 
+                  focus:border-primary-600 block w-full p-2.5`}
                   placeholder="Enter  master alumni phone number "
                   required
                   onChange={(e) => setMembersPhoneNo(e.target.value)}
@@ -256,6 +268,7 @@ const UploadMscMember = () => {
                 textValue={setResearchGateHandle}
                 placeHolderText={"Research Gate Url"}
                 isRequired={true}
+                fieldId={"mscMemberRGId"}
               />
               <TextInput
                 inputLabel={"Google Schollar Id"}
@@ -263,6 +276,7 @@ const UploadMscMember = () => {
                 textValue={setGoogleScholarHandle}
                 placeHolderText={"Google Schollar Url"}
                 isRequired={true}
+                fieldId={"mscMemberGSId"}
               />
             </div>
           </div>

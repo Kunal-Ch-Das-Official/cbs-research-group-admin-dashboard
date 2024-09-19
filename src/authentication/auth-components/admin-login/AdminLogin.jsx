@@ -124,6 +124,7 @@ const AdminLogin = () => {
                   emailValidationError={emailValidationError}
                   placeHolderText={"your_name@email.com"}
                   isRequired={true}
+                  fieldId={"signIn"}
                 />
                 {/* PASSWORD FIELDS  */}
 

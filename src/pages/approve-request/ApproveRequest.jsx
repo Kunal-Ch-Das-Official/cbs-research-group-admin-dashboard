@@ -118,6 +118,7 @@ const ApproveRequest = () => {
                   emailValidationError={emailValidatErr}
                   placeHolderText={"your_name@email.com"}
                   isRequired={true}
+                  fieldId={"newLoginId"}
                 />
                 {/* CONFIRM PASSWORD FIELDS  */}
 

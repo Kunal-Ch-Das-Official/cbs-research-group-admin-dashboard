@@ -132,6 +132,7 @@ const SendRegistrationRequest = () => {
                   textValue={setUserName}
                   placeHolderText={"Enter your name"}
                   isRequired={true}
+                  fieldId={"regUserName"}
                 />
                 {/* USER EMAI FIELDS  */}
 
@@ -142,6 +143,7 @@ const SendRegistrationRequest = () => {
                   emailValidationError={emailValidationError}
                   placeHolderText={"your_name@email.com"}
                   isRequired={true}
+                  fieldId={"userEmailId"}
                 />
 
                 <div id="message">

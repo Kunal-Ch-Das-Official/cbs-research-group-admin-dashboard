@@ -118,6 +118,7 @@ const UploadPublication = () => {
                 textValue={setpPublicationTitle}
                 placeHolderText={"Enter publication title"}
                 isRequired={true}
+                fieldId={"publicationTitleUpdate"}
               />
 
               <TextInput
@@ -126,6 +127,7 @@ const UploadPublication = () => {
                 textValue={setpPublicationContributer}
                 placeHolderText={"Enter contributers name with comma"}
                 isRequired={true}
+                fieldId={"contributerNameUpdate"}
               />
 
               <div>
@@ -238,6 +240,7 @@ const UploadPublication = () => {
                 textValue={setPdfLink}
                 placeHolderText={"Paste coresponding pdf link"}
                 isRequired={true}
+                fieldId={"pdfLinkUpdate"}
               />
 
               <div className="sm:col-span-2">

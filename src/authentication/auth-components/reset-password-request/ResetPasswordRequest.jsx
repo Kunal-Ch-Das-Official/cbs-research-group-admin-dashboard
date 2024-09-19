@@ -104,6 +104,7 @@ const ResetPasswordRequest = () => {
                   emailValidationError={emailValidationError}
                   placeHolderText={"your_name@email.com"}
                   isRequired={true}
+                  fieldId={"authUserEmail"}
                 />
                 {/* ACTION BUTTONS  */}
                 <div className="flex flex-col">

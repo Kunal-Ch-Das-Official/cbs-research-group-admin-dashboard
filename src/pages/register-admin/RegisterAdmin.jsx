@@ -213,6 +213,7 @@ const RegisterAdmin = () => {
                     textValue={setFirstName}
                     placeHolderText={"John"}
                     isRequired={true}
+                    fieldId={"regAdminFirstName"}
                   />
                   <TextInput
                     inputLabel={"Last Name"}
@@ -220,6 +221,7 @@ const RegisterAdmin = () => {
                     textValue={setLastName}
                     placeHolderText={"Doe"}
                     isRequired={true}
+                    fieldId={"regAdminLastName"}
                   />
 
                   <EmailInput
@@ -229,6 +231,7 @@ const RegisterAdmin = () => {
                     emailValidationError={emailValidationErr}
                     placeHolderText={"your_name@email.com"}
                     isRequired={true}
+                    fieldId={"newAdminEmailId"}
                   />
 
                   <PasswordInput

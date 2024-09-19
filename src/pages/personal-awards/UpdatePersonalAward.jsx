@@ -129,6 +129,7 @@ const UpdatePersonalAward = () => {
                 textValue={setAwardTitle}
                 placeHolderText={null}
                 isRequired={false}
+                fieldId={"PawardTitle"}
               />
               <div className="w-full my-4 border border-gray-200 py-4">
                 <div className="card">

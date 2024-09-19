@@ -129,6 +129,7 @@ const UpdateTeamAward = () => {
                   textValue={setAwardTitle}
                   placeHolderText={null}
                   isRequired={false}
+                  fieldId={"teamAwardUpdate"}
                 />
               </div>
               <div className="w-full mt-4 mb-12">

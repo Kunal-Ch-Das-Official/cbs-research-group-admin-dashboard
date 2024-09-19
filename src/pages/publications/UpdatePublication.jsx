@@ -131,6 +131,7 @@ const UpdatePublication = () => {
                   textValue={setpPublicationTitle}
                   placeHolderText={null}
                   isRequired={false}
+                  fieldId={"publicationTitle"}
                 />
 
                 <TextInput
@@ -139,6 +140,7 @@ const UpdatePublication = () => {
                   textValue={setPublicationContributer}
                   placeHolderText={null}
                   isRequired={false}
+                  fieldId={"contributerName"}
                 />
 
                 <div>
@@ -254,6 +256,7 @@ const UpdatePublication = () => {
                   textValue={setPdfLink}
                   placeHolderText={null}
                   isRequired={false}
+                  fieldId={"pdfLink"}
                 />
 
                 <div className="sm:col-span-2">

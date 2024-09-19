@@ -120,6 +120,7 @@ const UpdateLabInstrument = () => {
                   textValue={setInstrumentName}
                   placeHolderText={null}
                   isRequired={false}
+                  fieldId={"labInstrumentUpdate"}
                 />
               </div>
               <div className="w-full px-3 mb-6">

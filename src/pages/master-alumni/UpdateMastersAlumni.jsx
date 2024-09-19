@@ -62,60 +62,80 @@ const UpdateMastersAlumni = () => {
     const year = dateObject.getFullYear();
     const stringifyYear = year.toString();
 
-    setLoading(true);
-    const updatedMastersAlumniInfo = new FormData();
-    updatedMastersAlumniInfo.append("alumniName", alumniName);
-    updatedMastersAlumniInfo.append("profilePicture", alumniImage);
-    updatedMastersAlumniInfo.append("emailId", alumniEmailId);
-    updatedMastersAlumniInfo.append("phoneNumber", alumniPhoneNo);
-    updatedMastersAlumniInfo.append("bscDoneFrom", graduateFrom);
-    updatedMastersAlumniInfo.append("researchGateId", alumniResearchGateUrl);
-    updatedMastersAlumniInfo.append("googleScholarId", alumniGoogleSchollarUrl);
-    updatedMastersAlumniInfo.append("yearOfPassout", stringifyYear);
-    updatedMastersAlumniInfo.append("details", alumniDetails);
+    let emailValidation = true;
+    let numberValidation = true;
+    const validateEmail = alumniEmailId.split("@")[1];
+    if (validateEmail === "gmail.com" || validateEmail === "outlook.com") {
+      emailValidation = true;
+    } else {
+      emailValidation = false;
+      setEmailValidatErr(true);
+    }
+    if (alumniPhoneNo.length === 10) {
+      numberValidation = true;
+    } else {
+      setPhoneNumberValidatErr(true);
+      numberValidation = false;
+    }
+    if (emailValidation === true && numberValidation === true) {
+      setLoading(true);
+      const updatedMastersAlumniInfo = new FormData();
+      updatedMastersAlumniInfo.append("alumniName", alumniName);
+      updatedMastersAlumniInfo.append("profilePicture", alumniImage);
+      updatedMastersAlumniInfo.append("emailId", alumniEmailId);
+      updatedMastersAlumniInfo.append("phoneNumber", alumniPhoneNo);
+      updatedMastersAlumniInfo.append("bscDoneFrom", graduateFrom);
+      updatedMastersAlumniInfo.append("researchGateId", alumniResearchGateUrl);
+      updatedMastersAlumniInfo.append(
+        "googleScholarId",
+        alumniGoogleSchollarUrl
+      );
+      updatedMastersAlumniInfo.append("yearOfPassout", stringifyYear);
+      updatedMastersAlumniInfo.append("details", alumniDetails);
 
-    const authToken = localStorage.getItem("auth-token");
-    const adminToken = localStorage.getItem("admin-token");
-    const token = authToken || adminToken;
+      const authToken = localStorage.getItem("auth-token");
+      const adminToken = localStorage.getItem("admin-token");
+      const token = authToken || adminToken;
 
-    try {
-      await axios
-        .patch(
-          `${envConfig.mastersAlumniUrl}/${id}`,
-          updatedMastersAlumniInfo,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              "Content-Type": "multipart/form-data",
-            },
-          }
-        )
-        .then((res) => {
-          setCustomAlert({
-            message: res.data.message,
-            details: res.data.details,
-            statusIcon: (
-              <MdDownloadDone className="text-4xl font-bold text-green-600" />
-            ),
-            buttonColor: "bg-green-600",
+      try {
+        await axios
+          .patch(
+            `${envConfig.mastersAlumniUrl}/${id}`,
+            updatedMastersAlumniInfo,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "multipart/form-data",
+              },
+            }
+          )
+          .then((res) => {
+            setCustomAlert({
+              message: res.data.message,
+              details: res.data.details,
+              statusIcon: (
+                <MdDownloadDone className="text-4xl font-bold text-green-600" />
+              ),
+              buttonColor: "bg-green-600",
+            });
           });
+      } catch (error) {
+        setCustomAlert({
+          message: error.response.data.details,
+          details: error.response.data.issue,
+          statusIcon: <FcCancel className="text-4xl font-bold text-red-600" />,
+          buttonColor: "bg-red-600",
         });
-    } catch (error) {
-      setCustomAlert({
-        message: error.response.data.details,
-        details: error.response.data.issue,
-        statusIcon: <FcCancel className="text-4xl font-bold text-red-600" />,
-        buttonColor: "bg-red-600",
-      });
-    } finally {
-      setLoading(false);
-      setShowAlert(true);
+      } finally {
+        setLoading(false);
+        setShowAlert(true);
 
-      setPassoutYear(null);
-      setAlumniDetails("");
-      setAlumniImage(null);
-      setPhoneNumberValidatErr(false);
-      setEmailValidatErr(false);
+        setPassoutYear(null);
+        setAlumniDetails("");
+        setAlumniImage(null);
+        setPhoneNumberValidatErr(false);
+        setEmailValidatErr(false);
+      }
     }
   };
   const closeModelHandler = () => {
@@ -158,6 +178,7 @@ const UpdateMastersAlumni = () => {
                     textValue={setAlumniName}
                     placeHolderText={null}
                     isRequired={false}
+                    fieldId={"masterAlumniNameUpdate"}
                   />
                   <div>
                     <label
@@ -192,6 +213,7 @@ const UpdateMastersAlumni = () => {
                     textValue={setGraduateFrom}
                     placeHolderText={null}
                     isRequired={false}
+                    fieldId={"masterAlumniBscUpdate"}
                   />
 
                   <div className="sm:col-span-2 mt-2">
@@ -240,6 +262,7 @@ const UpdateMastersAlumni = () => {
                   emailValidationError={emailValidatErr}
                   placeHolderText={null}
                   isRequired={false}
+                  fieldId={"masterAlumniEmailUpdate"}
                 />
                 <div className="w-full mt-2" id="PhoneNumber">
                   <label
@@ -253,7 +276,12 @@ const UpdateMastersAlumni = () => {
                     defaultValue={previousData.phoneNumber}
                     name="phoneNumber"
                     id="phoneNumber"
-                    className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                    className={`bg-white border ${
+                      phoneNumberValidatErr === true
+                        ? "border-red-600"
+                        : "border-gray-300"
+                    } text-gray-900 text-sm 
+                      rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5`}
                     placeholder="Enter  master alumni phone number "
                     onChange={(e) => setAlumniPhoneNo(e.target.value)}
                   />
@@ -271,6 +299,7 @@ const UpdateMastersAlumni = () => {
                   textValue={setAlumniResearchGateUrl}
                   placeHolderText={null}
                   isRequired={false}
+                  fieldId={"masterAlumniRGIDupdate"}
                 />
                 <TextInput
                   inputLabel={"Google Schollar Id"}
@@ -278,6 +307,7 @@ const UpdateMastersAlumni = () => {
                   textValue={setAlumniGoogleSchollarUrl}
                   placeHolderText={null}
                   isRequired={false}
+                  fieldId={"masterAlumniGSIDupdate"}
                 />
               </div>
             </div>

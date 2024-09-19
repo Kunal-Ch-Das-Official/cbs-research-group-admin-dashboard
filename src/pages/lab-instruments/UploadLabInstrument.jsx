@@ -106,6 +106,7 @@ const UploadLabInstrument = () => {
                   textValue={setInstrumentName}
                   placeHolderText={"Instruement Name"}
                   isRequired={true}
+                  fieldId={"labInstrumentUpload"}
                 />
               </div>
               <div className="w-full px-3 mb-6">

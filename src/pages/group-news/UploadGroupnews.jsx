@@ -105,6 +105,7 @@ const UploadGroupnews = () => {
                   textValue={setNewsTitle}
                   placeHolderText={"Enter the title of the group news"}
                   isRequired={true}
+                  fieldId={"newsTitleUpload"}
                 />
                 {/* CONFIRM PASSWORD FIELDS  */}
                 <div id="content">

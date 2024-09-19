@@ -47,27 +47,36 @@ const UploadMasterAlumni = () => {
     const year = dateObject.getFullYear();
     const stringifyYear = year.toString();
 
-    let validation = true;
+    let emailValidation = true;
+    let imageValidation = true;
+    let numberValidation = true;
+
     const validateEmail = alumniEmailId.split("@")[1];
     if (validateEmail === "gmail.com" || validateEmail === "outlook.com") {
-      validation = true;
+      emailValidation = true;
     } else {
       setEmailValidatErr(true);
-      validation = false;
+      emailValidation = false;
     }
 
     if (alumniPhoneNo.length === 10) {
-      validation = true;
+      numberValidation = true;
     } else {
       setPhoneNumberValidatErr(true);
-      validation = false;
+      numberValidation = false;
     }
 
     if (!alumniImage) {
       setNoImageErr(true);
-      validation = false;
+      imageValidation = false;
+    } else {
+      imageValidation = true;
     }
-    if (validation === true) {
+    if (
+      emailValidation === true &&
+      imageValidation === true &&
+      numberValidation === true
+    ) {
       setLoading(true);
       const mastersAlumniInfo = new FormData();
       mastersAlumniInfo.append("alumniName", alumniName);
@@ -164,6 +173,7 @@ const UploadMasterAlumni = () => {
                   textValue={setAlumniName}
                   placeHolderText={"Enter masters alumni name"}
                   isRequired={true}
+                  fieldId={"masterAlumniName"}
                 />
                 <div>
                   <label
@@ -198,6 +208,7 @@ const UploadMasterAlumni = () => {
                   textValue={setGraduateFrom}
                   placeHolderText={"Bachelor's complete from"}
                   isRequired={true}
+                  fieldId={"masterAlumniGraduateFrom"}
                 />
 
                 <div className="sm:col-span-2 mt-2">
@@ -237,6 +248,7 @@ const UploadMasterAlumni = () => {
                 emailValidationError={emailValidatErr}
                 placeHolderText={"your_name@email.com"}
                 isRequired={true}
+                fieldId={"masterAlumniEmailUpload"}
               />
               <div className="w-full mt-2" id="PhoneNumber">
                 <label
@@ -249,7 +261,15 @@ const UploadMasterAlumni = () => {
                   type="number"
                   name="phoneNumber"
                   id="phoneNumber"
-                  className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                  className={`bg-white border 
+                  
+                        ${
+                          phoneNumberValidatErr === true
+                            ? "border-red-600"
+                            : "border-gray-300"
+                        }
+                  text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 
+                  block w-full p-2.5`}
                   placeholder="Enter  master alumni phone number "
                   required
                   onChange={(e) => setAlumniPhoneNo(e.target.value)}
@@ -268,6 +288,7 @@ const UploadMasterAlumni = () => {
                 textValue={setAlumniResearchGateUrl}
                 placeHolderText={"Research Gate Url"}
                 isRequired={true}
+                fieldId={"masterAlumniRGId"}
               />
               <TextInput
                 inputLabel={"Google Schollar Id"}
@@ -275,6 +296,7 @@ const UploadMasterAlumni = () => {
                 textValue={setAlumniGoogleSchollarUrl}
                 placeHolderText={"Google Schollar Url"}
                 isRequired={true}
+                fieldId={"masterAlumniGSId"}
               />
             </div>
           </div>

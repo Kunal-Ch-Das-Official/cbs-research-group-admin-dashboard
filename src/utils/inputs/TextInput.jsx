@@ -6,11 +6,12 @@ const TextInput = ({
   textValue,
   placeHolderText,
   isRequired,
+  fieldId,
 }) => {
   return (
     <div className="my-2">
       <label
-        htmlFor="textInput"
+        htmlFor={fieldId}
         className="block mb-2 text-sm font-medium text-gray-900"
       >
         {inputLabel}
@@ -18,8 +19,8 @@ const TextInput = ({
       <input
         type="text"
         defaultValue={defaultText}
-        name="textInput"
-        id="textInput"
+        name={fieldId}
+        id={fieldId}
         className="bg-white border
        border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 
        block w-full p-2.5"
@@ -37,6 +38,7 @@ TextInput.propTypes = {
   textValue: PropTypes.any,
   emailValidationError: PropTypes.bool,
   placeHolderText: PropTypes.string || null,
+  fieldId: PropTypes.string,
 };
 
 export default TextInput;

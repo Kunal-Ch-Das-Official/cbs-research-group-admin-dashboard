@@ -42,23 +42,24 @@ const UploadPhdMember = () => {
   const phdMemberSubmitionHandler = async (e) => {
     e.preventDefault();
 
-    let validation = true;
+    let emailValidation = true;
+    let numberValidation = true;
     const validateEmail = membersEmail.split("@")[1];
     if (validateEmail === "gmail.com" || validateEmail === "outlook.com") {
-      validation = true;
+      emailValidation = true;
     } else {
       setEmailValidatErr(true);
-      validation = false;
+      emailValidation = false;
     }
 
     if (membersPhoneNo.length === 10) {
-      validation = true;
+      numberValidation = true;
     } else {
       setPhoneNumberValidatErr(true);
-      validation = false;
+      numberValidation = false;
     }
 
-    if (validation === true) {
+    if (emailValidation === true && numberValidation === true) {
       setLoading(true);
       const phdMembersInfo = new FormData();
       phdMembersInfo.append("memberName", membersName);
@@ -269,6 +270,7 @@ const UploadPhdMember = () => {
                 emailValidationError={emailValidatErr}
                 placeHolderText={"your_name@email.com"}
                 isRequired={true}
+                fieldId={"phdMemberEmailUpload"}
               />
               <div className="w-full mt-2" id="PhoneNumber">
                 <label
@@ -281,7 +283,14 @@ const UploadPhdMember = () => {
                   type="number"
                   name="phoneNumber"
                   id="phoneNumber"
-                  className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                  className={`bg-white border 
+                   ${
+                     phoneNumberValidatErr === true
+                       ? "border-red-600"
+                       : "border-gray-300"
+                   }
+                  text-gray-900 text-sm rounded-lg focus:ring-primary-600
+                   focus:border-primary-600 block w-full p-2.5`}
                   placeholder="Enter  master alumni phone number "
                   required
                   onChange={(e) => setMembersPhoneNo(e.target.value)}

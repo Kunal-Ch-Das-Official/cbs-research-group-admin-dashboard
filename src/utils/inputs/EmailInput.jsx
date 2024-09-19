@@ -7,11 +7,12 @@ const EmailInput = ({
   emailValidationError,
   placeHolderText,
   isRequired,
+  fieldId,
 }) => {
   return (
     <div>
       <label
-        htmlFor="emailInput"
+        htmlFor={fieldId}
         className="block mb-2 text-sm font-medium text-gray-900"
       >
         {inputLabel}
@@ -19,8 +20,8 @@ const EmailInput = ({
       <input
         type="email"
         defaultValue={defaultEmail}
-        name="emailInput"
-        id="emailInput"
+        name={fieldId}
+        id={fieldId}
         className={`bg-white border lowercase ${
           emailValidationError === true && "border-red-500"
         }
@@ -47,6 +48,7 @@ EmailInput.propTypes = {
   emailValue: PropTypes.any,
   emailValidationError: PropTypes.bool,
   placeHolderText: PropTypes.string || null,
+  fieldId: PropTypes.string,
 };
 
 export default EmailInput;

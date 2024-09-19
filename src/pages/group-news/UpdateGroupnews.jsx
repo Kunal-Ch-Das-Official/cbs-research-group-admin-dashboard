@@ -115,11 +115,12 @@ const UpdateGroupnews = () => {
                 {/* PASSWORD FIELDS  */}
 
                 <TextInput
-                  inputLabel={"Alumni Name"}
+                  inputLabel={"News title"}
                   defaultText={prevData && prevData.newsTitle}
                   textValue={setNewsTitle}
                   placeHolderText={null}
                   isRequired={false}
+                  fieldId={"newsTitleUpdate"}
                 />
                 {/* CONFIRM PASSWORD FIELDS  */}
                 <div id="content">

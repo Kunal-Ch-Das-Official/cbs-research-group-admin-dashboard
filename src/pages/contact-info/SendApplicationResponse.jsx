@@ -114,6 +114,7 @@ const SendApplicationResponse = () => {
                 textValue={setSubject}
                 placeHolderText={"Write email subject"}
                 isRequired={true}
+                fieldId={"emailSubject"}
               />
 
               <div className="w-full mb-4 mt-6 border border-gray-100 bg-gray-50 ">

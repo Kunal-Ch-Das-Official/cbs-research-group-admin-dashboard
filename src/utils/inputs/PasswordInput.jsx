@@ -19,7 +19,7 @@ const PasswordInput = ({
       <div className="relative flex items-center">
         <input
           type="password"
-          name="commonPasswordField"
+          name={inputId}
           id={inputId}
           placeholder="••••••••••••••"
           className={`bg-white border text-gray-900

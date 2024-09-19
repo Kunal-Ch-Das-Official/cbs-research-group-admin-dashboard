@@ -47,23 +47,24 @@ const UploadDoctorateAlumni = () => {
     const year = dateObject.getFullYear();
     const stringifyYear = year.toString();
 
-    let validation = true;
+    let emailValidation = true;
+    let numberValidation = true;
     const validateEmail = alumniEmailId.split("@")[1];
     if (validateEmail === "gmail.com" || validateEmail === "outlook.com") {
-      validation = true;
+      emailValidation = true;
     } else {
       setEmailValidatErr(true);
-      validation = false;
+      emailValidation = false;
     }
 
     if (alumniPhoneNo.length === 10) {
-      validation = true;
+      numberValidation = true;
     } else {
       setPhoneNumberValidatErr(true);
-      validation = false;
+      numberValidation = false;
     }
 
-    if (validation === true) {
+    if (emailValidation === true && numberValidation === true) {
       setLoading(true);
       const doctorateAlumniInfo = new FormData();
       doctorateAlumniInfo.append("alumniName", alumniName);
@@ -158,6 +159,7 @@ const UploadDoctorateAlumni = () => {
                   textValue={setAlumniName}
                   placeHolderText={"Enter doctorate alumni name"}
                   isRequired={true}
+                  fieldId={"docAlumniName"}
                 />
                 <div>
                   <label
@@ -192,6 +194,7 @@ const UploadDoctorateAlumni = () => {
                   textValue={setGraduateFrom}
                   placeHolderText={"Bachelor's complete from"}
                   isRequired={true}
+                  fieldId={"DocAlumniGraduateFrom"}
                 />
 
                 <TextInput
@@ -200,6 +203,7 @@ const UploadDoctorateAlumni = () => {
                   textValue={setMastersDoneFrom}
                   placeHolderText={"Master's complete from"}
                   isRequired={true}
+                  fieldId={"DocAlumniMasterFrom"}
                 />
                 <div className="sm:col-span-2 mt-2">
                   <TextEditor
@@ -239,6 +243,7 @@ const UploadDoctorateAlumni = () => {
                 emailValidationError={emailValidatErr}
                 placeHolderText={"your_name@email.com"}
                 isRequired={false}
+                fieldId={"docAlumniEmailIdUpload"}
               />
               <div className="w-full mt-2" id="PhoneNumber">
                 <label
@@ -251,7 +256,15 @@ const UploadDoctorateAlumni = () => {
                   type="number"
                   name="phoneNumber"
                   id="phoneNumber"
-                  className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                  className={`bg-white border 
+                   ${
+                     phoneNumberValidatErr === true
+                       ? "border-red-600"
+                       : "border-gray-300"
+                   }
+                  
+                  text-gray-900 text-sm rounded-lg focus:ring-primary-600 
+                  focus:border-primary-600 block w-full p-2.5`}
                   placeholder="Enter  master alumni phone number "
                   required
                   onChange={(e) => setAlumniPhoneNo(e.target.value)}
@@ -271,6 +284,7 @@ const UploadDoctorateAlumni = () => {
                 textValue={setAlumniResearchGateUrl}
                 placeHolderText={"Research Gate Url"}
                 isRequired={true}
+                fieldId={"DocAlumniRGId"}
               />
               <TextInput
                 inputLabel={"Google Schollar Id"}
@@ -278,6 +292,7 @@ const UploadDoctorateAlumni = () => {
                 textValue={setAlumniGoogleSchollarUrl}
                 placeHolderText={"Google Schollar Url"}
                 isRequired={true}
+                fieldId={"DocAlumniGSId"}
               />
             </div>
           </div>

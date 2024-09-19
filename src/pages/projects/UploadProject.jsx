@@ -112,6 +112,7 @@ const UploadProject = () => {
                   textValue={setProjectName}
                   placeHolderText={"Enter the project name"}
                   isRequired={true}
+                  fieldId={"projectNameUpload"}
                 />
               </div>
 

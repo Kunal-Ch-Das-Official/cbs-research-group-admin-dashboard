@@ -57,55 +57,73 @@ const UpdatePhdMember = () => {
 
   const updatePhdMemberHandler = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    const phdMembersInfo = new FormData();
-    phdMembersInfo.append("memberName", membersName);
-    phdMembersInfo.append("profilePicture", membersImage);
-    phdMembersInfo.append("emailId", membersEmail);
-    phdMembersInfo.append("phoneNumber", membersPhoneNo);
-    phdMembersInfo.append("bscDoneFrom", graduateFrom);
-    phdMembersInfo.append("mscDoneFrom", mastersFrom);
-    phdMembersInfo.append("researchGateId", researchGateHandle);
-    phdMembersInfo.append("googleScholarId", googleScholarHandle);
-    phdMembersInfo.append("currentYear", currentYear);
-    phdMembersInfo.append("details", aboutMember);
 
-    const authToken = localStorage.getItem("auth-token");
-    const adminToken = localStorage.getItem("admin-token");
-    const token = authToken || adminToken;
+    let emailValidation = true;
+    let numberValidation = true;
+    const validateEmail = membersEmail.split("@")[1];
+    if (validateEmail === "gmail.com" || validateEmail === "outlook.com") {
+      emailValidation = true;
+    } else {
+      emailValidation = false;
+      setEmailValidatErr(true);
+    }
+    if (membersPhoneNo.length === 10) {
+      numberValidation = true;
+    } else {
+      setPhoneNumberValidatErr(true);
+      numberValidation = false;
+    }
+    if (emailValidation === true && numberValidation === true) {
+      setLoading(true);
+      const phdMembersInfo = new FormData();
+      phdMembersInfo.append("memberName", membersName);
+      phdMembersInfo.append("profilePicture", membersImage);
+      phdMembersInfo.append("emailId", membersEmail);
+      phdMembersInfo.append("phoneNumber", membersPhoneNo);
+      phdMembersInfo.append("bscDoneFrom", graduateFrom);
+      phdMembersInfo.append("mscDoneFrom", mastersFrom);
+      phdMembersInfo.append("researchGateId", researchGateHandle);
+      phdMembersInfo.append("googleScholarId", googleScholarHandle);
+      phdMembersInfo.append("currentYear", currentYear);
+      phdMembersInfo.append("details", aboutMember);
 
-    try {
-      await axios
-        .patch(`${envConfig.phdMembersUrl}/${id}`, phdMembersInfo, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "multipart/form-data",
-          },
-        })
-        .then((res) => {
-          setCustomAlert({
-            message: res.data.message,
-            details: res.data.details,
-            statusIcon: (
-              <MdDownloadDone className="text-4xl font-bold text-green-600" />
-            ),
-            buttonColor: "bg-green-600",
+      const authToken = localStorage.getItem("auth-token");
+      const adminToken = localStorage.getItem("admin-token");
+      const token = authToken || adminToken;
+
+      try {
+        await axios
+          .patch(`${envConfig.phdMembersUrl}/${id}`, phdMembersInfo, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "multipart/form-data",
+            },
+          })
+          .then((res) => {
+            setCustomAlert({
+              message: res.data.message,
+              details: res.data.details,
+              statusIcon: (
+                <MdDownloadDone className="text-4xl font-bold text-green-600" />
+              ),
+              buttonColor: "bg-green-600",
+            });
           });
+      } catch (error) {
+        setCustomAlert({
+          message: error.response.data.details,
+          details: error.response.data.issue,
+          statusIcon: <FcCancel className="text-4xl font-bold text-red-600" />,
+          buttonColor: "bg-red-600",
         });
-    } catch (error) {
-      setCustomAlert({
-        message: error.response.data.details,
-        details: error.response.data.issue,
-        statusIcon: <FcCancel className="text-4xl font-bold text-red-600" />,
-        buttonColor: "bg-red-600",
-      });
-    } finally {
-      setLoading(false);
-      setShowAlert(true);
-      setMembersImage("");
-      setAboutMember(null);
-      setPhoneNumberValidatErr(false);
-      setEmailValidatErr(false);
+      } finally {
+        setLoading(false);
+        setShowAlert(true);
+        setMembersImage("");
+        setAboutMember(null);
+        setPhoneNumberValidatErr(false);
+        setEmailValidatErr(false);
+      }
     }
   };
   const closeModelHandler = () => {
@@ -148,6 +166,7 @@ const UpdatePhdMember = () => {
                     textValue={setMembersName}
                     placeHolderText={null}
                     isRequired={false}
+                    fieldId={"updatePhdmemberName"}
                   />
 
                   <div>
@@ -190,6 +209,7 @@ const UpdatePhdMember = () => {
                     textValue={setGraduateFrom}
                     placeHolderText={null}
                     isRequired={false}
+                    fieldId={"updatePhdmemberGraduate"}
                   />
                   <TextInput
                     inputLabel={"Masters done from"}
@@ -197,6 +217,7 @@ const UpdatePhdMember = () => {
                     textValue={setMastersFrom}
                     placeHolderText={null}
                     isRequired={false}
+                    fieldId={"updatePhdmemberMasters"}
                   />
 
                   <div className="sm:col-span-2 mt-2">
@@ -245,6 +266,7 @@ const UpdatePhdMember = () => {
                   emailValidationError={emailValidatErr}
                   placeHolderText={null}
                   isRequired={false}
+                  fieldId={"phdMemberEmailUpdate"}
                 />
 
                 <div className="w-full mt-2" id="PhoneNumber">
@@ -258,7 +280,13 @@ const UpdatePhdMember = () => {
                     type="number"
                     name="phoneNumber"
                     id="phoneNumber"
-                    className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                    className={`bg-white border 
+                       ${
+                         phoneNumberValidatErr === true
+                           ? "border-red-600"
+                           : "border-gray-300"
+                       } text-gray-900 text-sm rounded-lg 
+                    focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5`}
                     defaultValue={previousData.phoneNumber}
                     onChange={(e) => setMembersPhoneNo(e.target.value)}
                   />
@@ -276,6 +304,7 @@ const UpdatePhdMember = () => {
                   textValue={setResearchGateHandle}
                   placeHolderText={null}
                   isRequired={false}
+                  fieldId={"updatePhdmemberRGId"}
                 />
                 <TextInput
                   inputLabel={"Google Schollar Id"}
@@ -283,6 +312,7 @@ const UpdatePhdMember = () => {
                   textValue={setGoogleScholarHandle}
                   placeHolderText={null}
                   isRequired={false}
+                  fieldId={"updatePhdmemberGSId"}
                 />
               </div>
             </div>
