@@ -1,9 +1,14 @@
 import { IoEyeSharp } from "react-icons/io5";
 import showPasswordHandler from "../../../operations/functional/ShowPasswordHandler";
 import PropTypes from "prop-types";
-const PasswordInput = ({ inputId, passwordLabel, inputValue }) => {
+const PasswordInput = ({
+  inputId,
+  passwordLabel,
+  inputValue,
+  validationError,
+}) => {
   return (
-    <div id="password">
+    <div>
       <label
         htmlFor={inputId}
         className="block mb-2 text-sm font-medium text-gray-900"
@@ -17,7 +22,9 @@ const PasswordInput = ({ inputId, passwordLabel, inputValue }) => {
           name="commonPasswordField"
           id={inputId}
           placeholder="••••••••••••••"
-          className="bg-white border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+          className={`bg-white border text-gray-900
+           rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5
+           ${validationError === true ? "border-red-600" : "border-gray-300"}`}
           required
           onChange={(e) => inputValue(e.target.value)}
         />
@@ -33,6 +40,7 @@ PasswordInput.propTypes = {
   inputId: PropTypes.string,
   passwordLabel: PropTypes.string,
   inputValue: PropTypes.any,
+  validationError: PropTypes.bool || null,
 };
 
 export default PasswordInput;

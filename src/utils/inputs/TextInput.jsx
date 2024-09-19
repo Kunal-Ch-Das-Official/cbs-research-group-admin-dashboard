@@ -8,7 +8,7 @@ const TextInput = ({
   isRequired,
 }) => {
   return (
-    <div id="text" className="my-2">
+    <div className="my-2">
       <label
         htmlFor="textInput"
         className="block mb-2 text-sm font-medium text-gray-900"

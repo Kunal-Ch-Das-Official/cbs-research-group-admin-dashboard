@@ -74,7 +74,7 @@ const GetAllDesireAdminReq = ({
           </p>
         </div>
       )}
-      <div className="w-full max-w-sm h-[270px] px-4 py-3 bg-white border border-gray-300 rounded-md">
+      <div className="w-full min-w-[350px] h-[270px] px-4 py-3 bg-white border border-gray-300 rounded-md">
         <div className="flex items-center justify-end">
           {isAccepted && (
             <AdminReqStatus

@@ -111,6 +111,7 @@ const ChangeAdminPassword = () => {
                     inputId={"changePassword"}
                     passwordLabel={"Password"}
                     inputValue={setNewpassword}
+                    validationError={passwordValidationError}
                   />
                 </div>
                 {/* CONFIRM PASSWORD FIELDS  */}
@@ -119,6 +120,7 @@ const ChangeAdminPassword = () => {
                     inputId={"changePasswordConfirm"}
                     passwordLabel={"Confirm password"}
                     inputValue={setNewConfirmPassword}
+                    validationError={passwordValidationError}
                   />
                   {passwordValidationError === true ? (
                     <p className="ml-2 text-red-500 font-sm text-xs my-0 py-0">

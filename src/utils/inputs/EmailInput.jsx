@@ -9,7 +9,7 @@ const EmailInput = ({
   isRequired,
 }) => {
   return (
-    <div id="email">
+    <div>
       <label
         htmlFor="emailInput"
         className="block mb-2 text-sm font-medium text-gray-900"

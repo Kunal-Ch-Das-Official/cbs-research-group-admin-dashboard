@@ -106,11 +106,12 @@ const ResetPassword = () => {
                 ref={resetFormRef}
               >
                 {/* PASSWORD FIELDS */}
-                <div id="confirmPassword">
+                <div id="password">
                   <PasswordInput
                     inputId={"adminUserPassword"}
                     passwordLabel={"Password"}
                     inputValue={setNewPassword}
+                    validationError={passwordValidationError}
                   />
                 </div>
                 {/* CONFIRM PASSWORD FIELDS */}
@@ -120,6 +121,7 @@ const ResetPassword = () => {
                     inputId={"confirmPassword"}
                     passwordLabel={"Confirm password"}
                     inputValue={setNewConfirmPassword}
+                    validationError={passwordValidationError}
                   />
 
                   {passwordValidationError && (

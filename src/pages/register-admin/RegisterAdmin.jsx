@@ -1,7 +1,6 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { GrUserAdmin } from "react-icons/gr";
 import { MdRememberMe } from "react-icons/md";
-import { FaEye } from "react-icons/fa";
 import TacModal from "../../utils/terms-and-conditions/TacModal";
 import axios from "../../../axios/axios";
 import envConfig from "../../../envConfig";
@@ -13,8 +12,10 @@ import EmailInput from "../../utils/inputs/EmailInput";
 import TextInput from "../../utils/inputs/TextInput";
 import YellowBtn from "../../utils/buttons/YellowBtn";
 import { MdCreateNewFolder } from "react-icons/md";
+import PasswordInput from "../../utils/inputs/PasswordInput";
 
 const RegisterAdmin = () => {
+  const registerFormref = useRef();
   const [showTerms, setShowTerms] = useState(false);
   const [emailValidationErr, setEmailValidationErr] = useState(false);
   const [passwordValidateErr, setPasswordValidateErr] = useState(false);
@@ -48,21 +49,6 @@ const RegisterAdmin = () => {
     if (id === 2) {
       setAccountTypeMember(true);
       setAccountTypeAdmin(false);
-    }
-  };
-
-  const showHidePassword = (id) => {
-    if (id === 1) {
-      const Password = document.getElementById("Password");
-      Password.type === "password"
-        ? (Password.type = "text")
-        : (Password.type = "password");
-    }
-    if (id === 2) {
-      const confirmPassword = document.getElementById("password_confirm");
-      confirmPassword.type === "password"
-        ? (confirmPassword.type = "text")
-        : (confirmPassword.type = "password");
     }
   };
 
@@ -124,11 +110,8 @@ const RegisterAdmin = () => {
       } finally {
         setLoading(false);
         setOpenModal(true);
-        setFirstName("");
-        setLastName("");
-        setUserEmail("");
-        setPassword("");
-        setConfirmPassword("");
+        setTermsAndCond(false);
+        registerFormref.current.reset();
       }
     } else {
       setLoading(false);
@@ -210,18 +193,19 @@ const RegisterAdmin = () => {
                       </div>
                       <input
                         id="termsAndConditions"
+                        checked={termsAndCond}
                         aria-describedby="termsAndConditions"
                         type="checkbox"
                         className="w-4 h-4 border 
                         cursor-pointer border-gray-300 rounded
                          bg-gray-50 focus:ring-3 focus:ring-primary-300"
-                        onClick={() => setTermsAndCond(!termsAndCond)}
+                        onChange={() => setTermsAndCond(!termsAndCond)}
                       />
                     </div>
                   </div>
                 </div>
               </div>
-              <form onSubmit={handleRegistration}>
+              <form onSubmit={handleRegistration} ref={registerFormref}>
                 <div className="grid grid-cols-1 gap-6 mt-8 md:grid-cols-2">
                   <TextInput
                     inputLabel={"First Name"}
@@ -246,69 +230,19 @@ const RegisterAdmin = () => {
                     placeHolderText={"your_name@email.com"}
                     isRequired={true}
                   />
-                  <div>
-                    <label
-                      htmlFor="Password"
-                      className="block mb-2 text-sm text-gray-600"
-                    >
-                      Password
-                    </label>
-                    <div className="relative flex items-center mt-2">
-                      <input
-                        onChange={(e) => setPassword(e.target.value)}
-                        value={password}
-                        type="password"
-                        placeholder="Enter Password"
-                        id="Password"
-                        className={`block w-full px-5 py-2 bg-white border rounded-md placeholder-gray-400 focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40 ${
-                          passwordValidateErr
-                            ? "border-red-600"
-                            : "border-gray-300"
-                        }`}
-                      />
-                      <button
-                        type="button"
-                        className="absolute right-1 bg-gray-100 w-10 p-1 rounded-full hover:bg-gray-200"
-                        onClick={() => showHidePassword(1)}
-                      >
-                        <FaEye />
-                      </button>
-                    </div>
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="password_confirm"
-                      className="block mb-2 text-sm text-gray-600"
-                    >
-                      Confirm password
-                    </label>
-                    <div className="relative flex items-center mt-2">
-                      <input
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                        value={confirmPassword}
-                        type="password"
-                        placeholder="Enter Password"
-                        id="password_confirm"
-                        className={`block w-full px-5 py-2 bg-white border rounded-md placeholder-gray-400 focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40 ${
-                          passwordValidateErr
-                            ? "border-red-600"
-                            : "border-gray-300"
-                        }`}
-                      />
-                      <button
-                        type="button"
-                        className="absolute right-1 bg-gray-100 w-10 p-1 rounded-full hover:bg-gray-200"
-                        onClick={() => showHidePassword(2)}
-                      >
-                        <FaEye />
-                      </button>
-                    </div>
-                    {passwordValidateErr && (
-                      <span className="text-red-600">
-                        Passwords do not match
-                      </span>
-                    )}
-                  </div>
+
+                  <PasswordInput
+                    inputId={"regAdminPassword"}
+                    passwordLabel={"Password"}
+                    inputValue={setPassword}
+                    validationError={passwordValidateErr}
+                  />
+                  <PasswordInput
+                    inputId={"regAdminConfirmPassword"}
+                    passwordLabel={"Confirm password"}
+                    inputValue={setConfirmPassword}
+                    validationError={passwordValidateErr}
+                  />
                 </div>
                 <div className="mt-6">
                   <YellowBtn
@@ -324,6 +258,13 @@ const RegisterAdmin = () => {
                   Please agree to the terms and conditions
                 </span>
               )}
+              <div>
+                {passwordValidateErr && (
+                  <span className="text-red-600">
+                    Password and Confirm password do not match
+                  </span>
+                )}
+              </div>
             </div>
           </div>
         </div>

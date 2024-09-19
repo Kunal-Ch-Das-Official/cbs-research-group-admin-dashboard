@@ -145,7 +145,7 @@ const UpdateProject = () => {
                   <option selected>{prevData && prevData.projectStatus}</option>
                   {prevData && (
                     <option value={projectStatus}>
-                      {prevData.projectStatus == "ongoing"
+                      {prevData.projectStatus == "on-going"
                         ? "completed"
                         : "Ongoing"}
                     </option>

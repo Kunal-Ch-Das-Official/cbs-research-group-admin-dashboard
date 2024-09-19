@@ -26,6 +26,6 @@ const ToggleMenu = ({ openMenu, isVisable }) => {
 
 ToggleMenu.propTypes = {
   openMenu: PropTypes.func,
-  isVisable: PropTypes.bool || PropTypes.string,
+  isVisable: PropTypes.any,
 };
 export default ToggleMenu;

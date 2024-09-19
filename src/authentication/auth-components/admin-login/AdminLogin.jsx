@@ -131,6 +131,7 @@ const AdminLogin = () => {
                   inputId={"authAdminPassword"}
                   passwordLabel={"Admin password"}
                   inputValue={setAdminPassword}
+                  validationError={null}
                 />
 
                 {/* REMEMBER ME AND FORGOT PASSWORD BUTTON  */}

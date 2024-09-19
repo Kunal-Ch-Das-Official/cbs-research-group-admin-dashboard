@@ -183,7 +183,7 @@ const UploadPhdMember = () => {
                         className="w-64 py-2"
                         onChange={(e) => setCurrentYear(e.target.value)}
                       >
-                        <option value={null}></option>
+                        <option value={null}>Select Year</option>
                         <option value="1st">1st</option>
                         <option value="2nd">2nd</option>
                         <option value="3rd">3rd</option>

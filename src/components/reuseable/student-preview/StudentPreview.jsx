@@ -68,7 +68,7 @@ const StudentPreview = ({
                       <div className="ml-0 lg:ml-6"> {phoneNumber}</div>
                     </div>
                     <div className="flex flex-col items-start my-1">
-                      <div className="ml-0 lg:ml-6"> BSC: {bscCollege}</div>
+                      <div className="ml-0 lg:ml-2"> BSC: {bscCollege}</div>
                     </div>
                     <div
                       className={`${

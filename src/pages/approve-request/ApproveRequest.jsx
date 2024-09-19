@@ -125,6 +125,7 @@ const ApproveRequest = () => {
                   inputId={"newAdminUsersPassword"}
                   passwordLabel={"New Admin User Login Password"}
                   inputValue={setLoginPassword}
+                  validationError={null}
                 />
 
                 {/* SUBMIT BUTTON  */}

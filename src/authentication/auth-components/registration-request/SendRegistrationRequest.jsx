@@ -37,10 +37,12 @@ const SendRegistrationRequest = () => {
 
   const handleMesageOnChange = (e) => {
     const messageValue = e.target.value;
-    setInputValueLengthDisplayer(e.target.value);
+    setUserMessage(e.target.value);
+    setInputValueLengthDisplayer(e.target.value.length);
     if (messageValue.length >= 150) {
       e.target.value = messageValue.slice(0, 150);
       setUserMessage(e.target.value);
+      setInputValueLengthDisplayer(e.target.value.length);
     }
   };
 
@@ -161,7 +163,7 @@ const SendRegistrationRequest = () => {
                     <p className="text-yellow-700 text-right">
                       <span className="text-sm mr-1">Character left:</span>
                       <span className="text-gray-600 text-sm">
-                        {150 - inputValueLengthDisplayer.length + 1}
+                        {150 - inputValueLengthDisplayer}
                       </span>
                     </p>
                   ) : (

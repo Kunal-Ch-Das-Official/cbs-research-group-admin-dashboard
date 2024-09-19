@@ -7,7 +7,6 @@ import SectionHeading from "../../components/reuseable/section-heading/SectionHe
 const ManageAdminRequests = () => {
   const [getBecomeAdminReq, setBecomeAdminReq] = useState(null);
   const [loading, setLoading] = useState(false);
-  // const [noData, setNoData] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,7 +18,7 @@ const ManageAdminRequests = () => {
     };
     fetchData();
   }, []);
-  console.log(getBecomeAdminReq);
+
   return (
     <main className="bg-gray-50">
       <SectionHeading
