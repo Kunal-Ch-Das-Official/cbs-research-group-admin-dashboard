@@ -47,7 +47,7 @@ const UpdatePersonalAward = () => {
     e.preventDefault();
     try {
       setLoading(true);
-      const formattedDate = date.toLocaleDateString("en-GB");
+      const formattedDate = date ? date.toLocaleDateString("en-GB") : null;
       const updatedInfo = {
         awardTitle: awardTitle,
         recivedFor: awardDetails,
@@ -63,7 +63,6 @@ const UpdatePersonalAward = () => {
           },
         })
         .then((res) => {
-          console.log(res);
           setCustomAlert({
             message: res.data.message,
             details: res.data.details,
@@ -74,7 +73,6 @@ const UpdatePersonalAward = () => {
           });
         });
     } catch (error) {
-      console.log(error);
       setCustomAlert({
         message: error.response.data.details,
         details: error.response.data.issue,

@@ -47,8 +47,9 @@ const UploadDoctorateAlumni = () => {
     const year = dateObject.getFullYear();
     const stringifyYear = year.toString();
 
-    let emailValidation = true;
-    let numberValidation = true;
+    let emailValidation;
+    let numberValidation;
+
     const validateEmail = alumniEmailId.split("@")[1];
     if (validateEmail === "gmail.com" || validateEmail === "outlook.com") {
       emailValidation = true;
