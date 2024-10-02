@@ -3,6 +3,7 @@ import axios from "../../../../axios/axios";
 import envConfig from "../../../../envConfig";
 import ComponentLoading from "../../../utils/component-loading/ComponentLoading";
 import { useAuth } from "../../../authentication/auth-context/useAuth";
+import conditionalUserIconColor from "../../../../operations/functional/conditionalUserIconColor";
 
 const GetCurrentAdmin = () => {
   const [apiResponse, setApiResponse] = useState(null);
@@ -24,7 +25,6 @@ const GetCurrentAdmin = () => {
         setApiResponse(res.data.logged_in_user);
         setLoading(false);
       } catch (error) {
-        console.log(error.status);
         if (error.status === 401) {
           const authToken = localStorage.getItem("auth-token") || null;
           if (authToken) {
@@ -43,59 +43,7 @@ const GetCurrentAdmin = () => {
   useEffect(() => {
     const conditionalElement =
       apiResponse && apiResponse.adminUserName[0].toUpperCase();
-    if (conditionalElement == "A") {
-      setSectionColor("bg-blue-300");
-    } else if (conditionalElement == "B") {
-      setSectionColor("bg-yellow-300");
-    } else if (conditionalElement == "C") {
-      setSectionColor("bg-green-300");
-    } else if (conditionalElement == "D") {
-      setSectionColor("bg-orange-300");
-    } else if (conditionalElement == "E") {
-      setSectionColor("bg-rose-300");
-    } else if (conditionalElement == "F") {
-      setSectionColor("bg-pink-600");
-    } else if (conditionalElement == "G") {
-      setSectionColor("bg-pink-600");
-    } else if (conditionalElement == "H") {
-      setSectionColor("bg-purple-500");
-    } else if (conditionalElement == "I") {
-      setSectionColor("bg-violet-500");
-    } else if (conditionalElement == "J") {
-      setSectionColor("bg-indigo-500");
-    } else if (conditionalElement == "K") {
-      setSectionColor("bg-emerald-300");
-    } else if (conditionalElement == "L") {
-      setSectionColor("bg-lime-300");
-    } else if (conditionalElement == "M") {
-      setSectionColor("bg-amber-200");
-    } else if (conditionalElement == "N") {
-      setSectionColor("bg-white");
-    } else if (conditionalElement == "O") {
-      setSectionColor("bg-gray-200");
-    } else if (conditionalElement == "P") {
-      setSectionColor("bg-red-300");
-    } else if (conditionalElement == "Q") {
-      setSectionColor("bg-amber-400");
-    } else if (conditionalElement == "R") {
-      setSectionColor("bg-yellow-400");
-    } else if (conditionalElement == "S") {
-      setSectionColor("bg-lime-500");
-    } else if (conditionalElement == "T") {
-      setSectionColor("bg-teal-500");
-    } else if (conditionalElement == "U") {
-      setSectionColor("bg-violet-600");
-    } else if (conditionalElement == "V") {
-      setSectionColor("bg-purple-400");
-    } else if (conditionalElement == "W") {
-      setSectionColor("bg-purple-300");
-    } else if (conditionalElement == "X") {
-      setSectionColor("bg-pink-200");
-    } else if (conditionalElement == "Y") {
-      setSectionColor("bg-rose-500");
-    } else if (conditionalElement == "Z") {
-      setSectionColor("bg-green-100");
-    }
+    conditionalUserIconColor(conditionalElement, setSectionColor);
   }, [apiResponse]);
 
   if (loading) {

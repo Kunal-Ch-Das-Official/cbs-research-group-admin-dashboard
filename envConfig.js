@@ -52,6 +52,8 @@ const environment = {
   projectsUrl: import.meta.env.VITE_APP_PROJECTS_URL,
 
   publicationsUrl: import.meta.env.VITE_APP_PUBLICATION_URL,
+  dashboardInfoUrl: import.meta.env.VITE_APP_DASHBOARD_URL,
+  allAdminUsers: import.meta.env.VITE_APP_ALL_LOGGED_IN_USER_INFO_URL,
 };
 
 const envConfig = Object.freeze(environment);

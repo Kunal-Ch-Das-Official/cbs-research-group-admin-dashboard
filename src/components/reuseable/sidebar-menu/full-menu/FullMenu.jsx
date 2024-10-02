@@ -143,6 +143,16 @@ const FullMenu = ({ closeFullMenu, logoutHandler }) => {
               >
                 Change Password
               </Link>
+
+              <Link
+                to={"/admin-panel/manage-admin-accounts"}
+                id="password_change"
+                className="text-gray-700 hover:text-black text-sm 
+                flex justify-center items-center border-t-[1px] border-gray-400 hover:bg-gray-300  hover:font-bold 
+                px-4 py-3 transition-all"
+              >
+                Manage Account
+              </Link>
             </div>
           </li>
           {/* ADMIN REQUEST  */}

@@ -13,6 +13,8 @@ import PrivateRoute from "./private/PrivateRoute";
 import AdminPanel from "./AdminPanel";
 import SignIn from "./pages/sign-in/SignIn";
 import Dashboard from "./pages/dashboard/Dashboard";
+import ManageAdminAccounts from "./pages/manage-admin-account/ManageAdminAccounts";
+import DeleteAdminAccount from "./pages/manage-admin-account/DeleteAdminAccount";
 
 const ForgotPassword = lazy(() =>
   import("./pages/forgot-password/ForgotPassword")
@@ -441,6 +443,14 @@ function App() {
     {
       path: "/delete-publication/:id",
       element: <DeletePublication />,
+    },
+    {
+      path: "/manage-admin-accounts",
+      element: <ManageAdminAccounts />,
+    },
+    {
+      path: "/deactivate-admin-account/:id",
+      element: <DeleteAdminAccount />,
     },
   ];
 

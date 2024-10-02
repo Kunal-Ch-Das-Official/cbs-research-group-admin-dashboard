@@ -9,7 +9,7 @@ import LoadingSpinner from "../../../utils/common-loading-spinner/LoadingSpinner
 import CustomModel from "../../../utils/custom-models/CustomModel";
 import PropTypes from "prop-types";
 
-const CommonItemDelete = ({ deleteUrl, id, navigateUrl }) => {
+const CommonItemDelete = ({ deleteUrl, id, navigateUrl, explicitText }) => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
@@ -87,7 +87,7 @@ const CommonItemDelete = ({ deleteUrl, id, navigateUrl }) => {
           </div>
           <div className="mt-8">
             <h3 className="text-2xl font-semibold flex-1 text-gray-600">
-              Sure want to delete?
+              {explicitText ? explicitText : "Sure want to delete?"}
             </h3>
             <div className="flex flex-row justify-between mx-2">
               <button
@@ -116,6 +116,7 @@ CommonItemDelete.propTypes = {
   deleteUrl: PropTypes.string,
   id: PropTypes.string || PropTypes.number,
   navigateUrl: PropTypes.string,
+  explicitText: PropTypes.string || null,
 };
 
 export default CommonItemDelete;
