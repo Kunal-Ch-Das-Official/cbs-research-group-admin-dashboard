@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-// import DashBoardBody from "../../components/single-use/dashboard-body/DashBoardBody";
+import DashBoardBody from "../../components/single-use/dashboard-body/DashBoardBody";
 import envConfig from "../../../envConfig";
 import { getAllData } from "../../../operations/apis/getAllData";
 import ItemCounter from "../../components/single-use/dashboard-body/item-count-card/ItemCounter";
@@ -40,10 +40,10 @@ const Dashboard = () => {
          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium accusamus quaerat, odit, laborum placeat ipsa corporis ipsam eaque id ullam asperiores illo! Illum ex voluptate possimus recusandae, placeat assumenda magni.`}
       />
 
-      <section className="text-center  py-16">
+      <section className="text-center py-16">
         {loading === true && <LoadingSpinner />}
 
-        {/* <DashBoardBody /> */}
+        <DashBoardBody />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2 lg:grid-cols-4">
           <ItemCounter
             itemName={"Admin Users"}

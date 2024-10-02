@@ -111,7 +111,7 @@ const GetCurrentAdmin = () => {
   }
 
   return (
-    <div className="border border-gray-200 py-4 mt-2 rounded-xl bg-gray-50">
+    <div className="border border-gray-200 py-4 mt-2 rounded-xl bg-white shadow-xl">
       <div className="flex flex-wrap flex-col justify-center items-center cursor-pointer">
         <div
           className={`${sectionColor} w-12 h-12 rounded-full flex items-center justify-center font-bold text-gray-900 text-xl`}
