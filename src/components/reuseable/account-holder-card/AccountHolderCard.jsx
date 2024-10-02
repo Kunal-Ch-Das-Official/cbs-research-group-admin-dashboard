@@ -22,7 +22,7 @@ const AccountHolderCard = ({
       <div className="flex items-center ">
         <div
           className={`relative inline-flex items-center justify-center pb-1
-         h-12 w-12 text-2xl rounded-full object-cover object-center border border-gray-500 font-extrabold
+         h-12 w-12 text-2xl rounded-full object-cover object-center border border-gray-500 font-bold
          ${bgColor}`}
         >
           {iconCharacter}
