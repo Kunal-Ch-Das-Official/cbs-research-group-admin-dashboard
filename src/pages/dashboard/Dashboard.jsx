@@ -18,6 +18,8 @@ import { PiGraphDuotone } from "react-icons/pi";
 import { AiOutlineFundProjectionScreen } from "react-icons/ai";
 import { SiLibreofficeimpress } from "react-icons/si";
 import SectionHeading from "../../components/reuseable/section-heading/SectionHeading";
+import ChartsOverviewDemo from "../../utils/chart/Barchart";
+import PieChart from "../../utils/chart/PieChart";
 
 const Dashboard = () => {
   const [apiRes, setApiRes] = useState(null);
@@ -44,6 +46,27 @@ const Dashboard = () => {
         {loading === true && <LoadingSpinner />}
 
         <DashBoardBody />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
+          <ChartsOverviewDemo
+            adminUserLength={apiRes && apiRes[1].be_admin_req.length}
+            BecomeAdminRequestLength={apiRes && apiRes[1].be_admin_req.length}
+            doctoratesAlumniLength={apiRes && apiRes[2].doc_alumni.length}
+            mastersAlumniLength={apiRes && apiRes[3].mas_alumni.length}
+            personalAwardsLength={apiRes && apiRes[4].personal_awards.length}
+            groupAwardsLength={apiRes && apiRes[5].team_awards.length}
+            contactApplicationsLength={
+              apiRes && apiRes[6].contact_application.length
+            }
+            groupNewsLength={apiRes && apiRes[7].group_news.length}
+            labInstrumentsLength={apiRes && apiRes[8].lab_instruments.length}
+            projectStudentsLength={apiRes && apiRes[9].msc_members.length}
+            phdStudentsLength={apiRes && apiRes[10].phd_members.length}
+            projectsLength={apiRes && apiRes[11].projects.length}
+            publicationsLength={apiRes && apiRes[12].publication.length}
+          />
+          <PieChart />
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2 lg:grid-cols-4">
           <ItemCounter
             itemName={"Admin Users"}

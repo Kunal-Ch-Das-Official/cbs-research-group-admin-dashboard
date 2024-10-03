@@ -51,7 +51,7 @@ const DashBoardBody = () => {
             <div className="py-12">
               <GetCurrentAdmin />
             </div>
-            <div className="lg:col-span-2">
+            <div className="lg:col-span-2 border border-gray-300 px-6 h-[200px] overflow-y-scroll overflow-x-hidden mt-0 lg:mt-12 rounded-lg bg-white">
               {allContactData &&
                 allContactData.map((data, index) => (
                   <ContactInfoCard
