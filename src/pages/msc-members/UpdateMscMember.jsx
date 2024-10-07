@@ -59,15 +59,16 @@ const UpdateMscMember = () => {
 
     let emailalidation = true;
     let numberValidation = true;
-
-    const validateEmail = membersEmail.split("@")[1];
+    let previousEmail = previousData.emailId;
+    let previousPhoneNo = previousData.phoneNumber;
+    const validateEmail = membersEmail.split("@")[1] ||  previousEmail.split("@")[1];
     if (validateEmail === "gmail.com" || validateEmail === "outlook.com") {
       emailalidation = true;
     } else {
       emailalidation = false;
       setEmailValidatErr(true);
     }
-    if (membersPhoneNo.length === 10) {
+    if (membersPhoneNo.length === 10 || previousPhoneNo.length === 10) {
       numberValidation = true;
     } else {
       setPhoneNumberValidatErr(true);

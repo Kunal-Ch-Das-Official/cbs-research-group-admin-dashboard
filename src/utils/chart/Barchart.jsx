@@ -93,7 +93,7 @@ const ChartsOverviewDemo = ({
   };
 
   return (
-    <section>
+    <section className="hidden sm:block md:block lg:block">
       <Box sx={{ p: 4 }}>
         <Typography variant="h4" gutterBottom>
           Admin Dashboard Metrics

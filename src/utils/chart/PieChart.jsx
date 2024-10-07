@@ -39,7 +39,7 @@ const PieChart = () => {
   };
 
   return (
-    <section className="w-[400px] h-[300px] flex justify-center mx-auto my-12">
+    <section className="w-[250px] h-[250px] lg:w-[400px] lg:h-[300px] flex justify-center mx-auto my-12">
       <Pie data={chartData} options={options} />
     </section>
   );

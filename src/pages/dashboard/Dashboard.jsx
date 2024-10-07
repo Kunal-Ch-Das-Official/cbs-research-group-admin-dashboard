@@ -35,7 +35,7 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <main className="bg-gray-50 min-h-screen">
+    <main className="bg-gray-50 min-h-screen max-w-[100%]">
       <SectionHeading
         heading={"Interactive Dashboard"}
         subHeading={`
@@ -46,7 +46,7 @@ const Dashboard = () => {
         {loading === true && <LoadingSpinner />}
 
         <DashBoardBody />
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 ">
           <ChartsOverviewDemo
             adminUserLength={apiRes && apiRes[1].be_admin_req.length}
             BecomeAdminRequestLength={apiRes && apiRes[1].be_admin_req.length}
