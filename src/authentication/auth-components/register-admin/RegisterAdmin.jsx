@@ -1,18 +1,18 @@
 import { useRef, useState } from "react";
 import { GrUserAdmin } from "react-icons/gr";
 import { MdRememberMe } from "react-icons/md";
-import TacModal from "../../utils/terms-and-conditions/TacModal";
-import axios from "../../../axios/axios";
-import envConfig from "../../../envConfig";
-import LoadingSpinner from "../../utils/common-loading-spinner/LoadingSpinner";
+import TacModal from "../../../utils/terms-and-conditions/TacModal";
+import axios from "../../../../axios/axios";
+import envConfig from "../../../../envConfig";
+import LoadingSpinner from "../../../utils/common-loading-spinner/LoadingSpinner";
 import { FcCancel } from "react-icons/fc";
 import { MdDownloadDone } from "react-icons/md";
-import CustomModel from "../../utils/custom-models/CustomModel";
-import EmailInput from "../../utils/inputs/EmailInput";
-import TextInput from "../../utils/inputs/TextInput";
-import YellowBtn from "../../utils/buttons/YellowBtn";
+import CustomModel from "../../../utils/custom-models/CustomModel";
+import EmailInput from "../../../utils/inputs/EmailInput";
+import TextInput from "../../../utils/inputs/TextInput";
+import YellowBtn from "../../../utils/buttons/YellowBtn";
 import { MdCreateNewFolder } from "react-icons/md";
-import PasswordInput from "../../utils/inputs/PasswordInput";
+import PasswordInput from "../../../utils/inputs/PasswordInput";
 
 const RegisterAdmin = () => {
   const registerFormref = useRef();
@@ -137,12 +137,12 @@ const RegisterAdmin = () => {
           buttonColor={registerResponse.buttonColor}
         />
       )}
-      <section className="bg-gray-50 min-h-screen mt-12">
+      <section className="bg-gray-50 min-h-screen pt-12">
         <div className="flex justify-center min-h-screen">
           <div className="flex items-center w-full max-w-3xl p-8 mx-auto lg:px-12 lg:w-3/5">
             <div className="w-full">
               <h1 className="text-2xl font-semibold tracking-wider text-gray-800 capitalize">
-                Get your free account now.
+                Register user as a new admin.
               </h1>
               <p className="mt-4 text-gray-500">
                 Let’s get you all set up so you can verify your personal account

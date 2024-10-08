@@ -33,7 +33,7 @@ const ManageLabInstruments = () => {
       ) : (
         ""
       )}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 mx-auto py-20">
+      <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 2xl:grid-cols-4 gap-4 w-full h-full py-20">
         {allInstruments &&
           allInstruments.map((data, index) => (
             <LabInstrumentCard

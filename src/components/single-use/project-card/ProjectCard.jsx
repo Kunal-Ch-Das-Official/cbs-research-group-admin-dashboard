@@ -30,7 +30,7 @@ const ProjectCard = ({
   };
 
   return (
-    <div>
+    <div className="flex justify-center items-center">
       <div className="bg-white p-6 rounded-lg shadow-lg w-[420px] mx-12 h-[250px] overflow-y-scroll overflow-x-hidden no-scrollbar">
         <h3 className="text-xl font-bold mb-1">{projectName}</h3>
         <p className="text-sm text-gray-500 mb-4 font-medium">

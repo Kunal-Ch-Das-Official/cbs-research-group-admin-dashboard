@@ -66,7 +66,8 @@ const PublicationCard = ({
               <Link
                 to={deleteUrl}
                 className=" shadow-xl mx-2 font-semibold px-4 py-2 rounded focus:outline-none
-                 bg-gray-100 transform translate-1 hover:scale-110 text-red-500  inline-flex item-center "
+                 bg-gray-100 transform translate-1 hover:scale-110 text-red-500  inline-flex item-center 
+                 mt-4 lg:mt-0"
               >
                 <span>Delete</span>
                 <AiFillDelete className="text-xl ml-2 my-auto" />

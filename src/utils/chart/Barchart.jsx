@@ -40,11 +40,11 @@ const ChartsOverviewDemo = ({
   const data = {
     labels: [
       "Admin Users",
-      "Become Admin Request",
       "Doctorates Alumni",
       "Masters Alumni",
+      "Administrative Access Requests",
       "Personal Awards",
-      "Group Awards",
+      "Team Awards",
       "Contact Applications",
       "Group News",
       "Lab Instruments",
@@ -58,9 +58,9 @@ const ChartsOverviewDemo = ({
         label: "Count",
         data: [
           adminUserLength,
-          BecomeAdminRequestLength,
           doctoratesAlumniLength,
           mastersAlumniLength,
+          BecomeAdminRequestLength,
           personalAwardsLength,
           groupAwardsLength,
           contactApplicationsLength,
@@ -87,7 +87,7 @@ const ChartsOverviewDemo = ({
       },
       title: {
         display: true,
-        text: "Admin Dashboard Data",
+        text: "Admin Dashboard Metrics",
       },
     },
   };
@@ -96,7 +96,6 @@ const ChartsOverviewDemo = ({
     <section className="hidden sm:block md:block lg:block">
       <Box sx={{ p: 4 }}>
         <Typography variant="h4" gutterBottom>
-          Admin Dashboard Metrics
         </Typography>
         <Bar data={data} options={options} />
       </Box>

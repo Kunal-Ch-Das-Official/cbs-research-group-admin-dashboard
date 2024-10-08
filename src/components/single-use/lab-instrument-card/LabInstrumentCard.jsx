@@ -31,7 +31,7 @@ const LabInstrumentCard = ({
     setShowFullText((prev) => !prev);
   };
   return (
-    <div>
+  <div className="flex justify-center items-center">
       <div className="text-gray-600 rounded-lg text-sm w-[400px] h-[340px] no-scrollbar bg-white border border-gray-200 shadow-xl overflow-y-scroll overflow-x-hidden">
         <div className="w-full flex flex-row space-x-3 p-4">
           <img
@@ -110,7 +110,8 @@ const LabInstrumentCard = ({
           </div>
         </div>
       </div>
-    </div>
+      </div>
+   
   );
 };
 

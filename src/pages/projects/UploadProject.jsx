@@ -128,7 +128,7 @@ const UploadProject = () => {
                   id="projectStatus"
                   className="bg-white border border-gray-300 text-gray-600 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                 >
-                  <option selected>Choose project status</option>
+                  <option value={null}>Choose project status</option>
                   <option value="on-going">On-going</option>
                   <option value="completed">Completed</option>
                 </select>

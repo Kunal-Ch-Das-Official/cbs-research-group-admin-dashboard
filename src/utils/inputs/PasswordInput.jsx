@@ -1,12 +1,21 @@
 import { IoEyeSharp } from "react-icons/io5";
-import showPasswordHandler from "../../../operations/functional/ShowPasswordHandler";
+import { IoEyeOffSharp } from "react-icons/io5";
+import showPasswordHandler from "../../../operations/functional/showPasswordHandler";
 import PropTypes from "prop-types";
+import { useState } from "react";
 const PasswordInput = ({
   inputId,
   passwordLabel,
   inputValue,
   validationError,
 }) => {
+
+  const [eyeButton, setEyeButton] = useState(false)
+  const handlePasswordOpenColse = () => {
+    showPasswordHandler(inputId)
+    setEyeButton(prev => !prev)
+    
+   }
   return (
     <div>
       <label
@@ -28,10 +37,12 @@ const PasswordInput = ({
           required
           onChange={(e) => inputValue(e.target.value)}
         />
-        <IoEyeSharp
-          className="text-xl text-gray-600 absolute right-2 cursor-pointer"
-          onClick={() => showPasswordHandler(inputId)}
-        />
+        {eyeButton === true ?
+          <IoEyeOffSharp className="text-xl text-gray-600 absolute right-2 cursor-pointer" onClick={handlePasswordOpenColse}/> :
+          <IoEyeSharp
+            className="text-xl text-gray-600 absolute right-2 cursor-pointer"
+            onClick={handlePasswordOpenColse}
+          />}
       </div>
     </div>
   );

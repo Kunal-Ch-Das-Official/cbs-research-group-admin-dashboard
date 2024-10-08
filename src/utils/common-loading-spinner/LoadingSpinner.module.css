@@ -6,7 +6,7 @@ Date: 29/08/2024
 
 .overlay {
   background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(20px);
 }
 .loader {
   width: 50px;

@@ -26,7 +26,7 @@ const AdminRegReq = lazy(() =>
   import("./pages/send-admin-reg-request/AdminRegReq")
 );
 const RegisterAdmin = lazy(() =>
-  import("./pages/register-admin/RegisterAdmin")
+  import("./authentication/auth-components/register-admin/RegisterAdmin")
 );
 const PasswordChange = lazy(() =>
   import("./pages/password-change/PasswordChange")

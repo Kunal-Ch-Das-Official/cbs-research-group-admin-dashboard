@@ -8,68 +8,50 @@ const Footer = () => {
           <img src={footerLogo} alt="footerLogo" width={100} height={100} />
         </div>
         <p className="mx-auto mt-6 max-w-md text-center leading-relaxed text-gray-500">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt
-          consequuntur amet culpa cum itaque neque.
+          Copyright © {new Date().getFullYear()} - All right reserved | Powered by CBS Research group.
         </p>
 
         <ul className="mt-12 flex flex-wrap justify-center gap-6 md:gap-8 lg:gap-12">
           <li>
             <a
               className="text-gray-700 transition hover:text-gray-700/75"
-              href="#"
+              href="mailto:kunalchandradasofficial@gmail.com"
             >
               {" "}
-              About{" "}
+              Help{" "}
             </a>
           </li>
 
           <li>
             <a
               className="text-gray-700 transition hover:text-gray-700/75"
-              href="#"
+              href="tel:9874353723"
             >
               {" "}
-              Careers{" "}
+              Contact{" "}
             </a>
           </li>
 
           <li>
             <a
               className="text-gray-700 transition hover:text-gray-700/75"
-              href="#"
+              href="https://github.com/Kunal-Ch-Das-Official/cbs-research-group-admin-dashboard/issues"
+              target="_blank"
             >
               {" "}
-              History{" "}
+              Report Bug{" "}
             </a>
           </li>
 
           <li>
-            <a
+            <a 
+               href={`https://www.kunalchandradas.tech`}
+                  target="_blank"
               className="text-gray-700 transition hover:text-gray-700/75"
-              href="#"
+              
             >
               {" "}
-              Services{" "}
-            </a>
-          </li>
-
-          <li>
-            <a
-              className="text-gray-700 transition hover:text-gray-700/75"
-              href="#"
-            >
-              {" "}
-              Projects{" "}
-            </a>
-          </li>
-
-          <li>
-            <a
-              className="text-gray-700 transition hover:text-gray-700/75"
-              href="#"
-            >
-              {" "}
-              Blog{" "}
+              Review{" "}
             </a>
           </li>
         </ul>

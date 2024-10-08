@@ -37,18 +37,18 @@ const Dashboard = () => {
   return (
     <main className="bg-gray-50 min-h-screen max-w-[100%]">
       <SectionHeading
-        heading={"Interactive Dashboard"}
+        heading={"Interactive Lab Admin Dashboard"}
         subHeading={`
-         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium accusamus quaerat, odit, laborum placeat ipsa corporis ipsam eaque id ullam asperiores illo! Illum ex voluptate possimus recusandae, placeat assumenda magni.`}
+          Monitor Experiments, Manage Equipment, and Oversee Lab Operations in Real-Time.`}
       />
 
       <section className="text-center py-16">
         {loading === true && <LoadingSpinner />}
 
         <DashBoardBody />
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 ">
+        <div className="w-full grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 mx-auto 2xl:mx-28">
           <ChartsOverviewDemo
-            adminUserLength={apiRes && apiRes[1].be_admin_req.length}
+            adminUserLength={apiRes && apiRes[0].auth_admin.length}
             BecomeAdminRequestLength={apiRes && apiRes[1].be_admin_req.length}
             doctoratesAlumniLength={apiRes && apiRes[2].doc_alumni.length}
             mastersAlumniLength={apiRes && apiRes[3].mas_alumni.length}
@@ -79,7 +79,7 @@ const Dashboard = () => {
           />
 
           <ItemCounter
-            itemName={"Become Admin Request"}
+            itemName={"Administrative Access Requests"}
             totalCount={apiRes && apiRes[1].be_admin_req.length}
             lastUpdate={apiRes && apiRes[1].be_admin_req.pop()}
             sectionIcon={<IoIosPersonAdd className="text-white text-3xl" />}
