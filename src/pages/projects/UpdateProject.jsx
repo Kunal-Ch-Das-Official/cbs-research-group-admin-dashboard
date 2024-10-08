@@ -31,6 +31,7 @@ const UpdateProject = () => {
     buttonColor: null,
   });
 
+  // Fetch previous data 
   useEffect(() => {
     const fetchReqData = async () => {
       const response = await getSingleData(
@@ -43,6 +44,8 @@ const UpdateProject = () => {
     fetchReqData();
   }, [id]);
 
+
+  // Data update handler 
   const projectUpdateHandler = async (e) => {
     e.preventDefault();
     const projectdata = {
@@ -85,11 +88,11 @@ const UpdateProject = () => {
     }
   };
 
+  // Alert close  handler 
   const closeModelHandler = () => {
     setShowAlert(false);
     navigate("/admin-panel/manage-projects");
   };
-
   return (
     <>
       {loading === true && <LoadingSpinner />}
@@ -120,6 +123,8 @@ const UpdateProject = () => {
             </p>
 
             <form onSubmit={projectUpdateHandler}>
+
+              {/* Project Name  */}
               <div className="w-full mt-4">
                 <TextInput
                   inputLabel={""}
@@ -131,6 +136,7 @@ const UpdateProject = () => {
                 />
               </div>
 
+               {/* Project Status  */}
               <div className="max-w-full mx-auto my-4 bg-white">
                 <label
                   htmlFor="projectStatus"
@@ -145,7 +151,7 @@ const UpdateProject = () => {
                 >
                   <option selected>{prevData && prevData.projectStatus}</option>
                   {prevData && (
-                    <option value={projectStatus}>
+                    <option value={(e) => e.target.value}>
                       {prevData.projectStatus == "on-going"
                         ? "completed"
                         : "Ongoing"}
@@ -154,6 +160,7 @@ const UpdateProject = () => {
                 </select>
               </div>
 
+               {/* Project Description  */}
               <div className="w-full mb-4 mt-6 border border-gray-100 bg-gray-50 ">
                 <div className="px-4 py-2 bg-white rounded-t-lg">
                   <TextEditor
