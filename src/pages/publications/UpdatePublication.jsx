@@ -22,9 +22,9 @@ const UpdatePublication = () => {
   const [prevData, setPrevData] = useState(null);
   const [publicationTitle, setpPublicationTitle] = useState("");
   const [publicationContributer, setPublicationContributer] = useState("");
+  const [thumbnail, setThumbnail] = useState(null);
   const [firstImage, setFirstImage] = useState(null);
   const [secondImage, setSecondImage] = useState(null);
-  const [thirdImage, setThirdImage] = useState(null);
   const [pdfLink, setPdfLink] = useState("");
   const [publishedDate, setPublishedDate] = useState(null);
   const [aboutPublication, setAboutPublication] = useState("");
@@ -52,15 +52,24 @@ const UpdatePublication = () => {
   const updatePublicationHandler = async (e) => {
     e.preventDefault();
     setLoading(true);
+    const pubTitle = publicationTitle ? publicationTitle : prevData.title;
+    const pubContributer = publicationContributer ? publicationContributer : prevData.contributer;
+    const pubThumbnail = thumbnail ? thumbnail : prevData.publicationThumbnail;
+    const pubfirstView = firstImage ? firstImage : prevData.firstOverview;
+    const pubsecView = secondImage ? secondImage : prevData.secondOverview;
+    const pubPdfLink = pdfLink ? pdfLink : prevData.pdfLink;
+    const pubPublishedDate = publishedDate ? publishedDate : prevData.publishedDate;
+    const pubDescription = aboutPublication ? aboutPublication : prevData.aboutPublication;
+
     const publicationFormData = new FormData();
-    publicationFormData.append("title", publicationTitle);
-    publicationFormData.append("contributer", publicationContributer);
-    publicationFormData.append("publicationThumbnail", firstImage);
-    publicationFormData.append("firstOverview", secondImage);
-    publicationFormData.append("secondOverview", thirdImage);
-    publicationFormData.append("pdfLink", pdfLink);
-    publicationFormData.append("publishedDate", publishedDate);
-    publicationFormData.append("aboutPublication", aboutPublication);
+    publicationFormData.append("title", pubTitle);
+    publicationFormData.append("contributer", pubContributer);
+    publicationFormData.append("publicationThumbnail", pubThumbnail);
+    publicationFormData.append("firstOverview", pubfirstView);
+    publicationFormData.append("secondOverview", pubsecView);
+    publicationFormData.append("pdfLink", pubPdfLink);
+    publicationFormData.append("publishedDate", pubPublishedDate);
+    publicationFormData.append("aboutPublication", pubDescription);
 
     const authToken = localStorage.getItem("auth-token") || null;
     const adminToken = localStorage.getItem("admin-token") || null;
@@ -164,12 +173,12 @@ const UpdatePublication = () => {
                 >
                   <div className="px-4 flex">
                     <FaFileImage className="text-xl" />
-                    {firstImage ? (
+                    {thumbnail ? (
                       <p
                         className="
                     ml-1 text-green-600 font-semibold"
                       >
-                        {firstImage.name}
+                        {thumbnail.name}
                       </p>
                     ) : (
                       <p className="text-xs ml-3">JPG, JPEG, PNG, SVG, WEBP</p>
@@ -185,7 +194,7 @@ const UpdatePublication = () => {
                     type="file"
                     id="uploadFile1"
                     className="hidden"
-                    onChange={(e) => setFirstImage(e.target.files[0])}
+                    onChange={(e) => setThumbnail(e.target.files[0])}
                   />
                 </div>
 
@@ -195,12 +204,12 @@ const UpdatePublication = () => {
                 >
                   <div className="px-4 flex">
                     <FaFileImage className="text-xl" />
-                    {secondImage ? (
+                    {firstImage ? (
                       <p
                         className="
                     ml-1 text-green-600 font-semibold"
                       >
-                        {secondImage.name}
+                        {firstImage.name}
                       </p>
                     ) : (
                       <p className="text-xs ml-3">JPG, JPEG, PNG, SVG, WEBP</p>
@@ -216,7 +225,7 @@ const UpdatePublication = () => {
                     type="file"
                     id="uploadFile2"
                     className="hidden"
-                    onChange={(e) => setSecondImage(e.target.files[0])}
+                    onChange={(e) => setFirstImage(e.target.files[0])}
                   />
                 </div>
 
@@ -226,12 +235,12 @@ const UpdatePublication = () => {
                 >
                   <div className="px-4 flex">
                     <FaFileImage className="text-xl" />
-                    {thirdImage ? (
+                    {secondImage ? (
                       <p
                         className="
                     ml-1 text-green-600 font-semibold"
                       >
-                        {thirdImage.name}
+                        {secondImage.name}
                       </p>
                     ) : (
                       <p className="text-xs ml-3">JPG, JPEG, PNG, SVG, WEBP</p>
@@ -247,7 +256,7 @@ const UpdatePublication = () => {
                     type="file"
                     id="uploadFile3"
                     className="hidden"
-                    onChange={(e) => setThirdImage(e.target.files[0])}
+                    onChange={(e) => setSecondImage(e.target.files[0])}
                   />
                 </div>
                 <TextInput
