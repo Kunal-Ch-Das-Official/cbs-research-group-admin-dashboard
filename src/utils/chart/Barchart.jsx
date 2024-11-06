@@ -93,7 +93,7 @@ const ChartsOverviewDemo = ({
   };
 
   return (
-    <section className="hidden sm:block md:block lg:block">
+    <section className="hidden sm:block md:block lg:block shadow-md rounded-md bg-white">
       <Box sx={{ p: 4 }}>
         <Typography variant="h4" gutterBottom>
         </Typography>

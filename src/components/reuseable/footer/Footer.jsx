@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import footerLogo from "../../../assets/CBS Research Group Logo.png";
 const Footer = () => {
   return (
@@ -5,7 +6,8 @@ const Footer = () => {
       <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="flex justify-center text-teal-600"></div>
         <div className="flex justify-center">
-          <img src={footerLogo} alt="footerLogo" width={100} height={100} />
+          <Link to={"/admin-panel"}>
+          <img src={footerLogo} alt="footerLogo" width={100} height={100} /></Link>
         </div>
         <p className="mx-auto mt-6 max-w-md text-center leading-relaxed text-gray-500">
           Copyright © {new Date().getFullYear()} - All right reserved | Powered by CBS Research group.

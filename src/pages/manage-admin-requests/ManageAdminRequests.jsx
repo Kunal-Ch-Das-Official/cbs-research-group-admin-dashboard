@@ -22,9 +22,8 @@ const ManageAdminRequests = () => {
   return (
     <main className="bg-gray-50">
       <SectionHeading
-        heading={"Manage All Details"}
-        subHeading={`
-         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium accusamus quaerat, odit, laborum placeat ipsa corporis ipsam eaque id ullam asperiores illo! Illum ex voluptate possimus recusandae, placeat assumenda magni.`}
+        heading={"Administrative Access Requests (Management Console)"}
+        subHeading={`Review all access requests submitted by regular users, detailing their status, submission dates, and the nature of requested permissions for effective oversight and management.`}
       />
       {loading === true && <LoadingSpinner />}
       {getBecomeAdminReq && getBecomeAdminReq.length === 0 ? (

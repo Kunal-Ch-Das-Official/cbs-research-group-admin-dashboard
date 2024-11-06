@@ -55,7 +55,7 @@ const DashBoardBody = () => {
             <div className="lg:col-span-2 border border-gray-300 px-6 h-[200px] overflow-y-scroll 
             overflow-x-hidden mt-0 lg:mt-12 rounded-lg bg-white">
               <h2 className="text-start font-bold text-xl mt-1 underline text-gray-500">
-                All Contact Application:</h2>
+                All Contact Inquiry:</h2>
               
               {
                 allContactData === null || allContactData.length === 0 ? <h2 className="text-start font-bold text-xl text-gray-500 my-12">

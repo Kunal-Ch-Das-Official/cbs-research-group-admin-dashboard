@@ -55,37 +55,37 @@ const StudentPreview = ({
             <div className="flex flex-col sm:flex-row sm:mt-10">
               <div className="flex flex-col sm:w-1/3">
                 <div className="py-3 sm:order-none order-3">
-                  <h2 className="text-lg font-poppins font-bold text-start ml-0 lg:ml-6">
+                  <h2 className="text-lg font-poppins font-bold text-start">
                     Contact Details
                   </h2>
-                  <div className="border-2 w-32 border-top-color my-3 ml-0 lg:ml-6"></div>
+                  <div className="border-2 w-32 border-top-color my-3"></div>
 
                   <div className="flex flex-col justify-start ml-0 mr-2 text-lg font-bold text-gray-500">
                     <div className="flex items-start my-1">
-                      <div className="ml-0 lg:ml-6">{emailId}</div>
+                      <div>{emailId}</div>
                     </div>
                     <div className="flex items-start my-1">
-                      <div className="ml-0 lg:ml-6"> {phoneNumber}</div>
+                      <div> {phoneNumber}</div>
                     </div>
                     <div className="flex flex-col items-start my-1">
-                      <div className="ml-0 lg:ml-2"> BSC: {bscCollege}</div>
+                      <div> BSC: {bscCollege}</div>
                     </div>
                     <div
                       className={`${
                         mscCollege ? "flex" : "hidden"
                       } flex-col items-start my-1`}
                     >
-                      <div className="ml-0 lg:ml-6"> MSC: {mscCollege}</div>
+                      <div> MSC: {mscCollege}</div>
                     </div>
                     {yearOfPassout ? (
                       <div className="inline-flex items-center justify-start my-1">
-                        <div className="ml-0 lg:ml-6">
+                        <div>
                           Completed At: {yearOfPassout}
                         </div>
                       </div>
                     ) : (
                       <div className="inline-flex items-center justify-start my-1">
-                        <div className="ml-0 lg:ml-6">
+                        <div>
                           Current Year: {currentYear}
                         </div>
                       </div>

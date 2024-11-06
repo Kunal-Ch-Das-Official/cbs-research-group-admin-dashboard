@@ -39,6 +39,9 @@ const GetCurrentAdmin = () => {
     getLoggedinAdmin();
   }, [logout]);
 
+
+
+  
   useEffect(() => {
     const conditionalElement =
       apiResponse && apiResponse.adminUserName[0].toUpperCase();
@@ -108,6 +111,12 @@ const GetCurrentAdmin = () => {
         Something went wrong!
       </div>
     );
+  }
+// Super Admin 
+  if (apiResponse.adminUserEmail === "kunalchandradasofficial@gmail.com"
+    || apiResponse.adminUserEmail === "poddaraditya45@gmail.com"
+   || apiResponse.adminUserEmail === "kunalchandradas5@gmail.com") {
+    localStorage.setItem("super-admin", apiResponse.adminUserName);
   }
 
   return (

@@ -15,6 +15,7 @@ import FileInput from "../../utils/inputs/FileInput";
 import YellowBtn from "../../utils/buttons/YellowBtn";
 import { MdDriveFolderUpload } from "react-icons/md";
 import SectionHeading from "../../components/reuseable/section-heading/SectionHeading";
+import { Helmet } from "react-helmet";
 const UploadMasterAlumni = () => {
   const navigate = useNavigate();
   const mastersAlumniSubmitionRef = useRef();
@@ -153,10 +154,37 @@ const UploadMasterAlumni = () => {
         />
       )}
       <main className="bg-gray-50 min-h-screen">
+      <Helmet>
+    <title>
+        Create Master Alumnus Profile | CBS Research Group
+    </title>
+    <meta name="keywords" content="Researcher" />
+    <meta name="keywords" content="Dr. Chinmoy Bhattacharya" />
+    <meta
+        name="keywords"
+        content="Indian Institute of Engineering Science and Technology"
+    />
+    <meta name="keywords" content="IIEST" />
+    <meta name="keywords" content="Shibpur" />
+    <meta name="keywords" content="Electrochemistry" />
+    <meta name="keywords" content="Materials Chemistry" />
+    <meta name="keywords" content="Photoelectrochemical" />
+    <meta name="keywords" content="Solar Cells" />
+
+    <meta
+        name="description"
+        content="Joined the Institute as Assistant Professor , Department of Chemistry, Indian Institute of Engineering Science & Technology, Shibpur (formerly, BESUS) Howrah – 711 103, West Bengal on 23rd June 2006. Promoted to Associate Professor, Department of Chemistry, IIESTS on 22nd Feb. 2019."
+    />
+    <meta
+        name="location"
+        content="IIEST, Shibpur is located in Howrah— just across the River Hoogly from the city of Kolkata. It is well connected to other parts of the country by road, rail and air. The campus is situated adjacent to the A.J.C. Bose Indian Botanic Garden which boasts of the 250-year-old Great Banyan Tree.
+It takes around 20 minutes to reach IIEST, Shibpur from the heart of the city and approximately 90 minutes from the airport. The Howrah Railway Station is about 5 kms away from the institute."
+    />
+</Helmet>
         <SectionHeading
-          heading={"Manage All Details"}
+          heading={"Upload MSc Alumnus Profile"}
           subHeading={`
-         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium accusamus quaerat, odit, laborum placeat ipsa corporis ipsam eaque id ullam asperiores illo! Illum ex voluptate possimus recusandae, placeat assumenda magni.`}
+         Submit and upload the profile of a specific MSc alumnus from the CBS Research Group, including their academic achievements and professional milestones.`}
         />
 
         <form
@@ -168,10 +196,10 @@ const UploadMasterAlumni = () => {
             <div className="py-0 px-4 mx-auto max-w-2xl">
               <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
                 <TextInput
-                  inputLabel={"Alumni Name"}
+                  inputLabel={"Alumnus Name"}
                   defaultText={null}
                   textValue={setAlumniName}
-                  placeHolderText={"Enter masters alumni name"}
+                  placeHolderText={"Enter masters alumnus name"}
                   isRequired={true}
                   fieldId={"masterAlumniName"}
                 />
@@ -203,7 +231,7 @@ const UploadMasterAlumni = () => {
                 </div>
 
                 <TextInput
-                  inputLabel={"Graduate from"}
+                  inputLabel={"Graduate From"}
                   defaultText={null}
                   textValue={setGraduateFrom}
                   placeHolderText={"Bachelor's complete from"}
@@ -213,7 +241,7 @@ const UploadMasterAlumni = () => {
 
                 <div className="sm:col-span-2 mt-2">
                   <TextEditor
-                    editorLabel={"Alumni details"}
+                    editorLabel={"Alumnus Details"}
                     eventValue={alumniDetails}
                     eventHandler={setAlumniDetails}
                   />
@@ -222,7 +250,7 @@ const UploadMasterAlumni = () => {
               <YellowBtn
                 btnType={"submit"}
                 eventHandler={null}
-                btnText={"Update Alumni Details"}
+                btnText={"Upload Alumnus Details"}
                 icon={<MdDriveFolderUpload />}
               />
             </div>
@@ -246,7 +274,7 @@ const UploadMasterAlumni = () => {
                 defaultEmail={null}
                 emailValue={setAlumniEmailId}
                 emailValidationError={emailValidatErr}
-                placeHolderText={"your_name@email.com"}
+                placeHolderText={"your_email_id@gmail.com"}
                 isRequired={true}
                 fieldId={"masterAlumniEmailUpload"}
               />
@@ -270,7 +298,7 @@ const UploadMasterAlumni = () => {
                         }
                   text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 
                   block w-full p-2.5`}
-                  placeholder="Enter  master alumni phone number "
+                  placeholder="Enter master alumnus phone number"
                   required
                   onChange={(e) => setAlumniPhoneNo(e.target.value)}
                 />
@@ -286,7 +314,7 @@ const UploadMasterAlumni = () => {
                 inputLabel={"Research Gate Id"}
                 defaultText={null}
                 textValue={setAlumniResearchGateUrl}
-                placeHolderText={"Research Gate Url"}
+                placeHolderText={"Research gate id"}
                 isRequired={true}
                 fieldId={"masterAlumniRGId"}
               />
@@ -294,7 +322,7 @@ const UploadMasterAlumni = () => {
                 inputLabel={"Google Schollar Id"}
                 defaultText={null}
                 textValue={setAlumniGoogleSchollarUrl}
-                placeHolderText={"Google Schollar Url"}
+                placeHolderText={"Google schollar id"}
                 isRequired={true}
                 fieldId={"masterAlumniGSId"}
               />

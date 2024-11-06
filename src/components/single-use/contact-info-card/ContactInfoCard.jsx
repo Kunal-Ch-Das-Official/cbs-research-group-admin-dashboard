@@ -85,7 +85,7 @@ const ContactInfoCard = ({
             to={preViewUrl}
             className="tracking-wider text-gray-800 bg-yellow-400 px-2 text-sm rounded leading-loose mx-2 font-semibold cursor-pointer"
           >
-            Preview
+            Action
           </Link>
           <Link
             to={deleteUrl}

@@ -14,6 +14,7 @@ import FileInput from "../../utils/inputs/FileInput";
 import { MdDriveFolderUpload } from "react-icons/md";
 import YellowBtn from "../../utils/buttons/YellowBtn";
 import SectionHeading from "../../components/reuseable/section-heading/SectionHeading";
+import { Helmet } from "react-helmet";
 const UploadMscMember = () => {
   const navigate = useNavigate();
   const mscMemberSubmitionRef = useRef();
@@ -119,6 +120,33 @@ const UploadMscMember = () => {
 
   return (
     <>
+       <Helmet>
+                <title>
+                    Create New MSc Member&apos;s Profile | CBS Research Group
+                </title>
+                <meta name="keywords" content="Researcher" />
+                <meta name="keywords" content="Dr. Chinmoy Bhattacharya" />
+                <meta
+                    name="keywords"
+                    content="Indian Institute of Engineering Science and Technology"
+                />
+                <meta name="keywords" content="IIEST" />
+                <meta name="keywords" content="Shibpur" />
+                <meta name="keywords" content="Electrochemistry" />
+                <meta name="keywords" content="Materials Chemistry" />
+                <meta name="keywords" content="Photoelectrochemical" />
+                <meta name="keywords" content="Solar Cells" />
+
+                <meta
+                    name="description"
+                    content="Joined the Institute as Assistant Professor , Department of Chemistry, Indian Institute of Engineering Science & Technology, Shibpur (formerly, BESUS) Howrah – 711 103, West Bengal on 23rd June 2006. Promoted to Associate Professor, Department of Chemistry, IIESTS on 22nd Feb. 2019."
+                />
+                <meta
+                    name="location"
+                    content="IIEST, Shibpur is located in Howrah— just across the River Hoogly from the city of Kolkata. It is well connected to other parts of the country by road, rail and air. The campus is situated adjacent to the A.J.C. Bose Indian Botanic Garden which boasts of the 250-year-old Great Banyan Tree.
+It takes around 20 minutes to reach IIEST, Shibpur from the heart of the city and approximately 90 minutes from the airport. The Howrah Railway Station is about 5 kms away from the institute."
+                />
+            </Helmet>
       {loading === true && <LoadingSpinner />}
       {showAlert === true && (
         <CustomModel
@@ -133,9 +161,8 @@ const UploadMscMember = () => {
       )}
       <main className="bg-gray-50 min-h-screen">
         <SectionHeading
-          heading={"Manage All Details"}
-          subHeading={`
-         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium accusamus quaerat, odit, laborum placeat ipsa corporis ipsam eaque id ullam asperiores illo! Illum ex voluptate possimus recusandae, placeat assumenda magni.`}
+          heading={"Upload MSc Member Profile Information"}
+          subHeading={`Submit and upload essential details for MSc students in the CBS Research Group, including academic records and research contributions for comprehensive tracking.`}
         />
 
         <form
@@ -183,7 +210,7 @@ const UploadMscMember = () => {
                   </div>
                 </div>
                 <TextInput
-                  inputLabel={"Graduate from"}
+                  inputLabel={"Graduate From"}
                   defaultText={null}
                   textValue={setGraduateFrom}
                   placeHolderText={"Bachelor's complete from"}
@@ -226,7 +253,7 @@ const UploadMscMember = () => {
                 defaultEmail={null}
                 emailValue={setMembersEmail}
                 emailValidationError={emailValidatErr}
-                placeHolderText={"your_name@email.com"}
+                placeHolderText={"your_email_id@gmail.com"}
                 isRequired={true}
                 fieldId={"mscMemberEmailUpload"}
               />
@@ -250,7 +277,7 @@ const UploadMscMember = () => {
                   
                   text-gray-900 text-sm rounded-lg focus:ring-primary-600 
                   focus:border-primary-600 block w-full p-2.5`}
-                  placeholder="Enter  master alumni phone number "
+                  placeholder="Enter phone number of msc member "
                   required
                   onChange={(e) => setMembersPhoneNo(e.target.value)}
                 />
@@ -266,7 +293,7 @@ const UploadMscMember = () => {
                 inputLabel={"Research Gate Id"}
                 defaultText={null}
                 textValue={setResearchGateHandle}
-                placeHolderText={"Research Gate Url"}
+                placeHolderText={"Research gate url"}
                 isRequired={true}
                 fieldId={"mscMemberRGId"}
               />
@@ -274,7 +301,7 @@ const UploadMscMember = () => {
                 inputLabel={"Google Schollar Id"}
                 defaultText={null}
                 textValue={setGoogleScholarHandle}
-                placeHolderText={"Google Schollar Url"}
+                placeHolderText={"Google schollar url"}
                 isRequired={true}
                 fieldId={"mscMemberGSId"}
               />

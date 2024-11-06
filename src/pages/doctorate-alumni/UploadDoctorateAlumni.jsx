@@ -15,6 +15,7 @@ import FileInput from "../../utils/inputs/FileInput";
 import YellowBtn from "../../utils/buttons/YellowBtn";
 import { MdDriveFolderUpload } from "react-icons/md";
 import SectionHeading from "../../components/reuseable/section-heading/SectionHeading";
+import { Helmet } from "react-helmet";
 const UploadDoctorateAlumni = () => {
   const navigate = useNavigate();
   const doctorateAlumniSubmitionRef = useRef();
@@ -127,6 +128,33 @@ const UploadDoctorateAlumni = () => {
 
   return (
     <>
+      <Helmet>
+                <title>
+                    Create Doctorate Alumnus Profile | CBS Research Group
+                </title>
+                <meta name="keywords" content="Researcher" />
+                <meta name="keywords" content="Dr. Chinmoy Bhattacharya" />
+                <meta
+                    name="keywords"
+                    content="Indian Institute of Engineering Science and Technology"
+                />
+                <meta name="keywords" content="IIEST" />
+                <meta name="keywords" content="Shibpur" />
+                <meta name="keywords" content="Electrochemistry" />
+                <meta name="keywords" content="Materials Chemistry" />
+                <meta name="keywords" content="Photoelectrochemical" />
+                <meta name="keywords" content="Solar Cells" />
+
+                <meta
+                    name="description"
+                    content="Joined the Institute as Assistant Professor , Department of Chemistry, Indian Institute of Engineering Science & Technology, Shibpur (formerly, BESUS) Howrah – 711 103, West Bengal on 23rd June 2006. Promoted to Associate Professor, Department of Chemistry, IIESTS on 22nd Feb. 2019."
+                />
+                <meta
+                    name="location"
+                    content="IIEST, Shibpur is located in Howrah— just across the River Hoogly from the city of Kolkata. It is well connected to other parts of the country by road, rail and air. The campus is situated adjacent to the A.J.C. Bose Indian Botanic Garden which boasts of the 250-year-old Great Banyan Tree.
+It takes around 20 minutes to reach IIEST, Shibpur from the heart of the city and approximately 90 minutes from the airport. The Howrah Railway Station is about 5 kms away from the institute."
+                />
+            </Helmet>
       {loading === true && <LoadingSpinner />}
       {showAlert === true && (
         <CustomModel
@@ -140,10 +168,10 @@ const UploadDoctorateAlumni = () => {
         />
       )}
       <main className="bg-gray-50 min-h-screen pb-12">
-        <SectionHeading
-          heading={"Manage All Details"}
+      <SectionHeading
+          heading={"Upload PHd Alumnus Profile"}
           subHeading={`
-         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium accusamus quaerat, odit, laborum placeat ipsa corporis ipsam eaque id ullam asperiores illo! Illum ex voluptate possimus recusandae, placeat assumenda magni.`}
+         Submit and upload the profile of a specific PHd alumnus from the CBS Research Group, including their academic achievements and professional milestones.`}
         />
 
         <form
@@ -155,10 +183,10 @@ const UploadDoctorateAlumni = () => {
             <div className="py-0 px-4 mx-auto max-w-2xl">
               <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
                 <TextInput
-                  inputLabel={"Alumni Name"}
+                  inputLabel={"Alumnus Name"}
                   defaultText={null}
                   textValue={setAlumniName}
-                  placeHolderText={"Enter doctorate alumni name"}
+                  placeHolderText={"Enter doctorate alumnus name"}
                   isRequired={true}
                   fieldId={"docAlumniName"}
                 />
@@ -190,7 +218,7 @@ const UploadDoctorateAlumni = () => {
                 </div>
 
                 <TextInput
-                  inputLabel={"Graduate from"}
+                  inputLabel={"Graduate From"}
                   defaultText={null}
                   textValue={setGraduateFrom}
                   placeHolderText={"Bachelor's complete from"}
@@ -199,7 +227,7 @@ const UploadDoctorateAlumni = () => {
                 />
 
                 <TextInput
-                  inputLabel={"Masters done from"}
+                  inputLabel={"Masters Done From"}
                   defaultText={null}
                   textValue={setMastersDoneFrom}
                   placeHolderText={"Master's complete from"}
@@ -208,7 +236,7 @@ const UploadDoctorateAlumni = () => {
                 />
                 <div className="sm:col-span-2 mt-2">
                   <TextEditor
-                    editorLabel={"Alumni details"}
+                    editorLabel={"Alumnus Details"}
                     eventValue={alumniDetails}
                     eventHandler={setAlumniDetails}
                   />
@@ -217,7 +245,7 @@ const UploadDoctorateAlumni = () => {
               <YellowBtn
                 btnType={"submit"}
                 eventHandler={null}
-                btnText={"Upload Alumni Details"}
+                btnText={"Upload Alumnus Details"}
                 icon={<MdDriveFolderUpload />}
               />
             </div>
@@ -266,7 +294,7 @@ const UploadDoctorateAlumni = () => {
                   
                   text-gray-900 text-sm rounded-lg focus:ring-primary-600 
                   focus:border-primary-600 block w-full p-2.5`}
-                  placeholder="Enter  master alumni phone number "
+                  placeholder="Enter master alumnus phone number"
                   required
                   onChange={(e) => setAlumniPhoneNo(e.target.value)}
                 />

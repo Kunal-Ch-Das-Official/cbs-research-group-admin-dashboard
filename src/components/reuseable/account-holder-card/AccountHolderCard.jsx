@@ -18,7 +18,7 @@ const AccountHolderCard = ({
   );
 
   return (
-    <div className="flex items-center justify-between pb-3 pt-3">
+    <div className="flex  flex-col sm:flex-row items-center justify-between pb-3 pt-3">
       <div className="flex items-center ">
         <div
           className={`relative inline-flex items-center justify-center pb-1
@@ -42,7 +42,7 @@ const AccountHolderCard = ({
               </span>
               {new Date(registerDate).toLocaleDateString()}
             </div>{" "}
-            <div className="inline-flex items-center justify-center mx-auto font-medium">
+            <div className="inline-flex items-baseline lg:items-center  font-medium">
               <span className="font-bold text-green-600 mr-1">
                 Modified At:
               </span>
@@ -53,10 +53,11 @@ const AccountHolderCard = ({
           </div>
         </div>
       </div>
-      <h6 className="block font-sans text-base font-semibold  text-blue-gray-900 ">
+      <h6 className="block font-sans text-base font-semibold mt-4 sm:mt-0 text-blue-gray-900 ">
         <Link
           to={deActivateLink}
-          className="border border-gray-300 px-4 py-1 rounded-md text-red-500"
+          className="border border-gray-300 px-4 py-1 rounded-md text-red-500 
+          hover:bg-red-500 hover:text-white"
         >
           Deactivate
         </Link>
